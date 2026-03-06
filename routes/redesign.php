@@ -1,0 +1,251 @@
+<?php
+
+use App\Http\Controllers\BackOffice\Redesign\BerandaRedesignBackController;
+use App\Http\Controllers\BackOffice\Redesign\KewenanganRedesignBackController;
+use App\Http\Controllers\BackOffice\Redesign\PejabatStrukturalRedesignBackController;
+use App\Http\Controllers\BackOffice\Redesign\PerwakilanDaerahRedesignBackController;
+use App\Http\Controllers\BackOffice\Redesign\ProfilPimpinanRedesignBackController;
+use App\Http\Controllers\BackOffice\Redesign\ProgramPerlindunganRedesignBackController;
+use App\Http\Controllers\BackOffice\Redesign\SosialMediaRedesignBackController;
+use App\Http\Controllers\BackOffice\Redesign\StrukturOrganisasiRedesignBackController;
+use App\Http\Controllers\BackOffice\Redesign\SubjekTerlindungRedesignBackController;
+use App\Http\Controllers\BackOffice\Redesign\TentangKamiRedesignBackController;
+use App\Http\Controllers\BackOffice\Redesign\TindakPidanaTertentuRedesignBackController;
+use App\Http\Controllers\BackOffice\Redesign\VisiMisiRedesignBackController;
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\FrontOffice\Redesign\BerandaRedesignController;
+use App\Http\Controllers\FrontOffice\Redesign\ProfilRedesignController;
+use App\Http\Controllers\FrontOffice\Redesign\TugasFungsiRedesignController;
+
+// redesign routes 
+
+    // grup redesign
+    Route::prefix('redesign')->group(function () {
+        // beranda
+        Route::get('/', [BerandaRedesignController::class, 'index'])->name('redesign.home');
+
+        // maklumat
+        Route::get('/maklumat', [BerandaRedesignController::class, 'maklumat'])->name('redesign.maklumat');
+
+        // beranda
+        Route::get('/beranda', [BerandaRedesignController::class, 'beranda'])->name('redesign.beranda');
+
+        // footer
+        Route::get('/gpr', [BerandaRedesignController::class, 'gpr'])->name('redesign.gpr');
+
+        // profil
+        Route::prefix('/profil')->group(function () {
+            Route::get('/visi-misi', [ProfilRedesignController::class, 'visiMisi'])->name('redesign.profil.visi-misi');
+            Route::get('/profil-pimpinan', [ProfilRedesignController::class, 'profilPimpinan'])->name('redesign.profil.profil-pimpinan');
+            Route::get('/struktur-organisasi', [ProfilRedesignController::class, 'strukturOrganisasi'])->name('redesign.profil.struktur-organisasi');
+            Route::get('/pejabat-struktural', [ProfilRedesignController::class, 'pejabatStruktural'])->name('redesign.profil.pejabat-struktural');
+            Route::get('/perwakilan-daerah', [ProfilRedesignController::class, 'perwakilanDaerah'])->name('redesign.profil.perwakilan-daerah');
+        });
+
+        // tugas fungsi
+        Route::prefix('/tugas-fungsi')->group(function () {
+            Route::get('/kewenangan', [TugasFungsiRedesignController::class, 'kewenangan'])->name('redesign.profil.kewenangan');
+            Route::get('/subjek-terlindung', [TugasFungsiRedesignController::class, 'subjekTerlindung'])->name('redesign.profil.subjek-terlindung');
+            Route::get('/tindak-pidana-tertentu', [TugasFungsiRedesignController::class, 'tindakPidanaTertentu'])->name('redesign.profil.tindak-pidana-tertentu');
+            Route::get('/program-perlindungan', [TugasFungsiRedesignController::class, 'programPerlindungan'])->name('redesign.profil.program-perlindungan');
+        });
+
+        // publikasi
+        Route::prefix('/publikasi')->group(function () {
+            Route::get('/', [BerandaRedesignController::class, 'publikasi'])->name('redesign.publikasi');
+
+            // publikasi id
+            Route::prefix('/{id}')->group(function () {
+                Route::get('/detail', [BerandaRedesignController::class, 'publikasiDetail'])->name('redesign.publikasi.detail');
+            });
+
+
+            // siaran-pers
+            Route::prefix('/siaran-pers')->group(function () {
+                Route::get('/', [BerandaRedesignController::class, 'siaranPers'])->name('redesign.siaran-pers');
+
+                // siaran-pers id
+                Route::prefix('/{id}')->group(function () {
+                    Route::get('/detail', [BerandaRedesignController::class, 'siaranPersDetail'])->name('redesign.siaran-pers.detail');
+                });
+            });
+
+            // berita-foto
+            Route::prefix('/berita-foto')->group(function () {
+                Route::get('/', [BerandaRedesignController::class, 'beritaFoto'])->name('redesign.berita-foto');
+
+                // berita-foto id
+                Route::prefix('/{id}')->group(function () {
+                    Route::get('/detail', [BerandaRedesignController::class, 'beritaFotoDetail'])->name('redesign.berita-foto.detail');
+                    Route::get('/galeri', [BerandaRedesignController::class, 'beritaFotoGaleri'])->name('redesign.berita-foto.galeri');
+                });
+            });
+
+        });
+
+        // backoffice
+        Route::prefix('/backoffice')->group(function () {
+            Route::get('/beranda', [BerandaRedesignBackController::class, 'beranda'])->name('dashboard');
+
+            // grup tentang kami
+            Route::prefix('tentang-kami')->group(function () {
+                Route::get('/', [TentangKamiRedesignBackController::class, 'index'])->name('redesign.backoffice.tentang-kami.index');
+                Route::get('/create', [TentangKamiRedesignBackController::class, 'create'])->name('redesign.backoffice.tentang-kami.create');
+                Route::post('/store', [TentangKamiRedesignBackController::class, 'store'])->name('redesign.backoffice.tentang-kami.store');
+                // api
+                Route::get('/api', [TentangKamiRedesignBackController::class, 'apiTentangKami'])->name('redesign.backoffice.tentang-kami.api');
+                // grup id
+                Route::prefix('{id}')->group(function () {
+                    Route::get('/edit', [TentangKamiRedesignBackController::class, 'edit'])->name('redesign.backoffice.tentang-kami.edit');
+                    Route::put('/update', [TentangKamiRedesignBackController::class, 'update'])->name('redesign.backoffice.tentang-kami.update');
+                    Route::delete('/delete', [TentangKamiRedesignBackController::class, 'destroy'])->name('redesign.backoffice.tentang-kami.destroy');
+                });
+            });
+
+            // grup sosial-media
+                Route::prefix('sosial-media')->group(function () {
+                    Route::get('/', [SosialMediaRedesignBackController::class, 'index'])->name('redesign.backoffice.sosial-media.index');
+                    Route::get('/create', [SosialMediaRedesignBackController::class, 'create'])->name('redesign.backoffice.sosial-media.create');
+                    Route::post('/store', [SosialMediaRedesignBackController::class, 'store'])->name('redesign.backoffice.sosial-media.store');
+                    // grup id
+                    Route::prefix('{id}')->group(function () {
+                        Route::get('/edit', [SosialMediaRedesignBackController::class, 'edit'])->name('redesign.backoffice.sosial-media.edit');
+                        Route::put('/update', [SosialMediaRedesignBackController::class, 'update'])->name('redesign.backoffice.sosial-media.update');
+                        Route::delete('/delete', [SosialMediaRedesignBackController::class, 'destroy'])->name('redesign.backoffice.sosial-media.destroy');
+                    });
+                });
+
+            // grup profil
+            Route::prefix('/profil')->group(function () {
+                
+                // grup visi-misi
+                Route::prefix('visi-misi')->group(function () {
+                    Route::get('/', [VisiMisiRedesignBackController::class, 'index'])->name('redesign.backoffice.profil.visi-misi.index');
+                    Route::get('/create', [VisiMisiRedesignBackController::class, 'create'])->name('redesign.backoffice.profil.visi-misi.create');
+                    Route::post('/store', [VisiMisiRedesignBackController::class, 'store'])->name('redesign.backoffice.profil.visi-misi.store');
+
+                    // grup id
+                    Route::prefix('{id}')->group(function () {
+                        Route::get('/edit', [VisiMisiRedesignBackController::class, 'edit'])->name('redesign.backoffice.profil.visi-misi.edit');
+                        Route::put('/update', [VisiMisiRedesignBackController::class, 'update'])->name('redesign.backoffice.profil.visi-misi.update');
+                        Route::delete('/delete', [VisiMisiRedesignBackController::class, 'destroy'])->name('redesign.backoffice.profil.visi-misi.destroy');
+                    });
+                });
+
+                // grup profil pimpinan
+                Route::prefix('profil-pimpinan')->group(function () {
+                    Route::get('/', [ProfilPimpinanRedesignBackController::class, 'index'])->name('redesign.backoffice.profil.profil-pimpinan.index');
+                    Route::get('/create', [ProfilPimpinanRedesignBackController::class, 'create'])->name('redesign.backoffice.profil.profil-pimpinan.create');
+                    Route::post('/store', [ProfilPimpinanRedesignBackController::class, 'store'])->name('redesign.backoffice.profil.profil-pimpinan.store');
+
+                    // grup id
+                    Route::prefix('{id}')->group(function () {
+                        Route::get('/edit', [ProfilPimpinanRedesignBackController::class, 'edit'])->name('redesign.backoffice.profil.profil-pimpinan.edit');
+                        Route::put('/update', [ProfilPimpinanRedesignBackController::class, 'update'])->name('redesign.backoffice.profil.profil-pimpinan.update');
+                        Route::delete('/delete', [ProfilPimpinanRedesignBackController::class, 'destroy'])->name('redesign.backoffice.profil.profil-pimpinan.destroy');
+                    });
+                });
+
+                // grup struktur organisasi
+                Route::prefix('struktur-organisasi')->group(function () {
+                    Route::get('/', [StrukturOrganisasiRedesignBackController::class, 'index'])->name('redesign.backoffice.profil.struktur-organisasi.index');
+                    Route::get('/create', [StrukturOrganisasiRedesignBackController::class, 'create'])->name('redesign.backoffice.profil.struktur-organisasi.create');
+                    Route::post('/store', [StrukturOrganisasiRedesignBackController::class, 'store'])->name('redesign.backoffice.profil.struktur-organisasi.store');
+                    // grup id
+                    Route::prefix('{id}')->group(function () {
+                        Route::get('/edit', [StrukturOrganisasiRedesignBackController::class, 'edit'])->name('redesign.backoffice.profil.struktur-organisasi.edit');
+                        Route::put('/update', [StrukturOrganisasiRedesignBackController::class, 'update'])->name('redesign.backoffice.profil.struktur-organisasi.update');
+                        Route::delete('/delete', [StrukturOrganisasiRedesignBackController::class, 'destroy'])->name('redesign.backoffice.profil.struktur-organisasi.destroy');
+                    });
+                });
+                
+                // grup pejabat struktural
+                Route::prefix('pejabat-struktural')->group(function () {
+                    Route::get('/', [PejabatStrukturalRedesignBackController::class, 'index'])->name('redesign.backoffice.profil.pejabat-struktural.index');
+                    Route::get('/create', [PejabatStrukturalRedesignBackController::class, 'create'])->name('redesign.backoffice.profil.pejabat-struktural.create');
+                    Route::post('/store', [PejabatStrukturalRedesignBackController::class, 'store'])->name('redesign.backoffice.profil.pejabat-struktural.store');
+
+                    // grup id
+                    Route::prefix('{id}')->group(function () {
+                        Route::get('/edit', [PejabatStrukturalRedesignBackController::class, 'edit'])->name('redesign.backoffice.profil.pejabat-struktural.edit');
+                        Route::put('/update', [PejabatStrukturalRedesignBackController::class, 'update'])->name('redesign.backoffice.profil.pejabat-struktural.update');
+                        Route::delete('/delete', [PejabatStrukturalRedesignBackController::class, 'destroy'])->name('redesign.backoffice.profil.pejabat-struktural.destroy');
+                    });
+                });
+
+                // grup perwakilan daerah
+                Route::prefix('perwakilan-daerah')->group(function () {
+                    Route::get('/', [PerwakilanDaerahRedesignBackController::class, 'index'])->name('redesign.backoffice.profil.perwakilan-daerah.index');
+                    Route::get('/create', [PerwakilanDaerahRedesignBackController::class, 'create'])->name('redesign.backoffice.profil.perwakilan-daerah.create');
+                    Route::post('/store', [PerwakilanDaerahRedesignBackController::class, 'store'])->name('redesign.backoffice.profil.perwakilan-daerah.store');
+                    // grup id
+                    Route::prefix('{id}')->group(function () {
+                        Route::get('/edit', [PerwakilanDaerahRedesignBackController::class, 'edit'])->name('redesign.backoffice.profil.perwakilan-daerah.edit');
+                        Route::put('/update', [PerwakilanDaerahRedesignBackController::class, 'update'])->name('redesign.backoffice.profil.perwakilan-daerah.update');
+                        Route::delete('/delete', [PerwakilanDaerahRedesignBackController::class, 'destroy'])->name('redesign.backoffice.profil.perwakilan-daerah.destroy');
+                    });
+                });
+                
+            });
+
+            // grup tugas fungsi
+            Route::prefix('/tugas-fungsi')->group(function () {
+
+                // grup kewenangan
+                Route::prefix('kewenangan')->group(function () {
+                    Route::get('/', [KewenanganRedesignBackController::class, 'index'])->name('redesign.backoffice.tugas-fungsi.kewenangan.index');
+                    Route::get('/create', [KewenanganRedesignBackController::class, 'create'])->name('redesign.backoffice.tugas-fungsi.kewenangan.create');
+                    Route::post('/store', [KewenanganRedesignBackController::class, 'store'])->name('redesign.backoffice.tugas-fungsi.kewenangan.store');
+                    // grup id
+                    Route::prefix('{id}')->group(function () {
+                        Route::get('/edit', [KewenanganRedesignBackController::class, 'edit'])->name('redesign.backoffice.tugas-fungsi.kewenangan.edit');
+                        Route::put('/update', [KewenanganRedesignBackController::class, 'update'])->name('redesign.backoffice.tugas-fungsi.kewenangan.update');
+                        Route::delete('/delete', [KewenanganRedesignBackController::class, 'destroy'])->name('redesign.backoffice.tugas-fungsi.kewenangan.destroy');
+                    });
+                });
+
+                // grup subjek terlindung
+                Route::prefix('subjek-terlindung')->group(function () {
+                    Route::get('/', [SubjekTerlindungRedesignBackController::class, 'index'])->name('redesign.backoffice.tugas-fungsi.subjek-terlindung.index');
+                    Route::get('/create', [SubjekTerlindungRedesignBackController::class, 'create'])->name('redesign.backoffice.tugas-fungsi.subjek-terlindung.create');
+                    Route::post('/store', [SubjekTerlindungRedesignBackController::class, 'store'])->name('redesign.backoffice.tugas-fungsi.subjek-terlindung.store');
+                    // grup id
+                    Route::prefix('{id}')->group(function () {
+                        Route::get('/edit', [SubjekTerlindungRedesignBackController::class, 'edit'])->name('redesign.backoffice.tugas-fungsi.subjek-terlindung.edit');
+                        Route::put('/update', [SubjekTerlindungRedesignBackController::class, 'update'])->name('redesign.backoffice.tugas-fungsi.subjek-terlindung.update');
+                        Route::delete('/delete', [SubjekTerlindungRedesignBackController::class, 'destroy'])->name('redesign.backoffice.tugas-fungsi.subjek-terlindung.destroy');
+                    });
+                });
+
+                 // grup tindak pidana tertentu
+                Route::prefix('tindak-pidana-tertentu')->group(function () {
+                    Route::get('/', [TindakPidanaTertentuRedesignBackController::class, 'index'])->name('redesign.backoffice.tugas-fungsi.tindak-pidana-tertentu.index');
+                    Route::get('/create', [TindakPidanaTertentuRedesignBackController::class, 'create'])->name('redesign.backoffice.tugas-fungsi.tindak-pidana-tertentu.create');
+                    Route::post('/store', [TindakPidanaTertentuRedesignBackController::class, 'store'])->name('redesign.backoffice.tugas-fungsi.tindak-pidana-tertentu.store');
+                    // grup id
+                    Route::prefix('{id}')->group(function () {
+                        Route::get('/edit', [TindakPidanaTertentuRedesignBackController::class, 'edit'])->name('redesign.backoffice.tugas-fungsi.tindak-pidana-tertentu.edit');
+                        Route::put('/update', [TindakPidanaTertentuRedesignBackController::class, 'update'])->name('redesign.backoffice.tugas-fungsi.tindak-pidana-tertentu.update');
+                        Route::delete('/delete', [TindakPidanaTertentuRedesignBackController::class, 'destroy'])->name('redesign.backoffice.tugas-fungsi.tindak-pidana-tertentu.destroy');
+                    });
+                });
+
+                 // grup program perlindungan
+                Route::prefix('program-perlindungan')->group(function () {
+                    Route::get('/', [ProgramPerlindunganRedesignBackController::class, 'index'])->name('redesign.backoffice.tugas-fungsi.program-perlindungan.index');
+                    Route::get('/create', [ProgramPerlindunganRedesignBackController::class, 'create'])->name('redesign.backoffice.tugas-fungsi.program-perlindungan.create');
+                    Route::post('/store', [ProgramPerlindunganRedesignBackController::class, 'store'])->name('redesign.backoffice.tugas-fungsi.program-perlindungan.store');
+                    // grup id
+                    Route::prefix('{id}')->group(function () {
+                        Route::get('/edit', [ProgramPerlindunganRedesignBackController::class, 'edit'])->name('redesign.backoffice.tugas-fungsi.program-perlindungan.edit');
+                        Route::put('/update', [ProgramPerlindunganRedesignBackController::class, 'update'])->name('redesign.backoffice.tugas-fungsi.program-perlindungan.update');
+                        Route::delete('/delete', [ProgramPerlindunganRedesignBackController::class, 'destroy'])->name('redesign.backoffice.tugas-fungsi.program-perlindungan.destroy');
+                    });
+                });
+
+            });
+
+        });
+    });
+
+?>
