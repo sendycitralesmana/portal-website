@@ -4,120 +4,21 @@ import { Link } from "@inertiajs/react"
 
 interface Post {
   id: number
-  title: string
-  image: string
-  date: string
+  jenis: string
+  kategori: string
+  judul: string
+  slug: string
+  deskripsi: string
+  gambar: string
+  tanggal: string
 }
 
-/* ================= DATA (TEMA LPSK) ================= */
-
-const siaranPers: Post[] = [
-  {
-    id: 1,
-    title: "LPSK Tegaskan Komitmen Perlindungan Saksi dalam Perkara Korupsi",
-    image: "/images/logo-lg.png",
-    date: "20 Februari 2026",
-  },
-  {
-    id: 2,
-    title: "LPSK Perkuat Koordinasi dengan Aparat Penegak Hukum",
-    image: "/images/logo-lg.png",
-    date: "18 Februari 2026",
-  },
-  {
-    id: 3,
-    title: "LPSK Fasilitasi Restitusi bagi Korban Tindak Pidana",
-    image: "/images/logo-lg.png",
-    date: "15 Februari 2026",
-  },
-  {
-    id: 4,
-    title: "Negara Hadir Melindungi Korban Kekerasan Seksual",
-    image: "/images/logo-lg.png",
-    date: "12 Februari 2026",
-  },
-]
-
-const beritaFoto: Post[] = [
-  {
-    id: 1,
-    title: "Kunjungan Kerja LPSK ke Pengadilan Negeri Jakarta",
-    image: "/images/logo-lg.png",
-    date: "10 Februari 2026",
-  },
-  {
-    id: 2,
-    title: "Penandatanganan MoU Perlindungan Korban",
-    image: "/images/logo-lg.png",
-    date: "8 Februari 2026",
-  },
-  {
-    id: 3,
-    title: "Sosialisasi Perlindungan Saksi di Perguruan Tinggi",
-    image: "/images/logo-lg.png",
-    date: "6 Februari 2026",
-  },
-  {
-    id: 4,
-    title: "Workshop Nasional Perlindungan Korban",
-    image: "/images/logo-lg.png",
-    date: "5 Februari 2026",
-  },
-]
-
-const beritaKegiatan: Post[] = [
-  {
-    id: 1,
-    title: "LPSK Gelar Rapat Koordinasi Nasional",
-    image: "/images/logo-lg.png",
-    date: "22 Februari 2026",
-  },
-  {
-    id: 2,
-    title: "Pelatihan Penanganan Korban Kekerasan",
-    image: "/images/logo-lg.png",
-    date: "19 Februari 2026",
-  },
-  {
-    id: 3,
-    title: "Forum Diskusi Reformasi Sistem Peradilan",
-    image: "/images/logo-lg.png",
-    date: "16 Februari 2026",
-  },
-  {
-    id: 4,
-    title: "LPSK Sosialisasikan Hak Korban di Daerah",
-    image: "/images/logo-lg.png",
-    date: "14 Februari 2026",
-  },
-]
-
-const pengumuman: Post[] = [
-  {
-    id: 1,
-    title: "Pengumuman Rekrutmen Pegawai LPSK Tahun 2026",
-    image: "/images/logo-lg.png",
-    date: "25 Februari 2026",
-  },
-  {
-    id: 2,
-    title: "Informasi Layanan Permohonan Perlindungan",
-    image: "/images/logo-lg.png",
-    date: "23 Februari 2026",
-  },
-  {
-    id: 3,
-    title: "Jadwal Libur Nasional dan Cuti Bersama",
-    image: "/images/logo-lg.png",
-    date: "21 Februari 2026",
-  },
-  {
-    id: 4,
-    title: "Pengumuman Seleksi Administrasi Calon Pegawai",
-    image: "/images/logo-lg.png",
-    date: "20 Februari 2026",
-  },
-]
+interface TablistProps {
+  siaranPers: Post[]
+  beritaFotos: Post[]
+  beritaKegiatans: Post[]
+  pengumumans: Post[]
+}
 
 /* ================= CARD GRID ================= */
 
@@ -143,8 +44,8 @@ function CardGrid({ posts, baseUrl }: { posts: Post[]; baseUrl: string }) {
         >
           {/* IMAGE */}
           <img
-            src={post.image}
-            alt={post.title}
+            src={post.gambar}
+            alt={post.judul}
             className="
               w-full
               object-cover
@@ -153,15 +54,16 @@ function CardGrid({ posts, baseUrl }: { posts: Post[]; baseUrl: string }) {
           />
 
           {/* CONTENT */}
-          <CardContent className="
+          <CardContent
+            className="
             p-3 sm:p-4 md:p-5
             bg-muted/70
             flex flex-col flex-1
-          ">
-            
+          "
+          >
             {/* TITLE WITH LINK */}
             <Link
-              href={`${baseUrl}/${post.id}/detail`}
+              href={`${baseUrl}/${post.slug}`}
               className="
                 text-sm md:text-md lg:text-lg
                 font-semibold
@@ -173,19 +75,20 @@ function CardGrid({ posts, baseUrl }: { posts: Post[]; baseUrl: string }) {
                 transition-colors
               "
             >
-              {post.title}
+              {post.judul}
             </Link>
 
             {/* DATE */}
-            <p className="
+            <p
+              className="
               text-[10px] sm:text-[11px] md:text-xs lg:text-sm
               text-muted-foreground
               mt-auto
               pt-2 sm:pt-3 md:pt-4
-            ">
-              {post.date}
+            "
+            >
+              {post.tanggal}
             </p>
-
           </CardContent>
         </Card>
       ))}
@@ -195,12 +98,16 @@ function CardGrid({ posts, baseUrl }: { posts: Post[]; baseUrl: string }) {
 
 /* ================= TABS ================= */
 
-export default function Tablist() {
+export default function Tablist({
+  siaranPers,
+  beritaFotos,
+  beritaKegiatans,
+  pengumumans,
+}: TablistProps) {
   return (
-    <section className="w-full py-12 -mt-21  z-10 relative">
+    <section className="w-full py-12 -mt-21 z-10 relative">
       <div className="container mx-auto px-4 md:px-6">
         <Tabs defaultValue="siaranPers">
-
           <div className="overflow-x-auto">
             <div className="overflow-x-auto md:overflow-hidden">
               <TabsList
@@ -212,19 +119,31 @@ export default function Tablist() {
                   rounded-none
                 "
               >
-                <TabsTrigger value="siaranPers" className="border-t-amber-400 border-l-amber-400 border-r-amber-400 rounded-t-4xl h-full px-5 md:px-6 text-sm md:text-lg font-semibold whitespace-nowrap flex items-center justify-center leading-none text-white data-[state=active]:bg-white data-[state=active]:text-zinc-900 data-[state=active]:shadow data-[state=active]:rounded-t-4xl transition-all shrink-0 cursor-pointer">
+                <TabsTrigger
+                  value="siaranPers"
+                  className="border-t-amber-400 border-l-amber-400 border-r-amber-400 rounded-t-4xl h-full px-5 md:px-6 text-sm md:text-lg font-semibold whitespace-nowrap flex items-center justify-center leading-none text-white data-[state=active]:bg-white data-[state=active]:text-zinc-900 data-[state=active]:shadow data-[state=active]:rounded-t-4xl transition-all shrink-0 cursor-pointer"
+                >
                   Siaran Pers
                 </TabsTrigger>
 
-                <TabsTrigger value="beritaFoto" className="border-t-amber-400 border-l-amber-400 border-r-amber-400 rounded-t-4xl h-full px-5 md:px-6 text-sm md:text-lg font-semibold whitespace-nowrap flex items-center justify-center leading-none text-white data-[state=active]:bg-white data-[state=active]:text-zinc-900 data-[state=active]:shadow data-[state=active]:rounded-t-4xl transition-all shrink-0 cursor-pointer">
+                <TabsTrigger
+                  value="beritaFoto"
+                  className="border-t-amber-400 border-l-amber-400 border-r-amber-400 rounded-t-4xl h-full px-5 md:px-6 text-sm md:text-lg font-semibold whitespace-nowrap flex items-center justify-center leading-none text-white data-[state=active]:bg-white data-[state=active]:text-zinc-900 data-[state=active]:shadow data-[state=active]:rounded-t-4xl transition-all shrink-0 cursor-pointer"
+                >
                   Berita Foto
                 </TabsTrigger>
 
-                <TabsTrigger value="beritaKegiatan" className="border-t-amber-400 border-l-amber-400 border-r-amber-400 rounded-t-4xl h-full px-5 md:px-6 text-sm md:text-lg font-semibold whitespace-nowrap flex items-center justify-center leading-none text-white data-[state=active]:bg-white data-[state=active]:text-zinc-900 data-[state=active]:shadow data-[state=active]:rounded-t-4xl transition-all shrink-0 cursor-pointer">
+                <TabsTrigger
+                  value="beritaKegiatan"
+                  className="border-t-amber-400 border-l-amber-400 border-r-amber-400 rounded-t-4xl h-full px-5 md:px-6 text-sm md:text-lg font-semibold whitespace-nowrap flex items-center justify-center leading-none text-white data-[state=active]:bg-white data-[state=active]:text-zinc-900 data-[state=active]:shadow data-[state=active]:rounded-t-4xl transition-all shrink-0 cursor-pointer"
+                >
                   Berita Kegiatan
                 </TabsTrigger>
 
-                <TabsTrigger value="pengumuman" className="border-t-amber-400 border-l-amber-400 border-r-amber-400 rounded-t-4xl h-full px-5 md:px-6 text-sm md:text-lg font-semibold whitespace-nowrap flex items-center justify-center leading-none text-white data-[state=active]:bg-white data-[state=active]:text-zinc-900 data-[state=active]:shadow data-[state=active]:rounded-t-4xl transition-all shrink-0 cursor-pointer">
+                <TabsTrigger
+                  value="pengumuman"
+                  className="border-t-amber-400 border-l-amber-400 border-r-amber-400 rounded-t-4xl h-full px-5 md:px-6 text-sm md:text-lg font-semibold whitespace-nowrap flex items-center justify-center leading-none text-white data-[state=active]:bg-white data-[state=active]:text-zinc-900 data-[state=active]:shadow data-[state=active]:rounded-t-4xl transition-all shrink-0 cursor-pointer"
+                >
                   Pengumuman
                 </TabsTrigger>
               </TabsList>
@@ -232,21 +151,32 @@ export default function Tablist() {
           </div>
 
           <TabsContent value="siaranPers">
-            <CardGrid posts={siaranPers} baseUrl="/redesign/publikasi/siaran-pers" />
+            <CardGrid
+              posts={siaranPers}
+              baseUrl="/redesign/publikasi/siaran-pers"
+            />
           </TabsContent>
 
           <TabsContent value="beritaFoto">
-            <CardGrid posts={beritaFoto} baseUrl="/redesign/publikasi/berita-foto" />
+            <CardGrid
+              posts={beritaFotos}
+              baseUrl="/redesign/publikasi/berita-foto"
+            />
           </TabsContent>
 
           <TabsContent value="beritaKegiatan">
-            <CardGrid posts={beritaKegiatan} baseUrl="/redesign/publikasi/berita-kegiatan" />
+            <CardGrid
+              posts={beritaKegiatans}
+              baseUrl="/redesign/publikasi/berita-kegiatan"
+            />
           </TabsContent>
 
           <TabsContent value="pengumuman">
-            <CardGrid posts={pengumuman} baseUrl="/redesign/publikasi/pengumuman" />
+            <CardGrid
+              posts={pengumumans}
+              baseUrl="/redesign/publikasi/pengumuman"
+            />
           </TabsContent>
-
         </Tabs>
       </div>
     </section>

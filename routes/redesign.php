@@ -1,16 +1,19 @@
 <?php
 
+use App\Http\Controllers\BackOffice\DraftRedesignBackController;
 use App\Http\Controllers\BackOffice\Redesign\BerandaRedesignBackController;
 use App\Http\Controllers\BackOffice\Redesign\KewenanganRedesignBackController;
 use App\Http\Controllers\BackOffice\Redesign\PejabatStrukturalRedesignBackController;
 use App\Http\Controllers\BackOffice\Redesign\PerwakilanDaerahRedesignBackController;
 use App\Http\Controllers\BackOffice\Redesign\ProfilPimpinanRedesignBackController;
 use App\Http\Controllers\BackOffice\Redesign\ProgramPerlindunganRedesignBackController;
+use App\Http\Controllers\BackOffice\Redesign\PublikasiRedesignBackController;
 use App\Http\Controllers\BackOffice\Redesign\SosialMediaRedesignBackController;
 use App\Http\Controllers\BackOffice\Redesign\StrukturOrganisasiRedesignBackController;
 use App\Http\Controllers\BackOffice\Redesign\SubjekTerlindungRedesignBackController;
 use App\Http\Controllers\BackOffice\Redesign\TentangKamiRedesignBackController;
 use App\Http\Controllers\BackOffice\Redesign\TindakPidanaTertentuRedesignBackController;
+use App\Http\Controllers\BackOffice\Redesign\VideoInfoRedesignBackController;
 use App\Http\Controllers\BackOffice\Redesign\VisiMisiRedesignBackController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\FrontOffice\Redesign\BerandaRedesignController;
@@ -29,6 +32,12 @@ use App\Http\Controllers\FrontOffice\Redesign\TugasFungsiRedesignController;
 
         // beranda
         Route::get('/beranda', [BerandaRedesignController::class, 'beranda'])->name('redesign.beranda');
+
+        // sosial media
+        Route::get('/sosial-media', [BerandaRedesignController::class, 'sosialMedia'])->name('redesign.sosial-media');
+
+        // statistik
+        Route::get('/statistik', [BerandaRedesignController::class, 'statistik'])->name('redesign.statistik');
 
         // footer
         Route::get('/gpr', [BerandaRedesignController::class, 'gpr'])->name('redesign.gpr');
@@ -52,40 +61,82 @@ use App\Http\Controllers\FrontOffice\Redesign\TugasFungsiRedesignController;
 
         // publikasi
         Route::prefix('/publikasi')->group(function () {
-            Route::get('/', [BerandaRedesignController::class, 'publikasi'])->name('redesign.publikasi');
+            // Route::get('/', [BerandaRedesignController::class, 'publikasi'])->name('redesign.publikasi');
 
-            // publikasi id
-            Route::prefix('/{id}')->group(function () {
-                Route::get('/detail', [BerandaRedesignController::class, 'publikasiDetail'])->name('redesign.publikasi.detail');
+            // // publikasi id
+            // Route::prefix('/{id}')->group(function () {
+            //     Route::get('/detail', [BerandaRedesignController::class, 'publikasiDetail'])->name('redesign.publikasi.detail');
+            // });
+
+            // {kategori}
+            Route::prefix('/{kategori}')->group(function () {
+                Route::get('/', [BerandaRedesignController::class, 'publikasiKategori'])->name('redesign.publikasi.kategori');
+
+                // slug
+                Route::prefix('/{slug}')->group(function () {
+                    Route::get('/', [BerandaRedesignController::class, 'publikasiSlug'])->name('redesign.publikasi.slug');
+                });
             });
-
 
             // siaran-pers
-            Route::prefix('/siaran-pers')->group(function () {
-                Route::get('/', [BerandaRedesignController::class, 'siaranPers'])->name('redesign.siaran-pers');
+            // Route::prefix('/siaran-pers')->group(function () {
+            //     Route::get('/', [BerandaRedesignController::class, 'siaranPers'])->name('redesign.siaran-pers');
 
-                // siaran-pers id
-                Route::prefix('/{id}')->group(function () {
-                    Route::get('/detail', [BerandaRedesignController::class, 'siaranPersDetail'])->name('redesign.siaran-pers.detail');
-                });
-            });
+            //     // siaran-pers id
+            //     Route::prefix('/{id}')->group(function () {
+            //         Route::get('/detail', [BerandaRedesignController::class, 'siaranPersDetail'])->name('redesign.siaran-pers.detail');
+            //     });
+            // });
 
             // berita-foto
-            Route::prefix('/berita-foto')->group(function () {
-                Route::get('/', [BerandaRedesignController::class, 'beritaFoto'])->name('redesign.berita-foto');
+            // Route::prefix('/berita-foto')->group(function () {
+            //     Route::get('/', [BerandaRedesignController::class, 'beritaFoto'])->name('redesign.berita-foto');
 
-                // berita-foto id
-                Route::prefix('/{id}')->group(function () {
-                    Route::get('/detail', [BerandaRedesignController::class, 'beritaFotoDetail'])->name('redesign.berita-foto.detail');
-                    Route::get('/galeri', [BerandaRedesignController::class, 'beritaFotoGaleri'])->name('redesign.berita-foto.galeri');
-                });
-            });
+            //     // berita-foto id
+            //     Route::prefix('/{id}')->group(function () {
+            //         Route::get('/detail', [BerandaRedesignController::class, 'beritaFotoDetail'])->name('redesign.berita-foto.detail');
+            //         Route::get('/galeri', [BerandaRedesignController::class, 'beritaFotoGaleri'])->name('redesign.berita-foto.galeri');
+            //     });
+            // });
 
         });
 
         // backoffice
         Route::prefix('/backoffice')->group(function () {
             Route::get('/beranda', [BerandaRedesignBackController::class, 'beranda'])->name('dashboard');
+
+            // grup draft
+            Route::prefix('draft')->group(function () {
+                Route::get('/', [DraftRedesignBackController::class, 'index'])->name('redesign.backoffice.draft.index');
+                Route::get('/update-sub-category-id', [DraftRedesignBackController::class, 'updateSubCategoryId'])->name('redesign.backoffice.draft.update-sub-category-id');
+                Route::get('/migrate-publikasi', [DraftRedesignBackController::class, 'migratePublikasi'])->name('redesign.backoffice.draft.migrate-publikasi');
+                Route::get('/update-gambar-publikasi', [DraftRedesignBackController::class, 'updateGambarPublikasi'])->name('redesign.backoffice.draft.update-gambar-publikasi');
+                Route::get('/update-kategori-publikasi', [DraftRedesignBackController::class, 'updateKategoriPublikasi'])->name('redesign.backoffice.draft.update-kategori-publikasi');
+            });
+
+            // grup publikasi
+            Route::prefix('publikasi')->group(function () {
+                Route::get('/', [PublikasiRedesignBackController::class, 'index'])->name('redesign.backoffice.publikasi.index');
+                Route::get('/create', [PublikasiRedesignBackController::class, 'create'])->name('redesign.backoffice.publikasi.create');
+                Route::post('/store', [PublikasiRedesignBackController::class, 'store'])->name('redesign.backoffice.publikasi.store');
+                // grup id
+                Route::prefix('{id}')->group(function () {
+                    Route::get('/detail', [PublikasiRedesignBackController::class, 'detail'])->name('redesign.backoffice.publikasi.detail');
+                    Route::get('/edit', [PublikasiRedesignBackController::class, 'edit'])->name('redesign.backoffice.publikasi.edit');
+                    Route::put('/update', [PublikasiRedesignBackController::class, 'update'])->name('redesign.backoffice.publikasi.update');
+                    Route::delete('/delete', [PublikasiRedesignBackController::class, 'destroy'])->name('redesign.backoffice.publikasi.destroy');
+                });
+            });
+
+            // grup publikasi-media
+            Route::prefix('publikasi-media')->group(function () {
+                Route::post('/store', [PublikasiRedesignBackController::class, 'publikasiMediaStore'])->name('redesign.backoffice.publikasi-media.store');
+                // grup id
+                Route::prefix('{id}')->group(function () {
+                    Route::post('/update', [PublikasiRedesignBackController::class, 'publikasiMediaUpdate'])->name('redesign.backoffice.publikasi-media.update');
+                    Route::delete('/delete', [PublikasiRedesignBackController::class, 'publikasiMediaDestroy'])->name('redesign.backoffice.publikasi-media.destroy');
+                });
+            });
 
             // grup tentang kami
             Route::prefix('tentang-kami')->group(function () {
@@ -102,18 +153,31 @@ use App\Http\Controllers\FrontOffice\Redesign\TugasFungsiRedesignController;
                 });
             });
 
-            // grup sosial-media
-                Route::prefix('sosial-media')->group(function () {
-                    Route::get('/', [SosialMediaRedesignBackController::class, 'index'])->name('redesign.backoffice.sosial-media.index');
-                    Route::get('/create', [SosialMediaRedesignBackController::class, 'create'])->name('redesign.backoffice.sosial-media.create');
-                    Route::post('/store', [SosialMediaRedesignBackController::class, 'store'])->name('redesign.backoffice.sosial-media.store');
-                    // grup id
-                    Route::prefix('{id}')->group(function () {
-                        Route::get('/edit', [SosialMediaRedesignBackController::class, 'edit'])->name('redesign.backoffice.sosial-media.edit');
-                        Route::put('/update', [SosialMediaRedesignBackController::class, 'update'])->name('redesign.backoffice.sosial-media.update');
-                        Route::delete('/delete', [SosialMediaRedesignBackController::class, 'destroy'])->name('redesign.backoffice.sosial-media.destroy');
-                    });
+            // grup video-info
+            Route::prefix('video-info')->group(function () {
+                Route::get('/', [VideoInfoRedesignBackController::class, 'index'])->name('redesign.backoffice.video-info.index');
+                Route::get('/create', [VideoInfoRedesignBackController::class, 'create'])->name('redesign.backoffice.video-info.create');
+                Route::post('/store', [VideoInfoRedesignBackController::class, 'store'])->name('redesign.backoffice.video-info.store');
+                // grup id
+                Route::prefix('{id}')->group(function () {
+                    Route::get('/edit', [VideoInfoRedesignBackController::class, 'edit'])->name('redesign.backoffice.video-info.edit');
+                    Route::put('/update', [VideoInfoRedesignBackController::class, 'update'])->name('redesign.backoffice.video-info.update');
+                    Route::delete('/delete', [VideoInfoRedesignBackController::class, 'destroy'])->name('redesign.backoffice.video-info.destroy');
                 });
+            });
+
+            // grup sosial-media
+            Route::prefix('sosial-media')->group(function () {
+                Route::get('/', [SosialMediaRedesignBackController::class, 'index'])->name('redesign.backoffice.sosial-media.index');
+                Route::get('/create', [SosialMediaRedesignBackController::class, 'create'])->name('redesign.backoffice.sosial-media.create');
+                Route::post('/store', [SosialMediaRedesignBackController::class, 'store'])->name('redesign.backoffice.sosial-media.store');
+                // grup id
+                Route::prefix('{id}')->group(function () {
+                    Route::get('/edit', [SosialMediaRedesignBackController::class, 'edit'])->name('redesign.backoffice.sosial-media.edit');
+                    Route::put('/update', [SosialMediaRedesignBackController::class, 'update'])->name('redesign.backoffice.sosial-media.update');
+                    Route::delete('/delete', [SosialMediaRedesignBackController::class, 'destroy'])->name('redesign.backoffice.sosial-media.destroy');
+                });
+            });
 
             // grup profil
             Route::prefix('/profil')->group(function () {

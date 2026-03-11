@@ -33,7 +33,7 @@ class ProfilPimpinanRedesignBackController extends Controller
                 request()->field && request()->direction,
                 fn ($query) => $query->orderBy(request()->field, request()->direction)
             )
-            ->orderBy('created_at', 'asc')
+            ->orderBy('id', 'asc')
             ->paginate(request()->load ?? 10)
             ->withQueryString();
 
@@ -64,8 +64,6 @@ class ProfilPimpinanRedesignBackController extends Controller
 
                 $fotoPath = $path;
             }
-
-            $fotoPath = null;
 
             ProfilPimpinan::create([
                 'nama' => $request->nama,
@@ -113,8 +111,6 @@ class ProfilPimpinanRedesignBackController extends Controller
 
                 $fotoPath = $path;
             }
-
-            $fotoPath = null;
 
             $profilPimpinan->update([
                 'nama' => $request->nama,

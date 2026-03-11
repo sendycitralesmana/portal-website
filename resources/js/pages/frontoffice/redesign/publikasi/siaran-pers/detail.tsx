@@ -90,7 +90,7 @@ const DetailPublikasi: PageWithLayout = () => {
 
       <div className="min-h-screen">
         {/* Breadcrumb */}
-        <div className="bg-gradient-to-l from-blue-700 to-blue-900 py-3 text-xs md:text-sm text-white">
+        <div className="bg-gradient-to-l from-red-700 to-red-900 py-3 text-xs md:text-sm text-white border-b-amber-400 border-b-2">
           <div className="container mx-auto px-4">
             Publikasi / Siaran Pers /{" "}
             <span className="font-semibold">{data.title}</span>
@@ -98,7 +98,7 @@ const DetailPublikasi: PageWithLayout = () => {
         </div>
 
         {/* Header */}
-        <div className="bg-gradient-to-r from-blue-700 to-blue-900 py-6 md:py-8">
+        <div className="bg-gradient-to-r from-red-700 to-red-900 py-6 md:py-8">
           <div className="container mx-auto px-4">
             <h2 className="text-xl md:text-2xl font-semibold text-white leading-snug">
               {data.title}
@@ -126,6 +126,8 @@ const DetailPublikasi: PageWithLayout = () => {
           <div className="prose prose-sm max-w-none leading-relaxed">
             <p className="text-center font-bold mt-6">SIARAN PERS</p>
 
+            <div className="mx-auto w-20 h-1 bg-gradient-to-r from-amber-700 to-amber-400 rounded-full mt-2 mb-4"></div>
+
             <p className="text-center font-semibold mb-6">
               {data.title.toUpperCase()}
             </p>
@@ -148,9 +150,11 @@ const DetailPublikasi: PageWithLayout = () => {
 
           {/* Artikel Lain */}
           <div className="mt-12">
-            <h3 className="text-base md:text-lg font-semibold mb-6">
+            <h3 className="text-base md:text-lg font-semibold mb-2">
               Artikel Lain
             </h3>
+
+            <div className=" w-20 h-1 bg-gradient-to-r from-amber-700 to-amber-400 rounded-full mt-2 mb-4"></div>
 
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
               {artikelLain.map((item) => (
@@ -166,7 +170,7 @@ const DetailPublikasi: PageWithLayout = () => {
                   <div className="p-3 text-xs md:text-sm font-medium leading-snug">
                     <Link
                       href={`/redesign/publikasi/siaran-pers/${item.id}/detail`}
-                      className="hover:text-blue-900 transition-colors duration-200"
+                      className="hover:text-red-900 transition-colors duration-200"
                     >
                       {item.title}
                     </Link>

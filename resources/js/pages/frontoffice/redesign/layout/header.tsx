@@ -62,14 +62,14 @@ const tugasFungsiMenuItems: MenuItem[] = [
 
 const publikasiMenuItems: MenuItem[] = [
   { label: "Siaran Pers", href: "/redesign/publikasi/siaran-pers" },
-  { label: "Media Sosial", href: "/redesign/publikasi/media-sosial" },
+  { label: "Sosial Media", href: "/redesign/sosial-media" },
   { label: "Berita Kegiatan", href: "/redesign/publikasi/berita-kegiatan" },
   { label: "Berita Foto", href: "/redesign/publikasi/berita-foto" },
   { label: "Pengumuman", href: "/redesign/publikasi/pengumuman" },
   { label: "Laporan", href: "/redesign/publikasi/laporan" },
   { label: "Kajian dan Jurnal", href: "/redesign/publikasi/kajian-jurnal" },
   { label: "Buku", href: "/redesign/publikasi/buku" },
-  { label: "Statistik", href: "/redesign/publikasi/statistik" },
+  { label: "Statistik", href: "/redesign/statistik" },
 ]
 
 export default function Header() {

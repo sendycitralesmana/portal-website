@@ -1,35 +1,3 @@
-// import React from 'react'
-// import MainLayout from '../layout/main'
-// import Tablist from './tablist'
-// import ShortcutLinks from './shortcut'
-// import SocialMediaSection from './sosial-media'
-// import HeroCarousel from './hero'
-// import Alert from './alert'
-// import { Head } from '@inertiajs/react'
-// import SorotPratinjau from './sorot-pratinjau'
-
-// const BerandaPage = () => {
-//   return (
-//     <div>
-//       <Head title="Beranda">
-//         <meta name="description" content="Halaman Beranda" />
-//         <link rel="icon" href="/images/favicon.ico" type="image/x-icon" />
-//       </Head>
-
-//       {/* <SorotPratinjau />
-//       <HeroCarousel />
-//       <Alert />
-//       <Tablist/> */}
-//       {/* <ShortcutLinks /> */}
-//       <SocialMediaSection  />
-//     </div>
-//   )
-// }
-
-// BerandaPage.layout = (page: React.ReactNode) => <MainLayout>{page}</MainLayout>
-
-// export default BerandaPage
-
 import React from "react";
 import MainLayout from "../layout/main";
 import SocialMediaSection from "./sosial-media";
@@ -42,11 +10,34 @@ import Tablist from "./tablist";
 import PermohonanPengajuanPerlindungan from "./permohonan-pengajuan-perlindungan";
 import VideoSection from "./video-section";
 
-interface Props {
-  sosialMedias: SosialMedia[];
+interface Post {
+  id: number
+  jenis: string
+  kategori: string
+  judul: string
+  slug: string
+  deskripsi: string
+  gambar: string
+  tanggal: string
+  created_at: string
 }
 
-const BerandaPage = ({ sosialMedias }: Props) => {
+interface VideoInfo {
+  id: number
+  judul: string
+  embed_url: string
+}
+
+interface Props {
+  sosialMedias: SosialMedia[];
+  videoInfos: VideoInfo[];
+  siaranPers: Post[]
+  beritaFotos: Post[]
+  beritaKegiatans: Post[]
+  pengumumans: Post[]
+}
+
+const BerandaPage = ({ sosialMedias, videoInfos, siaranPers, beritaFotos, beritaKegiatans, pengumumans }: Props) => {
   return (
     <div>
       <Head title="Beranda">
@@ -58,9 +49,13 @@ const BerandaPage = ({ sosialMedias }: Props) => {
       {/* <HeroCarousel /> */}
       <PermohonanPengajuanPerlindungan />
       <Alert />
-      <Tablist/>
-      {/* <ShortcutLinks /> */}
-      {/* <VideoSection /> */}
+      <Tablist
+        siaranPers={siaranPers}
+        beritaFotos={beritaFotos}
+        beritaKegiatans={beritaKegiatans}
+        pengumumans={pengumumans}
+      />
+      <VideoSection videoInfos={videoInfos} />
       <SocialMediaSection sosialMedias={sosialMedias} />
     </div>
   );

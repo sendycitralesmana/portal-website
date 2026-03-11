@@ -11,6 +11,7 @@ import {
     LayoutGrid,
     MapPin,
     Network,
+    Newspaper,
     Scale,
     Share2,
     Shield,
@@ -18,6 +19,7 @@ import {
     Target,
     User,
     Users,
+    Youtube,
 } from 'lucide-react';
 import { useEffect, useState } from 'react';
 import AppLogo from './app-logo';
@@ -28,7 +30,9 @@ export function AppSidebarRedesign() {
 
     const isBeranda = url.startsWith('/redesign/backoffice/beranda');
     const isTentangKami = url.startsWith('/redesign/backoffice/tentang-kami');
+    const isVideoInfo = url.startsWith('/redesign/backoffice/video-info');
     const isSosialMedia = url.startsWith('/redesign/backoffice/sosial-media');
+    const isPublikasi = url.startsWith('/redesign/backoffice/publikasi');
     const isPengguna = url.startsWith('/redesign/backoffice/pengguna');
 
     // PROFIL
@@ -106,6 +110,26 @@ export function AppSidebarRedesign() {
                     >
                         <Share2 className="h-4 w-4" />
                         <span>Sosial Media</span>
+                    </Link>
+
+                    <Link
+                        href="/redesign/backoffice/video-info"
+                        className={`flex items-center gap-3 rounded px-3 py-2 text-sm font-medium transition-colors ${
+                            isVideoInfo ? activeClass : hoverClass
+                        }`}
+                    >
+                        <Youtube className="h-4 w-4" />
+                        <span>Video Info</span>
+                    </Link>
+
+                    <Link
+                        href="/redesign/backoffice/publikasi"
+                        className={`flex items-center gap-3 rounded px-3 py-2 text-sm font-medium transition-colors ${
+                            isPublikasi ? activeClass : hoverClass
+                        }`}
+                    >
+                        <Newspaper className="h-4 w-4" />
+                        <span>Publikasi</span>
                     </Link>
 
                     {/* <Link

@@ -116,14 +116,14 @@ const SiaranPersPage: PageWithLayout = () => {
 
             <div className="min-h-screen">
                 {/* Breadcrumb */}
-                <div className="bg-gradient-to-l from-blue-700 to-blue-900 py-3 text-sm text-white">
+                <div className="bg-gradient-to-l from-red-700 to-red-900 py-3 text-sm text-white border-b-amber-400 border-b-2">
                     <div className="container mx-auto px-4">
                         Publikasi / <span className="font-semibold">Siaran Pers</span>
                     </div>
                 </div>
 
                 {/* Header */}
-                <div className="bg-gradient-to-r from-blue-700 to-blue-900 py-8">
+                <div className="bg-gradient-to-r from-red-700 to-red-900 py-8">
                     <div className="container mx-auto px-4">
                         <h1 className="text-4xl font-semibold text-white">Siaran Pers</h1>
                     </div>
@@ -173,7 +173,7 @@ const SiaranPersPage: PageWithLayout = () => {
                                         <p className="mb-1 text-sm text-gray-600">{item.date}</p>
                                         <Link
                                             href={`/redesign/publikasi/siaran-pers/${item.id}/detail`}
-                                            className="mb-2 block cursor-pointer text-base font-semibold text-gray-900 transition hover:text-blue-900 md:text-lg lg:text-xl"
+                                            className="mb-2 block cursor-pointer text-base font-semibold text-gray-900 transition hover:text-red-900 md:text-lg lg:text-xl"
                                         >
                                             {item.title}
                                         </Link>

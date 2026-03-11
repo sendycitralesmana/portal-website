@@ -63,8 +63,8 @@ class PejabatStrukturalSeeder extends Seeder
             ],
             [
                 'kategori' => 'kepala bagian lpsk',
-                'nama' => 'Nama Lengkap',
-                'jabatan' => 'jabatan',
+                'nama' => 'Dian Herdiansah',
+                'jabatan' => 'kepala bagian kerumahtanggaan',
                 'foto' => null,
                 'created_at' => now(),
                 'updated_at' => now(),
