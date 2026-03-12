@@ -34,7 +34,7 @@ class SubjekTerlindungRedesignBackController extends Controller
                 request()->field && request()->direction,
                 fn ($query) => $query->orderBy(request()->field, request()->direction)
             )
-            ->orderBy('created_at', 'asc')
+            ->orderBy('id', 'asc')
             ->paginate(request()->load ?? 10)
             ->withQueryString();
 
@@ -65,8 +65,6 @@ class SubjekTerlindungRedesignBackController extends Controller
 
                 $gambarPath = $path;
             }
-
-            $gambarPath = null;
 
             TugasFungsi::create([
                 'kategori' => $request->kategori,
@@ -115,8 +113,6 @@ class SubjekTerlindungRedesignBackController extends Controller
                 $gambarPath = $path;
             }
 
-            $gambarPath = null;
-
             $subjekTerlindung->update([
                 'kategori' => $request->kategori,
                 'judul' => $request->judul,
@@ -139,6 +135,12 @@ class SubjekTerlindungRedesignBackController extends Controller
     {
         try {
             $subjekTerlindung = TugasFungsi::findOrFail($id);
+
+            // hapus gambar dari storage
+            if ($subjekTerlindung->gambar) {
+                Storage::disk('s3')->delete($subjekTerlindung->gambar);
+            }
+
             $subjekTerlindung->delete();
 
             return redirect()

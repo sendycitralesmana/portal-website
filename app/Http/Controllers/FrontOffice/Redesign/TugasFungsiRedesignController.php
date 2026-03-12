@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\FrontOffice\Redesign;
 
 use App\Http\Controllers\Controller;
+use App\Http\Resources\TugasFungsiResource;
 use App\Models\TugasFungsi;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
@@ -13,9 +14,10 @@ class TugasFungsiRedesignController extends Controller
     {
         $kewenangans = TugasFungsi::query()
             ->where('kategori', 'kewenangan')
+            ->orderBy('id', 'asc')
             ->get();
         return Inertia::render('frontoffice/redesign/tugas-fungsi/kewenangan', [
-            'kewenangans' => $kewenangans
+            'kewenangans' => TugasFungsiResource::collection($kewenangans)
         ]);
     }
 
@@ -23,9 +25,10 @@ class TugasFungsiRedesignController extends Controller
     {
         $subjekTerlindungs = TugasFungsi::query()
             ->where('kategori', 'subjek terlindung')
+            ->orderBy('id', 'asc')
             ->get();
         return Inertia::render('frontoffice/redesign/tugas-fungsi/subjek-terlindung', [
-            'subjekTerlindungs' => $subjekTerlindungs
+            'subjekTerlindungs' => TugasFungsiResource::collection($subjekTerlindungs)
         ]);
     }
 
@@ -33,9 +36,10 @@ class TugasFungsiRedesignController extends Controller
     {
         $tindakPidanaTertentus = TugasFungsi::query()
             ->where('kategori', 'tindak pidana tertentu')
+            ->orderBy('id', 'asc')
             ->get();
         return Inertia::render('frontoffice/redesign/tugas-fungsi/tindak-pidana-tertentu', [
-            'tindakPidanaTertentus' => $tindakPidanaTertentus
+            'tindakPidanaTertentus' => TugasFungsiResource::collection($tindakPidanaTertentus)
         ]);
     }
 
@@ -43,9 +47,10 @@ class TugasFungsiRedesignController extends Controller
     {
         $programPerlindungans = TugasFungsi::query()
             ->where('kategori', 'program perlindungan')
+            ->orderBy('id', 'asc')
             ->get();
         return Inertia::render('frontoffice/redesign/tugas-fungsi/program-perlindungan', [
-            'programPerlindungans' => $programPerlindungans
+            'programPerlindungans' => TugasFungsiResource::collection($programPerlindungans)
         ]);
     }
 }

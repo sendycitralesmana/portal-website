@@ -34,7 +34,7 @@ class ProgramPerlindunganRedesignBackController extends Controller
                 request()->field && request()->direction,
                 fn ($query) => $query->orderBy(request()->field, request()->direction)
             )
-            ->orderBy('created_at', 'asc')
+            ->orderBy('id', 'asc')
             ->paginate(request()->load ?? 10)
             ->withQueryString();
 
@@ -66,8 +66,6 @@ class ProgramPerlindunganRedesignBackController extends Controller
                 $gambarPath = $path;
             }
 
-            $gambarPath = null;
-
             TugasFungsi::create([
                 'kategori' => $request->kategori,
                 'judul' => $request->judul,
@@ -87,25 +85,25 @@ class ProgramPerlindunganRedesignBackController extends Controller
 
     public function edit($id)
     {
-        $tindakPidanaTertentu = TugasFungsi::findOrFail($id);
+        $programPerlindungan = TugasFungsi::findOrFail($id);
 
         return Inertia::render('backoffice/redesign/tugas-fungsi/program-perlindungan/edit', [
-            'tindakPidanaTertentu' => new TugasFungsiResource($tindakPidanaTertentu)
+            'programPerlindungan' => new TugasFungsiResource($programPerlindungan)
         ]);
     }
 
     public function update(TugasFungsiRequest $request, $id)
     {
         try {
-            $tindakPidanaTertentu = TugasFungsi::findOrFail($id);
+            $programPerlindungan = TugasFungsi::findOrFail($id);
 
-            $gambarPath = $tindakPidanaTertentu->gambar; // default gambar lama
+            $gambarPath = $programPerlindungan->gambar; // default gambar lama
 
             if ($request->hasFile('gambar')) {
 
                 // hapus lama
-                if ($tindakPidanaTertentu->gambar) {
-                    Storage::disk('s3')->delete($tindakPidanaTertentu->gambar);
+                if ($programPerlindungan->gambar) {
+                    Storage::disk('s3')->delete($programPerlindungan->gambar);
                 }
 
                 // upload baru
@@ -115,9 +113,7 @@ class ProgramPerlindunganRedesignBackController extends Controller
                 $gambarPath = $path;
             }
 
-            $gambarPath = null;
-
-            $tindakPidanaTertentu->update([
+            $programPerlindungan->update([
                 'kategori' => $request->kategori,
                 'judul' => $request->judul,
                 'deskripsi' => $request->deskripsi,
@@ -138,8 +134,14 @@ class ProgramPerlindunganRedesignBackController extends Controller
     public function destroy($id)
     {
         try {
-            $tindakPidanaTertentu = TugasFungsi::findOrFail($id);
-            $tindakPidanaTertentu->delete();
+            $programPerlindungan = TugasFungsi::findOrFail($id);
+
+            // hapus gambar dari storage
+            if ($programPerlindungan->gambar) {
+                Storage::disk('s3')->delete($programPerlindungan->gambar);
+            }
+
+            $programPerlindungan->delete();
 
             return redirect()
                 ->route('redesign.backoffice.tugas-fungsi.program-perlindungan.index')

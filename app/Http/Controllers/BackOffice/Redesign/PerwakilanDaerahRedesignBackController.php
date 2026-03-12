@@ -39,7 +39,7 @@ class PerwakilanDaerahRedesignBackController extends Controller
                 request()->field && request()->direction,
                 fn ($query) => $query->orderBy(request()->field, request()->direction)
             )
-            ->orderBy('created_at', 'asc')
+            ->orderBy('id', 'asc')
             ->paginate(request()->load ?? 10)
             ->withQueryString();
 
@@ -70,8 +70,6 @@ class PerwakilanDaerahRedesignBackController extends Controller
 
                 $gambarPath = $path;
             }
-
-            $gambarPath = null;
 
             PerwakilanDaerah::create([
                 'kantor' => $request->kantor,
@@ -128,8 +126,6 @@ class PerwakilanDaerahRedesignBackController extends Controller
                 $gambarPath = $path;
             }
 
-            $gambarPath = null;
-
             $perwakilanDaerah->update([
                 'kantor' => $request->kantor,
                 'alamat' => $request->alamat,
@@ -160,6 +156,12 @@ class PerwakilanDaerahRedesignBackController extends Controller
     {
         try {
             $perwakilanDaerah = PerwakilanDaerah::findOrFail($id);
+
+            // hapus gambar dari storage
+            if ($perwakilanDaerah->gambar) {
+                Storage::disk('s3')->delete($perwakilanDaerah->gambar);
+            }
+
             $perwakilanDaerah->delete();
 
             return redirect()

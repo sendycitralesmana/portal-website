@@ -33,7 +33,7 @@ class PejabatStrukturalRedesignBackController extends Controller
                 request()->field && request()->direction,
                 fn ($query) => $query->orderBy(request()->field, request()->direction)
             )
-            ->orderBy('created_at', 'asc')
+            ->orderBy('id', 'asc')
             ->paginate(request()->load ?? 10)
             ->withQueryString();
 
@@ -64,8 +64,6 @@ class PejabatStrukturalRedesignBackController extends Controller
 
                 $fotoPath = $path;
             }
-
-            $fotoPath = null;
 
             PejabatStruktural::create([
                 'nama' => $request->nama,
@@ -114,8 +112,6 @@ class PejabatStrukturalRedesignBackController extends Controller
                 $fotoPath = $path;
             }
 
-            $fotoPath = null;
-
             $pejabatStruktural->update([
                 'nama' => $request->nama,
                 'kategori' => $request->kategori,
@@ -138,6 +134,12 @@ class PejabatStrukturalRedesignBackController extends Controller
     {
         try {
             $pejabatStruktural = PejabatStruktural::findOrFail($id);
+
+            // hapus foto dari storage
+            if ($pejabatStruktural->foto) {
+                Storage::disk('s3')->delete($pejabatStruktural->foto);
+            }
+            
             $pejabatStruktural->delete();
 
             return redirect()

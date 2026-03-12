@@ -30,7 +30,7 @@ interface PageProps {
 
 const ProfilCard = ({ profil }: { profil: Profil }) => {
   const fotoSrc = profil.foto
-    ? `/storage/${profil.foto}`
+    ? `${profil.foto}`
     : "/images/logo-lg.png";
 
   return (

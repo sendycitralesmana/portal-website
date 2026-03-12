@@ -103,7 +103,7 @@ const ProfilPimpinanPage = (props: any) => {
                                 <TableHeader>
                                     <TableRow>
                                         <TableHead>#</TableHead>
-                                        <TableHead>Gambar</TableHead>
+                                        <TableHead>Foto</TableHead>
                                         <TableHead>
                                             <Button variant="ghost" onClick={() => onSortable('nama')}>
                                                 Nama
@@ -162,14 +162,14 @@ const ProfilPimpinanPage = (props: any) => {
                                                 </TableCell>
 
                                                 <TableCell>
-                                                    {item.gambar ? (
+                                                    {item.foto ? (
                                                         <ImagePreviewDialog
-                                                            src={item.gambar}
+                                                            src={item.foto}
                                                             alt={item.nama}
                                                         />
                                                     ) : (
                                                         <span className="text-sm text-gray-400 italic">
-                                                            Tidak ada gambar
+                                                            Tidak ada foto
                                                         </span>
                                                     )}
                                                 </TableCell>
@@ -258,10 +258,10 @@ const ProfilPimpinanPage = (props: any) => {
                                             </div>
                                         </div>
 
-                                        {item.gambar && (
+                                        {item.foto && (
                                             <div className="mt-3">
                                                 <ImagePreviewDialog
-                                                    src={item.gambar}
+                                                    src={item.foto}
                                                     alt={item.nama}
                                                 />
                                             </div>

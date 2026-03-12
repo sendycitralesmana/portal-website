@@ -27,7 +27,7 @@ class PerwakilanDaerahResource extends JsonResource
             'tiktok' => $this->tiktok,
             'youtube' => $this->youtube,
             'instagram' => $this->instagram,
-            'gambar' => $this->foto ? Storage::disk('s3')->url($this->foto) : null,
+            'gambar' => $this->gambar ? Storage::disk('s3')->url($this->gambar) : null,
             'latitude' => $this->latitude,
             'longitude' => $this->longitude,
             'created_at' => $this->created_at

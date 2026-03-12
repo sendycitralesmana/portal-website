@@ -3,6 +3,9 @@
 namespace App\Http\Controllers\FrontOffice\Redesign;
 
 use App\Http\Controllers\Controller;
+use App\Http\Resources\PejabatStrukturalResource;
+use App\Http\Resources\PerwakilanDaerahResource;
+use App\Http\Resources\ProfilPimpinanResource;
 use App\Http\Resources\StrukturOrganisasiResource;
 use App\Models\ProfilPimpinan;
 use App\Models\VisiMisi;
@@ -27,10 +30,12 @@ class ProfilRedesignController extends Controller
     public function profilPimpinan()
     {
         $profilPimpinans = ProfilPimpinan::query()
-            ->orderBy('created_at', 'asc')
+            ->orderBy('id', 'asc')
             ->get();
         return Inertia::render('frontoffice/redesign/profil/profil-pimpinan', [
             'profilPimpinans' => $profilPimpinans
+                ? ProfilPimpinanResource::collection($profilPimpinans)
+                : null
         ]);
     }
 
@@ -58,34 +63,40 @@ class ProfilRedesignController extends Controller
     {
         $sekretarisJenderals = PejabatStruktural::query()
             ->where('kategori', 'sekretaris jenderal')
+            ->orderBy('id', 'asc')
             ->get();
         $kepalaBiroLpsks = PejabatStruktural::query()
             ->where('kategori', 'kepala biro lpsk')
+            ->orderBy('id', 'asc')
             ->get();
         $kepalaBagianLpsks = PejabatStruktural::query()
             ->where('kategori', 'kepala bagian lpsk')
+            ->orderBy('id', 'asc')
             ->get();
         $kepalaPerwakilanLpskDaerahs = PejabatStruktural::query()
             ->where('kategori', 'kepala perwakilan lpsk daerah')
+            ->orderBy('id', 'asc')
             ->get();
         $tenagaAhliLpsks = PejabatStruktural::query()
             ->where('kategori', 'tenaga ahli lpsk')
+            ->orderBy('id', 'asc')
             ->get();
         return Inertia::render('frontoffice/redesign/profil/pejabat-struktural', [
-            'sekretarisJenderals' => $sekretarisJenderals,
-            'kepalaBiroLpsks' => $kepalaBiroLpsks,
-            'kepalaBagianLpsks' => $kepalaBagianLpsks,
-            'kepalaPerwakilanLpskDaerahs' => $kepalaPerwakilanLpskDaerahs,
-            'tenagaAhliLpsks' => $tenagaAhliLpsks
+            'sekretarisJenderals' => PejabatStrukturalResource::collection($sekretarisJenderals),
+            'kepalaBiroLpsks' => PejabatStrukturalResource::collection($kepalaBiroLpsks),
+            'kepalaBagianLpsks' => PejabatStrukturalResource::collection($kepalaBagianLpsks),
+            'kepalaPerwakilanLpskDaerahs' => PejabatStrukturalResource::collection($kepalaPerwakilanLpskDaerahs),
+            'tenagaAhliLpsks' => PejabatStrukturalResource::collection($tenagaAhliLpsks)
         ]);
     }
 
     public function perwakilanDaerah()
     {
         $perwakilanDaerahs = PerwakilanDaerah::query()
+            ->orderBy('id', 'asc')
             ->get();
         return Inertia::render('frontoffice/redesign/profil/perwakilan-daerah', [
-            'perwakilanDaerahs' => $perwakilanDaerahs
+            'perwakilanDaerahs' => PerwakilanDaerahResource::collection($perwakilanDaerahs)
         ]);
     }
 }

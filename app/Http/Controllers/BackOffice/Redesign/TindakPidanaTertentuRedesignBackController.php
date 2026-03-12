@@ -34,7 +34,7 @@ class TindakPidanaTertentuRedesignBackController extends Controller
                 request()->field && request()->direction,
                 fn ($query) => $query->orderBy(request()->field, request()->direction)
             )
-            ->orderBy('created_at', 'asc')
+            ->orderBy('id', 'asc')
             ->paginate(request()->load ?? 10)
             ->withQueryString();
 
@@ -65,8 +65,6 @@ class TindakPidanaTertentuRedesignBackController extends Controller
 
                 $gambarPath = $path;
             }
-
-            $gambarPath = null;
 
             TugasFungsi::create([
                 'kategori' => $request->kategori,
@@ -115,8 +113,6 @@ class TindakPidanaTertentuRedesignBackController extends Controller
                 $gambarPath = $path;
             }
 
-            $gambarPath = null;
-
             $tindakPidanaTertentu->update([
                 'kategori' => $request->kategori,
                 'judul' => $request->judul,
@@ -139,6 +135,12 @@ class TindakPidanaTertentuRedesignBackController extends Controller
     {
         try {
             $tindakPidanaTertentu = TugasFungsi::findOrFail($id);
+
+            // hapus gambar dari storage
+            if ($tindakPidanaTertentu->gambar) {
+                Storage::disk('s3')->delete($tindakPidanaTertentu->gambar);
+            }
+
             $tindakPidanaTertentu->delete();
 
             return redirect()

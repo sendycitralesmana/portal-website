@@ -68,7 +68,7 @@ export default function ImagePreviewDialog({
             {/* Thumbnail */}
             <div
                 onClick={() => setOpen(true)}
-                className="flex h-20 w-20 sm:h-24 sm:w-24 cursor-pointer items-center justify-center rounded-md border bg-white p-2 transition hover:scale-105"
+                className="flex h-26 w-26 sm:h-32 sm:w-32 cursor-pointer items-center justify-center rounded-md border p-2 transition hover:scale-105"
             >
                 <img
                     src={src}

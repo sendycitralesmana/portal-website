@@ -102,7 +102,7 @@ const PejabatStrukturalPage = (props: any) => {
                                 <TableHeader>
                                     <TableRow>
                                         <TableHead>#</TableHead>
-                                        <TableHead>Gambar</TableHead>
+                                        <TableHead>Foto</TableHead>
                                         <TableHead>
                                             <Button variant="ghost" onClick={() => onSortable('kategori')}>
                                                 Kategori
@@ -165,14 +165,14 @@ const PejabatStrukturalPage = (props: any) => {
                                                     </TableCell>
 
                                                     <TableCell>
-                                                        {item.gambar ? (
+                                                        {item.foto ? (
                                                             <ImagePreviewDialog
-                                                                src={item.gambar}
+                                                                src={item.foto}
                                                                 alt={item.kategori}
                                                             />
                                                         ) : (
                                                             <span className="text-sm text-gray-400 italic">
-                                                                Tidak ada gambar
+                                                                Tidak ada foto
                                                             </span>
                                                         )}
                                                     </TableCell>
@@ -254,10 +254,10 @@ const PejabatStrukturalPage = (props: any) => {
                                             </div>
                                         </div>
 
-                                        {item.gambar && (
+                                        {item.foto && (
                                             <div className="mt-3">
                                                 <ImagePreviewDialog
-                                                    src={item.gambar}
+                                                    src={item.foto}
                                                     alt={item.kategori}
                                                 />
                                             </div>
