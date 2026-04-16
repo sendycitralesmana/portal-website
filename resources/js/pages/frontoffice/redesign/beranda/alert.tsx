@@ -28,7 +28,7 @@ export default function Alert() {
     <section className="relative w-full bg-gradient-to-l from-red-900 to-red-800 h-24 md:h-32 shadow-lg">
 
       {/* Floating Alert Box */}
-      <div className="container mx-auto px-4 md:px-6 absolute -top-8 md:-top-10 left-1/2 -translate-x-1/2 w-full">
+      <div className="container mx-auto px-4 md:px-6 absolute -top-5 md:-top-10 left-1/2 -translate-x-1/2 w-full">
         <div className="bg-gradient-to-r from-red-900 to-red-800 text-white rounded-xl md:rounded-2xl px-4 md:px-6 py-3 md:py-4 shadow-xl border-amber-400 border-2">
 
           <Carousel
