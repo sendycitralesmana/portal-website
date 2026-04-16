@@ -110,6 +110,17 @@ const DetailPublikasi: PageWithLayout<Props> = ({ kategori, publikasi, publikasi
                   alt={publikasi.judul}
                   className="w-full h-full object-cover hover:scale-105 transition duration-300"
                 />
+                {/* <div className="relative w-full h-full bg-black">
+                  <img
+                    src={publikasi.gambar}
+                    className="absolute inset-0 w-full h-full object-cover blur-lg scale-110 opacity-60"
+                  />
+                  <img
+                    src={publikasi.gambar}
+                    alt={publikasi.judul}
+                    className="relative w-full h-full object-contain transition duration-300 hover:scale-105"
+                  />
+                </div> */}
               </div>
 
               <div className="flex flex-col gap-2">
@@ -121,6 +132,17 @@ const DetailPublikasi: PageWithLayout<Props> = ({ kategori, publikasi, publikasi
                       alt={images[0].title}
                       className="w-full h-full object-cover hover:scale-105 transition duration-300"
                     />
+                    {/* <div className="relative w-full h-full bg-black">
+                      <img
+                        src={images[0].src}
+                        className="absolute inset-0 w-full h-full object-cover blur-lg scale-110 opacity-60"
+                      />
+                      <img
+                        src={images[0].src}
+                        alt={images[0].title}
+                        className="relative w-full h-full object-contain transition duration-300 hover:scale-105"
+                      />
+                    </div> */}
                   </div>
                 )}
 
@@ -131,6 +153,17 @@ const DetailPublikasi: PageWithLayout<Props> = ({ kategori, publikasi, publikasi
                       alt={images[1].title}
                       className="w-full h-full object-cover"
                     />
+                    {/* <div className="relative w-full h-full bg-black">
+                      <img
+                        src={images[1].src}
+                        className="absolute inset-0 w-full h-full object-cover blur-lg scale-110 opacity-60"
+                      />
+                      <img
+                        src={images[1].src}
+                        alt={images[1].title}
+                        className="relative w-full h-full object-contain"
+                      />
+                    </div> */}
 
                     {images.length > 2 && (
                       <div className="absolute inset-0 flex items-center justify-center bg-black/50 text-white text-xl font-semibold">
@@ -152,6 +185,17 @@ const DetailPublikasi: PageWithLayout<Props> = ({ kategori, publikasi, publikasi
                   alt={publikasi.judul}
                   className="w-full h-full object-cover"
                 />
+                {/* <div className="relative w-full h-full bg-black">
+                  <img
+                    src={publikasi.gambar}
+                    className="absolute inset-0 w-full h-full object-cover blur-lg scale-110 opacity-60"
+                  />
+                  <img
+                    src={publikasi.gambar}
+                    alt={publikasi.judul}
+                    className="relative w-full h-full object-contain"
+                  />
+                </div> */}
               </div>
             </div>
 
@@ -244,10 +288,21 @@ const DetailPublikasi: PageWithLayout<Props> = ({ kategori, publikasi, publikasi
               {publikasiTerkaits.map((item) => (
                 <div key={item.id} className="border rounded-lg overflow-hidden shadow-sm">
 
-                  <div
+                  {/* <div
                     className="aspect-video bg-cover bg-center"
                     style={{ backgroundImage: `url(${item.gambar})` }}
-                  />
+                  /> */}
+
+                  <div className="relative w-full aspect-video overflow-hidden bg-black">
+                    <img
+                      src={item.gambar}
+                      className="absolute inset-0 w-full h-full object-cover blur-lg scale-110 opacity-60"
+                    />
+                    <img
+                      src={item.gambar}
+                      className="relative w-full h-full object-contain"
+                    />
+                  </div>
 
                   <div className="p-3 text-xs md:text-sm font-medium">
                     <Link href={`/redesign/publikasi/${kategori}/${item.slug}`} className="hover:text-amber-700 transition">

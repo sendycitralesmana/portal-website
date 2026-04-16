@@ -36,15 +36,15 @@ class BerandaRedesignController extends Controller
         $beritaFotos = PublikasiResource::collection(
             Publikasi::query()
                 ->where('kategori', 'Berita')
-                ->orderBy('created_at', 'desc')
+                ->orderBy('created_at', 'asc')
                 ->limit(4)
                 ->get()
         );
 
         $beritaKegiatans = PublikasiResource::collection(
             Publikasi::query()
-                ->where('kategori', 'Berita Kegiatan')
-                ->orderBy('created_at', 'desc')
+                ->where('kategori', 'Berita')
+                ->orderBy('created_at', 'asc')
                 ->limit(4)
                 ->get()
         );
@@ -52,7 +52,7 @@ class BerandaRedesignController extends Controller
         $pengumumans = PublikasiResource::collection(
             Publikasi::query()
                 ->where('kategori', 'Informasi')
-                ->orderBy('created_at', 'desc')
+                ->orderBy('created_at', 'asc')
                 ->limit(4)
                 ->get()
         );

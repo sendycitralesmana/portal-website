@@ -160,9 +160,9 @@ export default function SocialMediaSection({ sosialMedias }: Props) {
   return (
     <section className="w-full px-4 xl:px-20 py-12">
       <div className="container mx-auto">
-        <h3 className="text-2xl font-bold mb-4">
+        <p className="text-lg md:text-xl lg:text-2xl font-bold mb-4">
           LPSK Sosial Media
-        </h3>
+        </p>
 
         <div className="w-20 h-1 bg-gradient-to-r from-amber-700 to-amber-400 rounded-full mb-4"></div>
 

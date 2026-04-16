@@ -2,7 +2,7 @@
 
 import * as React from "react"
 import Autoplay from "embla-carousel-autoplay"
-import { ChevronLeft, ChevronRight } from "lucide-react"
+import { ChevronLeft, ChevronRight, FileText } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import {
   Carousel,
@@ -11,31 +11,29 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel"
-import { Link } from "@inertiajs/react"
 
 type Slide = {
-  title: string
+  title: string | null
+  deskripsi?: string
   image: string
-  href: string
+  href: string | null
   external?: boolean
 }
 
 const slides: Slide[] = [
   {
-    title: "Peran Lembaga Perlindungan Saksi dan Korban dalam Sistem Peradilan Indonesia",
-    image: "https://picsum.photos/1200/600?random=1",
-    href: "/publikasi/ai-governance",
+    // title: "Lembaga Perlindungan Saksi dan Korban",
+    title: "Lembaga nonstruktural yang bertanggung jawab memberikan perlindungan dan bantuan kepada saksi dan korban. ",
+    deskripsi: "Tujuannya untuk memberikan rasa aman kepada saksi dan/atau korban dalam memberikan keterangan dalam proses peradilan pidana.",
+    // deskripsi: "",
+    image: "/images/hero1.webp",
+    href: null,
   },
   {
-    title: "Penguatan Hak dan Keamanan Saksi serta Korban Tindak Pidana",
-    image: "https://picsum.photos/1200/600?random=2",
-    href: "https://www.instagram.com/",
+    title: null,
+    image: "/images/layanan_simpusaka1.webp",
+    href: "https://simpusaka.lpsk.go.id/layanan_simpusaka",
     external: true,
-  },
-  {
-    title: "Strategi Perlindungan dan Pemulihan Korban oleh LPSK",
-    image: "https://picsum.photos/1200/600?random=3",
-    href: "/publikasi/carbon-trading",
   },
 ]
 
@@ -57,94 +55,124 @@ export default function HeroCarousel() {
       >
         <CarouselContent>
           {slides.map((slide, index) => {
-            const finalUrl = slide.external
-              ? slide.href.startsWith("http")
-                ? slide.href
-                : `https://${slide.href}`
-              : slide.href
+            const finalUrl =
+              slide.external && slide.href
+                ? slide.href.startsWith("http")
+                  ? slide.href
+                  : `https://${slide.href}`
+                : slide.href
 
             return (
               <CarouselItem key={index}>
-                {/* MOBILE = aspect-video | DESKTOP = fixed height */}
-                <div className="relative w-full aspect-video md:aspect-auto md:h-[720px] overflow-hidden">
+                <div className="relative w-full aspect-video md:aspect-auto md:h-[760px] overflow-hidden">
 
-                  {/* Background */}
-                  <div
-                    className="absolute inset-0 bg-cover bg-center"
-                    style={{ backgroundImage: `url(${slide.image})` }}
+                  <img
+                    src={slide.image}
+                    alt={slide.title || "slide"}
+                    className="
+                      absolute inset-0
+                      w-full h-full
+                    "
                   />
-
-                  {/* Overlay */}
-                  <div className="absolute inset-0 bg-gradient-to-r from-black/75 via-black/40 to-transparent" />
 
                   {/* Content */}
                   <div className="relative z-10 h-full flex items-center">
                     <div className="container mx-auto px-4 sm:px-6">
-                      <div className="max-w-xl md:max-w-2xl text-white">
+                      <div className=" text-white space-y-1">
 
-                        {/* Responsive Title */}
-                        <p
-                          className="
-                            text-base
-                            md:text-2xl
-                            lg:text-3xl
-                            xl:text-4xl
-                            font-bold
-                            leading-tight
-                            mb-4 md:mb-8
-                          "
-                        >
-                          {slide.title}
-                        </p>
-
-                        {/* Button */}
-                        {slide.external ? (
+                        {/* Title */}
+                        {slide.title && (
                           <p
-                            
-                            rel="noopener noreferrer"
+                            className="
+                              text-xs sm:text-lg md:text-3xl lg:text-4xl
+                              font-semibold
+                              leading-tight
+                              mt-28 sm:mt-40 md:mt-60 lg:mt-86
+                              px-10
+                            "
                           >
-                            <Button
-                              size="sm"
-                              className="
-                                bg-transparent
-                                text-white
-                                border-[2px]
-                                border-white
-                                rounded-full
-                                px-5 sm:px-6 md:px-10
-                                py-3 md:py-6
-                                text-xs md:text-base
-                                hover:bg-white
-                                hover:text-black
-                                transition-all
-                                duration-300
-                              "
-                            >
-                              Lihat Selengkapnya
-                            </Button>
+                            {slide.title}
                           </p>
-                        ) : (
-                          <p >
-                            <Button
-                              size="sm"
-                              className="
-                                bg-transparent
-                                text-white
-                                border-[2px]
-                                border-white
-                                rounded-full
-                                px-5 sm:px-6 md:px-10
-                                py-3 md:py-6
-                                text-xs md:text-base
-                                hover:bg-white
-                                hover:text-black
-                                transition-all
-                                duration-300
-                              "
-                            >
-                              Lihat Selengkapnya
-                            </Button>
+                        )}
+
+                        {/* Deskripsi */}
+                        {slide.deskripsi && (
+                          <p
+                            className="
+                              hidden sm:block
+                              text-sm md:text-lg
+                              text-gray-200
+                              leading-relaxed
+                              px-10
+                              font-semibold
+                            "
+                          >
+                            {slide.deskripsi}
                           </p>
+                        )}
+
+                        {slide.href && (
+                          // <div className="flex justify-center lg:mt-108 mt-35">
+                          //   <a
+                          //     href={finalUrl || "#"}
+                          //     target={slide.external ? "_blank" : "_self"}
+                          //     rel="noopener noreferrer"
+                          //   >
+                          //     <Button
+                          //       size="sm"
+                          //       className="
+                          //         bg-white
+                          //         font-bold
+                          //         text-black
+                          //         border-2
+                          //         border-white
+                          //         rounded-full
+                          //         px-6 md:px-10
+                          //         py-3 md:py-6
+                          //         text-xs md:text-base
+                          //         hover:bg-white
+                          //         hover:text-black
+                          //         transition-all
+                          //         duration-300
+                          //       "
+                          //     >
+                          //       Buat Permohonan Perlindungan
+                          //     </Button>
+                          //   </a>
+                          // </div>
+                          <div className="flex justify-center lg:mt-108 mt-34">
+                            <a
+                              href={finalUrl || "#"}
+                              target={slide.external ? "_blank" : "_self"}
+                              rel="noopener noreferrer"
+                            >
+                              <Button
+                                size="sm"
+                                className="
+                                  bg-white
+                                  font-bold
+                                  text-black
+                                  border-2
+                                  border-white
+                                  rounded-full
+                                  
+                                  flex items-center gap-1.5
+                                  
+                                  px-2 py-1 text-[10px]
+                                  sm:px-4 sm:py-2 sm:text-xs
+                                  md:px-10 md:py-6 md:text-base
+                                  
+                                  hover:bg-white
+                                  hover:text-black
+                                  transition-all
+                                  duration-300
+                                "
+                              >
+                                <FileText className="w-3 h-3 sm:w-4 sm:h-4 md:w-5 md:h-5" />
+                                Buat Permohonan Perlindungan
+                              </Button>
+                            </a>
+                          </div>
                         )}
 
                       </div>
@@ -160,27 +188,24 @@ export default function HeroCarousel() {
         <CarouselPrevious
           className="
             left-3 md:left-36
-            top-[71%] -translate-y-0
-            bg-white/30 backdrop-blur-md
-            border-none text-white
-            hover:bg-white/50
+            top-[71%]
+            bg-white/60 backdrop-blur-md
+            border-none text-black
           "
         >
-          <ChevronLeft size={36} className="md:w-8 md:h-8" />
+          <ChevronLeft size={36} />
         </CarouselPrevious>
 
         <CarouselNext
           className="
             right-3 md:right-36
-            top-[71%] -translate-y-0
-            bg-white/30 backdrop-blur-md
-            border-none text-white
-            hover:bg-white/50
+            top-[71%]
+            bg-white/60 backdrop-blur-md
+            border-none text-black
           "
         >
-          <ChevronRight size={36} className="md:w-8 md:h-8" />
+          <ChevronRight size={36} />
         </CarouselNext>
-
       </Carousel>
     </section>
   )

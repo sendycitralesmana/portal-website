@@ -25,7 +25,7 @@ export default function Alert() {
   ]
 
   return (
-    <section className="relative w-full bg-gradient-to-l from-red-900 to-red-800 h-24 md:h-39 shadow-lg">
+    <section className="relative w-full bg-gradient-to-l from-red-900 to-red-800 h-24 md:h-32 shadow-lg">
 
       {/* Floating Alert Box */}
       <div className="container mx-auto px-4 md:px-6 absolute -top-8 md:-top-10 left-1/2 -translate-x-1/2 w-full">
@@ -46,7 +46,7 @@ export default function Alert() {
                   key={index}
                   className="h-12 md:h-14 flex items-center"
                 >
-                  <Link
+                  {/* <Link
                     href="#"
                     className="
                       font-semibold
@@ -58,7 +58,17 @@ export default function Alert() {
                     "
                   >
                     {text}
-                  </Link>
+                  </Link> */}
+                  <p
+                    className="
+                      font-medium
+                      text-xs sm:text-sm md:text-lg
+                      leading-snug
+                      line-clamp-2 md:line-clamp-1
+                    "
+                  >
+                    {text}
+                  </p>
                 </CarouselItem>
               ))}
             </CarouselContent>

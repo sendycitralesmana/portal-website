@@ -138,11 +138,27 @@ const BeritaFotoPage: PageWithLayout<Props> = ({ publikasis, kategori, kategoriD
                                     }`}
                                 >
 
-                                    <img
+                                    {/* <img
                                         src={item.gambar}
                                         alt={item.judul}
                                         className="h-28 w-full rounded-xl object-cover md:w-40"
-                                    />
+                                    /> */}
+
+                                    <div className="relative h-28 w-full overflow-hidden rounded-xl md:w-40">
+  {/* Background blur */}
+  <img
+    src={item.gambar}
+    alt={item.judul}
+    className="absolute inset-0 h-full w-full scale-110 object-cover opacity-50 blur-md"
+  />
+
+  {/* Main image (tidak terpotong) */}
+  <img
+    src={item.gambar}
+    alt={item.judul}
+    className="relative h-full w-full object-contain"
+  />
+</div>
 
                                     <div className="flex-1">
 

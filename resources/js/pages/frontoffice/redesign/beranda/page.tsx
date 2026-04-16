@@ -9,6 +9,7 @@ import Alert from "./alert";
 import Tablist from "./tablist";
 import PermohonanPengajuanPerlindungan from "./permohonan-pengajuan-perlindungan";
 import VideoSection from "./video-section";
+import AplikasiSection from "./aplikasi";
 
 interface Post {
   id: number
@@ -46,8 +47,8 @@ const BerandaPage = ({ sosialMedias, videoInfos, siaranPers, beritaFotos, berita
       </Head>
 
       {/* <SorotPratinjau /> */}
-      {/* <HeroCarousel /> */}
-      <PermohonanPengajuanPerlindungan />
+      <HeroCarousel />
+      {/* <PermohonanPengajuanPerlindungan /> */}
       <Alert />
       <Tablist
         siaranPers={siaranPers}
@@ -56,6 +57,7 @@ const BerandaPage = ({ sosialMedias, videoInfos, siaranPers, beritaFotos, berita
         pengumumans={pengumumans}
       />
       <VideoSection videoInfos={videoInfos} />
+      <AplikasiSection />
       <SocialMediaSection sosialMedias={sosialMedias} />
     </div>
   );

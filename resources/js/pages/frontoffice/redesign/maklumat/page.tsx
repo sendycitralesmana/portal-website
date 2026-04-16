@@ -20,7 +20,7 @@ const MaklumatPage = () => {
         <div className="absolute inset-0 bg-black/50 backdrop-blur-xl"></div>
 
         {/* Container gambar */}
-        <div className="relative z-10 max-w-4xl w-full px-4">
+        <div className="relative z-10 max-w-3xl w-full px-4">
           {/* Gambar maklumat */}
           <img
             src="/images/sertifikat-maklumat.webp"
