@@ -11,6 +11,7 @@ class TentangKami extends Model
     protected $fillable = [
         'alamat',
         'telepon',
+        'hotline',
         'whatsapp',
         'email',
         'jam_operasional',

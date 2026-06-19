@@ -20,6 +20,7 @@ class TentangKamiRedesignBackController extends Controller
                 $query->where(function ($q) use ($value) {
                     $q->where('alamat', 'ILIKE', "%{$value}%")
                     ->orWhere('telepon', 'ILIKE', "%{$value}%")
+                    ->orWhere('hotline', 'ILIKE', "%{$value}%")
                     ->orWhere('whatsapp', 'ILIKE', "%{$value}%")
                     ->orWhere('email', 'ILIKE', "%{$value}%")
                     ->orWhere('jam_operasional', 'ILIKE', "%{$value}%")
@@ -86,6 +87,7 @@ class TentangKamiRedesignBackController extends Controller
             $tentangKami->update([
                 'alamat' => $request->alamat,
                 'telepon' => $request->telepon,
+                'hotline' => $request->hotline,
                 'whatsapp' => $request->whatsapp,
                 'email' => $request->email,
                 'jam_operasional' => $request->jam_operasional,

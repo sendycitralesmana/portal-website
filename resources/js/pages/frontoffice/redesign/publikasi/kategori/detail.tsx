@@ -86,7 +86,7 @@ const DetailPublikasi: PageWithLayout<Props> = ({ kategori, publikasi, publikasi
         {/* Header */}
         <div className="bg-gradient-to-r from-red-700 to-red-900 py-8">
           <div className="container mx-auto px-4">
-            <p className="text-xl md:text-2xl font-semibold text-white">
+            <p className="text-base md:text-2xl font-semibold text-white">
               {publikasi.judul}
             </p>
           </div>
@@ -105,12 +105,12 @@ const DetailPublikasi: PageWithLayout<Props> = ({ kategori, publikasi, publikasi
             >
 
               <div className="col-span-2 aspect-[4/3] overflow-hidden rounded-lg">
-                <img
+                {/* <img
                   src={publikasi.gambar}
                   alt={publikasi.judul}
                   className="w-full h-full object-cover hover:scale-105 transition duration-300"
-                />
-                {/* <div className="relative w-full h-full bg-black">
+                /> */}
+                <div className="relative w-full h-full bg-black">
                   <img
                     src={publikasi.gambar}
                     className="absolute inset-0 w-full h-full object-cover blur-lg scale-110 opacity-60"
@@ -120,19 +120,19 @@ const DetailPublikasi: PageWithLayout<Props> = ({ kategori, publikasi, publikasi
                     alt={publikasi.judul}
                     className="relative w-full h-full object-contain transition duration-300 hover:scale-105"
                   />
-                </div> */}
+                </div>
               </div>
 
               <div className="flex flex-col gap-2">
 
                 {images[0] && (
                   <div className="aspect-[4/3] overflow-hidden rounded-lg">
-                    <img
+                    {/* <img
                       src={images[0].src}
                       alt={images[0].title}
                       className="w-full h-full object-cover hover:scale-105 transition duration-300"
-                    />
-                    {/* <div className="relative w-full h-full bg-black">
+                    /> */}
+                    <div className="relative w-full h-full bg-black">
                       <img
                         src={images[0].src}
                         className="absolute inset-0 w-full h-full object-cover blur-lg scale-110 opacity-60"
@@ -142,18 +142,18 @@ const DetailPublikasi: PageWithLayout<Props> = ({ kategori, publikasi, publikasi
                         alt={images[0].title}
                         className="relative w-full h-full object-contain transition duration-300 hover:scale-105"
                       />
-                    </div> */}
+                    </div>
                   </div>
                 )}
 
                 {images[1] && (
                   <div className="relative aspect-[4/3] overflow-hidden rounded-lg">
-                    <img
+                    {/* <img
                       src={images[1].src}
                       alt={images[1].title}
                       className="w-full h-full object-cover"
-                    />
-                    {/* <div className="relative w-full h-full bg-black">
+                    /> */}
+                    <div className="relative w-full h-full bg-black">
                       <img
                         src={images[1].src}
                         className="absolute inset-0 w-full h-full object-cover blur-lg scale-110 opacity-60"
@@ -163,7 +163,7 @@ const DetailPublikasi: PageWithLayout<Props> = ({ kategori, publikasi, publikasi
                         alt={images[1].title}
                         className="relative w-full h-full object-contain"
                       />
-                    </div> */}
+                    </div>
 
                     {images.length > 2 && (
                       <div className="absolute inset-0 flex items-center justify-center bg-black/50 text-white text-xl font-semibold">
@@ -212,7 +212,7 @@ const DetailPublikasi: PageWithLayout<Props> = ({ kategori, publikasi, publikasi
               {publikasi.judul.toUpperCase()}
             </p>
 
-            <div dangerouslySetInnerHTML={{ __html: publikasi.deskripsi }} />
+            <div className="text-base md:text-lg text-justify break-words whitespace-pre-line" dangerouslySetInnerHTML={{ __html: publikasi.deskripsi }} />
 
             {/* DOKUMEN LAMPIRAN */}
             {documents.length > 0 && (

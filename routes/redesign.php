@@ -55,7 +55,7 @@ use App\Http\Controllers\FrontOffice\Redesign\TugasFungsiRedesignController;
         Route::prefix('/tugas-fungsi')->group(function () {
             Route::get('/kewenangan', [TugasFungsiRedesignController::class, 'kewenangan'])->name('redesign.profil.kewenangan');
             Route::get('/subjek-terlindung', [TugasFungsiRedesignController::class, 'subjekTerlindung'])->name('redesign.profil.subjek-terlindung');
-            Route::get('/tindak-pidana-tertentu', [TugasFungsiRedesignController::class, 'tindakPidanaTertentu'])->name('redesign.profil.tindak-pidana-tertentu');
+            Route::get('/tindak-pidana-prioritas', [TugasFungsiRedesignController::class, 'tindakPidanaTertentu'])->name('redesign.profil.tindak-pidana-tertentu');
             Route::get('/program-perlindungan', [TugasFungsiRedesignController::class, 'programPerlindungan'])->name('redesign.profil.program-perlindungan');
         });
 

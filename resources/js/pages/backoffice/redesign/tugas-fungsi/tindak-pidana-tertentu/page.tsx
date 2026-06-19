@@ -146,7 +146,7 @@ const TindakPidanaTertentuPage = (props: any) => {
 
                                                 <TableCell className="align-top">
                                                     {item.gambar ? (
-                                                        <div className="max-w-[90px]">
+                                                        <div className="">
                                                             <ImagePreviewDialog src={item.gambar} alt={item.judul} />
                                                         </div>
                                                     ) : (
@@ -155,7 +155,8 @@ const TindakPidanaTertentuPage = (props: any) => {
                                                 </TableCell>
 
                                                 <TableCell className="align-top break-words whitespace-normal">{item.judul}</TableCell>
-                                                <TableCell className="align-top break-words whitespace-normal">{item.deskripsi}</TableCell>
+                                                {/* <TableCell className="align-top break-words whitespace-normal">{item.deskripsi}</TableCell> */}
+                                                <TableCell className="align-top break-words whitespace-pre-line">{item.deskripsi}</TableCell>
                                                 <TableCell className="align-top break-words whitespace-normal">{item.created_at}</TableCell>
 
                                                 <TableCell className="align-top">

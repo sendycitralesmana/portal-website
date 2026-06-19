@@ -15,6 +15,7 @@ interface TentangKami {
     id: number;
     alamat: string;
     telepon: string;
+    hotline: string;
     whatsapp: string;
     email: string;
     jam_operasional: string;
@@ -34,6 +35,7 @@ export default function EditTentangKami({ tentangKami }: EditTentangKamiProps) {
     const { data, setData, reset, post, processing, errors } = useForm({
         alamat: tentangKami.alamat ?? '',
         telepon: tentangKami.telepon ?? '',
+        hotline: tentangKami.hotline ?? '',
         whatsapp: tentangKami.whatsapp ?? '',
         email: tentangKami.email ?? '',
         jam_operasional: tentangKami.jam_operasional ?? '',
@@ -107,6 +109,18 @@ export default function EditTentangKami({ tentangKami }: EditTentangKamiProps) {
                                     className={errors.telepon ? 'border-red-500' : ''}
                                 />
                                 {errors.telepon && <InputError message={errors.telepon} />}
+                            </div>
+
+                            {/* Hotline */}
+                            <div className="grid gap-1.5">
+                                <Label>Hotline <span className="text-red-500">*</span></Label>
+                                <Input
+                                    value={data.hotline}
+                                    onChange={(e) => setData('hotline', e.target.value)}
+                                    placeholder="Masukkan hotline"
+                                    className={errors.hotline ? 'border-red-500' : ''}
+                                />
+                                {errors.hotline && <InputError message={errors.hotline} />}
                             </div>
 
                             {/* Whatsapp */}

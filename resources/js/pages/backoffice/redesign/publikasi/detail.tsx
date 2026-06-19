@@ -170,7 +170,10 @@ const PublikasiDetailPage = ({ publikasi }: any) => {
 
     return (
         <AppLayoutRedesign>
-            <Head title="Detail Publikasi" />
+            <Head title="Publikasi">
+                <meta name="description" content="Halaman Publikasi" />
+                <link rel="icon" href="/images/favicon.ico" type="image/x-icon" />
+            </Head>
 
             <div className="flex w-full flex-col pb-24">
                 <div className="mb-6 flex justify-between">
@@ -209,13 +212,36 @@ const PublikasiDetailPage = ({ publikasi }: any) => {
                                 </div>
                             </div>
 
-                            {publikasi.gambar && (
+                            {/* {publikasi.gambar && (
                                 <div className="overflow-hidden rounded-xl border">
                                     <img src={publikasi.gambar} alt={publikasi.judul} className="w-full object-cover" />
                                 </div>
+                            )} */}
+
+                            {publikasi.gambar && (
+                                <div className="relative h-[450px] overflow-hidden rounded-xl border">
+                                    {/* Background Blur */}
+                                    <img
+                                        src={publikasi.gambar}
+                                        alt=""
+                                        className="absolute inset-0 h-full w-full scale-110 object-cover blur-3xl grayscale opacity-40"
+                                    />
+
+                                    {/* Overlay */}
+                                    <div className="absolute inset-0 bg-gray-200/60 dark:bg-black/40" />
+
+                                    {/* Gambar Asli */}
+                                    <div className="relative flex h-full w-full items-center justify-center">
+                                        <img
+                                            src={publikasi.gambar}
+                                            alt={publikasi.judul}
+                                            className="max-h-full max-w-full object-contain"
+                                        />
+                                    </div>
+                                </div>
                             )}
 
-                            <div className="prose max-w-none" dangerouslySetInnerHTML={{ __html: publikasi.deskripsi }} />
+                            <div className="prose max-w-none text-justify break-words whitespace-pre-line" dangerouslySetInnerHTML={{ __html: publikasi.deskripsi }} />
                         </div>
 
                         <div className="mx-auto mt-12 max-w-5xl space-y-10 border-t pt-10">

@@ -37,7 +37,7 @@ const PerwakilanDaerah: PageWithLayout<Props> = ({ perwakilanDaerahs }) => {
         <>
             <Head title="Perwakilan Daerah" />
 
-            <div className="min-h-screen ">
+            <div className="min-h-screen">
                 {/* Breadcrumb */}
                 <div className="border-b-2 border-b-amber-400 bg-gradient-to-l from-red-700 to-red-900 py-3 text-xs text-white md:text-sm">
                     <div className="container mx-auto px-4">
@@ -65,7 +65,7 @@ const PerwakilanDaerah: PageWithLayout<Props> = ({ perwakilanDaerahs }) => {
                                 whileInView={{ opacity: 1, y: 0 }}
                                 viewport={{ once: true }}
                                 transition={{ duration: 0.6 }}
-                                className="group relative overflow-hidden rounded-3xl border border-slate-200 shadow-xl transition-all duration-500 hover:shadow-2xl dark:border-slate-800 "
+                                className="group relative overflow-hidden rounded-3xl border border-slate-200 shadow-xl transition-all duration-500 hover:shadow-2xl dark:border-slate-800"
                             >
                                 {/* Accent Line */}
                                 <div className="absolute top-0 left-0 h-1 w-full bg-gradient-to-r from-amber-900 via-amber-600 to-amber-400"></div>
@@ -98,7 +98,7 @@ const PerwakilanDaerah: PageWithLayout<Props> = ({ perwakilanDaerahs }) => {
                                             <div className="space-y-5">
                                                 {/* Alamat */}
                                                 <div>
-                                                    <p className="flex items-center gap-2 font-semibold text-slate-900 dark:text-white">
+                                                    <p className="flex items-center gap-2 text-justify font-semibold text-slate-900 dark:text-white">
                                                         <MapPin className="h-4 w-4 text-red-600" />
                                                         Alamat
                                                     </p>
@@ -110,85 +110,103 @@ const PerwakilanDaerah: PageWithLayout<Props> = ({ perwakilanDaerahs }) => {
                                                     <p className="mb-2 font-semibold text-slate-900 dark:text-white">Sosial Media</p>
 
                                                     <div className="grid grid-cols-[120px_1fr] gap-y-2">
-                                                        {/* Email */}
-                                                        <span className="flex items-center gap-2 font-medium text-slate-700 dark:text-slate-300">
-                                                            <Mail className="h-4 w-4 text-blue-600 dark:text-blue-400" />
-                                                            Email
-                                                        </span>
-                                                        <a
-                                                            href={`mailto:${item.email}`}
-                                                            className="text-blue-600 hover:underline dark:text-blue-400"
-                                                        >
-                                                            {item.email}
-                                                        </a>
+                                                        {item.email && (
+                                                            <>
+                                                                <span className="flex items-center gap-2 font-medium text-slate-700 dark:text-slate-300">
+                                                                    <Mail className="h-4 w-4 text-blue-600 dark:text-blue-400" />
+                                                                    Email
+                                                                </span>
+                                                                <a
+                                                                    href={`mailto:${item.email}`}
+                                                                    className="text-blue-600 hover:underline dark:text-blue-400"
+                                                                >
+                                                                    {item.email}
+                                                                </a>
+                                                            </>
+                                                        )}
 
-                                                        {/* Telepon */}
-                                                        <span className="flex items-center gap-2 font-medium text-slate-700 dark:text-slate-300">
-                                                            <Phone className="h-4 w-4 text-green-600 dark:text-green-400" />
-                                                            Telepon
-                                                        </span>
-                                                        <a
-                                                            href={`tel:${item.telepon}`}
-                                                            className="text-blue-600 hover:underline dark:text-blue-400"
-                                                        >
-                                                            {item.telepon}
-                                                        </a>
+                                                        {item.telepon && (
+                                                            <>
+                                                                <span className="flex items-center gap-2 font-medium text-slate-700 dark:text-slate-300">
+                                                                    <Phone className="h-4 w-4 text-green-600 dark:text-green-400" />
+                                                                    Telepon
+                                                                </span>
+                                                                <a
+                                                                    href={`tel:${item.telepon}`}
+                                                                    className="text-blue-600 hover:underline dark:text-blue-400"
+                                                                >
+                                                                    {item.telepon}
+                                                                </a>
+                                                            </>
+                                                        )}
 
-                                                        {/* WhatsApp */}
-                                                        <span className="flex items-center gap-2 font-medium text-slate-700 dark:text-slate-300">
-                                                            <MessageCircle className="h-4 w-4 text-green-600" />
-                                                            WhatsApp
-                                                        </span>
-                                                        <a
-                                                            href={`https://wa.me/${item.whatsapp}`}
-                                                            target="_blank"
-                                                            rel="noopener noreferrer"
-                                                            className="text-blue-600 hover:underline dark:text-blue-400"
-                                                        >
-                                                            {item.whatsapp}
-                                                        </a>
+                                                        {item.whatsapp && (
+                                                            <>
+                                                                <span className="flex items-center gap-2 font-medium text-slate-700 dark:text-slate-300">
+                                                                    <MessageCircle className="h-4 w-4 text-green-600" />
+                                                                    WhatsApp
+                                                                </span>
+                                                                <a
+                                                                    href={`https://wa.me/${item.whatsapp}`}
+                                                                    target="_blank"
+                                                                    rel="noopener noreferrer"
+                                                                    className="text-blue-600 hover:underline dark:text-blue-400"
+                                                                >
+                                                                    {item.whatsapp}
+                                                                </a>
+                                                            </>
+                                                        )}
 
-                                                        {/* Instagram */}
-                                                        <span className="flex items-center gap-2 font-medium text-slate-700 dark:text-slate-300">
-                                                            <Instagram className="h-4 w-4 text-pink-600" />
-                                                            Instagram
-                                                        </span>
-                                                        <a
-                                                            href={`https://instagram.com/${item.instagram}`}
-                                                            target="_blank"
-                                                            rel="noopener noreferrer"
-                                                            className="text-blue-600 hover:underline dark:text-blue-400"
-                                                        >
-                                                            @{item.instagram}
-                                                        </a>
+                                                        {item.instagram && (
+                                                            <>
+                                                                <span className="flex items-center gap-2 font-medium text-slate-700 dark:text-slate-300">
+                                                                    <Instagram className="h-4 w-4 text-pink-600" />
+                                                                    Instagram
+                                                                </span>
+                                                                <a
+                                                                    href={`https://instagram.com/${item.instagram}`}
+                                                                    target="_blank"
+                                                                    rel="noopener noreferrer"
+                                                                    className="text-blue-600 hover:underline dark:text-blue-400"
+                                                                >
+                                                                    @{item.instagram}
+                                                                </a>
+                                                            </>
+                                                        )}
 
-                                                        {/* TikTok */}
-                                                        <span className="flex items-center gap-2 font-medium text-slate-700 dark:text-slate-300">
-                                                            <Music2 className="h-4 w-4 text-black dark:text-white" />
-                                                            TikTok
-                                                        </span>
-                                                        <a
-                                                            href={`https://tiktok.com/@${item.tiktok}`}
-                                                            target="_blank"
-                                                            rel="noopener noreferrer"
-                                                            className="text-blue-600 hover:underline dark:text-blue-400"
-                                                        >
-                                                            {item.tiktok}
-                                                        </a>
+                                                        {item.tiktok && (
+                                                            <>
+                                                                <span className="flex items-center gap-2 font-medium text-slate-700 dark:text-slate-300">
+                                                                    <Music2 className="h-4 w-4 text-black dark:text-white" />
+                                                                    TikTok
+                                                                </span>
+                                                                <a
+                                                                    href={`https://tiktok.com/@${item.tiktok}`}
+                                                                    target="_blank"
+                                                                    rel="noopener noreferrer"
+                                                                    className="text-blue-600 hover:underline dark:text-blue-400"
+                                                                >
+                                                                    {item.tiktok}
+                                                                </a>
+                                                            </>
+                                                        )}
 
-                                                        {/* YouTube */}
-                                                        <span className="flex items-center gap-2 font-medium text-slate-700 dark:text-slate-300">
-                                                            <Youtube className="h-4 w-4 text-red-600" />
-                                                            YouTube
-                                                        </span>
-                                                        <a
-                                                            href={`https://youtube.com/@${item.youtube}`}
-                                                            target="_blank"
-                                                            rel="noopener noreferrer"
-                                                            className="text-blue-600 hover:underline dark:text-blue-400"
-                                                        >
-                                                            {item.youtube}
-                                                        </a>
+                                                        {item.youtube && (
+                                                            <>
+                                                                <span className="flex items-center gap-2 font-medium text-slate-700 dark:text-slate-300">
+                                                                    <Youtube className="h-4 w-4 text-red-600" />
+                                                                    YouTube
+                                                                </span>
+                                                                <a
+                                                                    href={`https://youtube.com/@${item.youtube}`}
+                                                                    target="_blank"
+                                                                    rel="noopener noreferrer"
+                                                                    className="text-blue-600 hover:underline dark:text-blue-400"
+                                                                >
+                                                                    {item.youtube}
+                                                                </a>
+                                                            </>
+                                                        )}
                                                     </div>
                                                 </div>
                                             </div>

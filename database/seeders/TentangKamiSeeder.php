@@ -16,6 +16,7 @@ class TentangKamiSeeder extends Seeder
         DB::table('tentang_kamis')->insert([
             'alamat' => 'Jl. Raya Bogor KM.24 No.47-49, RT.6/RW.1, Susukan, Kec. Ciracas, Kota Jakarta Timur, Daerah Khusus Ibukota Jakarta 13750',
             'telepon' => '(021) 2968-1560',
+            'hotline' => '1500-148',
             'whatsapp' => '+62 857-700-10048',
             'email' => 'lpsk_ri@lpsk.go.id',
             'jam_operasional' => "Senin - Kamis : 08.00 - 16.30\nJumat : 08.00 - 17.00",

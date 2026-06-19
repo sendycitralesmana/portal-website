@@ -1,61 +1,70 @@
-import { Head, Link } from '@inertiajs/react'
-import { Search } from 'lucide-react'
-import { ReactElement, ReactNode } from 'react'
-import MainLayout from '../../layout/main'
+import { Head, Link } from '@inertiajs/react';
+import { Search } from 'lucide-react';
+import { ReactElement, ReactNode } from 'react';
+import MainLayout from '../../layout/main';
 
-import {
-    Pagination,
-    PaginationContent,
-    PaginationItem,
-    PaginationLink,
-} from '@/components/ui/pagination'
+import { Pagination, PaginationContent, PaginationItem, PaginationLink } from '@/components/ui/pagination';
 
 /**
  * Optional: reusable type untuk semua halaman Inertia
  */
 type PageWithLayout<P = {}> = {
-    (props: P): ReactElement
-    layout?: (page: ReactElement) => ReactNode
-}
+    (props: P): ReactElement;
+    layout?: (page: ReactElement) => ReactNode;
+};
 
 interface Publikasi {
-    id: number
-    jenis: string
-    kategori: string
-    judul: string
-    slug: string
-    deskripsi: string
-    gambar: string
-    created_at: string
+    id: number;
+    jenis: string;
+    kategori: string;
+    judul: string;
+    slug: string;
+    deskripsi: string;
+    gambar: string;
+    created_at: string;
 }
 
 interface Props {
-    kategori: string
-    kategoriDb: string
+    kategori: string;
+    kategoriDb: string;
     publikasis: {
-        data: Publikasi[]
+        data: Publikasi[];
         meta: {
-            from?: number
-            to?: number
-            total?: number
-            last_page?: number
-            links?: any[]
-        }
-    }
+            from?: number;
+            to?: number;
+            total?: number;
+            last_page?: number;
+            links?: any[];
+        };
+    };
     state: {
-        search: string
-    }
+        search: string;
+    };
 }
 
 const BeritaFotoPage: PageWithLayout<Props> = ({ publikasis, kategori, kategoriDb, state }) => {
+    // const formatDate = (date: string) => {
+    //     return new Date(date).toLocaleDateString('id-ID', {
+    //         day: 'numeric',
+    //         month: 'long',
+    //         year: 'numeric',
+    //     });
+    // };
 
-    const formatDate = (date: string) => {
-        return new Date(date).toLocaleDateString('id-ID', {
+    const formatDate = (dateString: string) => {
+        const date = new Date(dateString);
+
+        if (isNaN(date.getTime())) {
+            return null;
+        }
+
+        return date.toLocaleDateString('id-ID', {
+            weekday: 'long',
             day: 'numeric',
             month: 'long',
             year: 'numeric',
-        })
-    }
+        });
+    };
 
     return (
         <>
@@ -65,7 +74,6 @@ const BeritaFotoPage: PageWithLayout<Props> = ({ publikasis, kategori, kategoriD
             </Head>
 
             <div className="min-h-screen">
-
                 {/* Breadcrumb */}
                 <div className="border-b-2 border-b-amber-400 bg-gradient-to-l from-red-700 to-red-900 py-3 text-sm text-white">
                     <div className="container mx-auto px-4">
@@ -76,30 +84,19 @@ const BeritaFotoPage: PageWithLayout<Props> = ({ publikasis, kategori, kategoriD
                 {/* Header */}
                 <div className="bg-gradient-to-r from-red-700 to-red-900 py-8">
                     <div className="container mx-auto px-4">
-                        <h1 className="text-4xl font-semibold text-white">
-                            {kategoriDb}
-                        </h1>
+                        <h1 className="text-4xl font-semibold text-white">{kategoriDb}</h1>
                     </div>
                 </div>
 
                 {/* Content */}
                 <div className="container mx-auto px-4 py-8">
-
                     {/* Search */}
                     <form method="get" className="mb-6 rounded-2xl bg-[#3a3a3a] p-4 shadow-md">
-
                         <div className="flex flex-col gap-3 md:flex-row md:items-center md:gap-4">
-
-                            <label className="text-sm font-semibold text-white">
-                                Pencarian
-                            </label>
+                            <label className="text-sm font-semibold text-white">Pencarian</label>
 
                             <div className="relative flex-1">
-
-                                <Search
-                                    size={16}
-                                    className="absolute top-1/2 left-4 -translate-y-1/2 text-white"
-                                />
+                                <Search size={16} className="absolute top-1/2 left-4 -translate-y-1/2 text-white" />
 
                                 <input
                                     type="text"
@@ -117,27 +114,19 @@ const BeritaFotoPage: PageWithLayout<Props> = ({ publikasis, kategori, kategoriD
                                 <Search size={16} />
                                 Cari
                             </button>
-
                         </div>
-
                     </form>
 
                     {/* List */}
                     <div className="overflow-hidden rounded-md border bg-[#eee]">
-
                         {publikasis.data.length > 0 ? (
-
                             publikasis.data.map((item, index) => (
-
                                 <div
                                     key={item.id}
                                     className={`flex flex-col gap-4 p-6 md:flex-row ${
-                                        index !== publikasis.data.length - 1
-                                            ? 'border-b border-gray-400'
-                                            : ''
+                                        index !== publikasis.data.length - 1 ? 'border-b border-gray-400' : ''
                                     }`}
                                 >
-
                                     {/* <img
                                         src={item.gambar}
                                         alt={item.judul}
@@ -145,26 +134,19 @@ const BeritaFotoPage: PageWithLayout<Props> = ({ publikasis, kategori, kategoriD
                                     /> */}
 
                                     <div className="relative h-28 w-full overflow-hidden rounded-xl md:w-40">
-  {/* Background blur */}
-  <img
-    src={item.gambar}
-    alt={item.judul}
-    className="absolute inset-0 h-full w-full scale-110 object-cover opacity-50 blur-md"
-  />
+                                        {/* Background blur */}
+                                        <img
+                                            src={item.gambar}
+                                            alt={item.judul}
+                                            className="absolute inset-0 h-full w-full scale-110 object-cover opacity-50 blur-md"
+                                        />
 
-  {/* Main image (tidak terpotong) */}
-  <img
-    src={item.gambar}
-    alt={item.judul}
-    className="relative h-full w-full object-contain"
-  />
-</div>
+                                        {/* Main image (tidak terpotong) */}
+                                        <img src={item.gambar} alt={item.judul} className="relative h-full w-full object-contain" />
+                                    </div>
 
                                     <div className="flex-1">
-
-                                        <p className="mb-1 text-sm text-gray-600">
-                                            {formatDate(item.created_at)}
-                                        </p>
+                                        <p className="mb-1 text-sm text-gray-600">{formatDate(item.created_at)}</p>
 
                                         <Link
                                             href={`/redesign/publikasi/${kategori}/${item.slug}`}
@@ -173,53 +155,31 @@ const BeritaFotoPage: PageWithLayout<Props> = ({ publikasis, kategori, kategoriD
                                             {item.judul}
                                         </Link>
 
-                                        <p className="text-sm text-gray-700">
-                                            {item.deskripsi}
-                                        </p>
-
+                                        <p className="text-sm md:text-base text-gray-700 text-justify">{item.deskripsi}</p>
                                     </div>
-
                                 </div>
-
                             ))
-
                         ) : (
-
-                            <div className="py-10 text-center text-gray-600">
-                                Tidak ada Artikel yang tersedia
-                            </div>
-
+                            <div className="py-10 text-center text-gray-600">Tidak ada Artikel yang tersedia</div>
                         )}
-
                     </div>
 
                     {/* Pagination */}
                     <div className="mt-6 flex w-full flex-col items-center justify-between gap-2 lg:flex-row">
-
-                        <p className="text-sm text-muted-foreground">
+                        <p className="text-muted-foreground text-sm">
                             Menampilkan{' '}
                             <span className="font-medium text-amber-600">
                                 {publikasis.meta.from ?? 0} - {publikasis.meta.to ?? 0}
                             </span>{' '}
-                            dari total{' '}
-                            <span className="font-medium text-amber-600">
-                                {publikasis.meta.total ?? 0}
-                            </span>{' '}
-                            data
+                            dari total <span className="font-medium text-amber-600">{publikasis.meta.total ?? 0}</span> data
                         </p>
 
                         {publikasis.meta.last_page && publikasis.meta.last_page > 1 && (
-
                             <div className="overflow-x-auto">
-
                                 <Pagination>
-
                                     <PaginationContent className="flex flex-wrap justify-center lg:justify-end">
-
                                         {publikasis.meta.links?.map((link: any, index: number) => (
-
                                             <PaginationItem key={index} className="mx-1 mb-1">
-
                                                 <PaginationLink
                                                     href={link.url ?? '#'}
                                                     isActive={link.active}
@@ -229,35 +189,24 @@ const BeritaFotoPage: PageWithLayout<Props> = ({ publikasis, kategori, kategoriD
                                                             : 'hover:bg-amber-400 hover:text-white'
                                                     }`}
                                                 >
-                                                    {link.label
-                                                        .replace(/&laquo;/g, '«')
-                                                        .replace(/&raquo;/g, '»')}
+                                                    {link.label.replace(/&laquo;/g, '«').replace(/&raquo;/g, '»')}
                                                 </PaginationLink>
-
                                             </PaginationItem>
-
                                         ))}
-
                                     </PaginationContent>
-
                                 </Pagination>
-
                             </div>
-
                         )}
-
                     </div>
-
                 </div>
-
             </div>
         </>
-    )
-}
+    );
+};
 
 /**
  * Layout Inertia
  */
-BeritaFotoPage.layout = (page: ReactElement) => <MainLayout>{page}</MainLayout>
+BeritaFotoPage.layout = (page: ReactElement) => <MainLayout>{page}</MainLayout>;
 
-export default BeritaFotoPage
+export default BeritaFotoPage;

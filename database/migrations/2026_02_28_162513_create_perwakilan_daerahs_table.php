@@ -15,8 +15,8 @@ return new class extends Migration
             $table->id();
             $table->string('kantor');
             $table->string('alamat');
-            $table->string('telepon');
-            $table->string('email');
+            $table->string('telepon')->nullable();
+            $table->string('email')->nullable();
             $table->string('whatsapp')->nullable();
             $table->string('twitter')->nullable();
             $table->string('tiktok')->nullable();

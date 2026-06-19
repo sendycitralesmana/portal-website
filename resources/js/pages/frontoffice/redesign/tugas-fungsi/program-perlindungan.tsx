@@ -82,7 +82,7 @@ const Section: React.FC<SectionProps> = ({
 
           <div className="w-14 h-1 bg-amber-700 rounded-full"></div>
 
-          <p className="text-base leading-relaxed text-gray-600 dark:text-gray-300">
+          <p className="text-base leading-relaxed text-gray-600 dark:text-gray-300 text-justify">
             {deskripsi}
           </p>
           

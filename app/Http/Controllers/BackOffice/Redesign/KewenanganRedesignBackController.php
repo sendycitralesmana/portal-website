@@ -34,7 +34,7 @@ class KewenanganRedesignBackController extends Controller
                 request()->field && request()->direction,
                 fn ($query) => $query->orderBy(request()->field, request()->direction)
             )
-            ->orderBy('created_at', 'asc')
+            ->orderBy('id', 'asc')
             ->paginate(request()->load ?? 10)
             ->withQueryString();
 

@@ -97,6 +97,12 @@ const TentangKamiPage = (props: any) => {
                                             </Button>
                                         </TableHead>
                                         <TableHead>
+                                            <Button variant="ghost" onClick={() => onSortable('hotline')}>
+                                                Hotline
+                                                <IconArrowsDownUp className="ml-2 size-4" />
+                                            </Button>
+                                        </TableHead>
+                                        <TableHead>
                                             <Button variant="ghost" onClick={() => onSortable('whatsapp')}>
                                                 Whatsapp
                                                 <IconArrowsDownUp className="ml-2 size-4" />
@@ -179,6 +185,7 @@ const TentangKamiPage = (props: any) => {
 
                                                 <TableCell className="align-top break-words whitespace-normal">{item.alamat}</TableCell>
                                                 <TableCell className="align-top break-words whitespace-normal">{item.telepon}</TableCell>
+                                                <TableCell className="align-top break-words whitespace-normal">{item.hotline}</TableCell>
                                                 <TableCell className="align-top break-words whitespace-normal">{item.whatsapp}</TableCell>
                                                 <TableCell className="align-top break-words whitespace-normal">{item.email}</TableCell>
                                                 <TableCell className="align-top break-words whitespace-normal">{item.jam_operasional}</TableCell>
@@ -244,6 +251,9 @@ const TentangKamiPage = (props: any) => {
                                             </p>
                                             <p>
                                                 <strong>Telepon:</strong> {item.telepon}
+                                            </p>
+                                            <p>
+                                                <strong>Hotline:</strong> {item.hotline}
                                             </p>
                                             <p>
                                                 <strong>Whatsapp:</strong> {item.whatsapp}

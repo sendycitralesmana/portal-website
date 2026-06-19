@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->text('alamat');
             $table->string('telepon');
+            $table->string('hotline')->nullable();
             $table->string('whatsapp');
             $table->string('email');
             $table->string('jam_operasional');

@@ -5,6 +5,7 @@ interface TentangKami {
   id: number;
   alamat: string;
   telepon: string;
+  hotline: string;
   whatsapp: string;
   email: string;
   jam_operasional: string;
@@ -38,10 +39,10 @@ export default function Footer() {
     <footer className="bg-gradient-to-r from-zinc-900 to-zinc-700 text-white">
       {/* Top Footer */}
       <div className="container mx-auto px-6 xl:px-0 py-8">
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-10">
+        <div className="grid md:grid-cols-2 xl:grid-cols-12 gap-10">
 
           {/* Address */}
-          <div>
+          <div className="xl:col-span-5">
             <h5 className="text-xl font-semibold mb-4">
               Lembaga Perlindungan Saksi dan Korban
             </h5>
@@ -52,12 +53,12 @@ export default function Footer() {
                 <div className="h-4 w-full max-w-[200px] rounded bg-gradient-to-r from-zinc-700 to-zinc-600 animate-pulse"></div>
               </div>
             ) : (
-              <p className="text-sm text-zinc-300 leading-relaxed">{data?.alamat}</p>
+              <p className="text-sm text-zinc-300 leading-relaxed break-words whitespace-pre-line">{data?.alamat}</p>
             )}
           </div>
 
           {/* Hubungi Kami */}
-          <div>
+          <div className="xl:col-span-4">
             <h5 className="text-xl font-semibold mb-4">Hubungi Kami</h5>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-y-4 text-sm text-zinc-300">
               {loading ? (
@@ -69,11 +70,16 @@ export default function Footer() {
               ) : (
                 <>
                   <div className="flex items-center gap-2">
-                    <Phone size={16} /> {data?.telepon}
+                    <Phone size={16} /> {data?.hotline}
                   </div>
                   <div className="flex items-center gap-2">
-                    <Phone size={16} /> {data?.whatsapp}
-                  </div>
+  <img
+    src="/images/logo-wa.png"
+    alt="WhatsApp"
+    className="w-4 h-4 object-contain"
+  />
+  {data?.whatsapp}
+</div>
                   <div className="flex items-center gap-2">
                     <Mail size={16} /> {data?.email}
                   </div>
@@ -83,7 +89,7 @@ export default function Footer() {
           </div>
 
           {/* Artikel GPR */}
-          <div>
+          <div className="xl:col-span-3">
             <h5 className="text-xl font-semibold mb-4">Artikel GPR</h5>
             {loading ? (
               <div className="space-y-2">

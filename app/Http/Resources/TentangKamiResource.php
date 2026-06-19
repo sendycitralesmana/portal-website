@@ -20,6 +20,7 @@ class TentangKamiResource extends JsonResource
             'id' => $this->id,
             'alamat' => $this->alamat,
             'telepon' => $this->telepon,
+            'hotline' => $this->hotline,
             'whatsapp' => $this->whatsapp,
             'email' => $this->email,
             'jam_operasional' => $this->jam_operasional,

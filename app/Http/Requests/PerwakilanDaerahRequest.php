@@ -24,8 +24,8 @@ class PerwakilanDaerahRequest extends FormRequest
         return [
             'kantor' => 'required|string',
             'alamat' => 'required|string',
-            'telepon' => 'required|string',
-            'email' => 'required|email',
+            'telepon' => 'nullable|string',
+            'email' => 'nullable|email',
             'whatsapp' => 'nullable|string',
             'twitter' => 'nullable|string',
             'tiktok' => 'nullable|string',
@@ -42,9 +42,7 @@ class PerwakilanDaerahRequest extends FormRequest
         return [
             'kantor.required' => 'Kantor wajib diisi.',
             'kantor.string' => 'Kantor harus berupa teks.',
-            'alamat.required' => 'Alamat wajib diisi.',
             'alamat.string' => 'Alamat harus berupa teks.',
-            'telepon.required' => 'Telepon wajib diisi.',
             'telepon.string' => 'Telepon harus berupa teks.',
             'email.required' => 'Email wajib diisi.',
             'email.email' => 'Email harus berupa alamat email yang valid.',

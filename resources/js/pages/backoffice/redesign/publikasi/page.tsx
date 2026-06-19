@@ -160,7 +160,7 @@ const PublikasiPage = (props: any) => {
 
                                                 <TableCell className="align-top">
                                                     {item.gambar ? (
-                                                        <div className="max-w-[90px]">
+                                                        <div className="">
                                                             <ImagePreviewDialog src={item.gambar} alt={item.kantor} />
                                                         </div>
                                                     ) : (
@@ -172,11 +172,27 @@ const PublikasiPage = (props: any) => {
                                                 <TableCell className="align-top break-words whitespace-normal">{item.kategori}</TableCell>
                                                 <TableCell className="align-top break-words whitespace-normal">{item.judul ?? '-'}</TableCell>
                                                 <TableCell className="align-top break-words whitespace-normal">{item.slug ?? '-'}</TableCell>
-                                                <TableCell className="align-top max-w-[300px]">
+                                                {/* <TableCell className="align-top max-w-[300px]">
                                                 <div
                                                     className="line-clamp-2 break-words"
                                                     dangerouslySetInnerHTML={{ __html: item.deskripsi ?? '-' }}
                                                 />
+                                                </TableCell> */}
+                                                <TableCell className="align-top">
+                                                    <div
+                                                        dangerouslySetInnerHTML={{
+                                                            __html: (() => {
+                                                                const temp = document.createElement('div');
+                                                                temp.innerHTML = item.deskripsi ?? '-';
+
+                                                                const text = temp.textContent || temp.innerText || '';
+
+                                                                return text.length > 50
+                                                                    ? `${text.substring(0, 50)}...`
+                                                                    : text;
+                                                            })(),
+                                                        }}
+                                                    />
                                                 </TableCell>
                                                 <TableCell>
                                                     {(() => {

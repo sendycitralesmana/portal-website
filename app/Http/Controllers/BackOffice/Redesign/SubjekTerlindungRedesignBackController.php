@@ -58,12 +58,11 @@ class SubjekTerlindungRedesignBackController extends Controller
     public function store(TugasFungsiRequest $request)
     {
         try {
+            $gambarPath = null;
+
             if ($request->hasFile('gambar')) {
-
-                $path = Storage::disk('s3')
+                $gambarPath = Storage::disk('s3')
                     ->putFile('subjek-terlindung', $request->file('gambar'));
-
-                $gambarPath = $path;
             }
 
             TugasFungsi::create([

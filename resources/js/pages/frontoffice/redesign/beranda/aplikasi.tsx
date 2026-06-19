@@ -53,7 +53,7 @@ export default function AplikasiSection() {
             <div className="container mx-auto">
                 {/* Header */}
                 <div className="mb-6">
-                    <p className="text-lg md:text-xl lg:text-2xl font-bold text-gray-800">Aplikasi LPSK</p>
+                    <p className="text-lg md:text-xl lg:text-2xl font-bold ">Tautan Pintas Layanan</p>
                     <div className="mt-2 h-1 w-16 rounded-full bg-gradient-to-r from-amber-700 to-amber-400"></div>
                 </div>
 
