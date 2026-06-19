@@ -118,7 +118,7 @@ Route::middleware('auth')->group(function () {
             Route::get('/', [InstitusionController::class, 'index'])->name('backoffice.lembaga.index');
             Route::get('/add', [InstitusionController::class, 'create'])->name('backoffice.lembaga.create');
             Route::post('/simpan', [InstitusionController::class, 'store'])->name('backoffice.lembaga.store');
-            Route::get('/preview-document', [InstitusionController::class, 'previewDocument'])->name('backoffice.lembaga.preview-document');
+            // Route::get('/preview-document', [InstitusionController::class, 'previewDocument'])->name('backoffice.lembaga.preview-document');
 
             // grup id
             Route::prefix('{id}')->group(function () {

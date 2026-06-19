@@ -55,7 +55,7 @@ export default function HeroCarousel() {
 
                         return (
                             <CarouselItem key={index}>
-                                <div className="relative h-[300px] w-full overflow-hidden sm:h-[450px] md:h-[650px] lg:h-[760px]">
+                                <div className="relative h-[300px] w-full overflow-hidden sm:h-[450px] md:h-[650px] lg:h-[840px]">
                                     {/* Background Image */}
                                     <img src={slide.image} alt={slide.title} className="absolute inset-0 h-full w-full object-cover object-bottom" />
 

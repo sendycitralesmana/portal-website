@@ -85,9 +85,6 @@ export default function Header() {
 
   const closeMenu = () => setActiveMenu(null)
 
-  const isHome = url === "/" || url === "/redesign/beranda"
-  
-
   const getMenuItems = (): MenuItem[] => {
     switch (activeMenu) {
       case "Layanan dan Informasi":
@@ -103,7 +100,6 @@ export default function Header() {
     }
   }
     const [scrolled, setScrolled] = useState(false);
-    const isTransparent = isHome && !scrolled
 
     useEffect(() => {
         const handleScroll = () => {
@@ -116,15 +112,7 @@ export default function Header() {
 
   return (
     <>
-      <header
-  className={`fixed top-0 left-0 right-0 z-50 border-b transition-all duration-300 ${
-    isHome
-      ? scrolled
-        ? "bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border-border shadow-sm text-slate-700 dark:text-slate-200"
-        : "bg-transparent border-transparent text-slate-200"
-      : "bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border-border shadow-sm text-slate-700 dark:text-slate-200"
-  }`}
->
+      <header className="fixed top-0 left-0 right-0 z-50 border-b border-border bg-background/80 backdrop-blur-md">
 
         <div className="md:pl-16 lg:pl-24 mx-auto px-6">
           <div className="flex items-center justify-between h-20">
@@ -145,14 +133,11 @@ export default function Header() {
                   key={menu}
                   onClick={() => toggleMenu(menu)}
                   className={cn(
-  "h-full flex items-center border-b-2 transition-colors duration-200 cursor-pointer uppercase",
-  isTransparent
-    ? "text-slate-200"
-    : "text-slate-700 dark:text-slate-200",
-  activeMenu === menu
-    ? "text-amber-500 border-amber-500"
-    : "border-transparent hover:text-amber-500"
-)}
+                    "h-full flex items-center border-b-2 transition-colors duration-200 cursor-pointer",
+                    activeMenu === menu
+                      ? "text-amber-700 border-amber-700"
+                      : "border-transparent hover:text-amber-700"
+                  )}
                 >
                   {menu}
                 </button>
@@ -162,35 +147,18 @@ export default function Header() {
             {/* RIGHT SECTION */}
             <div className="hidden lg:flex items-center gap-4">
               <div className="relative">
-                <div className="relative">
-  <Search
-  size={16}
-  className={cn(
-    "absolute left-3 top-1/2 -translate-y-1/2 transition-all duration-300 z-10",
-    isTransparent
-  ? "text-slate-200 drop-shadow-[0_2px_6px_rgba(0,0,0,0.95)]"
-  : "text-muted-foreground"
-  )}
-/>
-
-  <input
-    className={cn(
-      "pl-9 pr-4 py-1.5 rounded-full text-sm border transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-amber-500",
-      isTransparent
-  ? "bg-white/10 text-slate-200 placeholder-white/70 border-white/20 backdrop-blur-md"
-  : "bg-muted text-slate-700 dark:text-slate-200 border-border"
-    )}
-    placeholder="Cari..."
-  />
-</div>
+                <Search
+                  size={16}
+                  className="absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground"
+                />
+                <input className="bg-muted pl-9 pr-4 py-1.5 rounded-full text-sm border border-border focus:outline-none focus:ring-2 focus:ring-amber-500 transition" />
               </div>
 
-              {/* <div className="w-8 h-8 bg-red-700 text-slate-200 rounded-full flex items-center justify-center text-xs font-medium border-amber-400 border-2">
+              {/* <div className="w-8 h-8 bg-red-700 text-white rounded-full flex items-center justify-center text-xs font-medium border-amber-400 border-2">
                 ID
               </div> */}
 
-              {/* <ModeToggle /> */}
-              <ModeToggle transparent={isTransparent} />
+              <ModeToggle />
             </div>
 
             {/* MOBILE HAMBURGER */}
@@ -205,10 +173,10 @@ export default function Header() {
 
         {/* DESKTOP MEGA MENU */}
         {activeMenu && (
-          <div className="absolute left-0 right-0 flex justify-center top-20 hidden md:flex text-slate-700 dark:text-slate-200">
+          <div className="absolute left-0 right-0 flex justify-center top-20 hidden md:flex">
             <div className="w-full max-w-7xl bg-background border border-border shadow-xl rounded-b-2xl overflow-hidden ">
 
-              <div className="bg-gradient-to-r from-red-900 to-red-700 text-slate-200 px-6 py-3 flex justify-between items-center border-amber-400 border-b-2">
+              <div className="bg-gradient-to-r from-red-900 to-red-700 text-white px-6 py-3 flex justify-between items-center border-amber-400 border-b-2">
                 <span className="font-bold text-sm">{activeMenu}</span>
                 <button className="cursor-pointer border-amber-400 border-2 rounded-2xl" onClick={closeMenu}>
                   <X size={16} />
@@ -286,7 +254,7 @@ export default function Header() {
               </div>
 
               {/* ID */}
-              {/* <div className="w-9 h-9 bg-red-900 text-slate-200 rounded-full flex items-center justify-center text-xs font-medium shrink-0">
+              {/* <div className="w-9 h-9 bg-red-900 text-white rounded-full flex items-center justify-center text-xs font-medium shrink-0">
                 ID
               </div> */}
 
@@ -365,7 +333,6 @@ export default function Header() {
       )}
 
       {/* <div className="h-20" /> */}
-      {!isHome && <div className="h-20" />}
     </>
   )
 }
