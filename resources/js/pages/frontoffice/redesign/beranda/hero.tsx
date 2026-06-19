@@ -21,7 +21,7 @@ const slides: Slide[] = [
     {
         title: 'LPSK',
         subtitle: 'Lembaga Perlindungan Saksi dan Korban',
-        deskripsi: 'Lembaga nonstruktural yang bertanggung jawab memberikan perlindungan dan bantuan kepada saksi dan korban.',
+        deskripsi: 'Lembaga Perlindungan Saksi dan Korban adalah lembaga negara yang didirikan dan bertanggung jawab untuk menangani pemberian perlindungan dan bantuan pada saksi dan korban.',
         image: '/images/hero-1.png',
         href: null,
     },
@@ -65,7 +65,7 @@ export default function HeroCarousel() {
                                     {/* Content */}
                                     <div className="relative z-10 flex h-full items-center">
                                         <div className="container mx-auto px-5 lg:px-12">
-                                            <div className="max-w-4xl">
+                                            <div className="max-w-5xl">
                                                 {/* Title */}
                                                 <p className="mb-1 text-lg font-bold text-yellow-400 sm:text-2xl md:mb-2 md:text-4xl lg:text-5xl">
                                                     {slide.title}
@@ -80,7 +80,7 @@ export default function HeroCarousel() {
 
                                                 {/* Description */}
                                                 {slide.deskripsi && (
-                                                    <p className="mb-3 max-w-xl text-[11px] leading-snug text-white/90 sm:text-sm md:mb-6 md:max-w-2xl md:text-base md:leading-relaxed lg:max-w-3xl lg:text-lg">
+                                                    <p className="mb-3 max-w-xl text-[12px] leading-snug text-white/90 sm:text-sm md:mb-6 md:max-w-2xl md:text-base md:leading-relaxed lg:max-w-4xl lg:text-lg">
                                                         {slide.deskripsi}
                                                     </p>
                                                 )}
