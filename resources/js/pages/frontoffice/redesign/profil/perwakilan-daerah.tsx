@@ -83,12 +83,25 @@ const PerwakilanDaerah: PageWithLayout<Props> = ({ perwakilanDaerahs }) => {
                                     {/* GRID */}
                                     <div className="grid grid-cols-1 items-stretch gap-8 lg:grid-cols-12">
                                         {/* FOTO */}
-                                        <div className="lg:col-span-4">
+                                        {/* <div className="lg:col-span-4">
                                             <div className="relative h-[220px] w-full overflow-hidden rounded-2xl border border-slate-200 shadow-md md:h-[260px] lg:h-[320px] dark:border-slate-800">
                                                 <img
                                                     src={item.gambar ?? '/images/logo-lg.png'}
                                                     alt={`Foto ${item.kantor}`}
                                                     className="h-full w-full object-contain transition-transform duration-500 group-hover:scale-105"
+                                                />
+                                            </div>
+                                        </div> */}
+
+                                        {/* FOTO */}
+                                        <div className="lg:col-span-4">
+                                            <div className="relative h-[220px] w-full overflow-hidden rounded-2xl border border-slate-200 shadow-md md:h-[260px] lg:h-[320px] dark:border-slate-800">
+                                                <img
+                                                    src={item.gambar ?? '/images/logo-lg.png'}
+                                                    alt={`Foto ${item.kantor}`}
+                                                    className={`h-full w-full transition-transform duration-500 group-hover:scale-105 ${
+                                                        item.gambar ? 'object-cover' : 'object-contain'
+                                                    }`}
                                                 />
                                             </div>
                                         </div>
