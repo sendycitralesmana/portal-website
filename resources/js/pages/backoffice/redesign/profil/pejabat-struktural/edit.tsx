@@ -2,28 +2,22 @@ import HeaderTitle from '@/components/header-title';
 import InputError from '@/components/input-error';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
+import { Dialog, DialogContent, DialogTrigger } from '@/components/ui/dialog';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Textarea } from '@/components/ui/textarea';
-import { Dialog, DialogContent, DialogTrigger } from '@/components/ui/dialog';
 import AppLayoutRedesign from '@/layouts/backoffice-redesign/app-layout-redesign';
 import { Head, Link, useForm } from '@inertiajs/react';
-import { ArrowLeft, Edit, RotateCcw, FileText, Users } from 'lucide-react';
+import { ArrowLeft, Edit, RotateCcw, Users } from 'lucide-react';
 import React from 'react';
-import pejabatStruktural from '@/pages/frontoffice/redesign/profil/pejabat-struktural';
-import {
-    Select,
-    SelectContent,
-    SelectItem,
-    SelectTrigger,
-    SelectValue,
-} from '@/components/ui/select';
 
 interface PejabatStruktural {
     id: number;
     kategori: string;
     nama: string;
     jabatan: string;
+    deskripsi: string;
     foto: string | null;
 }
 
@@ -31,22 +25,18 @@ interface EditPejabatStrukturalProps {
     pejabatStruktural: PejabatStruktural;
 }
 
-export default function EditPejabatStruktural({
-    pejabatStruktural,
-}: EditPejabatStrukturalProps) {
+export default function EditPejabatStruktural({ pejabatStruktural }: EditPejabatStrukturalProps) {
     const [isResetting, setIsResetting] = React.useState(false);
 
-    const [currentImage] = React.useState<string | null>(
-        pejabatStruktural.foto ?? null,
-    );
+    const [currentImage] = React.useState<string | null>(pejabatStruktural.foto ?? null);
 
-    const [newImagePreview, setNewImagePreview] =
-        React.useState<string | null>(null);
+    const [newImagePreview, setNewImagePreview] = React.useState<string | null>(null);
 
     const { data, setData, reset, post, processing, errors } = useForm({
         kategori: pejabatStruktural.kategori ?? '',
         nama: pejabatStruktural.nama ?? '',
         jabatan: pejabatStruktural.jabatan ?? '',
+        deskripsi: pejabatStruktural.deskripsi ?? '',
         foto: null as File | null,
         _method: 'put',
     });
@@ -61,12 +51,9 @@ export default function EditPejabatStruktural({
     const onHandleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
 
-        post(
-            `/redesign/backoffice/profil/pejabat-struktural/${pejabatStruktural.id}/update`,
-            {
-                forceFormData: true,
-            },
-        );
+        post(`/redesign/backoffice/profil/pejabat-struktural/${pejabatStruktural.id}/update`, {
+            forceFormData: true,
+        });
     };
 
     return (
@@ -96,42 +83,26 @@ export default function EditPejabatStruktural({
                 <Card>
                     <CardContent className="p-6">
                         <form className="space-y-6" onSubmit={onHandleSubmit}>
-                            
                             {/* Kategori */}
                             <div className="grid gap-1.5">
                                 <Label>
                                     Kategori <span className="text-red-500">*</span>
                                 </Label>
 
-                                <Select
-                                    value={data.kategori}
-                                    onValueChange={(value) => setData('kategori', value)}
-                                >
-                                    <SelectTrigger
-                                        className={errors.kategori ? 'border-red-500' : ''}
-                                    >
+                                <Select value={data.kategori} onValueChange={(value) => setData('kategori', value)}>
+                                    <SelectTrigger className={errors.kategori ? 'border-red-500' : ''}>
                                         <SelectValue placeholder="Pilih kategori pimpinan" />
                                     </SelectTrigger>
 
                                     <SelectContent>
-                                        <SelectItem value="sekretaris jenderal">
-                                            Sekretaris Jenderal
-                                        </SelectItem>
-                                        <SelectItem value="kepala biro lpsk">
-                                            Kepala Biro LPSK
-                                        </SelectItem>
-                                        <SelectItem value="kepala perwakilan lpsk daerah">
-                                            Kepala Perwakilan LPSK Daerah
-                                        </SelectItem>
-                                        <SelectItem value="tenaga ahli">
-                                            Tenaga Ahli
-                                        </SelectItem>
+                                        <SelectItem value="sekretaris jenderal">Sekretaris Jenderal</SelectItem>
+                                        <SelectItem value="kepala biro lpsk">Kepala Biro LPSK</SelectItem>
+                                        <SelectItem value="kepala perwakilan lpsk daerah">Kepala Perwakilan LPSK Daerah</SelectItem>
+                                        <SelectItem value="tenaga ahli">Tenaga Ahli</SelectItem>
                                     </SelectContent>
                                 </Select>
 
-                                {errors.kategori && (
-                                    <InputError message={errors.kategori} />
-                                )}
+                                {errors.kategori && <InputError message={errors.kategori} />}
                             </div>
 
                             {/* Nama */}
@@ -141,16 +112,10 @@ export default function EditPejabatStruktural({
                                 </Label>
                                 <Input
                                     value={data.nama}
-                                    onChange={(e) =>
-                                        setData('nama', e.target.value)
-                                    }
-                                    className={
-                                        errors.nama ? 'border-red-500' : ''
-                                    }
+                                    onChange={(e) => setData('nama', e.target.value)}
+                                    className={errors.nama ? 'border-red-500' : ''}
                                 />
-                                {errors.nama && (
-                                    <InputError message={errors.nama} />
-                                )}
+                                {errors.nama && <InputError message={errors.nama} />}
                             </div>
 
                             {/* Jabatan */}
@@ -160,16 +125,24 @@ export default function EditPejabatStruktural({
                                 </Label>
                                 <Input
                                     value={data.jabatan}
-                                    onChange={(e) =>
-                                        setData('jabatan', e.target.value)
-                                    }
-                                    className={
-                                        errors.jabatan ? 'border-red-500' : ''
-                                    }
+                                    onChange={(e) => setData('jabatan', e.target.value)}
+                                    className={errors.jabatan ? 'border-red-500' : ''}
                                 />
-                                {errors.jabatan && (
-                                    <InputError message={errors.jabatan} />
-                                )}
+                                {errors.jabatan && <InputError message={errors.jabatan} />}
+                            </div>
+
+                            {/* Deskripsi */}
+                            <div className="grid gap-1.5">
+                                <Label>
+                                    Deskripsi
+                                </Label>
+                                <Textarea
+                                    rows={6}
+                                    value={data.deskripsi}
+                                    onChange={(e) => setData('deskripsi', e.target.value)}
+                                    className={errors.deskripsi ? 'border-red-500 focus-visible:ring-red-500' : ''}
+                                />
+                                {errors.deskripsi && <InputError message={errors.deskripsi} />}
                             </div>
 
                             {/* Foto */}
@@ -180,33 +153,25 @@ export default function EditPejabatStruktural({
                                     type="file"
                                     accept="image/*"
                                     onChange={(e) => {
-                                        const file =
-                                            e.target.files?.[0] ?? null;
+                                        const file = e.target.files?.[0] ?? null;
 
                                         setData('foto', file);
 
                                         if (file) {
-                                            setNewImagePreview(
-                                                URL.createObjectURL(file),
-                                            );
+                                            setNewImagePreview(URL.createObjectURL(file));
                                         } else {
                                             setNewImagePreview(null);
                                         }
                                     }}
-                                    className={
-                                        errors.foto ? 'border-red-500' : ''
-                                    }
+                                    className={errors.foto ? 'border-red-500' : ''}
                                 />
 
                                 {(currentImage || newImagePreview) && (
                                     <div className="mt-6 grid gap-6 md:grid-cols-2">
-
                                         {/* Current Image */}
                                         {currentImage && (
                                             <div>
-                                                <Label className="mb-2 block text-sm font-medium">
-                                                    Foto Saat Ini
-                                                </Label>
+                                                <Label className="mb-2 block text-sm font-medium">Foto Saat Ini</Label>
 
                                                 <Dialog>
                                                     <DialogTrigger asChild>
@@ -231,9 +196,7 @@ export default function EditPejabatStruktural({
                                         {/* New Preview */}
                                         {newImagePreview && (
                                             <div>
-                                                <Label className="mb-2 block text-sm font-medium text-blue-600">
-                                                    Pratinjau Foto Baru
-                                                </Label>
+                                                <Label className="mb-2 block text-sm font-medium text-blue-600">Pratinjau Foto Baru</Label>
 
                                                 <Dialog>
                                                     <DialogTrigger asChild>
@@ -257,9 +220,7 @@ export default function EditPejabatStruktural({
                                     </div>
                                 )}
 
-                                {errors.foto && (
-                                    <InputError message={errors.foto} />
-                                )}
+                                {errors.foto && <InputError message={errors.foto} />}
                             </div>
 
                             {/* Actions */}
@@ -270,20 +231,11 @@ export default function EditPejabatStruktural({
                                     disabled={isResetting}
                                     className="flex items-center gap-2 bg-amber-400 text-black hover:bg-amber-500"
                                 >
-                                    <RotateCcw
-                                        className={`size-4 ${
-                                            isResetting ? 'animate-spin' : ''
-                                        }`}
-                                    />
+                                    <RotateCcw className={`size-4 ${isResetting ? 'animate-spin' : ''}`} />
                                     Reset
                                 </Button>
 
-                                <Button
-                                    type="submit"
-                                    disabled={processing}
-                                    variant="blue"
-                                    className="flex items-center gap-2"
-                                >
+                                <Button type="submit" disabled={processing} variant="blue" className="flex items-center gap-2">
                                     {processing ? (
                                         <>
                                             <RotateCcw className="size-4 animate-spin" />

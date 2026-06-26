@@ -61,6 +61,7 @@ export default function CreatePublikasi() {
         { label: 'Video', value: 'Video' },
         { label: 'Laporan', value: 'Laporan' },
         { label: 'Berita', value: 'Berita' },
+        { label: 'Berita Foto', value: 'Berita Foto' },
     ];
 
     const handleReset = () => {

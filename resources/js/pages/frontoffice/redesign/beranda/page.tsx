@@ -10,6 +10,7 @@ import Tablist from "./tablist";
 import PermohonanPengajuanPerlindungan from "./permohonan-pengajuan-perlindungan";
 import VideoSection from "./video-section";
 import AplikasiSection from "./aplikasi";
+import LayananSection from "./layanan";
 
 interface Post {
   id: number
@@ -29,16 +30,25 @@ interface VideoInfo {
   embed_url: string
 }
 
-interface Props {
-  sosialMedias: SosialMedia[];
-  videoInfos: VideoInfo[];
-  siaranPers: Post[]
-  beritaFotos: Post[]
-  beritaKegiatans: Post[]
-  pengumumans: Post[]
+interface Layanan {
+    id: number;
+    judul: string;
+    deskripsi: string | null;
+    link: string;
+    gambar: string | null;
 }
 
-const BerandaPage = ({ sosialMedias, videoInfos, siaranPers, beritaFotos, beritaKegiatans, pengumumans }: Props) => {
+interface Props {
+    sosialMedias: SosialMedia[];
+    videoInfos: VideoInfo[];
+    siaranPers: Post[];
+    beritaFotos: Post[];
+    beritaKegiatans: Post[];
+    pengumumans: Post[];
+    layanans: Layanan[];
+}
+
+const BerandaPage = ({ sosialMedias, videoInfos, siaranPers, beritaFotos, beritaKegiatans, pengumumans, layanans }: Props) => {
   return (
     <div>
       <Head title="Beranda">
@@ -48,7 +58,6 @@ const BerandaPage = ({ sosialMedias, videoInfos, siaranPers, beritaFotos, berita
 
       {/* <SorotPratinjau /> */}
       <HeroCarousel />
-      {/* <PermohonanPengajuanPerlindungan /> */}
       <Alert />
       <Tablist
         siaranPers={siaranPers}
@@ -57,7 +66,7 @@ const BerandaPage = ({ sosialMedias, videoInfos, siaranPers, beritaFotos, berita
         pengumumans={pengumumans}
       />
       <VideoSection videoInfos={videoInfos} />
-      <AplikasiSection />
+      <LayananSection layanans={layanans}/>
       <SocialMediaSection sosialMedias={sosialMedias} />
     </div>
   );

@@ -24,5 +24,6 @@ class DatabaseSeeder extends Seeder
         $this->call(SosialMediaSeeder::class);
         $this->call(StrukturOrganisasiSeeder::class);
         $this->call(VideoInfoSeeder::class);
+        $this->call(LayananSeeder::class);
     }
 }

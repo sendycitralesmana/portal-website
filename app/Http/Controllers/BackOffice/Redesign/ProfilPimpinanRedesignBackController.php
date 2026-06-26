@@ -57,12 +57,11 @@ class ProfilPimpinanRedesignBackController extends Controller
     public function store(ProfilPimpinanRequest $request)
     {
         try {
+            $fotoPath = null;
+
             if ($request->hasFile('foto')) {
-
-                $path = Storage::disk('s3')
+                $fotoPath = Storage::disk('s3')
                     ->putFile('profil-pimpinan', $request->file('foto'));
-
-                $fotoPath = $path;
             }
 
             ProfilPimpinan::create([

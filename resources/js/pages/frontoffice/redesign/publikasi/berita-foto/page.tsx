@@ -1,7 +1,12 @@
 import { Head, Link } from '@inertiajs/react';
 import { Search } from 'lucide-react';
-import { ReactElement, ReactNode, useState } from 'react';
+import { ReactElement, ReactNode, useEffect, useState } from 'react';
 import MainLayout from '../../layout/main';
+
+import { Pagination, PaginationContent, PaginationItem, PaginationLink } from '@/components/ui/pagination';
+
+import type { CarouselApi } from '@/components/ui/carousel';
+import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '@/components/ui/carousel';
 
 /**
  * Optional: reusable type untuk semua halaman Inertia
@@ -11,112 +16,168 @@ type PageWithLayout<P = {}> = {
     layout?: (page: ReactElement) => ReactNode;
 };
 
-interface BeritaFoto {
+interface PublikasiMedia {
     id: number;
-    title: string;
-    date: string;
-    image: string;
-    excerpt: string;
+    kategori: string;
+    judul: string;
+    deskripsi: string;
+    file: string;
+    created_at: string;
 }
 
-const BeritaFotoPage: PageWithLayout = () => {
-    const [search, setSearch] = useState('');
+interface Publikasi {
+    id: number;
+    jenis: string;
+    kategori: string;
+    judul: string;
+    slug: string;
+    deskripsi: string;
+    gambar: string;
+    created_at: string;
+    media: PublikasiMedia[];
+}
 
-    const beritaFoto: BeritaFoto[] = [
+interface Props {
+    publikasis: {
+        data: Publikasi[];
+        meta: {
+            from?: number;
+            to?: number;
+            total?: number;
+            last_page?: number;
+            links?: any[];
+        };
+    };
+    state: {
+        search: string;
+    };
+}
+
+function BeritaFotoCard({ item }: { item: Publikasi }) {
+    const [api, setApi] = useState<CarouselApi>();
+    const [current, setCurrent] = useState(0);
+
+    const slides = [
         {
-            id: 1,
-            title: 'Berita Foto: LPSK Berikan Perlindungan kepada Saksi Kasus Tindak Pidana Perdagangan Orang',
-            date: '20 Februari 2026',
-            image: '/images/background.webp',
-            excerpt:
-                'Dokumentasi kegiatan LPSK dalam memberikan perlindungan kepada saksi kasus tindak pidana perdagangan orang guna menjamin keamanan dan keberanian saksi dalam proses persidangan.',
+            id: `cover-${item.id}`,
+            image: item.gambar,
+            title: item.judul,
+            description: item.deskripsi,
+            date: item.created_at,
         },
-        {
-            id: 2,
-            title: 'Berita Foto: LPSK Dorong Penguatan Hak Restitusi bagi Korban Kekerasan Seksual',
-            date: '13 Februari 2026',
-            image: '/images/background.webp',
-            excerpt:
-                'Momen kegiatan LPSK dalam mendorong penguatan hak restitusi bagi korban kekerasan seksual sebagai bagian dari pemulihan dan perlindungan hukum.',
-        },
-        {
-            id: 3,
-            title: 'Berita Foto: Koordinasi LPSK dengan Aparat Penegak Hukum',
-            date: '7 Februari 2026',
-            image: '/images/background.webp',
-            excerpt:
-                'Dokumentasi koordinasi LPSK bersama aparat penegak hukum dalam rangka memperkuat sistem perlindungan saksi dan korban agar proses hukum berjalan aman dan adil.',
-        },
-        {
-            id: 4,
-            title: 'Berita Foto: LPSK Berikan Bantuan Medis dan Psikologis kepada Korban Terorisme',
-            date: '2 Februari 2026',
-            image: '/images/background.webp',
-            excerpt:
-                'Kegiatan pemberian bantuan medis dan rehabilitasi psikologis kepada korban tindak pidana terorisme sebagai bentuk dukungan negara dalam pemulihan korban.',
-        },
-        {
-            id: 5,
-            title: 'Berita Foto: Sosialisasi Mekanisme Permohonan Perlindungan',
-            date: '28 Januari 2026',
-            image: '/images/background.webp',
-            excerpt:
-                'Dokumentasi sosialisasi nasional LPSK mengenai mekanisme pengajuan permohonan perlindungan saksi dan korban kepada masyarakat.',
-        },
-        {
-            id: 6,
-            title: 'Berita Foto: Fasilitasi Pengajuan Kompensasi bagi Korban Pelanggaran HAM Berat',
-            date: '22 Januari 2026',
-            image: '/images/background.webp',
-            excerpt:
-                'Momen LPSK dalam memfasilitasi pengajuan kompensasi kepada pemerintah bagi korban pelanggaran hak asasi manusia berat.',
-        },
-        {
-            id: 7,
-            title: 'Berita Foto: Penguatan Layanan Perlindungan Darurat bagi Saksi Terancam',
-            date: '15 Januari 2026',
-            image: '/images/background.webp',
-            excerpt:
-                'Dokumentasi penguatan layanan perlindungan darurat LPSK bagi saksi yang menghadapi ancaman serius akibat keterangannya dalam proses hukum.',
-        },
-        {
-            id: 8,
-            title: 'Berita Foto: Peningkatan Kapasitas SDM Pendamping Korban',
-            date: '10 Januari 2026',
-            image: '/images/background.webp',
-            excerpt:
-                'Kegiatan pelatihan peningkatan kapasitas sumber daya manusia LPSK dalam memberikan pendampingan profesional dan berperspektif korban.',
-        },
-        {
-            id: 9,
-            title: 'Berita Foto: Sinergi LPSK dengan Pemerintah Daerah',
-            date: '5 Januari 2026',
-            image: '/images/background.webp',
-            excerpt:
-                'Dokumentasi kerja sama LPSK dengan pemerintah daerah untuk memperluas jangkauan perlindungan dan layanan bagi korban tindak pidana.',
-        },
-        {
-            id: 10,
-            title: 'Berita Foto: Komitmen Negara Hadir Melindungi Saksi dan Korban',
-            date: '2 Januari 2026',
-            image: '/images/background.webp',
-            excerpt:
-                'Potret kegiatan LPSK yang menegaskan komitmen negara dalam melindungi saksi dan korban melalui mekanisme perlindungan yang komprehensif dan berkelanjutan.',
-        },
+
+        ...(item.media
+            ?.filter((media) => media.kategori?.toLowerCase() === 'gambar')
+            .map((media) => ({
+                id: media.id,
+                image: media.file,
+                title: media.judul,
+                description: media.deskripsi,
+                date: media.created_at,
+            })) ?? []),
     ];
 
-    const filteredData = beritaFoto.filter((item) => item.title.toLowerCase().includes(search.toLowerCase()));
+    useEffect(() => {
+        if (!api) return;
+
+        const handleSelect = () => {
+            setCurrent(api.selectedScrollSnap());
+        };
+
+        handleSelect();
+
+        api.on('select', handleSelect);
+
+        return () => {
+            api.off('select', handleSelect);
+        };
+    }, [api]);
+
+    const activeSlide = slides[current] ?? slides[0];
+
+    return (
+        // diubah disini
+        <div className="flex h-full flex-col overflow-hidden rounded-md border bg-[#eee] dark:bg-[#3a3a3a] p-4">
+            <div className="mb-4">
+                <Carousel
+                    setApi={setApi}
+                    opts={{
+                        loop: true,
+                    }}
+                    className="w-full"
+                >
+                    <CarouselContent>
+                        {slides.map((slide, index) => (
+                            <CarouselItem key={`${slide.id}-${index}`}>
+                                <div className="relative h-72 w-full overflow-hidden rounded-xl">
+                                    <div className="absolute top-3 right-3 z-20 rounded-full bg-black/70 px-3 py-1 text-xs font-medium text-white">
+                                        {current + 1} / {slides.length}
+                                    </div>
+
+                                    <img
+                                        src={slide.image}
+                                        alt={slide.title}
+                                        className="absolute inset-0 h-full w-full scale-110 object-cover opacity-40 blur-md"
+                                    />
+
+                                    <img src={slide.image} alt={slide.title} className="relative h-full w-full object-contain" />
+                                </div>
+                            </CarouselItem>
+                        ))}
+                    </CarouselContent>
+
+                    {slides.length > 1 && (
+                        <>
+                            <CarouselPrevious className="absolute top-1/2 left-3 z-20 h-10 w-10 -translate-y-1/2 border-0 bg-black/70 text-white hover:bg-black hover:text-white" />
+
+                            <CarouselNext className="absolute top-1/2 right-3 z-20 h-10 w-10 -translate-y-1/2 border-0 bg-black/70 text-white hover:bg-black hover:text-white" />
+                        </>
+                    )}
+                </Carousel>
+            </div>
+
+            <div className="flex h-[170px] flex-col">
+                <p className="mb-2 h-5 text-sm text-gray-600 dark:text-slate-200">{activeSlide.date}</p>
+
+                <Link
+                    href={`/redesign/berita-foto/${item.slug}`}
+                    className="mb-3 block h-14 overflow-hidden text-lg font-semibold text-gray-900 dark:text-slate-200 dark:hover:text-amber-200 transition hover:text-red-900"
+                >
+                    {activeSlide.title}
+                </Link>
+
+                <p className="line-clamp-4 h-20 text-justify text-sm text-gray-700 dark:text-slate-300">{activeSlide.description}</p>
+            </div>
+        </div>
+    );
+}
+
+const BeritaFotoPage: PageWithLayout<Props> = ({ publikasis, state }) => {
+    const formatDate = (dateString: string) => {
+        const date = new Date(dateString);
+
+        if (isNaN(date.getTime())) {
+            return null;
+        }
+
+        return date.toLocaleDateString('id-ID', {
+            weekday: 'long',
+            day: 'numeric',
+            month: 'long',
+            year: 'numeric',
+        });
+    };
 
     return (
         <>
-            <Head title="Berita Foto">
-                <meta name="description" content="Halaman Berita Foto" />
+            <Head title="Publikasi">
+                <meta name="description" content="Halaman Publikasi" />
                 <link rel="icon" href="/images/favicon.ico" type="image/x-icon" />
             </Head>
 
             <div className="min-h-screen">
                 {/* Breadcrumb */}
-                <div className="bg-gradient-to-l from-red-700 to-red-900 py-3 text-sm text-white border-b-amber-400 border-b-2">
+                <div className="border-b-2 border-b-amber-400 bg-gradient-to-l from-red-700 to-red-900 py-3 text-sm text-white">
                     <div className="container mx-auto px-4">
                         Publikasi / <span className="font-semibold">Berita Foto</span>
                     </div>
@@ -132,82 +193,75 @@ const BeritaFotoPage: PageWithLayout = () => {
                 {/* Content */}
                 <div className="container mx-auto px-4 py-8">
                     {/* Search */}
-                    <div className="mb-6 rounded-2xl bg-[#3a3a3a] p-4 shadow-md">
+                    <form method="get" className="mb-6 rounded-2xl bg-[#3a3a3a] p-4 shadow-md">
                         <div className="flex flex-col gap-3 md:flex-row md:items-center md:gap-4">
                             <label className="text-sm font-semibold text-white">Pencarian</label>
 
-                            {/* Input with Icon */}
                             <div className="relative flex-1">
                                 <Search size={16} className="absolute top-1/2 left-4 -translate-y-1/2 text-white" />
 
                                 <input
                                     type="text"
+                                    name="search"
+                                    defaultValue={state.search}
                                     placeholder="Masukkan kata pencarian"
                                     className="w-full rounded-full bg-[#6c6c6c] py-2 pr-4 pl-10 text-sm text-white placeholder-white outline-none"
-                                    value={search}
-                                    onChange={(e) => setSearch(e.target.value)}
                                 />
                             </div>
 
-                            {/* Button with Icon */}
-                            <button className="flex items-center gap-2 rounded-full bg-white px-5 py-2 text-sm font-medium transition hover:bg-gray-200">
-                                <Search size={16} />
-                                Cari
+                            <button
+                                type="submit"
+                                className="flex items-center gap-2 rounded-full bg-white px-5 py-2 text-sm font-medium transition hover:bg-gray-200"
+                            >
+                                <Search size={16} className='dark:text-slate-700'/>
+                                <p className='dark:text-slate-700'>Cari</p>
                             </button>
                         </div>
-                    </div>
+                    </form>
 
-                    {/* List Container */}
-                    <div className="overflow-hidden rounded-md border bg-[#eee]">
-                        {filteredData.length > 0 ? (
-                            filteredData.map((item, index) => (
-                                <div
-                                    key={item.id}
-                                    className={`flex flex-col gap-4 p-6 md:flex-row ${
-                                        index !== filteredData.length - 1 ? 'border-b border-gray-400' : ''
-                                    }`}
-                                >
-                                    <img src={item.image} alt={item.title} className="h-28 w-full rounded-xl object-cover md:w-40" />
+                    {/* List */}
 
-                                    <div className="flex-1">
-                                        <p className="mb-1 text-sm text-gray-600">{item.date}</p>
-                                        <Link
-                                            href={`/redesign/publikasi/berita-foto/${item.id}/detail`}
-                                            className="mb-2 block cursor-pointer text-base font-semibold text-gray-900 transition hover:text-red-900 md:text-lg lg:text-xl"
-                                        >
-                                            {item.title}
-                                        </Link>
-                                        <p className="text-sm text-gray-700">{item.excerpt}</p>
-                                    </div>
-                                </div>
-                            ))
+                    <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+                        {publikasis.data.length > 0 ? (
+                            publikasis.data.map((item) => <BeritaFotoCard key={item.id} item={item} />)
                         ) : (
-                            <div className="py-10 text-center text-gray-600">Tidak ada Artikel yang tersedia</div>
+                            <div className="col-span-full py-10 text-center text-gray-600">Tidak ada Artikel yang tersedia</div>
                         )}
                     </div>
 
                     {/* Pagination */}
-                    <div className="mt-10 flex items-center justify-end gap-2">
-                        {/* Prev */}
-                        <button className="h-10 w-10 rounded-lg bg-[#d1d5db] transition hover:bg-[#bfc3c9]">←</button>
+                    <div className="mt-6 flex w-full flex-col items-center justify-between gap-2 lg:flex-row">
+                        <p className="text-muted-foreground text-sm">
+                            Menampilkan{' '}
+                            <span className="font-medium text-amber-600">
+                                {publikasis.meta.from ?? 0} - {publikasis.meta.to ?? 0}
+                            </span>{' '}
+                            dari total <span className="font-medium text-amber-600">{publikasis.meta.total ?? 0}</span> data
+                        </p>
 
-                        {/* Pages */}
-                        {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((num) => (
-                            <button
-                                key={num}
-                                className={`h-10 w-10 rounded-lg transition ${
-                                    num === 1 ? 'bg-[#9ca3af] font-semibold text-black' : 'bg-[#d1d5db] hover:bg-[#bfc3c9]'
-                                }`}
-                            >
-                                {num}
-                            </button>
-                        ))}
-
-                        {/* Dots */}
-                        <button className="h-10 w-10 rounded-lg bg-[#d1d5db]">...</button>
-
-                        {/* Next */}
-                        <button className="h-10 w-10 rounded-lg bg-[#d1d5db] transition hover:bg-[#bfc3c9]">→</button>
+                        {publikasis.meta.last_page && publikasis.meta.last_page > 1 && (
+                            <div className="overflow-x-auto">
+                                <Pagination>
+                                    <PaginationContent className="flex flex-wrap justify-center lg:justify-end">
+                                        {publikasis.meta.links?.map((link: any, index: number) => (
+                                            <PaginationItem key={index} className="mx-1 mb-1">
+                                                <PaginationLink
+                                                    href={link.url ?? '#'}
+                                                    isActive={link.active}
+                                                    className={`rounded-md px-3 py-1 transition-colors ${
+                                                        link.active
+                                                            ? 'bg-amber-600 text-white hover:bg-amber-700'
+                                                            : 'hover:bg-amber-400 hover:text-white'
+                                                    }`}
+                                                >
+                                                    {link.label.replace(/&laquo;/g, '«').replace(/&raquo;/g, '»')}
+                                                </PaginationLink>
+                                            </PaginationItem>
+                                        ))}
+                                    </PaginationContent>
+                                </Pagination>
+                            </div>
+                        )}
                     </div>
                 </div>
             </div>
@@ -216,7 +270,7 @@ const BeritaFotoPage: PageWithLayout = () => {
 };
 
 /**
- * Layout Inertia (NO ERROR)
+ * Layout Inertia
  */
 BeritaFotoPage.layout = (page: ReactElement) => <MainLayout>{page}</MainLayout>;
 

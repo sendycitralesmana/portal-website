@@ -57,16 +57,16 @@ const SubjekTerlindungPage = (props: any) => {
 
     return (
         <AppLayoutRedesign>
-            <Head title="Subjek Terlindung">
-                <meta name="description" content="Halaman Subjek Terlindung" />
+            <Head title="Subjek Perlindungan">
+                <meta name="description" content="Halaman Subjek Perlindungan" />
                 <link rel="icon" href="/images/favicon.ico" type="image/x-icon" />
             </Head>
 
             <div className="flex w-full flex-col">
                 <div className="mb-8 flex flex-col items-start justify-between gap-y-4 lg:flex-row lg:items-center">
                     <HeaderTitle
-                        title="Subjek Terlindung"
-                        subtitle="Kelola data subjek terlindung yang ditampilkan pada halaman tugas dan fungsi."
+                        title="Subjek Perlindungan"
+                        subtitle="Kelola data subjek perlindungan yang ditampilkan pada halaman tugas dan fungsi."
                         icon={Shield}
                     />
 

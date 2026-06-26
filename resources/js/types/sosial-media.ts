@@ -1,4 +1,4 @@
-export type SocialPlatform = "instagram" | "tiktok" | "youtube";
+export type SocialPlatform = "instagram" | "tiktok" | "youtube" | "twitter" | "facebook";
 
 export interface SosialMedia {
   id: number;

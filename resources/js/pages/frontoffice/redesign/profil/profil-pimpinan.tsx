@@ -80,7 +80,7 @@ const ProfilCard = ({ profil }: { profil: Profil }) => {
               .map((paragraph, i) => (
                 <p
                   key={i}
-                  className="text-base leading-relaxed text-gray-700 dark:text-gray-300"
+                  className="text-base leading-relaxed text-gray-700 dark:text-gray-300 text-justify"
                 >
                   {paragraph}
                 </p>

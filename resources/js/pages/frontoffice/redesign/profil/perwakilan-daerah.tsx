@@ -156,7 +156,8 @@ const PerwakilanDaerah: PageWithLayout<Props> = ({ perwakilanDaerahs }) => {
                                                         {item.whatsapp && (
                                                             <>
                                                                 <span className="flex items-center gap-2 font-medium text-slate-700 dark:text-slate-300">
-                                                                    <MessageCircle className="h-4 w-4 text-green-600" />
+                                                                    {/* <MessageCircle className="h-4 w-4 text-green-600" /> */}
+                                                                    <img src="/images/wa_icon.png" alt="WhatsApp" className="h-5 w-5 object-contain" />
                                                                     WhatsApp
                                                                 </span>
                                                                 <a

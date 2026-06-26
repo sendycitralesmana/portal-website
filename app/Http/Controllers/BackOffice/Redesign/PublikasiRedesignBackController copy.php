@@ -53,7 +53,7 @@ class PublikasiRedesignBackController extends Controller
                 fn ($query) => $query->orderBy(request()->field, request()->direction)
             )
             ->orderBy('created_at', 'desc')
-            ->where('gambar', '!=', null)
+            // ->where('gambar', '!=', null)
             ->paginate(request()->load ?? 10)
             ->withQueryString();
 
@@ -77,12 +77,11 @@ class PublikasiRedesignBackController extends Controller
     public function store(PublikasiRequest $request)
     {
         try {
+            $gambarPath = null;
+
             if ($request->hasFile('gambar')) {
-
-                $path = Storage::disk('s3')
+                $gambarPath = Storage::disk('s3')
                     ->putFile('publikasi-redesign', $request->file('gambar'));
-
-                $gambarPath = $path;
             }
 
             Publikasi::create([

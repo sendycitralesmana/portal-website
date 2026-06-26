@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\FrontOffice\Redesign;
 
 use App\Http\Controllers\Controller;
+use App\Http\Resources\LayananResource;
 use App\Http\Resources\PublikasiResource;
+use App\Models\Layanan;
 use App\Models\Publikasi;
 use App\Models\SosialMedia;
 use App\Models\VideoInfo;
@@ -16,6 +18,29 @@ class BerandaRedesignController extends Controller
     public function index()
     {
         return redirect()->route('redesign.maklumat');
+    }
+
+    public function cari(Request $request)
+    {
+        $search = $request->search;
+
+        if (!$search) {
+            return response()->json([]);
+        }
+
+        $publikasis = Publikasi::query()
+            ->select([
+                'id',
+                'judul',
+                'slug',
+                'kategori',
+            ])
+            ->where('judul', 'ILIKE', "%{$search}%")
+            ->latest()
+            ->limit(20)
+            ->get();
+
+        return response()->json($publikasis);
     }
 
     public function maklumat()
@@ -34,9 +59,9 @@ class BerandaRedesignController extends Controller
         );
 
         $beritaFotos = PublikasiResource::collection(
-            Publikasi::query()
-                ->where('kategori', 'Berita')
-                ->orderBy('created_at', 'asc')
+            Publikasi::query()->with('media')
+                ->where('kategori', 'Berita Foto')
+                ->orderBy('created_at', 'desc')
                 ->limit(4)
                 ->get()
         );
@@ -61,12 +86,23 @@ class BerandaRedesignController extends Controller
             ->orderBy('judul', 'desc')
             ->get();
 
+        // $layanans = Layanan::query()
+        //     ->orderBy('id', 'asc')
+        //     ->get();
+
+        $layanans = LayananResource::collection(
+            Layanan::query()
+                ->orderBy('id', 'asc')
+                ->get()
+        );
+
         $sosialMedias = SosialMedia::query()
             ->orderBy('created_at', 'asc')
             ->get();
 
         return Inertia::render('frontoffice/redesign/beranda/page', [
             'sosialMedias' => $sosialMedias,
+            'layanans' => $layanans,
             'videoInfos' => $videoInfos,
             'siaranPers' => $siaranPers,
             'beritaFotos' => $beritaFotos,
@@ -101,7 +137,8 @@ class BerandaRedesignController extends Controller
         $kategoriMap = [
             'siaran-pers' => 'Siaran Pers',
             'berita-kegiatan' => 'Berita Kegiatan',
-            'berita-foto' => 'Berita',
+            'berita-foto' => 'Berita Foto',
+            'berita' => 'Berita',
             'pengumuman' => 'Informasi',
             'laporan' => 'Laporan',
             'kajian-jurnal' => 'Kajian dan Jurnal',
@@ -120,7 +157,7 @@ class BerandaRedesignController extends Controller
             ->when(request()->search, function ($query, $value) {
                 $query->where(function ($q) use ($value) {
                     $q->where('judul', 'ILIKE', "%{$value}%")
-                    ->orWhere('deskripsi', 'ILIKE', "%{$value}%");
+                        ->orWhere('deskripsi', 'ILIKE', "%{$value}%");
                 });
             })
 
@@ -156,11 +193,11 @@ class BerandaRedesignController extends Controller
             ->firstOrFail();
 
         $publikasiTerkaits = Publikasi::query()
-        ->where('kategori', $publikasi->kategori)
-        ->where('id', '!=', $publikasi->id)
-        ->orderBy('created_at', 'desc')
-        ->limit(4)
-        ->get();
+            ->where('kategori', $publikasi->kategori)
+            ->where('id', '!=', $publikasi->id)
+            ->orderBy('created_at', 'desc')
+            ->limit(4)
+            ->get();
 
         return Inertia::render('frontoffice/redesign/publikasi/kategori/detail', [
             'kategori' => $kategori,
@@ -198,7 +235,56 @@ class BerandaRedesignController extends Controller
 
     public function beritaFoto()
     {
-        return Inertia::render('frontoffice/redesign/publikasi/berita-foto/page');
+        $publikasis = Publikasi::query()->with('media')
+            ->where('kategori', "Berita Foto")
+
+            ->when(request()->search, function ($query, $value) {
+                $query->where(function ($q) use ($value) {
+                    $q->where('judul', 'ILIKE', "%{$value}%")
+                        ->orWhere('deskripsi', 'ILIKE', "%{$value}%");
+                });
+            })
+
+            ->orderBy('created_at', 'desc')
+
+            ->paginate(request()->load ?? 10)
+            ->withQueryString()
+
+            ->through(function ($item) {
+                $item->deskripsi = Str::limit(strip_tags($item->deskripsi), 370);
+                return $item;
+            });
+
+        return Inertia::render('frontoffice/redesign/publikasi/berita-foto/page', [
+
+            'publikasis' => PublikasiResource::collection($publikasis),
+
+            'state' => [
+                'search' => request()->search ?? '',
+                'page' => request()->page ?? 1,
+                'load' => request()->load ?? 10,
+            ],
+        ]);
+    }
+
+    public function beritaFotoSlug($slug)
+    {
+        $publikasi = Publikasi::with('media')
+            ->where('slug', $slug)
+            ->firstOrFail();
+
+        $publikasiTerkaits = Publikasi::query()
+            ->where('kategori', $publikasi->kategori)
+            ->where('id', '!=', $publikasi->id)
+            ->orderBy('created_at', 'desc')
+            ->limit(4)
+            ->get();
+
+        return Inertia::render('frontoffice/redesign/publikasi/berita-foto/detail', [
+            'kategori' => "Berita Foto",
+            'publikasi' => new PublikasiResource($publikasi),
+            'publikasiTerkaits' => PublikasiResource::collection($publikasiTerkaits),
+        ]);
     }
 
     public function beritaFotoDetail($id)

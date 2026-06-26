@@ -53,7 +53,7 @@ class PublikasiRedesignBackController extends Controller
                 fn ($query) => $query->orderBy(request()->field, request()->direction)
             )
             ->orderBy('created_at', 'desc')
-            ->where('gambar', '!=', null)
+            // ->where('gambar', '!=', null)
             ->paginate(request()->load ?? 10)
             ->withQueryString();
 

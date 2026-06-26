@@ -32,6 +32,7 @@ export function AppSidebarRedesign() {
     const isTentangKami = url.startsWith('/redesign/backoffice/tentang-kami');
     const isVideoInfo = url.startsWith('/redesign/backoffice/video-info');
     const isSosialMedia = url.startsWith('/redesign/backoffice/sosial-media');
+    const isLayanan = url.startsWith('/redesign/backoffice/layanan');
     const isPublikasi = url.startsWith('/redesign/backoffice/publikasi');
     const isPengguna = url.startsWith('/redesign/backoffice/pengguna');
 
@@ -110,6 +111,16 @@ export function AppSidebarRedesign() {
                     >
                         <Share2 className="h-4 w-4" />
                         <span>Sosial Media</span>
+                    </Link>
+
+                    <Link
+                        href="/redesign/backoffice/layanan"
+                        className={`flex items-center gap-3 rounded px-3 py-2 text-sm font-medium transition-colors ${
+                            isLayanan ? activeClass : hoverClass
+                        }`}
+                    >
+                        <Briefcase className="h-4 w-4" />
+                        <span>Layanan</span>
                     </Link>
 
                     <Link
@@ -234,7 +245,7 @@ export function AppSidebarRedesign() {
                                     className={`flex items-center gap-2 rounded px-3 py-2 text-sm ${isSubjekTerlindung ? activeClass : hoverClass}`}
                                 >
                                     <Shield className="h-4 w-4" />
-                                    <span>Subjek Terlindung</span>
+                                    <span>Subjek Pelindungan</span>
                                 </Link>
 
                                 <Link
@@ -252,7 +263,7 @@ export function AppSidebarRedesign() {
                                     }`}
                                 >
                                     <ShieldCheck className="h-4 w-4" />
-                                    <span>Program Perlindungan</span>
+                                    <span>Program Pelindungan</span>
                                 </Link>
                             </div>
                         )}

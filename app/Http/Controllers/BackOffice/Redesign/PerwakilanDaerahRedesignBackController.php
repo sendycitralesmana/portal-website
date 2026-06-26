@@ -63,12 +63,11 @@ class PerwakilanDaerahRedesignBackController extends Controller
     public function store(PerwakilanDaerahRequest $request)
     {
         try {
+            $gambarPath = null;
+
             if ($request->hasFile('gambar')) {
-
-                $path = Storage::disk('s3')
+                $gambarPath = Storage::disk('s3')
                     ->putFile('perwakilan-daerah', $request->file('gambar'));
-
-                $gambarPath = $path;
             }
 
             PerwakilanDaerah::create([

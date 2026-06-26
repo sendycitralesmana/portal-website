@@ -51,8 +51,8 @@ export default function CreatePerwakilanDaerah() {
 
     return (
         <AppLayoutRedesign>
-            <Head title="Subjek Terlindung">
-                <meta name="description" content="Halaman Subjek Terlindung" />
+            <Head title="Subjek Perlindungan">
+                <meta name="description" content="Halaman Subjek Perlindungan" />
                 <link rel="icon" href="/images/favicon.ico" type="image/x-icon" />
             </Head>
 
@@ -60,8 +60,8 @@ export default function CreatePerwakilanDaerah() {
                 {/* Header */}
                 <div className="mb-8 flex justify-between">
                     <HeaderTitle
-                        title="Tambah Subjek Terlindung"
-                        subtitle="Kelola data subjek terlindung yang ditampilkan pada halaman tugas dan fungsi."
+                        title="Tambah Subjek Perlindungan"
+                        subtitle="Kelola data subjek perlindungan yang ditampilkan pada halaman tugas dan fungsi."
                         icon={Shield}
                     />
 

@@ -12,6 +12,7 @@ class PejabatStruktural extends Model
         'kategori',
         'nama',
         'jabatan',
+        'deskripsi',
         'foto',
     ];
 }

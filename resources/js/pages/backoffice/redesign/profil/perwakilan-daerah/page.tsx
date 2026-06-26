@@ -194,7 +194,7 @@ const PerwakilanDaerahPage = (props: any) => {
 
                                                 <TableCell className="align-top">
                                                     {item.gambar ? (
-                                                        <div className="max-w-[90px]">
+                                                        <div className="">
                                                             <ImagePreviewDialog src={item.gambar} alt={item.kantor} />
                                                         </div>
                                                     ) : (

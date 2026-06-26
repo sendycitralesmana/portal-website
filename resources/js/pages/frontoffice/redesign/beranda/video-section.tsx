@@ -111,7 +111,7 @@ export default function VideoSection({ videoInfos }: Props) {
                 <div key={video.id} className="w-full">
 
                   {/* Judul */}
-                  <p className="text-lg md:text-xl lg:text-2xl font-bold">
+                  <p className="text-lg md:text-xl lg:text-2xl font-bold ">
                     {video.judul}
                   </p>
 

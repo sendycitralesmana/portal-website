@@ -21,6 +21,7 @@ class PejabatStrukturalResource extends JsonResource
             'kategori' => $this->kategori,
             'nama' => $this->nama,
             'jabatan' => $this->jabatan,
+            'deskripsi' => $this->deskripsi,
             'foto' => $this->foto ? Storage::disk('s3')->url($this->foto) : null,
             'created_at' => $this->created_at
                 ? $this->created_at->translatedFormat('l, d F Y')
