@@ -2,15 +2,9 @@ import { Card, CardContent } from '@/components/ui/card';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Link } from '@inertiajs/react';
 
-import { useEffect, useState } from 'react';
 import type { CarouselApi } from '@/components/ui/carousel';
-import {
-    Carousel,
-    CarouselContent,
-    CarouselItem,
-    CarouselNext,
-    CarouselPrevious,
-} from '@/components/ui/carousel';
+import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '@/components/ui/carousel';
+import { useEffect, useState } from 'react';
 
 interface Media {
     id: number;
@@ -98,24 +92,24 @@ function BeritaFotoCard({ post }: { post: Post }) {
     const [current, setCurrent] = useState(0);
 
     const slides = [
-    {
-        id: `cover-${post.id}`,
-        image: post.gambar,
-        title: post.judul,
-        description: post.deskripsi,
-        date: post.tanggal,
-    },
+        {
+            id: `cover-${post.id}`,
+            image: post.gambar,
+            title: post.judul,
+            description: post.deskripsi,
+            date: post.tanggal,
+        },
 
-    ...(post.media?.map((item) => ({
-        id: item.id,
-        image: item.file,
-        title: item.judul || post.judul,
-        description: item.deskripsi || post.deskripsi,
-        date: post.tanggal,
-    })) ?? []),
-];
+        ...(post.media?.map((item) => ({
+            id: item.id,
+            image: item.file,
+            title: item.judul || post.judul,
+            description: item.deskripsi || post.deskripsi,
+            date: post.tanggal,
+        })) ?? []),
+    ];
 
-const activeSlide = slides[current] ?? slides[0];
+    const activeSlide = slides[current] ?? slides[0];
 
     useEffect(() => {
         if (!api) return;
@@ -156,11 +150,7 @@ const activeSlide = slides[current] ?? slides[0];
                                         className="absolute inset-0 h-full w-full scale-110 object-cover opacity-60 blur-lg"
                                     />
 
-                                    <img
-                                        src={slide.image}
-                                        alt=""
-                                        className="relative h-full w-full object-contain"
-                                    />
+                                    <img src={slide.image} alt="" className="relative h-full w-full object-contain" />
                                 </div>
                             </CarouselItem>
                         ))}
@@ -175,36 +165,43 @@ const activeSlide = slides[current] ?? slides[0];
                 </Carousel>
             </div>
 
+            {/* <CardContent className="bg-muted/70 flex flex-1 flex-col p-3 sm:p-4 md:p-5">
+                <p className="text-muted-foreground mb-2 text-[10px] sm:text-[11px] md:text-xs">{activeSlide.date}</p>
+
+                <Link
+                    href={`/redesign/berita-foto/${post.slug}`}
+                    className="text-foreground line-clamp-2 text-xs font-semibold transition-colors hover:text-red-900 md:text-sm lg:text-lg"
+                >
+                    {activeSlide.title}
+                </Link>
+
+                {activeSlide.description && (
+                    <p className="text-muted-foreground mt-2 line-clamp-3 text-xs md:text-sm">
+                        {activeSlide.description}
+                    </p>
+                )}
+            </CardContent> */}
             <CardContent className="bg-muted/70 flex flex-1 flex-col p-3 sm:p-4 md:p-5">
-    <p className="text-muted-foreground mb-2 text-[10px] sm:text-[11px] md:text-xs">
-        {activeSlide.date}
-    </p>
+                <Link
+                    href={`/redesign/berita-foto/${post.slug}`}
+                    className="md:text-md text-foreground line-clamp-3 min-h-[44px] text-xs leading-snug font-semibold transition-colors hover:text-red-900 sm:min-h-[52px] md:min-h-[60px] lg:text-lg"
+                >
+                    {activeSlide.title}
+                </Link>
 
-    <Link
-        href={`/redesign/berita-foto/${post.slug}`}
-        className="text-foreground line-clamp-2 text-xs font-semibold transition-colors hover:text-red-900 md:text-sm lg:text-base"
-    >
-        {activeSlide.title}
-    </Link>
-
-    {activeSlide.description && (
-        <p className="text-muted-foreground mt-2 line-clamp-3 text-xs md:text-sm">
-            {activeSlide.description}
-        </p>
-    )}
-</CardContent>
+                <p className="text-muted-foreground mt-auto pt-2 text-[10px] sm:pt-3 sm:text-[11px] md:pt-4 md:text-xs lg:text-sm">
+                    {activeSlide.date}
+                </p>
+            </CardContent>
         </Card>
     );
 }
 
 function BeritaFotoGrid({ posts }: { posts: Post[] }) {
     return (
-        <div className="mt-6 grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-4 md:gap-6">
+        <div className="mt-6 grid grid-cols-2 gap-4 md:grid-cols-4 md:gap-6">
             {posts.map((post) => (
-                <BeritaFotoCard
-                    key={post.id}
-                    post={post}
-                />
+                <BeritaFotoCard key={post.id} post={post} />
             ))}
         </div>
     );
@@ -243,8 +240,8 @@ export default function Tablist({ siaranPers, beritaFotos, beritaKegiatans, peng
                     </TabsContent>
 
                     <TabsContent value="beritaFoto">
-    <BeritaFotoGrid posts={beritaFotos} />
-</TabsContent>
+                        <BeritaFotoGrid posts={beritaFotos} />
+                    </TabsContent>
 
                     <TabsContent value="beritaKegiatan">
                         <CardGrid posts={beritaKegiatans} baseUrl="/redesign/publikasi/berita-kegiatan" />
