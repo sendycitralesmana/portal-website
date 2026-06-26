@@ -158,9 +158,13 @@ function BeritaFotoCard({ post }: { post: Post }) {
 
                     {slides.length > 1 && (
                         <>
-                            <CarouselPrevious className="left-2" />
-                            <CarouselNext className="right-2" />
-                        </>
+    <CarouselPrevious
+        className="left-2 h-5 w-5 md:h-7 md:w-7"
+    />
+    <CarouselNext
+        className="right-2 h-5 w-5 md:h-7 md:w-7"
+    />
+</>
                     )}
                 </Carousel>
             </div>
