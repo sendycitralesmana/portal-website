@@ -8,6 +8,7 @@ use App\Http\Resources\PublikasiResource;
 use App\Models\Layanan;
 use App\Models\Publikasi;
 use App\Models\SosialMedia;
+use App\Models\TentangKami;
 use App\Models\VideoInfo;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
@@ -46,6 +47,14 @@ class BerandaRedesignController extends Controller
     public function maklumat()
     {
         return Inertia::render('frontoffice/redesign/maklumat/page');
+    }
+
+    public function apiTentangKami()
+    {
+        $tentangKami = TentangKami::query()
+            ->first();
+
+        return response()->json($tentangKami);
     }
 
     public function beranda()

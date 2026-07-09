@@ -18,5 +18,6 @@ class TentangKami extends Model
         'latitude',
         'longitude',
         'gambar',
+        'zoom',
     ];
 }

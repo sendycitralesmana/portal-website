@@ -45,6 +45,10 @@ Route::prefix('redesign')->group(function () {
     // footer
     Route::get('/gpr', [BerandaRedesignController::class, 'gpr'])->name('redesign.gpr');
 
+    // api/tentang-kami
+    Route::get('/api/tentang-kami', [BerandaRedesignController::class, 'apiTentangKami'])->name('redesign.api.tentang-kami');
+
+
     // profil
     Route::prefix('/profil')->group(function () {
         Route::get('/visi-misi', [ProfilRedesignController::class, 'visiMisi'])->name('redesign.profil.visi-misi');

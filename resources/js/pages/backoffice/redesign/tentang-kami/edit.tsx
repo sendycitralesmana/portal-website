@@ -21,6 +21,7 @@ interface TentangKami {
     jam_operasional: string;
     latitude: string;
     longitude: string;
+    zoom: string;
     gambar: string | null;
 }
 
@@ -41,6 +42,7 @@ export default function EditTentangKami({ tentangKami }: EditTentangKamiProps) {
         jam_operasional: tentangKami.jam_operasional ?? '',
         latitude: tentangKami.latitude ?? '',
         longitude: tentangKami.longitude ?? '',
+        zoom: tentangKami.zoom ?? '',
         gambar: null as File | null,
         _method: 'put',
     });
@@ -182,6 +184,21 @@ export default function EditTentangKami({ tentangKami }: EditTentangKamiProps) {
                                     className={errors.longitude ? 'border-red-500' : ''}
                                 />
                                 {errors.longitude && <InputError message={errors.longitude} />}
+                            </div>
+
+                            {/* Zoom */}
+                            <div className="grid gap-1.5">
+                                <Label>Zoom <span className="text-red-500">*</span></Label>
+                                <Input
+                                    type='number'
+                                    max={100}
+                                    min={50}
+                                    value={data.zoom}
+                                    onChange={(e) => setData('zoom', e.target.value)}
+                                    placeholder="Masukkan zoom"
+                                    className={errors.zoom ? 'border-red-500' : ''}
+                                />
+                                {errors.zoom && <InputError message={errors.zoom} />}
                             </div>
 
                             {/* Gambar */}

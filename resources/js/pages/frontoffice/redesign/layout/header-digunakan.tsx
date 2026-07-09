@@ -55,6 +55,11 @@ const layananInformasiMenuItems: MenuItem[] = [
         href: 'https://ssk.lpsk.go.id/',
         external: true,
     },
+    // {
+    //     label: 'Pengaduan Masyarakat',
+    //     href: 'https://www.lapor.go.id/',
+    //     external: true,
+    // },
 ];
 
 const profilMenuItems: MenuItem[] = [
@@ -198,7 +203,20 @@ export default function Header() {
                         </div>
 
                         {/* DESKTOP MENU */}
-                        <nav className="absolute left-1/2 hidden h-full -translate-x-1/2 items-center gap-14 font-bold xl:flex">
+                        <nav className="absolute left-1/2 hidden h-full -translate-x-1/2 items-center gap-14 font-bold lg:flex">
+                            {/* {menus.map((menu) => (
+                                <button
+                                    key={menu}
+                                    onClick={() => toggleMenu(menu)}
+                                    className={cn(
+                                        'flex h-full cursor-pointer items-center border-b-2 uppercase transition-colors duration-200',
+                                        isTransparent ? 'text-slate-200' : 'text-slate-800 dark:text-slate-200',
+                                        activeMenu === menu ? 'border-amber-500 text-amber-500' : 'border-transparent hover:text-amber-500',
+                                    )}
+                                >
+                                    {menu}
+                                </button>
+                            ))} */}
                             {menus.map((menu) =>
                                 menu === 'Beranda' ? (
                                     <Link
@@ -229,7 +247,7 @@ export default function Header() {
                         </nav>
 
                         {/* RIGHT SECTION */}
-                        <div className="ml-auto hidden items-center gap-4 xl:flex">
+                        <div className="ml-auto hidden items-center gap-4 lg:flex">
                             <div className="relative" ref={searchRef}>
                                 <div className="relative">
                                     <Search
@@ -298,7 +316,7 @@ export default function Header() {
                         </div>
 
                         {/* MOBILE ACTION */}
-                        <div className="ml-auto flex items-center gap-2 xl:hidden">
+                        <div className="ml-auto flex items-center gap-2 lg:hidden">
                             <button onClick={() => setMobileSearchOpen(true)} className="p-2">
                                 <Search size={22} />
                             </button>
@@ -426,13 +444,23 @@ export default function Header() {
 
             {/* MOBILE MENU */}
             {mobileOpen && (
-                <div className="bg-background border-border fixed top-20 right-0 left-0 z-40 border-t shadow-lg xl:hidden">
+                <div className="bg-background border-border fixed top-20 right-0 left-0 z-40 border-t shadow-lg lg:hidden">
                     {/* TOP SECTION (Search + ID + ModeToggle - Sejajar) */}
                     <div className="border-border bg-muted/40 border-b px-4 py-4">
                         <div className="flex items-center gap-3">
                             {/* Search */}
                             <div className="relative flex-1">
+                                {/* <Search size={16} className="text-muted-foreground absolute top-1/2 left-3 -translate-y-1/2" />
+                                <input
+                                    placeholder="Cari..."
+                                    className="bg-background border-border w-full rounded-full border py-2 pr-3 pl-9 text-sm transition focus:ring-2 focus:ring-red-500 focus:outline-none"
+                                /> */}
                             </div>
+
+                            {/* ID */}
+                            {/* <div className="w-9 h-9 bg-red-900 text-slate-200 rounded-full flex items-center justify-center text-xs font-medium shrink-0">
+                ID
+              </div> */}
 
                             {/* Mode Toggle */}
                             <div className="shrink-0">
@@ -440,6 +468,62 @@ export default function Header() {
                             </div>
                         </div>
                     </div>
+
+                    {/* MENU LIST */}
+                    {/* {menus.map((menu) => {
+                        const items =
+                            menu === 'Layanan dan Informasi'
+                                ? layananInformasiMenuItems
+                                : menu === 'Profil'
+                                  ? profilMenuItems
+                                  : menu === 'Tugas dan Fungsi'
+                                    ? tugasFungsiMenuItems
+                                    : menu === 'Publikasi'
+                                      ? publikasiMenuItems
+                                      : [];
+
+                        const isOpen = mobileActive === menu;
+
+                        return (
+                            <div key={menu} className="border-border border-b">
+                                <button
+                                    onClick={() => setMobileActive(isOpen ? null : menu)}
+                                    className="flex w-full items-center justify-between px-6 py-4 font-bold"
+                                >
+                                    {menu}
+
+                                    <ChevronDown size={18} className={cn('transition-transform duration-300', isOpen && 'rotate-180')} />
+                                </button>
+
+                                {isOpen && (
+                                    <div className="bg-muted/40">
+                                        {items.map((item, index) =>
+                                            item.external ? (
+                                                <a
+                                                    key={index}
+                                                    href={item.href}
+                                                    target="_blank"
+                                                    rel="noopener noreferrer"
+                                                    className="border-border block border-t px-8 py-3 text-sm"
+                                                >
+                                                    {item.label}
+                                                </a>
+                                            ) : (
+                                                <Link
+                                                    key={index}
+                                                    href={item.href}
+                                                    className="border-border block border-t px-8 py-3 text-sm"
+                                                    onClick={() => setMobileOpen(false)}
+                                                >
+                                                    {item.label}
+                                                </Link>
+                                            ),
+                                        )}
+                                    </div>
+                                )}
+                            </div>
+                        );
+                    })} */}
                     {/* MENU LIST */}
                     {menus.map((menu) => {
                         if (menu === 'Beranda') {

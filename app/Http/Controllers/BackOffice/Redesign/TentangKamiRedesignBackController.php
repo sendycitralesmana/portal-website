@@ -7,6 +7,7 @@ use App\Http\Requests\TentangKamiRequest;
 use App\Http\Resources\TentangKamiResource;
 use App\Models\TentangKami;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Storage;
 use Inertia\Inertia;
 use Throwable;
@@ -24,6 +25,7 @@ class TentangKamiRedesignBackController extends Controller
                     ->orWhere('whatsapp', 'ILIKE', "%{$value}%")
                     ->orWhere('email', 'ILIKE', "%{$value}%")
                     ->orWhere('jam_operasional', 'ILIKE', "%{$value}%")
+                    ->orWhere('zoom', 'ILIKE', "%{$value}%")
                     ->orWhere('latitude', 'ILIKE', "%{$value}%")
                     ->orWhere('longitude', 'ILIKE', "%{$value}%");
                 });
@@ -62,50 +64,48 @@ class TentangKamiRedesignBackController extends Controller
     }
 
     public function update(TentangKamiRequest $request, $id)
-    {
-        try {
-            $tentangKami = TentangKami::findOrFail($id);
+{
+    try {
+        $tentangKami = TentangKami::findOrFail($id);
 
-            $gambarPath = $tentangKami->gambar; // default gambar lama
+        $gambarPath = $tentangKami->gambar;
 
-            if ($request->hasFile('gambar')) {
+        if ($request->hasFile('gambar')) {
 
-                // hapus lama
-                if ($tentangKami->gambar) {
-                    Storage::disk('s3')->delete($tentangKami->gambar);
-                }
-
-                // upload baru
-                $path = Storage::disk('s3')
-                    ->putFile('tentang-kami', $request->file('gambar'));
-
-                $gambarPath = $path;
+            if ($tentangKami->gambar) {
+                Storage::disk('s3')->delete($tentangKami->gambar);
             }
 
-            $gambarPath = null;
-
-            $tentangKami->update([
-                'alamat' => $request->alamat,
-                'telepon' => $request->telepon,
-                'hotline' => $request->hotline,
-                'whatsapp' => $request->whatsapp,
-                'email' => $request->email,
-                'jam_operasional' => $request->jam_operasional,
-                'latitude' => $request->latitude,
-                'longitude' => $request->longitude,
-                'gambar' => $gambarPath,
-            ]);
-
-            return redirect()
-                ->route('redesign.backoffice.tentang-kami.index')
-                ->with('success', 'Data berhasil diubah');
-        } catch (Throwable $e) {
-
-            return redirect()
-                ->route('redesign.backoffice.tentang-kami.index')
-                ->with('error', $e->getMessage());
+            $gambarPath = Storage::disk('s3')
+                ->putFile('tentang-kami', $request->file('gambar'));
         }
+
+        $gambarPath = null;
+
+        $tentangKami->update([
+            'alamat' => $request->alamat,
+            'telepon' => $request->telepon,
+            'hotline' => $request->hotline,
+            'whatsapp' => $request->whatsapp,
+            'email' => $request->email,
+            'jam_operasional' => $request->jam_operasional,
+            'latitude' => $request->latitude,
+            'longitude' => $request->longitude,
+            'zoom' => $request->zoom,
+            'gambar' => $gambarPath,
+        ]);
+
+        Cache::forget('tentang-kami');
+
+        return redirect()
+            ->route('redesign.backoffice.tentang-kami.index')
+            ->with('success', 'Data berhasil diubah');
+    } catch (Throwable $e) {
+        return redirect()
+            ->route('redesign.backoffice.tentang-kami.index')
+            ->with('error', $e->getMessage());
     }
+}
 
     public function destroy($id)
     {

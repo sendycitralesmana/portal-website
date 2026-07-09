@@ -121,6 +121,12 @@ const TentangKamiPage = (props: any) => {
                                             </Button>
                                         </TableHead>
                                         <TableHead>
+                                            <Button variant="ghost" onClick={() => onSortable('zoom')}>
+                                                Zoom
+                                                <IconArrowsDownUp className="ml-2 size-4" />
+                                            </Button>
+                                        </TableHead>
+                                        <TableHead>
                                             <Button variant="ghost" onClick={() => onSortable('latitude')}>
                                                 Latitude
                                                 <IconArrowsDownUp className="ml-2 size-4" />
@@ -189,6 +195,7 @@ const TentangKamiPage = (props: any) => {
                                                 <TableCell className="align-top break-words whitespace-normal">{item.whatsapp}</TableCell>
                                                 <TableCell className="align-top break-words whitespace-normal">{item.email}</TableCell>
                                                 <TableCell className="align-top break-words whitespace-normal">{item.jam_operasional}</TableCell>
+                                                <TableCell className="align-top break-words whitespace-normal">{item.zoom}%</TableCell>
                                                 <TableCell className="align-top break-words whitespace-normal">{item.latitude}</TableCell>
                                                 <TableCell className="align-top break-words whitespace-normal">{item.longitude}</TableCell>
                                                 <TableCell className="align-top break-words whitespace-normal">{item.created_at}</TableCell>
@@ -263,6 +270,9 @@ const TentangKamiPage = (props: any) => {
                                             </p>
                                             <p className="whitespace-pre-line">
                                                 <strong>Jam Operasional:</strong> {item.jam_operasional}
+                                            </p>
+                                            <p>
+                                                <strong>Zoom:</strong> {item.zoom}%
                                             </p>
                                             <p>
                                                 <strong>Latitude:</strong> {item.latitude}

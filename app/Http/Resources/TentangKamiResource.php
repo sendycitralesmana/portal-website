@@ -27,6 +27,7 @@ class TentangKamiResource extends JsonResource
             'latitude' => $this->latitude,
             'longitude' => $this->longitude,
             'gambar' => $this->gambar ? Storage::disk('s3')->url($this->gambar) : null,
+            'zoom' => $this->zoom,
             'created_at' => $this->created_at
                 ? $this->created_at->translatedFormat('l, d F Y')
                 : null,
