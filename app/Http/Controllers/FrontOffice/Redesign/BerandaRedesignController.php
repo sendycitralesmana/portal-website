@@ -66,7 +66,7 @@ class BerandaRedesignController extends Controller
                 ->get()
         );
 
-        $beritaKegiatans = PublikasiResource::collection(
+        $beritas = PublikasiResource::collection(
             Publikasi::query()
                 ->where('kategori', 'Berita')
                 ->orderBy('created_at', 'asc')
@@ -106,7 +106,7 @@ class BerandaRedesignController extends Controller
             'videoInfos' => $videoInfos,
             'siaranPers' => $siaranPers,
             'beritaFotos' => $beritaFotos,
-            'beritaKegiatans' => $beritaKegiatans,
+            'beritas' => $beritas,
             'pengumumans' => $pengumumans,
         ]);
     }
@@ -136,7 +136,6 @@ class BerandaRedesignController extends Controller
     {
         $kategoriMap = [
             'siaran-pers' => 'Siaran Pers',
-            'berita-kegiatan' => 'Berita Kegiatan',
             'berita-foto' => 'Berita Foto',
             'berita' => 'Berita',
             'pengumuman' => 'Informasi',

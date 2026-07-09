@@ -33,7 +33,7 @@ const PejabatCard: React.FC<{
     foto?: string | null;
     showImage?: boolean;
 }> = ({ nama, jabatan, foto, showImage = true }) => {
-    const imageSrc = foto ?? '/images/logo-lg.png';
+    const imageSrc = foto ?? '/images/logo-baru.png';
 
     return (
         <motion.div

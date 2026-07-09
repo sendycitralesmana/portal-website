@@ -62,7 +62,7 @@ const SubjekSection: React.FC<SubjekSectionProps> = ({
             >
               <div className="overflow-hidden rounded-2xl shadow-sm bg-slate-50 dark:bg-background p-4">
                 <img
-                  src={gambar && gambar.trim() !== "" ? gambar : "/images/logo-lg.png"}
+                  src={gambar && gambar.trim() !== "" ? gambar : "/images/logo-baru.png"}
                   alt={judul}
                   className="w-full h-auto object-contain"
                 />
@@ -131,7 +131,7 @@ const SubjekTerlindung: PageWithLayout<PageProps> = ({
               key={item.id}
               judul={item.judul}
               deskripsi={item.deskripsi}
-              gambar={item.gambar ? item.gambar : "/images/logo-lg.png"}
+              gambar={item.gambar ? item.gambar : "/images/logo-baru.png"}
               reverse={index % 2 === 1}
             />
           ))}

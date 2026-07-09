@@ -35,7 +35,7 @@ export default function LayananSection({
             {/* Image */}
             <div className="relative flex aspect-[4/3] items-center justify-center py-1">
                 <img
-                    src={item.gambar ?? '/images/logo-lg.png'}
+                    src={item.gambar ?? '/images/logo-baru.png'}
                     alt={item.judul}
                     className="h-full w-full object-contain transition-transform duration-500 group-hover:scale-105"
                 />

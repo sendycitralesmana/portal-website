@@ -38,7 +38,7 @@
 //     deskripsi?: string | null;
 //     showImage?: boolean;
 // }> = ({ nama, jabatan, foto, deskripsi, showImage = true }) => {
-//     const imageSrc = foto ?? '/images/logo-lg.png';
+//     const imageSrc = foto ?? '/images/logo-baru.png';
 
 //     const [open, setOpen] = useState(false);
 
@@ -309,7 +309,7 @@ const PejabatCard: React.FC<{
     showImage = true,
     clickable = true,
 }) => {
-    const imageSrc = foto ?? '/images/logo-lg.png';
+    const imageSrc = foto ?? '/images/logo-baru.png';
 
     const [open, setOpen] = useState(false);
 

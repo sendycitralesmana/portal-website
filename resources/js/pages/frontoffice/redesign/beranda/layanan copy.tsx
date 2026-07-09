@@ -67,7 +67,7 @@
 //                             {/* Image */}
 //                             <div className="relative flex aspect-[4/3] items-center justify-center py-1">
 //                                 <img
-//                                     src={item.image ?? '/images/logo-lg.png'}
+//                                     src={item.image ?? '/images/logo-baru.png'}
 //                                     alt={item.title}
 //                                     className="h-full w-full object-contain transition-transform duration-500 group-hover:scale-105"
 //                                 />
@@ -169,7 +169,7 @@ export default function LayananSection() {
             {/* Image */}
             <div className="relative flex aspect-[4/3] items-center justify-center py-1">
                 <img
-                    src={item.image ?? '/images/logo-lg.png'}
+                    src={item.image ?? '/images/logo-baru.png'}
                     alt={item.title}
                     className="h-full w-full object-contain transition-transform duration-500 group-hover:scale-105"
                 />

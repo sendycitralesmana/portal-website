@@ -44,7 +44,7 @@ const EnFooter = () => {
         <div className="flex flex-col gap-3">
           <div className="flex items-center gap-3">
             <img
-              src="/images/logo-lg.png"
+              src="/images/logo-baru.png"
               alt="Logo LPSK"
               className="w-[80px] h-[80px] object-contain"
             />

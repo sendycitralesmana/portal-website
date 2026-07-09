@@ -20,14 +20,14 @@ type MenuItem = {
     external?: boolean;
 };
 
-const menus = ['Layanan dan Informasi', 'Profil', 'Tugas dan Fungsi', 'Publikasi'];
+const menus = ['Beranda', 'Layanan dan Informasi', 'Profil', 'Tugas dan Fungsi', 'Publikasi'];
 
 /* ================= SUB MENU ================= */
 
 const layananInformasiMenuItems: MenuItem[] = [
     {
-        label: 'JDIH',
-        href: 'https://jdih.lpsk.go.id/',
+        label: 'SIMPUSAKA',
+        href: 'https://simpusaka.lpsk.go.id/layanan_simpusaka/',
         external: true,
     },
     {
@@ -36,8 +36,8 @@ const layananInformasiMenuItems: MenuItem[] = [
         external: true,
     },
     {
-        label: 'SSK',
-        href: 'https://ssk.lpsk.go.id/',
+        label: 'JDIH',
+        href: 'https://jdih.lpsk.go.id/',
         external: true,
     },
     {
@@ -46,13 +46,13 @@ const layananInformasiMenuItems: MenuItem[] = [
         external: true,
     },
     {
-        label: 'Permohonan Perlindungan (SIMPUSAKA)',
-        href: 'https://simpusaka.lpsk.go.id/layanan_simpusaka/',
+        label: 'OPERA',
+        href: 'https://hukum.lpsk.go.id/',
         external: true,
     },
     {
-        label: 'OPERA',
-        href: 'https://hukum.lpsk.go.id/',
+        label: 'SSK',
+        href: 'https://ssk.lpsk.go.id/',
         external: true,
     },
     // {
@@ -80,7 +80,6 @@ const tugasFungsiMenuItems: MenuItem[] = [
 const publikasiMenuItems: MenuItem[] = [
     { label: 'Siaran Pers', href: '/redesign/publikasi/siaran-pers' },
     { label: 'Sosial Media', href: '/redesign/sosial-media' },
-    { label: 'Berita Kegiatan', href: '/redesign/publikasi/berita-kegiatan' },
     { label: 'Berita Foto', href: '/redesign/berita-foto' },
     { label: 'Berita', href: '/redesign/publikasi/berita' },
     { label: 'Pengumuman', href: '/redesign/publikasi/pengumuman' },
@@ -199,13 +198,13 @@ export default function Header() {
                         {/* LOGO */}
                         <div className="shrink-0">
                             <Link href="/redesign/beranda" className="flex items-center">
-                                <img src="/images/logo-lg.png" alt="LPSK Logo" className="h-14 w-auto object-contain" />
+                                <img src="/images/logo-baru.png" alt="LPSK Logo" className="h-14 w-auto object-contain" />
                             </Link>
                         </div>
 
                         {/* DESKTOP MENU */}
                         <nav className="absolute left-1/2 hidden h-full -translate-x-1/2 items-center gap-14 font-bold lg:flex">
-                            {menus.map((menu) => (
+                            {/* {menus.map((menu) => (
                                 <button
                                     key={menu}
                                     onClick={() => toggleMenu(menu)}
@@ -217,7 +216,34 @@ export default function Header() {
                                 >
                                     {menu}
                                 </button>
-                            ))}
+                            ))} */}
+                            {menus.map((menu) =>
+                                menu === 'Beranda' ? (
+                                    <Link
+                                        key={menu}
+                                        href="/redesign/beranda"
+                                        onClick={closeMenu}
+                                        className={cn(
+                                            'flex h-full items-center border-transparent uppercase transition-colors duration-200 hover:border-amber-500 hover:text-amber-500',
+                                            isTransparent ? 'text-slate-200' : 'text-slate-800 dark:text-slate-200',
+                                        )}
+                                    >
+                                        {menu}
+                                    </Link>
+                                ) : (
+                                    <button
+                                        key={menu}
+                                        onClick={() => toggleMenu(menu)}
+                                        className={cn(
+                                            'flex h-full cursor-pointer items-center border-b-2 uppercase transition-colors duration-200',
+                                            isTransparent ? 'text-slate-200' : 'text-slate-800 dark:text-slate-200',
+                                            activeMenu === menu ? 'border-amber-500 text-amber-500' : 'border-transparent hover:text-amber-500',
+                                        )}
+                                    >
+                                        {menu}
+                                    </button>
+                                ),
+                            )}
                         </nav>
 
                         {/* RIGHT SECTION */}
@@ -316,7 +342,7 @@ export default function Header() {
                             <div className="grid h-[420px] grid-cols-4">
                                 <div className="bg-muted/60 border-border col-span-1 border-r p-6">
                                     <div className="mb-5 rounded-2xl border-2 border-amber-400 bg-gradient-to-l from-red-900 to-red-700">
-                                        <img src="/images/logo-lg.png" alt="Logo" className="w-full object-contain p-4" />
+                                        <img src="/images/logo-baru.png" alt="Logo" className="w-full object-contain p-4" />
                                     </div>
 
                                     <p className="text-sm leading-relaxed font-bold">
@@ -358,75 +384,63 @@ export default function Header() {
             </header>
 
             {mobileSearchOpen && (
-    <div className="bg-background fixed inset-0 z-[999] flex flex-col">
-        {/* Header */}
-        <div className="border-border flex h-20 shrink-0 items-center gap-3 border-b px-4">
-            <button
-                onClick={() => setMobileSearchOpen(false)}
-                className="shrink-0"
-            >
-                <X size={24} />
-            </button>
+                <div className="bg-background fixed inset-0 z-[999] flex flex-col">
+                    {/* Header */}
+                    <div className="border-border flex h-20 shrink-0 items-center gap-3 border-b px-4">
+                        <button onClick={() => setMobileSearchOpen(false)} className="shrink-0">
+                            <X size={24} />
+                        </button>
 
-            <div className="relative flex-1">
-                <Search
-                    size={18}
-                    className="text-muted-foreground absolute top-1/2 left-3 -translate-y-1/2"
-                />
+                        <div className="relative flex-1">
+                            <Search size={18} className="text-muted-foreground absolute top-1/2 left-3 -translate-y-1/2" />
 
-                <input
-                    autoFocus
-                    value={search}
-                    onChange={(e) => setSearch(e.target.value)}
-                    placeholder="Cari publikasi..."
-                    className="bg-background border-border w-full rounded-full border py-2.5 pr-4 pl-10 text-sm focus:ring-2 focus:ring-amber-500 focus:outline-none"
-                />
-            </div>
-        </div>
-
-        {/* Results */}
-        <div className="flex-1 overflow-y-auto px-4 pb-6">
-            {search.length > 0 && (
-                <>
-                    <div className="border-border border-b py-3 text-xs font-bold text-slate-500 uppercase">
-                        Hasil Pencarian
+                            <input
+                                autoFocus
+                                value={search}
+                                onChange={(e) => setSearch(e.target.value)}
+                                placeholder="Cari publikasi..."
+                                className="bg-background border-border w-full rounded-full border py-2.5 pr-4 pl-10 text-sm focus:ring-2 focus:ring-amber-500 focus:outline-none"
+                            />
+                        </div>
                     </div>
 
-                    {searching ? (
-                        <div className="flex items-center justify-center gap-2 py-10 text-sm text-slate-500">
-                            <LoaderCircle className="h-5 w-5 animate-spin" />
-                            Mencari...
-                        </div>
-                    ) : searchResults.length > 0 ? (
-                        searchResults.map((item) => (
-                            <Link
-                                key={item.id}
-                                href={`/redesign/publikasi/${item.kategori}/${item.slug}`}
-                                onClick={() => {
-                                    setMobileSearchOpen(false);
-                                    setSearch('');
-                                }}
-                                className="hover:bg-muted/50 block border-b py-4"
-                            >
-                                <div className="mb-1 text-xs font-semibold text-amber-600 uppercase">
-                                    {item.kategori.replaceAll('-', ' ')}
-                                </div>
+                    {/* Results */}
+                    <div className="flex-1 overflow-y-auto px-4 pb-6">
+                        {search.length > 0 && (
+                            <>
+                                <div className="border-border border-b py-3 text-xs font-bold text-slate-500 uppercase">Hasil Pencarian</div>
 
-                                <div className="text-sm font-bold">
-                                    {item.judul}
-                                </div>
-                            </Link>
-                        ))
-                    ) : (
-                        <div className="py-6 text-center text-sm text-slate-500">
-                            Tidak ditemukan hasil.
-                        </div>
-                    )}
-                </>
+                                {searching ? (
+                                    <div className="flex items-center justify-center gap-2 py-10 text-sm text-slate-500">
+                                        <LoaderCircle className="h-5 w-5 animate-spin" />
+                                        Mencari...
+                                    </div>
+                                ) : searchResults.length > 0 ? (
+                                    searchResults.map((item) => (
+                                        <Link
+                                            key={item.id}
+                                            href={`/redesign/publikasi/${item.kategori}/${item.slug}`}
+                                            onClick={() => {
+                                                setMobileSearchOpen(false);
+                                                setSearch('');
+                                            }}
+                                            className="hover:bg-muted/50 block border-b py-4"
+                                        >
+                                            <div className="mb-1 text-xs font-semibold text-amber-600 uppercase">
+                                                {item.kategori.replaceAll('-', ' ')}
+                                            </div>
+
+                                            <div className="text-sm font-bold">{item.judul}</div>
+                                        </Link>
+                                    ))
+                                ) : (
+                                    <div className="py-6 text-center text-sm text-slate-500">Tidak ditemukan hasil.</div>
+                                )}
+                            </>
+                        )}
+                    </div>
+                </div>
             )}
-        </div>
-    </div>
-)}
 
             {/* MOBILE MENU */}
             {mobileOpen && (
@@ -456,7 +470,72 @@ export default function Header() {
                     </div>
 
                     {/* MENU LIST */}
+                    {/* {menus.map((menu) => {
+                        const items =
+                            menu === 'Layanan dan Informasi'
+                                ? layananInformasiMenuItems
+                                : menu === 'Profil'
+                                  ? profilMenuItems
+                                  : menu === 'Tugas dan Fungsi'
+                                    ? tugasFungsiMenuItems
+                                    : menu === 'Publikasi'
+                                      ? publikasiMenuItems
+                                      : [];
+
+                        const isOpen = mobileActive === menu;
+
+                        return (
+                            <div key={menu} className="border-border border-b">
+                                <button
+                                    onClick={() => setMobileActive(isOpen ? null : menu)}
+                                    className="flex w-full items-center justify-between px-6 py-4 font-bold"
+                                >
+                                    {menu}
+
+                                    <ChevronDown size={18} className={cn('transition-transform duration-300', isOpen && 'rotate-180')} />
+                                </button>
+
+                                {isOpen && (
+                                    <div className="bg-muted/40">
+                                        {items.map((item, index) =>
+                                            item.external ? (
+                                                <a
+                                                    key={index}
+                                                    href={item.href}
+                                                    target="_blank"
+                                                    rel="noopener noreferrer"
+                                                    className="border-border block border-t px-8 py-3 text-sm"
+                                                >
+                                                    {item.label}
+                                                </a>
+                                            ) : (
+                                                <Link
+                                                    key={index}
+                                                    href={item.href}
+                                                    className="border-border block border-t px-8 py-3 text-sm"
+                                                    onClick={() => setMobileOpen(false)}
+                                                >
+                                                    {item.label}
+                                                </Link>
+                                            ),
+                                        )}
+                                    </div>
+                                )}
+                            </div>
+                        );
+                    })} */}
+                    {/* MENU LIST */}
                     {menus.map((menu) => {
+                        if (menu === 'Beranda') {
+                            return (
+                                <div key={menu} className="border-border border-b">
+                                    <Link href="/redesign/beranda" className="block px-6 py-4 font-bold" onClick={() => setMobileOpen(false)}>
+                                        {menu}
+                                    </Link>
+                                </div>
+                            );
+                        }
+
                         const items =
                             menu === 'Layanan dan Informasi'
                                 ? layananInformasiMenuItems

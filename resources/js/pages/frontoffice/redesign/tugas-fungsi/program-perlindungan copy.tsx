@@ -37,7 +37,7 @@ const Section: React.FC<SectionProps> = ({
   const imageSrc =
     gambar && gambar.trim() !== ""
       ? gambar
-      : "/images/logo-lg.png";
+      : "/images/logo-baru.png";
 
   return (
     <div className="py-12">
@@ -64,7 +64,7 @@ const Section: React.FC<SectionProps> = ({
             src={imageSrc}
             alt={judul}
             onError={(e) => {
-              e.currentTarget.src = "/images/logo-lg.png";
+              e.currentTarget.src = "/images/logo-baru.png";
             }}
             className="w-full h-full object-contain transition-transform duration-300 group-hover:scale-105"
           />

@@ -26,7 +26,7 @@ const statistikData = [
   {
     id: 3,
     judul: "Statistik Berdasarkan Jenis Tindak Pidana",
-    gambar: "/images/logo-lg.png",
+    gambar: "/images/logo-baru.png",
   },
 ];
 

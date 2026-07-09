@@ -27,57 +27,61 @@ export default function SocialMediaSection({ sosialMedias }: Props) {
         { key: 'facebook', icon: Facebook },
     ] as const;
 
-    const twitterData: SosialMedia[] = [
-        {
-            id: 1,
-            platform: 'twitter',
-            embed_url: 'https://platform.twitter.com/embed/Tweet.html?id=2062471706284069331',
-        },
-        {
-            id: 2,
-            platform: 'twitter',
-            embed_url: 'https://platform.twitter.com/embed/Tweet.html?id=2062470577609458104',
-        },
-        {
-            id: 3,
-            platform: 'twitter',
-            embed_url: 'https://platform.twitter.com/embed/Tweet.html?id=2062470253100388846',
-        },
-        {
-            id: 4,
-            platform: 'twitter',
-            embed_url: 'https://platform.twitter.com/embed/Tweet.html?id=2062469941954236570',
-        },
-    ];
+    // const twitterData: SosialMedia[] = [
+    //     {
+    //         id: 1,
+    //         platform: 'twitter',
+    //         embed_url: 'https://platform.twitter.com/embed/Tweet.html?id=2062471706284069331',
+    //     },
+    //     {
+    //         id: 2,
+    //         platform: 'twitter',
+    //         embed_url: 'https://platform.twitter.com/embed/Tweet.html?id=2062470577609458104',
+    //     },
+    //     {
+    //         id: 3,
+    //         platform: 'twitter',
+    //         embed_url: 'https://platform.twitter.com/embed/Tweet.html?id=2062470253100388846',
+    //     },
+    //     {
+    //         id: 4,
+    //         platform: 'twitter',
+    //         embed_url: 'https://platform.twitter.com/embed/Tweet.html?id=2062469941954236570',
+    //     },
+    // ];
 
-    const facebookData: SosialMedia[] = [
-        {
-            id: 1,
-            platform: 'facebook',
-            embed_url: 'https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/reel/948279264898458',
-        },
-        {
-            id: 2,
-            platform: 'facebook',
-            embed_url: 'https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/reel/4606688322992675',
-        },
-        {
-            id: 3,
-            platform: 'facebook',
-            embed_url: 'https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/reel/1732761444740821',
-        },
-        {
-            id: 4,
-            platform: 'facebook',
-            embed_url: 'https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/reel/1340659271538696',
-        },
-    ];
+    // const facebookData: SosialMedia[] = [
+    //     {
+    //         id: 1,
+    //         platform: 'facebook',
+    //         embed_url: 'https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/reel/948279264898458',
+    //     },
+    //     {
+    //         id: 2,
+    //         platform: 'facebook',
+    //         embed_url: 'https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/reel/4606688322992675',
+    //     },
+    //     {
+    //         id: 3,
+    //         platform: 'facebook',
+    //         embed_url: 'https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/reel/1732761444740821',
+    //     },
+    //     {
+    //         id: 4,
+    //         platform: 'facebook',
+    //         embed_url: 'https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/reel/1340659271538696',
+    //     },
+    // ];
 
     const instagramData = useMemo(() => sosialMedias.filter((item) => item.platform === 'instagram'), [sosialMedias]);
 
     const tiktokData = useMemo(() => sosialMedias.filter((item) => item.platform === 'tiktok'), [sosialMedias]);
 
     const youtubeData = useMemo(() => sosialMedias.filter((item) => item.platform === 'youtube'), [sosialMedias]);
+
+    const twitterData = useMemo(() => sosialMedias.filter((item) => item.platform === 'twitter'), [sosialMedias]);
+
+    const facebookData = useMemo(() => sosialMedias.filter((item) => item.platform === 'facebook'), [sosialMedias]);
 
     const aspectMap: Record<SocialPlatform, string> = {
         instagram: 'aspect-[12/17]',

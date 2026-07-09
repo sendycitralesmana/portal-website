@@ -22,7 +22,7 @@ const slides: Slide[] = [
         title: 'LPSK',
         subtitle: 'Lembaga Perlindungan Saksi dan Korban',
         deskripsi: 'Lembaga Perlindungan Saksi dan Korban adalah lembaga negara yang didirikan dan bertanggung jawab untuk menangani pemberian perlindungan dan bantuan pada saksi dan korban.',
-        image: '/images/hero-1.png',
+        image: '/images/banner-1.jpg',
         href: null,
     },
     {
@@ -30,7 +30,7 @@ const slides: Slide[] = [
         subtitle: 'Sistem Informasi Perlindungan Saksi dan Korban',
         deskripsi: 'Layanan Permohonan Perlindungan Digital Melalui Aplikasi SIMPUSAKA',
         buttonText: 'Ajukan Permohonan Perlindungan',
-        image: '/images/hero-2-crop.jpg',
+        image: '/images/banner-2.jpg',
         href: 'https://simpusaka.lpsk.go.id/layanan_simpusaka',
         external: true,
     },
@@ -57,7 +57,7 @@ export default function HeroCarousel() {
                             <CarouselItem key={index}>
                                 <div className="relative h-[300px] w-full overflow-hidden sm:h-[450px] md:h-[650px] lg:h-[840px]">
                                     {/* Background Image */}
-                                    <img src={slide.image} alt={slide.title} className="absolute inset-0 h-full w-full object-cover object-bottom" />
+                                    <img src={slide.image} alt={slide.title} className="absolute inset-0 h-full w-full object-cover object-center" />
 
                                     {/* Overlay */}
                                     <div className="absolute inset-0 bg-gradient-to-r from-[#001B4D]/95 via-[#002B7F]/60 to-transparent" />

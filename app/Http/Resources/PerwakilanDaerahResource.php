@@ -30,6 +30,7 @@ class PerwakilanDaerahResource extends JsonResource
             'gambar' => $this->gambar ? Storage::disk('s3')->url($this->gambar) : null,
             'latitude' => $this->latitude,
             'longitude' => $this->longitude,
+            'link' => $this->link,
             'created_at' => $this->created_at
                 ? $this->created_at->translatedFormat('l, d F Y')
                 : null,

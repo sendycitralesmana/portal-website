@@ -110,7 +110,7 @@ export default function Header() {
             {/* LOGO */}
             <Link href="/redesign/beranda" className="flex items-center">
               <img
-                src="/images/logo-lg.png"
+                src="/images/logo-baru.png"
                 alt="LPSK Logo"
                 className="h-14 w-auto object-contain"
               />
@@ -178,7 +178,7 @@ export default function Header() {
                 <div className="col-span-1 bg-muted/60 p-6 border-r border-border">
                   <div className="mb-5 bg-gradient-to-l from-red-900 to-red-700 rounded-2xl border-amber-400 border-2">
                     <img
-                      src="/images/logo-lg.png"
+                      src="/images/logo-baru.png"
                       alt="Logo"
                       className="w-full object-contain p-4"
                     />

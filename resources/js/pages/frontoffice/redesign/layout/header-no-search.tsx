@@ -138,7 +138,7 @@ export default function Header() {
                     <div className="flex h-20 items-center justify-between">
                         {/* LOGO */}
                         <Link href="/redesign/beranda" className="flex items-center">
-                            <img src="/images/logo-lg.png" alt="LPSK Logo" className="h-14 w-auto object-contain" />
+                            <img src="/images/logo-baru.png" alt="LPSK Logo" className="h-14 w-auto object-contain" />
                         </Link>
 
                         {/* DESKTOP MENU */}
@@ -211,7 +211,7 @@ export default function Header() {
                             <div className="grid h-[420px] grid-cols-4">
                                 <div className="bg-muted/60 border-border col-span-1 border-r p-6">
                                     <div className="mb-5 rounded-2xl border-2 border-amber-400 bg-gradient-to-l from-red-900 to-red-700">
-                                        <img src="/images/logo-lg.png" alt="Logo" className="w-full object-contain p-4" />
+                                        <img src="/images/logo-baru.png" alt="Logo" className="w-full object-contain p-4" />
                                     </div>
 
                                     <p className="text-sm leading-relaxed font-bold">

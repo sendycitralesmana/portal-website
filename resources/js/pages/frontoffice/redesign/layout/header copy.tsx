@@ -178,7 +178,7 @@ export default function Header() {
                 <div className="col-span-1 bg-muted/60 p-6 border-r border-border">
                   <div className="mb-5 bg-gradient-to-l from-blue-900 to-blue-700 rounded-2xl">
                     <img
-                      src="/images/logo-lg.png"
+                      src="/images/logo-baru.png"
                       alt="Logo"
                       className="w-full object-contain p-4"
                     />

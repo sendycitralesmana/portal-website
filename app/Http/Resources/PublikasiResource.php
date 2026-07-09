@@ -26,7 +26,7 @@ class PublikasiResource extends JsonResource
             // 'gambar' => $this->gambar ? Storage::disk('s3')->url($this->gambar) : null,
             'gambar' => $this->gambar && Storage::disk('s3')->exists($this->gambar)
             ? Storage::disk('s3')->url($this->gambar)
-            : asset('/images/logo-lg.png'),
+            : asset('/images/logo-baru.png'),
             'tanggal' => $this->tanggal,
             'created_at' => $this->created_at
                 ? $this->created_at->translatedFormat('l, d F Y')

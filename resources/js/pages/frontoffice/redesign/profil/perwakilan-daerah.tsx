@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 import { ReactElement, ReactNode } from 'react';
 import MainLayout from '../layout/main';
 
-import { Instagram, Mail, MapPin, MessageCircle, Music2, Phone, Youtube } from 'lucide-react';
+import { Instagram, Mail, MapPin, Music2, Phone, Youtube } from 'lucide-react';
 
 type PageWithLayout<P = {}> = {
     (props: P): ReactElement;
@@ -24,6 +24,7 @@ interface Office {
     gambar: string | null;
     latitude: string;
     longitude: string;
+    link: string | null;
 }
 
 interface Props {
@@ -76,7 +77,20 @@ const PerwakilanDaerah: PageWithLayout<Props> = ({ perwakilanDaerahs }) => {
                                         <p className="text-sm font-semibold tracking-wide text-amber-600 uppercase dark:text-amber-400">
                                             Perwakilan Daerah
                                         </p>
-                                        <h3 className="mt-1 text-2xl font-bold text-slate-800 md:text-3xl dark:text-white">{item.kantor}</h3>
+                                        <h3 className="mt-1 text-2xl font-bold md:text-3xl">
+                                            {item.link ? (
+                                                <a
+                                                    href={item.link}
+                                                    target="_blank"
+                                                    rel="noopener noreferrer"
+                                                    className="text-slate-800 transition-colors hover:text-amber-600 dark:text-white dark:hover:text-amber-400"
+                                                >
+                                                    {item.kantor}
+                                                </a>
+                                            ) : (
+                                                <span className="text-slate-800 dark:text-white">{item.kantor}</span>
+                                            )}
+                                        </h3>
                                         <div className="mt-4 h-1 w-20 rounded-full bg-gradient-to-r from-amber-700 to-amber-400"></div>
                                     </div>
 
@@ -86,7 +100,7 @@ const PerwakilanDaerah: PageWithLayout<Props> = ({ perwakilanDaerahs }) => {
                                         {/* <div className="lg:col-span-4">
                                             <div className="relative h-[220px] w-full overflow-hidden rounded-2xl border border-slate-200 shadow-md md:h-[260px] lg:h-[320px] dark:border-slate-800">
                                                 <img
-                                                    src={item.gambar ?? '/images/logo-lg.png'}
+                                                    src={item.gambar ?? '/images/logo-baru.png'}
                                                     alt={`Foto ${item.kantor}`}
                                                     className="h-full w-full object-contain transition-transform duration-500 group-hover:scale-105"
                                                 />
@@ -97,7 +111,7 @@ const PerwakilanDaerah: PageWithLayout<Props> = ({ perwakilanDaerahs }) => {
                                         <div className="lg:col-span-4">
                                             <div className="relative h-[220px] w-full overflow-hidden rounded-2xl border border-slate-200 shadow-md md:h-[260px] lg:h-[320px] dark:border-slate-800">
                                                 <img
-                                                    src={item.gambar ?? '/images/logo-lg.png'}
+                                                    src={item.gambar ?? '/images/logo-baru.png'}
                                                     alt={`Foto ${item.kantor}`}
                                                     className={`h-full w-full transition-transform duration-500 group-hover:scale-105 ${
                                                         item.gambar ? 'object-cover' : 'object-contain'
@@ -157,7 +171,11 @@ const PerwakilanDaerah: PageWithLayout<Props> = ({ perwakilanDaerahs }) => {
                                                             <>
                                                                 <span className="flex items-center gap-2 font-medium text-slate-700 dark:text-slate-300">
                                                                     {/* <MessageCircle className="h-4 w-4 text-green-600" /> */}
-                                                                    <img src="/images/wa_icon.png" alt="WhatsApp" className="h-5 w-5 object-contain" />
+                                                                    <img
+                                                                        src="/images/wa_icon.png"
+                                                                        alt="WhatsApp"
+                                                                        className="h-5 w-5 object-contain"
+                                                                    />
                                                                     WhatsApp
                                                                 </span>
                                                                 <a

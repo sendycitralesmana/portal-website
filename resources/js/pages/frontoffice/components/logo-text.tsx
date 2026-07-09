@@ -3,7 +3,7 @@ const LogoText = () => {
     <div className="flex items-center gap-2 h-[60px] w-[220px]">
       <div className="relative h-[60px] w-[60px]">
         <img
-          src={"/images/logo-lg.png"}
+          src={"/images/logo-baru.png"}
           alt={"Logo LPSK"}
           className="object-center object-cover h-full w-full"
         />

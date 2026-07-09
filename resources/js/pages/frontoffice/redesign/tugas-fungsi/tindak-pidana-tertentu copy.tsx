@@ -28,7 +28,7 @@ interface SectionProps {
 }
 
 const Section: React.FC<SectionProps> = ({ judul, deskripsi, gambar, reverse = false }) => {
-    const imageSrc = gambar && gambar.trim() !== '' ? gambar : '/images/logo-lg.png';
+    const imageSrc = gambar && gambar.trim() !== '' ? gambar : '/images/logo-baru.png';
 
     return (
         <div className="py-12">
@@ -56,7 +56,7 @@ const Section: React.FC<SectionProps> = ({ judul, deskripsi, gambar, reverse = f
                                 src={imageSrc}
                                 alt={judul}
                                 onError={(e) => {
-                                    e.currentTarget.src = '/images/logo-lg.png';
+                                    e.currentTarget.src = '/images/logo-baru.png';
                                 }}
                                 className="h-[220px] w-full object-contain md:h-[260px]"
                             />

@@ -31,7 +31,7 @@ interface PageProps {
 const ProfilCard = ({ profil }: { profil: Profil }) => {
   const fotoSrc = profil.foto
     ? `${profil.foto}`
-    : "/images/logo-lg.png";
+    : "/images/logo-baru.png";
 
   return (
     <motion.div

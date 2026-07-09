@@ -29,7 +29,7 @@ interface Post {
 interface TablistProps {
     siaranPers: Post[];
     beritaFotos: Post[];
-    beritaKegiatans: Post[];
+    beritas: Post[];
     pengumumans: Post[];
 }
 
@@ -158,13 +158,9 @@ function BeritaFotoCard({ post }: { post: Post }) {
 
                     {slides.length > 1 && (
                         <>
-    <CarouselPrevious
-        className="left-2 h-5 w-5 md:h-7 md:w-7"
-    />
-    <CarouselNext
-        className="right-2 h-5 w-5 md:h-7 md:w-7"
-    />
-</>
+                            <CarouselPrevious className="left-2 h-5 w-5 md:h-7 md:w-7" />
+                            <CarouselNext className="right-2 h-5 w-5 md:h-7 md:w-7" />
+                        </>
                     )}
                 </Carousel>
             </div>
@@ -213,7 +209,7 @@ function BeritaFotoGrid({ posts }: { posts: Post[] }) {
 
 /* ================= TABS ================= */
 
-export default function Tablist({ siaranPers, beritaFotos, beritaKegiatans, pengumumans }: TablistProps) {
+export default function Tablist({ siaranPers, beritaFotos, beritas, pengumumans }: TablistProps) {
     return (
         <section className="relative z-10 -mt-21 w-full py-12">
             <div className="container mx-auto px-4 md:px-6">
@@ -224,7 +220,7 @@ export default function Tablist({ siaranPers, beritaFotos, beritaKegiatans, peng
                                 {[
                                     { value: 'siaranPers', label: 'Siaran Pers' },
                                     { value: 'beritaFoto', label: 'Berita Foto' },
-                                    { value: 'beritaKegiatan', label: 'Berita Kegiatan' },
+                                    { value: 'berita', label: 'Berita' },
                                     { value: 'pengumuman', label: 'Pengumuman' },
                                 ].map((tab) => (
                                     <TabsTrigger
@@ -247,8 +243,8 @@ export default function Tablist({ siaranPers, beritaFotos, beritaKegiatans, peng
                         <BeritaFotoGrid posts={beritaFotos} />
                     </TabsContent>
 
-                    <TabsContent value="beritaKegiatan">
-                        <CardGrid posts={beritaKegiatans} baseUrl="/redesign/publikasi/berita-kegiatan" />
+                    <TabsContent value="berita">
+                        <CardGrid posts={beritas} baseUrl="/redesign/publikasi/berita-kegiatan" />
                     </TabsContent>
 
                     <TabsContent value="pengumuman">
