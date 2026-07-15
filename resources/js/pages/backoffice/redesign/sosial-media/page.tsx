@@ -56,7 +56,7 @@ const SosialMediaPage = (props: any) => {
     }
 
     useFilter({
-        route: '/redesign/backoffice/sosial-media',
+        route: '/backoffice/sosial-media',
         values: params,
         only: ['sosialMedias'],
         onLoading: (loading) => setIsLoading(loading),
@@ -79,7 +79,7 @@ const SosialMediaPage = (props: any) => {
                     />
 
                     {/* <Button variant="blue" size="lg" asChild>
-                        <Link href="/redesign/backoffice/sosial-media/create">
+                        <Link href="/backoffice/sosial-media/create">
                             <Plus className="size-4" />
                             Tambah
                         </Link>
@@ -171,7 +171,7 @@ const SosialMediaPage = (props: any) => {
                                                                 asChild
                                                             >
                                                                 <Link
-                                                                    href={`/redesign/backoffice/sosial-media/${item.id}/edit`}
+                                                                    href={`/backoffice/sosial-media/${item.id}/edit`}
                                                                 >
                                                                     <Pencil className="size-4" />
                                                                 </Link>
@@ -225,7 +225,7 @@ const SosialMediaPage = (props: any) => {
                                                     asChild
                                                 >
                                                     <Link
-                                                        href={`/redesign/backoffice/sosial-media/${item.id}/edit`}
+                                                        href={`/backoffice/sosial-media/${item.id}/edit`}
                                                     >
                                                         <Pencil className="size-4" />
                                                     </Link>

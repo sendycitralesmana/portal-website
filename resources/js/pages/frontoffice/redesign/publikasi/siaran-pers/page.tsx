@@ -172,7 +172,7 @@ const SiaranPersPage: PageWithLayout = () => {
                                     <div className="flex-1">
                                         <p className="mb-1 text-sm text-gray-600">{item.date}</p>
                                         <Link
-                                            href={`/redesign/publikasi/siaran-pers/${item.id}/detail`}
+                                            href={`/publikasi/siaran-pers/${item.id}/detail`}
                                             className="mb-2 block cursor-pointer text-base font-semibold text-gray-900 transition hover:text-red-900 md:text-lg lg:text-xl"
                                         >
                                             {item.title}

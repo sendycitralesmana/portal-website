@@ -45,7 +45,7 @@ export default function CreateVisiMisi() {
     const onHandleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
 
-        post('/redesign/backoffice/profil/visi-misi/store', {
+        post('/backoffice/profil/visi-misi/store', {
             forceFormData: true,
             onSuccess: () => {
                 reset();
@@ -71,7 +71,7 @@ export default function CreateVisiMisi() {
                     />
 
                     <Button asChild variant="blue">
-                        <Link href="/redesign/backoffice/profil/visi-misi">
+                        <Link href="/backoffice/profil/visi-misi">
                             <ArrowLeft className="size-4" />
                             Back
                         </Link>

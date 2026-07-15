@@ -50,7 +50,7 @@ const PublikasiPage = (props: any) => {
     };
 
     useFilter({
-        route: '/redesign/backoffice/publikasi',
+        route: '/backoffice/publikasi',
         values: params,
         only: ['publikasis'],
         onLoading: (loading) => setIsLoading(loading),
@@ -72,7 +72,7 @@ const PublikasiPage = (props: any) => {
                     />
 
                     <Button variant="blue" size="lg" asChild>
-                        <Link href="/redesign/backoffice/publikasi/create">
+                        <Link href="/backoffice/publikasi/create">
                             <Plus className="size-4" />
                             Tambah
                         </Link>
@@ -227,12 +227,12 @@ const PublikasiPage = (props: any) => {
                                                 <TableCell className="align-top">
                                                     <div className="flex gap-2">
                                                         <Button className="bg-blue-500" variant="link" size="sm" asChild>
-                                                            <Link href={`/redesign/backoffice/publikasi/${item.id}/detail`}>
+                                                            <Link href={`/backoffice/publikasi/${item.id}/detail`}>
                                                                 <Eye className="size-4" />
                                                             </Link>
                                                         </Button>
                                                         <Button className="bg-amber-400" variant="link" size="sm" asChild>
-                                                            <Link href={`/redesign/backoffice/publikasi/${item.id}/edit`}>
+                                                            <Link href={`/backoffice/publikasi/${item.id}/edit`}>
                                                                 <Pencil className="size-4" />
                                                             </Link>
                                                         </Button>
@@ -268,12 +268,12 @@ const PublikasiPage = (props: any) => {
 
                                             <div className="flex gap-2">
                                                 <Button className="bg-blue-500" variant="link" size="sm" asChild>
-                                                    <Link href={`/redesign/backoffice/publikasi/${item.id}/detail`}>
+                                                    <Link href={`/backoffice/publikasi/${item.id}/detail`}>
                                                         <Eye className="size-4" />
                                                     </Link>
                                                 </Button>
                                                 <Button className="bg-amber-400" variant="link" size="sm" asChild>
-                                                    <Link href={`/redesign/backoffice/publikasi/${item.id}/edit`}>
+                                                    <Link href={`/backoffice/publikasi/${item.id}/edit`}>
                                                         <Pencil className="size-4" />
                                                     </Link>
                                                 </Button>

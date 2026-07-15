@@ -8,7 +8,6 @@ import AppLayoutRedesign from '@/layouts/backoffice-redesign/app-layout-redesign
 import { Head, Link, useForm } from '@inertiajs/react';
 import { ArrowLeft, Edit, RotateCcw, FileText, Share2, Youtube } from 'lucide-react';
 import React from 'react';
-import pejabatStruktural from '@/pages/frontoffice/redesign/profil/pejabat-struktural';
 import {
     Select,
     SelectContent,
@@ -52,7 +51,7 @@ export default function EditVideoInfo({
         e.preventDefault();
 
         post(
-            `/redesign/backoffice/video-info/${videoInfo.id}/update`,
+            `/backoffice/video-info/${videoInfo.id}/update`,
             {
                 forceFormData: true,
             },
@@ -76,7 +75,7 @@ export default function EditVideoInfo({
                     />
 
                     <Button asChild variant="blue">
-                        <Link href="/redesign/backoffice/video-info">
+                        <Link href="/backoffice/video-info">
                             <ArrowLeft className="size-4" />
                             Kembali
                         </Link>

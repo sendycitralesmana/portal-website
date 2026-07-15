@@ -40,7 +40,7 @@ export default function CreateLayanan() {
     const onHandleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
 
-        post('/redesign/backoffice/layanan/store', {
+        post('/backoffice/layanan/store', {
             forceFormData: true,
             onSuccess: () => {
                 reset();
@@ -66,7 +66,7 @@ export default function CreateLayanan() {
                     />
 
                     <Button asChild variant="blue">
-                        <Link href="/redesign/backoffice/tugas-fungsi/layanan">
+                        <Link href="/backoffice/tugas-fungsi/layanan">
                             <ArrowLeft className="size-4" />
                             Kembali
                         </Link>

@@ -40,7 +40,7 @@ export default function CreateProfilPimpinan() {
     const onHandleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
 
-        post('/redesign/backoffice/profil/profil-pimpinan/store', {
+        post('/backoffice/profil/profil-pimpinan/store', {
             forceFormData: true,
             onSuccess: () => {
                 reset();
@@ -66,7 +66,7 @@ export default function CreateProfilPimpinan() {
                     />
 
                     <Button asChild variant="blue">
-                        <Link href="/redesign/backoffice/profil/profil-pimpinan">
+                        <Link href="/backoffice/profil/profil-pimpinan">
                             <ArrowLeft className="size-4" />
                             Kembali
                         </Link>

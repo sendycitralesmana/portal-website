@@ -38,7 +38,7 @@ export default function EditStrukturOrganisasi({ strukturOrganisasi }: EditStruk
 
     const onHandleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        post(`/redesign/backoffice/profil/struktur-organisasi/${strukturOrganisasi.id}/update`, {
+        post(`/backoffice/profil/struktur-organisasi/${strukturOrganisasi.id}/update`, {
             forceFormData: true,
         });
     };
@@ -60,7 +60,7 @@ export default function EditStrukturOrganisasi({ strukturOrganisasi }: EditStruk
                     />
 
                     <Button asChild variant="blue">
-                        <Link href="/redesign/backoffice/profil/struktur-organisasi">
+                        <Link href="/backoffice/profil/struktur-organisasi">
                             <ArrowLeft className="size-4" />
                             Kembali
                         </Link>

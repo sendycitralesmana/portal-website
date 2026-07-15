@@ -47,7 +47,7 @@ export default function CreatePejabatStruktural() {
     const onHandleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
 
-        post('/redesign/backoffice/profil/pejabat-struktural/store', {
+        post('/backoffice/profil/pejabat-struktural/store', {
             forceFormData: true,
             onSuccess: () => {
                 reset();
@@ -73,7 +73,7 @@ export default function CreatePejabatStruktural() {
                     />
 
                     <Button asChild variant="blue">
-                        <Link href="/redesign/backoffice/profil/pejabat-struktural">
+                        <Link href="/backoffice/profil/pejabat-struktural">
                             <ArrowLeft className="size-4" />
                             Kembali
                         </Link>

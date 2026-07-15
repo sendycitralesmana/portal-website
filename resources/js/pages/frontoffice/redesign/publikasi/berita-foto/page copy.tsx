@@ -128,7 +128,7 @@ const BeritaFotoPage: PageWithLayout<Props> = ({ publikasis, state }) => {
                                     <p className="mb-2 text-sm text-gray-600">{formatDate(item.created_at)}</p>
 
                                     <Link
-                                        href={`/redesign/berita-foto/${item.slug}`}
+                                        href={`/berita-foto/${item.slug}`}
                                         className="mb-3 block text-lg font-semibold text-gray-900 transition hover:text-red-900"
                                     >
                                         {item.judul}

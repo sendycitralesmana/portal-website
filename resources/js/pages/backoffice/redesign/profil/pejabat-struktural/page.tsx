@@ -48,7 +48,7 @@ const PejabatStrukturalPage = (props: any) => {
     };
 
     useFilter({
-        route: '/redesign/backoffice/profil/pejabat-struktural',
+        route: '/backoffice/profil/pejabat-struktural',
         values: params,
         only: ['pejabatStrukturals'],
         onLoading: (loading) => setIsLoading(loading),
@@ -70,7 +70,7 @@ const PejabatStrukturalPage = (props: any) => {
                     />
 
                     <Button variant="blue" size="lg" asChild>
-                        <Link href="/redesign/backoffice/profil/pejabat-struktural/create">
+                        <Link href="/backoffice/profil/pejabat-struktural/create">
                             <Plus className="size-4" />
                             Tambah
                         </Link>
@@ -173,7 +173,7 @@ const PejabatStrukturalPage = (props: any) => {
                                                 <TableCell>
                                                     <div className="flex gap-2">
                                                         <Button className="bg-amber-400" variant="link" size="sm" asChild>
-                                                            <Link href={`/redesign/backoffice/profil/pejabat-struktural/${item.id}/edit`}>
+                                                            <Link href={`/backoffice/profil/pejabat-struktural/${item.id}/edit`}>
                                                                 <Pencil className="size-4" />
                                                             </Link>
                                                         </Button>
@@ -209,7 +209,7 @@ const PejabatStrukturalPage = (props: any) => {
 
                                             <div className="flex gap-2">
                                                 <Button className="bg-amber-400" variant="link" size="sm" asChild>
-                                                    <Link href={`/redesign/backoffice/profil/pejabat-struktural/${item.id}/edit`}>
+                                                    <Link href={`/backoffice/profil/pejabat-struktural/${item.id}/edit`}>
                                                         <Pencil className="size-4" />
                                                     </Link>
                                                 </Button>

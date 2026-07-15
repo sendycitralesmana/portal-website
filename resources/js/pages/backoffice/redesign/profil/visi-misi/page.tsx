@@ -55,7 +55,7 @@ const VisiMisiPage = (props: any) => {
     };
 
     useFilter({
-        route: '/redesign/backoffice/profil/visi-misi',
+        route: '/backoffice/profil/visi-misi',
         values: params,
         only: ['visiMisis'],
         onLoading: (loading) => setIsLoading(loading),
@@ -202,7 +202,7 @@ const VisiMisiPage = (props: any) => {
                                                   <TableCell>
                                                       <div className="flex items-center gap-x-1">
                                                           <Button className="bg-amber-400" variant="link" size="sm" asChild>
-                                                              <Link href={`/redesign/backoffice/profil/visi-misi/${visiMisi.id}/edit`}>
+                                                              <Link href={`/backoffice/profil/visi-misi/${visiMisi.id}/edit`}>
                                                                   <Pencil className="size-4" />
                                                               </Link>
                                                           </Button>

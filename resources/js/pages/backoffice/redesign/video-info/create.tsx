@@ -41,7 +41,7 @@ export default function CreateSosialMedia() {
     const onHandleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
 
-        post('/redesign/backoffice/sosial-media/store', {
+        post('/backoffice/sosial-media/store', {
             forceFormData: true,
             onSuccess: () => {
                 reset();
@@ -64,7 +64,7 @@ export default function CreateSosialMedia() {
                     />
 
                     <Button asChild variant="blue">
-                        <Link href="/redesign/backoffice/sosial-media">
+                        <Link href="/backoffice/sosial-media">
                             <ArrowLeft className="size-4" />
                             Kembali
                         </Link>

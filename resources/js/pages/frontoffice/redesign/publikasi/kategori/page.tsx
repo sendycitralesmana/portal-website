@@ -149,7 +149,7 @@ const BeritaFotoPage: PageWithLayout<Props> = ({ publikasis, kategori, kategoriD
                                         <p className="mb-1 text-sm text-gray-600">{formatDate(item.created_at)}</p>
 
                                         <Link
-                                            href={`/redesign/publikasi/${kategori}/${item.slug}`}
+                                            href={`/publikasi/${kategori}/${item.slug}`}
                                             className="mb-2 block cursor-pointer text-base font-semibold text-gray-900 transition hover:text-red-900 md:text-lg lg:text-xl"
                                         >
                                             {item.judul}

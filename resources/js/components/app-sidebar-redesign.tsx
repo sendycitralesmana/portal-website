@@ -28,28 +28,28 @@ import ModeToggleTabs from './mode-toggle-tabs';
 export function AppSidebarRedesign() {
     const { url } = usePage();
 
-    const isBeranda = url.startsWith('/redesign/backoffice/beranda');
-    const isTentangKami = url.startsWith('/redesign/backoffice/tentang-kami');
-    const isVideoInfo = url.startsWith('/redesign/backoffice/video-info');
-    const isSosialMedia = url.startsWith('/redesign/backoffice/sosial-media');
-    const isLayanan = url.startsWith('/redesign/backoffice/layanan');
-    const isPublikasi = url.startsWith('/redesign/backoffice/publikasi');
-    const isPengguna = url.startsWith('/redesign/backoffice/pengguna');
+    const isBeranda = url.startsWith('/backoffice/beranda');
+    const isTentangKami = url.startsWith('/backoffice/tentang-kami');
+    const isVideoInfo = url.startsWith('/backoffice/video-info');
+    const isSosialMedia = url.startsWith('/backoffice/sosial-media');
+    const isLayanan = url.startsWith('/backoffice/layanan');
+    const isPublikasi = url.startsWith('/backoffice/publikasi');
+    const isPengguna = url.startsWith('/backoffice/pengguna');
 
     // PROFIL
-    const isProfil = url.startsWith('/redesign/backoffice/profil');
-    const isVisiMisi = url.startsWith('/redesign/backoffice/profil/visi-misi');
-    const isProfilPimpinan = url.startsWith('/redesign/backoffice/profil/profil-pimpinan');
-    const isStrukturOrganisasi = url.startsWith('/redesign/backoffice/profil/struktur-organisasi');
-    const isPejabatStruktural = url.startsWith('/redesign/backoffice/profil/pejabat-struktural');
-    const isPerwakilanDaerah = url.startsWith('/redesign/backoffice/profil/perwakilan-daerah');
+    const isProfil = url.startsWith('/backoffice/profil');
+    const isVisiMisi = url.startsWith('/backoffice/profil/visi-misi');
+    const isProfilPimpinan = url.startsWith('/backoffice/profil/profil-pimpinan');
+    const isStrukturOrganisasi = url.startsWith('/backoffice/profil/struktur-organisasi');
+    const isPejabatStruktural = url.startsWith('/backoffice/profil/pejabat-struktural');
+    const isPerwakilanDaerah = url.startsWith('/backoffice/profil/perwakilan-daerah');
 
     // TUGAS & FUNGSI
-    const isTugasFungsi = url.startsWith('/redesign/backoffice/tugas-fungsi');
-    const isKewenangan = url.startsWith('/redesign/backoffice/tugas-fungsi/kewenangan');
-    const isSubjekTerlindung = url.startsWith('/redesign/backoffice/tugas-fungsi/subjek-terlindung');
-    const isTindakPidana = url.startsWith('/redesign/backoffice/tugas-fungsi/tindak-pidana-tertentu');
-    const isProgramPerlindungan = url.startsWith('/redesign/backoffice/tugas-fungsi/program-perlindungan');
+    const isTugasFungsi = url.startsWith('/backoffice/tugas-fungsi');
+    const isKewenangan = url.startsWith('/backoffice/tugas-fungsi/kewenangan');
+    const isSubjekTerlindung = url.startsWith('/backoffice/tugas-fungsi/subjek-terlindung');
+    const isTindakPidana = url.startsWith('/backoffice/tugas-fungsi/tindak-pidana-tertentu');
+    const isProgramPerlindungan = url.startsWith('/backoffice/tugas-fungsi/program-perlindungan');
 
     const [dropdownProfilTerbuka, setDropdownProfilTerbuka] = useState(false);
     const [dropdownTugasTerbuka, setDropdownTugasTerbuka] = useState(false);
@@ -71,7 +71,7 @@ export function AppSidebarRedesign() {
                 <SidebarMenu>
                     <SidebarMenuItem>
                         <SidebarMenuButton size="lg" asChild>
-                            <Link href="/redesign/backoffice/beranda" prefetch>
+                            <Link href="/backoffice/beranda" prefetch>
                                 <AppLogo />
                             </Link>
                         </SidebarMenuButton>
@@ -84,7 +84,7 @@ export function AppSidebarRedesign() {
                     <hr />
 
                     <Link
-                        href="/redesign/backoffice/beranda"
+                        href="/backoffice/beranda"
                         className={`flex items-center gap-3 rounded px-3 py-2 text-sm font-medium transition-colors ${
                             isBeranda ? activeClass : hoverClass
                         }`}
@@ -94,7 +94,7 @@ export function AppSidebarRedesign() {
                     </Link>
 
                     <Link
-                        href="/redesign/backoffice/tentang-kami"
+                        href="/backoffice/tentang-kami"
                         className={`flex items-center gap-3 rounded px-3 py-2 text-sm font-medium transition-colors ${
                             isTentangKami ? activeClass : hoverClass
                         }`}
@@ -104,7 +104,7 @@ export function AppSidebarRedesign() {
                     </Link>
 
                     <Link
-                        href="/redesign/backoffice/sosial-media"
+                        href="/backoffice/sosial-media"
                         className={`flex items-center gap-3 rounded px-3 py-2 text-sm font-medium transition-colors ${
                             isSosialMedia ? activeClass : hoverClass
                         }`}
@@ -114,7 +114,7 @@ export function AppSidebarRedesign() {
                     </Link>
 
                     <Link
-                        href="/redesign/backoffice/layanan"
+                        href="/backoffice/layanan"
                         className={`flex items-center gap-3 rounded px-3 py-2 text-sm font-medium transition-colors ${
                             isLayanan ? activeClass : hoverClass
                         }`}
@@ -124,7 +124,7 @@ export function AppSidebarRedesign() {
                     </Link>
 
                     <Link
-                        href="/redesign/backoffice/video-info"
+                        href="/backoffice/video-info"
                         className={`flex items-center gap-3 rounded px-3 py-2 text-sm font-medium transition-colors ${
                             isVideoInfo ? activeClass : hoverClass
                         }`}
@@ -134,7 +134,7 @@ export function AppSidebarRedesign() {
                     </Link>
 
                     <Link
-                        href="/redesign/backoffice/publikasi"
+                        href="/backoffice/publikasi"
                         className={`flex items-center gap-3 rounded px-3 py-2 text-sm font-medium transition-colors ${
                             isPublikasi ? activeClass : hoverClass
                         }`}
@@ -144,7 +144,7 @@ export function AppSidebarRedesign() {
                     </Link>
 
                     {/* <Link
-            href="/redesign/backoffice/pengguna"
+            href="/backoffice/pengguna"
             className={`flex items-center gap-3 rounded px-3 py-2 text-sm font-medium transition-colors ${
               isPengguna ? activeClass : hoverClass
             }`}
@@ -172,7 +172,7 @@ export function AppSidebarRedesign() {
                         {dropdownProfilTerbuka && (
                             <div className="mt-1 ml-6 space-y-1">
                                 <Link
-                                    href="/redesign/backoffice/profil/visi-misi"
+                                    href="/backoffice/profil/visi-misi"
                                     className={`flex items-center gap-2 rounded px-3 py-2 text-sm ${isVisiMisi ? activeClass : hoverClass}`}
                                 >
                                     <Target className="h-4 w-4" />
@@ -180,7 +180,7 @@ export function AppSidebarRedesign() {
                                 </Link>
 
                                 <Link
-                                    href="/redesign/backoffice/profil/profil-pimpinan"
+                                    href="/backoffice/profil/profil-pimpinan"
                                     className={`flex items-center gap-2 rounded px-3 py-2 text-sm ${isProfilPimpinan ? activeClass : hoverClass}`}
                                 >
                                     <User className="h-4 w-4" />
@@ -188,7 +188,7 @@ export function AppSidebarRedesign() {
                                 </Link>
 
                                 <Link
-                                    href="/redesign/backoffice/profil/struktur-organisasi"
+                                    href="/backoffice/profil/struktur-organisasi"
                                     className={`flex items-center gap-2 rounded px-3 py-2 text-sm ${isStrukturOrganisasi ? activeClass : hoverClass}`}
                                 >
                                     <Network className="h-4 w-4" />
@@ -196,7 +196,7 @@ export function AppSidebarRedesign() {
                                 </Link>
 
                                 <Link
-                                    href="/redesign/backoffice/profil/pejabat-struktural"
+                                    href="/backoffice/profil/pejabat-struktural"
                                     className={`flex items-center gap-2 rounded px-3 py-2 text-sm ${isPejabatStruktural ? activeClass : hoverClass}`}
                                 >
                                     <Users className="h-4 w-4" />
@@ -204,7 +204,7 @@ export function AppSidebarRedesign() {
                                 </Link>
 
                                 <Link
-                                    href="/redesign/backoffice/profil/perwakilan-daerah"
+                                    href="/backoffice/profil/perwakilan-daerah"
                                     className={`flex items-center gap-2 rounded px-3 py-2 text-sm ${isPerwakilanDaerah ? activeClass : hoverClass}`}
                                 >
                                     <MapPin className="h-4 w-4" />
@@ -233,7 +233,7 @@ export function AppSidebarRedesign() {
                         {dropdownTugasTerbuka && (
                             <div className="mt-1 ml-6 space-y-1">
                                 <Link
-                                    href="/redesign/backoffice/tugas-fungsi/kewenangan"
+                                    href="/backoffice/tugas-fungsi/kewenangan"
                                     className={`flex items-center gap-2 rounded px-3 py-2 text-sm ${isKewenangan ? activeClass : hoverClass}`}
                                 >
                                     <Scale className="h-4 w-4" />
@@ -241,7 +241,7 @@ export function AppSidebarRedesign() {
                                 </Link>
 
                                 <Link
-                                    href="/redesign/backoffice/tugas-fungsi/subjek-terlindung"
+                                    href="/backoffice/tugas-fungsi/subjek-terlindung"
                                     className={`flex items-center gap-2 rounded px-3 py-2 text-sm ${isSubjekTerlindung ? activeClass : hoverClass}`}
                                 >
                                     <Shield className="h-4 w-4" />
@@ -249,7 +249,7 @@ export function AppSidebarRedesign() {
                                 </Link>
 
                                 <Link
-                                    href="/redesign/backoffice/tugas-fungsi/tindak-pidana-tertentu"
+                                    href="/backoffice/tugas-fungsi/tindak-pidana-tertentu"
                                     className={`flex items-center gap-2 rounded px-3 py-2 text-sm ${isTindakPidana ? activeClass : hoverClass}`}
                                 >
                                     <Gavel className="h-4 w-4" />
@@ -257,7 +257,7 @@ export function AppSidebarRedesign() {
                                 </Link>
 
                                 <Link
-                                    href="/redesign/backoffice/tugas-fungsi/program-perlindungan"
+                                    href="/backoffice/tugas-fungsi/program-perlindungan"
                                     className={`flex items-center gap-2 rounded px-3 py-2 text-sm ${
                                         isProgramPerlindungan ? activeClass : hoverClass
                                     }`}

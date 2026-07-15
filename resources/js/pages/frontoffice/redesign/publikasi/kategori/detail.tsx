@@ -305,7 +305,7 @@ const DetailPublikasi: PageWithLayout<Props> = ({ kategori, publikasi, publikasi
                   </div>
 
                   <div className="p-3 text-xs md:text-sm font-medium">
-                    <Link href={`/redesign/publikasi/${kategori}/${item.slug}`} className="hover:text-amber-700 transition">
+                    <Link href={`/publikasi/${kategori}/${item.slug}`} className="hover:text-amber-700 transition">
                       {item.judul}
                     </Link>
                   </div>

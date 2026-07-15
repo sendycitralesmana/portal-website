@@ -63,30 +63,30 @@ const layananInformasiMenuItems: MenuItem[] = [
 ];
 
 const profilMenuItems: MenuItem[] = [
-    { label: 'Visi dan Misi', href: '/redesign/profil/visi-misi' },
-    { label: 'Profil Pimpinan', href: '/redesign/profil/profil-pimpinan' },
-    { label: 'Struktur Organisasi', href: '/redesign/profil/struktur-organisasi' },
-    { label: 'Pejabat Struktural', href: '/redesign/profil/pejabat-struktural' },
-    { label: 'Perwakilan Daerah', href: '/redesign/profil/perwakilan-daerah' },
+    { label: 'Visi dan Misi', href: '/profil/visi-misi' },
+    { label: 'Profil Pimpinan', href: '/profil/profil-pimpinan' },
+    { label: 'Struktur Organisasi', href: '/profil/struktur-organisasi' },
+    { label: 'Pejabat Struktural', href: '/profil/pejabat-struktural' },
+    { label: 'Perwakilan Daerah', href: '/profil/perwakilan-daerah' },
 ];
 
 const tugasFungsiMenuItems: MenuItem[] = [
-    { label: 'Kewenangan', href: '/redesign/tugas-fungsi/kewenangan' },
-    { label: 'Subjek Pelindungan', href: '/redesign/tugas-fungsi/subjek-pelindungan' },
-    { label: 'Tindak Pidana Prioritas', href: '/redesign/tugas-fungsi/tindak-pidana-prioritas' },
-    { label: 'Program Pelindungan', href: '/redesign/tugas-fungsi/program-pelindungan' },
+    { label: 'Kewenangan', href: '/tugas-fungsi/kewenangan' },
+    { label: 'Subjek Pelindungan', href: '/tugas-fungsi/subjek-pelindungan' },
+    { label: 'Tindak Pidana Prioritas', href: '/tugas-fungsi/tindak-pidana-prioritas' },
+    { label: 'Program Pelindungan', href: '/tugas-fungsi/program-pelindungan' },
 ];
 
 const publikasiMenuItems: MenuItem[] = [
-    { label: 'Siaran Pers', href: '/redesign/publikasi/siaran-pers' },
-    { label: 'Sosial Media', href: '/redesign/sosial-media' },
-    { label: 'Berita Foto', href: '/redesign/berita-foto' },
-    { label: 'Berita', href: '/redesign/publikasi/berita' },
-    { label: 'Pengumuman', href: '/redesign/publikasi/pengumuman' },
-    { label: 'Laporan', href: '/redesign/publikasi/laporan' },
-    { label: 'Kajian dan Jurnal', href: '/redesign/publikasi/kajian-jurnal' },
-    { label: 'Buku', href: '/redesign/publikasi/buku' },
-    { label: 'Statistik', href: '/redesign/statistik' },
+    { label: 'Siaran Pers', href: '/publikasi/siaran-pers' },
+    { label: 'Sosial Media', href: '/sosial-media' },
+    { label: 'Berita Foto', href: '/berita-foto' },
+    { label: 'Berita', href: '/publikasi/berita' },
+    { label: 'Pengumuman', href: '/publikasi/pengumuman' },
+    { label: 'Laporan', href: '/publikasi/laporan' },
+    { label: 'Kajian dan Jurnal', href: '/publikasi/kajian-jurnal' },
+    { label: 'Buku', href: '/publikasi/buku' },
+    { label: 'Statistik', href: '/statistik' },
 ];
 
 export default function Header() {
@@ -102,7 +102,7 @@ export default function Header() {
 
     const closeMenu = () => setActiveMenu(null);
 
-    const isHome = url === '/' || url === '/redesign/beranda';
+    const isHome = url === '/' || url === '/beranda';
 
     const getMenuItems = (): MenuItem[] => {
         switch (activeMenu) {
@@ -197,7 +197,7 @@ export default function Header() {
                     <div className="relative flex h-20 items-center">
                         {/* LOGO */}
                         <div className="shrink-0">
-                            <Link href="/redesign/beranda" className="flex items-center">
+                            <Link href="/beranda" className="flex items-center">
                                 <img src="/images/logo-baru.png" alt="LPSK Logo" className="h-14 w-auto object-contain" />
                             </Link>
                         </div>
@@ -221,7 +221,7 @@ export default function Header() {
                                 menu === 'Beranda' ? (
                                     <Link
                                         key={menu}
-                                        href="/redesign/beranda"
+                                        href="/beranda"
                                         onClick={closeMenu}
                                         className={cn(
                                             'flex h-full items-center border-transparent uppercase transition-colors duration-200 hover:border-amber-500 hover:text-amber-500',
@@ -288,7 +288,7 @@ export default function Header() {
                                                 searchResults.map((item) => (
                                                     <Link
                                                         key={item.id}
-                                                        href={`/redesign/publikasi/${item.kategori}/${item.slug}`}
+                                                        href={`/publikasi/${item.kategori}/${item.slug}`}
                                                         onClick={() => {
                                                             setShowSearch(false);
                                                             setSearch('');
@@ -419,7 +419,7 @@ export default function Header() {
                                     searchResults.map((item) => (
                                         <Link
                                             key={item.id}
-                                            href={`/redesign/publikasi/${item.kategori}/${item.slug}`}
+                                            href={`/publikasi/${item.kategori}/${item.slug}`}
                                             onClick={() => {
                                                 setMobileSearchOpen(false);
                                                 setSearch('');
@@ -529,7 +529,7 @@ export default function Header() {
                         if (menu === 'Beranda') {
                             return (
                                 <div key={menu} className="border-border border-b">
-                                    <Link href="/redesign/beranda" className="block px-6 py-4 font-bold" onClick={() => setMobileOpen(false)}>
+                                    <Link href="/beranda" className="block px-6 py-4 font-bold" onClick={() => setMobileOpen(false)}>
                                         {menu}
                                     </Link>
                                 </div>

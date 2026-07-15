@@ -46,7 +46,7 @@ export default function DeleteDialogPublikasiMedia({
                     <AlertDialogAction
                         onClick={() =>
                             router.delete(
-                                `/redesign/backoffice/publikasi-media/${id}/delete`
+                                `/backoffice/publikasi-media/${id}/delete`
                             )
                         }
                     >

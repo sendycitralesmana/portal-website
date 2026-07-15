@@ -57,7 +57,7 @@ const ProfilPimpinanPage = (props: any) => {
     }
 
     useFilter({
-        route: '/redesign/backoffice/profil/profil-pimpinan',
+        route: '/backoffice/profil/profil-pimpinan',
         values: params,
         only: ['profilPimpinans'],
         onLoading: (loading) => setIsLoading(loading),
@@ -79,7 +79,7 @@ const ProfilPimpinanPage = (props: any) => {
                     />
 
                     <Button variant="blue" size="lg" asChild>
-                        <Link href="/redesign/backoffice/profil/profil-pimpinan/create">
+                        <Link href="/backoffice/profil/profil-pimpinan/create">
                             <Plus className="size-4" />
                             Tambah
                         </Link>
@@ -199,7 +199,7 @@ const ProfilPimpinanPage = (props: any) => {
                                                             asChild
                                                         >
                                                             <Link
-                                                                href={`/redesign/backoffice/profil/profil-pimpinan/${item.id}/edit`}
+                                                                href={`/backoffice/profil/profil-pimpinan/${item.id}/edit`}
                                                             >
                                                                 <Pencil className="size-4" />
                                                             </Link>
@@ -249,7 +249,7 @@ const ProfilPimpinanPage = (props: any) => {
                                                     asChild
                                                 >
                                                     <Link
-                                                        href={`/redesign/backoffice/profil/profil-pimpinan/${item.id}/edit`}
+                                                        href={`/backoffice/profil/profil-pimpinan/${item.id}/edit`}
                                                     >
                                                         <Pencil className="size-4" />
                                                     </Link>

@@ -56,7 +56,7 @@ export default function EditTentangKami({ tentangKami }: EditTentangKamiProps) {
 
     const onHandleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        post(`/redesign/backoffice/tentang-kami/${tentangKami.id}/update`, {
+        post(`/backoffice/tentang-kami/${tentangKami.id}/update`, {
             forceFormData: true,
         });
     };
@@ -78,7 +78,7 @@ export default function EditTentangKami({ tentangKami }: EditTentangKamiProps) {
                     />
 
                     <Button asChild variant="blue">
-                        <Link href="/redesign/backoffice/tentang-kami">
+                        <Link href="/backoffice/tentang-kami">
                             <ArrowLeft className="size-4" />
                             Kembali
                         </Link>

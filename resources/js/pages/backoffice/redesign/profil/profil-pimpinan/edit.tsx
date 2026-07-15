@@ -54,7 +54,7 @@ export default function EditProfilPimpinan({
         e.preventDefault();
 
         post(
-            `/redesign/backoffice/profil/profil-pimpinan/${profilPimpinan.id}/update`,
+            `/backoffice/profil/profil-pimpinan/${profilPimpinan.id}/update`,
             {
                 forceFormData: true,
             },
@@ -78,7 +78,7 @@ export default function EditProfilPimpinan({
                     />
 
                     <Button asChild variant="blue">
-                        <Link href="/redesign/backoffice/profil/profil-pimpinan">
+                        <Link href="/backoffice/profil/profil-pimpinan">
                             <ArrowLeft className="size-4" />
                             Kembali
                         </Link>

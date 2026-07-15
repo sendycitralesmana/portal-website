@@ -71,7 +71,7 @@ const PublikasiDetailPage = ({ publikasi }: any) => {
             data.append('file', form.file);
         }
 
-        router.post(`/redesign/backoffice/publikasi-media/${id}/update`, data, {
+        router.post(`/backoffice/publikasi-media/${id}/update`, data, {
             forceFormData: true,
             preserveScroll: true,
             onSuccess: () => {
@@ -129,7 +129,7 @@ const PublikasiDetailPage = ({ publikasi }: any) => {
             data.append('file', addImageForm.file);
         }
 
-        router.post('/redesign/backoffice/publikasi-media/store', data, {
+        router.post('/backoffice/publikasi-media/store', data, {
             forceFormData: true,
             preserveScroll: true,
             onSuccess: () => {
@@ -155,7 +155,7 @@ const PublikasiDetailPage = ({ publikasi }: any) => {
             data.append('file', addDocForm.file);
         }
 
-        router.post('/redesign/backoffice/publikasi-media/store', data, {
+        router.post('/backoffice/publikasi-media/store', data, {
             forceFormData: true,
             preserveScroll: true,
             onSuccess: () => {
@@ -180,7 +180,7 @@ const PublikasiDetailPage = ({ publikasi }: any) => {
                     <HeaderTitle title="Detail Publikasi" subtitle="Tampilan publikasi seperti artikel." icon={Newspaper} />
 
                     <Button asChild variant="blue">
-                        <Link href="/redesign/backoffice/publikasi">
+                        <Link href="/backoffice/publikasi">
                             <ArrowLeft className="size-4" />
                             Kembali
                         </Link>
@@ -194,7 +194,7 @@ const PublikasiDetailPage = ({ publikasi }: any) => {
                                 <h1 className="text-3xl font-bold">{publikasi.judul}</h1>
 
                                 <Button asChild size="sm" className="bg-amber-400 hover:bg-amber-500">
-                                    <Link href={`/redesign/backoffice/publikasi/${publikasi.id}/edit`}>
+                                    <Link href={`/backoffice/publikasi/${publikasi.id}/edit`}>
                                         <Pencil className="size-4 mr-1" />
                                         Edit
                                     </Link>

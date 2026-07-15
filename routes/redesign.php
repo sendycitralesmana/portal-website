@@ -24,7 +24,7 @@ use App\Http\Controllers\FrontOffice\Redesign\TugasFungsiRedesignController;
 // redesign routes 
 
 // grup redesign
-Route::prefix('redesign')->group(function () {
+// Route::prefix('redesign')->group(function () {
     // beranda
     Route::get('/', [BerandaRedesignController::class, 'index'])->name('redesign.home');
 
@@ -334,4 +334,4 @@ Route::prefix('redesign')->group(function () {
             });
         });
     });
-});
+// });

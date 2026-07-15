@@ -95,7 +95,7 @@ export default function Header() {
 
     const closeMenu = () => setActiveMenu(null);
 
-    const isHome = url === '/' || url === '/redesign/beranda';
+    const isHome = url === '/' || url === '/beranda';
 
     const getMenuItems = (): MenuItem[] => {
         switch (activeMenu) {
@@ -137,7 +137,7 @@ export default function Header() {
                 <div className="mx-auto px-6 md:pl-16 lg:pl-24">
                     <div className="flex h-20 items-center justify-between">
                         {/* LOGO */}
-                        <Link href="/redesign/beranda" className="flex items-center">
+                        <Link href="/beranda" className="flex items-center">
                             <img src="/images/logo-baru.png" alt="LPSK Logo" className="h-14 w-auto object-contain" />
                         </Link>
 

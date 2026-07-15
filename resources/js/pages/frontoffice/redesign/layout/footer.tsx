@@ -21,7 +21,7 @@ export default function Footer() {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const res = await fetch('/redesign/backoffice/tentang-kami/api');
+                const res = await fetch('/backoffice/tentang-kami/api');
                 if (!res.ok) throw new Error('Failed to fetch data');
                 const json: TentangKami = await res.json();
                 setData(json);
@@ -92,7 +92,7 @@ export default function Footer() {
                         ) : (
                             <>
                                 <p className="mb-4 text-sm text-zinc-300">Informasi dan artikel terbaru Humas Pemerintahan.</p>
-                                <a href="/redesign/gpr" className="inline-flex items-center gap-2 text-sm font-medium transition hover:text-blue-400">
+                                <a href="/gpr" className="inline-flex items-center gap-2 text-sm font-medium transition hover:text-blue-400">
                                     Selengkapnya
                                     <ChevronRight size={16} />
                                 </a>

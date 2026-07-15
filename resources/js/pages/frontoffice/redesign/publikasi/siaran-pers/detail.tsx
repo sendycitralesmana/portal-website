@@ -169,7 +169,7 @@ const DetailPublikasi: PageWithLayout = () => {
 
                   <div className="p-3 text-xs md:text-sm font-medium leading-snug">
                     <Link
-                      href={`/redesign/publikasi/siaran-pers/${item.id}/detail`}
+                      href={`/publikasi/siaran-pers/${item.id}/detail`}
                       className="hover:text-red-900 transition-colors duration-200"
                     >
                       {item.title}

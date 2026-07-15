@@ -46,7 +46,7 @@ export default function DeleteDialog({
                     <AlertDialogAction
                         onClick={() =>
                             router.delete(
-                                `/redesign/backoffice/profil/perwakilan-daerah/${id}/delete`
+                                `/backoffice/profil/perwakilan-daerah/${id}/delete`
                             )
                         }
                     >

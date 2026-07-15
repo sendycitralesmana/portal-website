@@ -62,7 +62,7 @@ export default function EditPerwakilanDaerah({
 
     const onHandleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        post(`/redesign/backoffice/profil/perwakilan-daerah/${perwakilanDaerah.id}/update`, {
+        post(`/backoffice/profil/perwakilan-daerah/${perwakilanDaerah.id}/update`, {
             forceFormData: true,
         });
     };
@@ -84,7 +84,7 @@ export default function EditPerwakilanDaerah({
                     />
 
                     <Button asChild variant="blue">
-                        <Link href="/redesign/backoffice/profil/perwakilan-daerah">
+                        <Link href="/backoffice/profil/perwakilan-daerah">
                             <ArrowLeft className="size-4" />
                             Kembali
                         </Link>

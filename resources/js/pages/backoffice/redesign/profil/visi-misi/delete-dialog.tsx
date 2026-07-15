@@ -46,7 +46,7 @@ export default function DeleteDialog({
                     <AlertDialogAction
                         onClick={() =>
                             router.delete(
-                                `/redesign/backoffice/profil/visi-misi/${id}/delete`
+                                `/backoffice/profil/visi-misi/${id}/delete`
                             )
                         }
                     >

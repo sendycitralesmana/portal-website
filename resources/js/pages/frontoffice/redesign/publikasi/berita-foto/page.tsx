@@ -140,7 +140,7 @@ function BeritaFotoCard({ item }: { item: Publikasi }) {
                 <p className="mb-2 h-5 text-sm text-gray-600 dark:text-slate-200">{activeSlide.date}</p>
 
                 <Link
-                    href={`/redesign/berita-foto/${item.slug}`}
+                    href={`/berita-foto/${item.slug}`}
                     className="mb-3 block h-14 overflow-hidden text-lg font-semibold text-gray-900 dark:text-slate-200 dark:hover:text-amber-200 transition hover:text-red-900"
                 >
                     {activeSlide.title}

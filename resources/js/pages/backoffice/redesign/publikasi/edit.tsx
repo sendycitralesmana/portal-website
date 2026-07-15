@@ -88,7 +88,7 @@ export default function EditPublikasi({ publikasi }: EditPublikasiProps) {
     const onHandleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
 
-        post(`/redesign/backoffice/publikasi/${publikasi.id}/update`, {
+        post(`/backoffice/publikasi/${publikasi.id}/update`, {
             forceFormData: true,
         });
     };

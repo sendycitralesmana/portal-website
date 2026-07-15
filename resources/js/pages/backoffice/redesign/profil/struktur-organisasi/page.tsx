@@ -49,7 +49,7 @@ const StrukturOrganiasiPage = (props: any) => {
     };
 
     useFilter({
-        route: '/redesign/backoffice/profil/struktur-organisasi',
+        route: '/backoffice/profil/struktur-organisasi',
         values: params,
         only: ['strukturOrganisasis'],
         onLoading: (loading) => setIsLoading(loading),
@@ -139,7 +139,7 @@ const StrukturOrganiasiPage = (props: any) => {
                                                 <TableCell className="align-top">
                                                     <div className="flex gap-2">
                                                         <Button className="bg-amber-400" variant="link" size="sm" asChild>
-                                                            <Link href={`/redesign/backoffice/profil/struktur-organisasi/${item.id}/edit`}>
+                                                            <Link href={`/backoffice/profil/struktur-organisasi/${item.id}/edit`}>
                                                                 <Pencil className="size-4" />
                                                             </Link>
                                                         </Button>
@@ -174,7 +174,7 @@ const StrukturOrganiasiPage = (props: any) => {
 
                                             <div className="flex gap-2">
                                                 <Button className="bg-amber-400" variant="link" size="sm" asChild>
-                                                    <Link href={`/redesign/backoffice/profil/struktur-organisasi/${item.id}/edit`}>
+                                                    <Link href={`/backoffice/profil/struktur-organisasi/${item.id}/edit`}>
                                                         <Pencil className="size-4" />
                                                     </Link>
                                                 </Button>

@@ -46,7 +46,7 @@ export default function DeleteDialog({
                     <AlertDialogAction
                         onClick={() =>
                             router.delete(
-                                `/redesign/backoffice/profil/profil-pimpinan/${id}/delete`
+                                `/backoffice/profil/profil-pimpinan/${id}/delete`
                             )
                         }
                     >

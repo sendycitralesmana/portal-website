@@ -49,7 +49,7 @@ const TentangKamiPage = (props: any) => {
     };
 
     useFilter({
-        route: '/redesign/backoffice/tentang-kami',
+        route: '/backoffice/tentang-kami',
         values: params,
         only: ['tentangKamis'],
         onLoading: (loading) => setIsLoading(loading),
@@ -203,7 +203,7 @@ const TentangKamiPage = (props: any) => {
                                                 <TableCell className="align-top">
                                                     <div className="flex gap-2">
                                                         <Button className="bg-amber-400" variant="link" size="sm" asChild>
-                                                            <Link href={`/redesign/backoffice/tentang-kami/${item.id}/edit`}>
+                                                            <Link href={`/backoffice/tentang-kami/${item.id}/edit`}>
                                                                 <Pencil className="size-4" />
                                                             </Link>
                                                         </Button>
@@ -238,7 +238,7 @@ const TentangKamiPage = (props: any) => {
 
                                             <div className="flex gap-2">
                                                 <Button className="bg-amber-400" variant="link" size="sm" asChild>
-                                                    <Link href={`/redesign/backoffice/tentang-kami/${item.id}/edit`}>
+                                                    <Link href={`/backoffice/tentang-kami/${item.id}/edit`}>
                                                         <Pencil className="size-4" />
                                                     </Link>
                                                 </Button>

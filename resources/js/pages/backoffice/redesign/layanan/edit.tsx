@@ -46,7 +46,7 @@ export default function EditLayanan({
 
     const onHandleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        post(`/redesign/backoffice/layanan/${layanan.id}/update`, {
+        post(`/backoffice/layanan/${layanan.id}/update`, {
             forceFormData: true,
         });
     };
@@ -68,7 +68,7 @@ export default function EditLayanan({
                     />
 
                     <Button asChild variant="blue">
-                        <Link href="/redesign/backoffice/tugas-fungsi/layanan">
+                        <Link href="/backoffice/tugas-fungsi/layanan">
                             <ArrowLeft className="size-4" />
                             Kembali
                         </Link>

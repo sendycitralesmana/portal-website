@@ -58,7 +58,7 @@ export default function EditVisiMisi({ visiMisi }: EditVisiMisiProps) {
         e.preventDefault();
 
         post(
-            `/redesign/backoffice/profil/visi-misi/${visiMisi.id}/update`,
+            `/backoffice/profil/visi-misi/${visiMisi.id}/update`,
             {
                 forceFormData: true,
             },
@@ -82,7 +82,7 @@ export default function EditVisiMisi({ visiMisi }: EditVisiMisiProps) {
                     />
 
                     <Button size="lg" asChild variant="blue">
-                        <Link href="/redesign/backoffice/profil/visi-misi">
+                        <Link href="/backoffice/profil/visi-misi">
                             <ArrowLeft className="size-4" />
                             Kembali
                         </Link>

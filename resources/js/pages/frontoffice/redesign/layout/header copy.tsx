@@ -46,30 +46,30 @@ const layananInformasiMenuItems: MenuItem[] = [
 ]
 
 const profilMenuItems: MenuItem[] = [
-  { label: "Visi dan Misi", href: "/redesign/profil/visi-misi" },
-  { label: "Profil Pimpinan", href: "/redesign/profil/profil-pimpinan" },
-  { label: "Struktur Organisasi", href: "/redesign/profil/struktur-organisasi" },
-  { label: "Pejabat Struktural", href: "/redesign/profil/pejabat-struktural" },
-  { label: "Perwakilan Daerah", href: "/redesign/profil/perwakilan-daerah" },
+  { label: "Visi dan Misi", href: "/profil/visi-misi" },
+  { label: "Profil Pimpinan", href: "/profil/profil-pimpinan" },
+  { label: "Struktur Organisasi", href: "/profil/struktur-organisasi" },
+  { label: "Pejabat Struktural", href: "/profil/pejabat-struktural" },
+  { label: "Perwakilan Daerah", href: "/profil/perwakilan-daerah" },
 ]
 
 const tugasFungsiMenuItems: MenuItem[] = [
-  { label: "Kewenangan", href: "/redesign/tugas-fungsi/kewenangan" },
-  { label: "Subjek Terlindung", href: "/redesign/tugas-fungsi/subjek-terlindung" },
-  { label: "Tindak Pidana Tertentu", href: "/redesign/tugas-fungsi/tindak-pidana-tertentu" },
-  { label: "Program Perlindungan", href: "/redesign/tugas-fungsi/program-perlindungan" },
+  { label: "Kewenangan", href: "/tugas-fungsi/kewenangan" },
+  { label: "Subjek Terlindung", href: "/tugas-fungsi/subjek-terlindung" },
+  { label: "Tindak Pidana Tertentu", href: "/tugas-fungsi/tindak-pidana-tertentu" },
+  { label: "Program Perlindungan", href: "/tugas-fungsi/program-perlindungan" },
 ]
 
 const publikasiMenuItems: MenuItem[] = [
-  { label: "Siaran Pers", href: "/redesign/publikasi/siaran-pers" },
-  { label: "Media Sosial", href: "/redesign/publikasi/media-sosial" },
-  { label: "Berita Kegiatan", href: "/redesign/publikasi/berita-kegiatan" },
-  { label: "Berita Foto", href: "/redesign/publikasi/berita-foto" },
-  { label: "Pengumuman", href: "/redesign/publikasi/pengumuman" },
-  { label: "Laporan", href: "/redesign/publikasi/laporan" },
-  { label: "Kajian dan Jurnal", href: "/redesign/publikasi/kajian-jurnal" },
-  { label: "Buku", href: "/redesign/publikasi/buku" },
-  { label: "Statistik", href: "/redesign/publikasi/statistik" },
+  { label: "Siaran Pers", href: "/publikasi/siaran-pers" },
+  { label: "Media Sosial", href: "/publikasi/media-sosial" },
+  { label: "Berita Kegiatan", href: "/publikasi/berita-kegiatan" },
+  { label: "Berita Foto", href: "/publikasi/berita-foto" },
+  { label: "Pengumuman", href: "/publikasi/pengumuman" },
+  { label: "Laporan", href: "/publikasi/laporan" },
+  { label: "Kajian dan Jurnal", href: "/publikasi/kajian-jurnal" },
+  { label: "Buku", href: "/publikasi/buku" },
+  { label: "Statistik", href: "/publikasi/statistik" },
 ]
 
 export default function Header() {
@@ -108,7 +108,7 @@ export default function Header() {
           <div className="flex items-center justify-between h-20">
 
             {/* LOGO */}
-            <Link href="/redesign/beranda" className="flex items-center">
+            <Link href="/beranda" className="flex items-center">
               <img
                 src="/images/logo-lpsk.png"
                 alt="LPSK Logo"

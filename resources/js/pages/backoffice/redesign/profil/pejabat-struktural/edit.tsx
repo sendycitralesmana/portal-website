@@ -51,7 +51,7 @@ export default function EditPejabatStruktural({ pejabatStruktural }: EditPejabat
     const onHandleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
 
-        post(`/redesign/backoffice/profil/pejabat-struktural/${pejabatStruktural.id}/update`, {
+        post(`/backoffice/profil/pejabat-struktural/${pejabatStruktural.id}/update`, {
             forceFormData: true,
         });
     };
@@ -73,7 +73,7 @@ export default function EditPejabatStruktural({ pejabatStruktural }: EditPejabat
                     />
 
                     <Button asChild variant="blue">
-                        <Link href="/redesign/backoffice/profil/pejabat-struktural">
+                        <Link href="/backoffice/profil/pejabat-struktural">
                             <ArrowLeft className="size-4" />
                             Kembali
                         </Link>

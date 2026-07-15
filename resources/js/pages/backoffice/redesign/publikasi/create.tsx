@@ -73,7 +73,7 @@ export default function CreatePublikasi() {
 
     const onHandleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        post('/redesign/backoffice/publikasi/store', {
+        post('/backoffice/publikasi/store', {
             forceFormData: true,
             onSuccess: () => {
                 reset();
@@ -116,7 +116,7 @@ export default function CreatePublikasi() {
                         icon={Newspaper}
                     />
                     <Button asChild variant="blue">
-                        <Link href="/redesign/backoffice/publikasi">
+                        <Link href="/backoffice/publikasi">
                             <ArrowLeft className="size-4" />
                             Kembali
                         </Link>

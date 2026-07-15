@@ -8,7 +8,7 @@ import AppLayoutRedesign from '@/layouts/backoffice-redesign/app-layout-redesign
 import { Head, Link, useForm } from '@inertiajs/react';
 import { ArrowLeft, Edit, RotateCcw, FileText, Share2 } from 'lucide-react';
 import React from 'react';
-import pejabatStruktural from '@/pages/frontoffice/redesign/profil/pejabat-struktural';
+// import pejabatStruktural from '@/pages/frontoffice/profil/pejabat-struktural';
 import {
     Select,
     SelectContent,
@@ -52,7 +52,7 @@ export default function EditSosialMedia({
         e.preventDefault();
 
         post(
-            `/redesign/backoffice/sosial-media/${sosialMedia.id}/update`,
+            `/backoffice/sosial-media/${sosialMedia.id}/update`,
             {
                 forceFormData: true,
             },
@@ -76,7 +76,7 @@ export default function EditSosialMedia({
                     />
 
                     <Button asChild variant="blue">
-                        <Link href="/redesign/backoffice/sosial-media">
+                        <Link href="/backoffice/sosial-media">
                             <ArrowLeft className="size-4" />
                             Kembali
                         </Link>

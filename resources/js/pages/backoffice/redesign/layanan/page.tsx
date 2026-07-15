@@ -52,7 +52,7 @@ const LayananPage = (props: any) => {
     };
 
     useFilter({
-        route: '/redesign/backoffice/layanan',
+        route: '/backoffice/layanan',
         values: params,
         only: ['layanans'],
         onLoading: (loading) => setIsLoading(loading),
@@ -74,7 +74,7 @@ const LayananPage = (props: any) => {
                     />
 
                     <Button variant="blue" size="lg" asChild>
-                        <Link href="/redesign/backoffice/layanan/create">
+                        <Link href="/backoffice/layanan/create">
                             <Plus className="size-4" />
                             Tambah
                         </Link>
@@ -171,7 +171,7 @@ const LayananPage = (props: any) => {
                                                 <TableCell className="align-top">
                                                     <div className="flex gap-2">
                                                         <Button className="bg-amber-400" variant="link" size="sm" asChild>
-                                                            <Link href={`/redesign/backoffice/layanan/${item.id}/edit`}>
+                                                            <Link href={`/backoffice/layanan/${item.id}/edit`}>
                                                                 <Pencil className="size-4" />
                                                             </Link>
                                                         </Button>
@@ -207,7 +207,7 @@ const LayananPage = (props: any) => {
 
                                             <div className="flex gap-2">
                                                 <Button className="bg-amber-400" variant="link" size="sm" asChild>
-                                                    <Link href={`/redesign/backoffice/layanan/${item.id}/edit`}>
+                                                    <Link href={`/backoffice/layanan/${item.id}/edit`}>
                                                         <Pencil className="size-4" />
                                                     </Link>
                                                 </Button>

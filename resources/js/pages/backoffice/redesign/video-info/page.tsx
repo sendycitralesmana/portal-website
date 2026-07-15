@@ -56,7 +56,7 @@ const VideoInfoPage = (props: any) => {
     }
 
     useFilter({
-        route: '/redesign/backoffice/video-info',
+        route: '/backoffice/video-info',
         values: params,
         only: ['videoInfos'],
         onLoading: (loading) => setIsLoading(loading),
@@ -163,7 +163,7 @@ const VideoInfoPage = (props: any) => {
                                                                 asChild
                                                             >
                                                                 <Link
-                                                                    href={`/redesign/backoffice/video-info/${item.id}/edit`}
+                                                                    href={`/backoffice/video-info/${item.id}/edit`}
                                                                 >
                                                                     <Pencil className="size-4" />
                                                                 </Link>
@@ -216,7 +216,7 @@ const VideoInfoPage = (props: any) => {
                                                     asChild
                                                 >
                                                     <Link
-                                                        href={`/redesign/backoffice/video-info/${item.id}/edit`}
+                                                        href={`/backoffice/video-info/${item.id}/edit`}
                                                     >
                                                         <Pencil className="size-4" />
                                                     </Link>

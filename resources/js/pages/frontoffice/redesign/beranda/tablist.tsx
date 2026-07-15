@@ -169,7 +169,7 @@ function BeritaFotoCard({ post }: { post: Post }) {
                 <p className="text-muted-foreground mb-2 text-[10px] sm:text-[11px] md:text-xs">{activeSlide.date}</p>
 
                 <Link
-                    href={`/redesign/berita-foto/${post.slug}`}
+                    href={`/berita-foto/${post.slug}`}
                     className="text-foreground line-clamp-2 text-xs font-semibold transition-colors hover:text-red-900 md:text-sm lg:text-lg"
                 >
                     {activeSlide.title}
@@ -183,7 +183,7 @@ function BeritaFotoCard({ post }: { post: Post }) {
             </CardContent> */}
             <CardContent className="bg-muted/70 flex flex-1 flex-col p-3 sm:p-4 md:p-5">
                 <Link
-                    href={`/redesign/berita-foto/${post.slug}`}
+                    href={`/berita-foto/${post.slug}`}
                     className="md:text-md text-foreground line-clamp-3 min-h-[44px] text-xs leading-snug font-semibold transition-colors hover:text-red-900 sm:min-h-[52px] md:min-h-[60px] lg:text-lg"
                 >
                     {activeSlide.title}
@@ -236,7 +236,7 @@ export default function Tablist({ siaranPers, beritaFotos, beritas, pengumumans 
                     </div>
 
                     <TabsContent value="siaranPers">
-                        <CardGrid posts={siaranPers} baseUrl="/redesign/publikasi/siaran-pers" />
+                        <CardGrid posts={siaranPers} baseUrl="/publikasi/siaran-pers" />
                     </TabsContent>
 
                     <TabsContent value="beritaFoto">
@@ -244,11 +244,11 @@ export default function Tablist({ siaranPers, beritaFotos, beritas, pengumumans 
                     </TabsContent>
 
                     <TabsContent value="berita">
-                        <CardGrid posts={beritas} baseUrl="/redesign/publikasi/berita-kegiatan" />
+                        <CardGrid posts={beritas} baseUrl="/publikasi/berita-kegiatan" />
                     </TabsContent>
 
                     <TabsContent value="pengumuman">
-                        <CardGrid posts={pengumumans} baseUrl="/redesign/publikasi/pengumuman" />
+                        <CardGrid posts={pengumumans} baseUrl="/publikasi/pengumuman" />
                     </TabsContent>
                 </Tabs>
             </div>

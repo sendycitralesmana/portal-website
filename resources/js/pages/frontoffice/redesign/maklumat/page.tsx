@@ -30,7 +30,7 @@ const MaklumatPage = () => {
 
           {/* Tombol close - jarak atas & kanan sama */}
           <Link
-            href="/redesign/beranda"
+            href="/beranda"
             className="absolute top-4 right-8 bg-white rounded-md px-2 py-1 shadow hover:bg-gray-100 transition flex items-center justify-center"
             style={{
               // jika ingin pastikan ukuran tombol tetap, gunakan fixed size
