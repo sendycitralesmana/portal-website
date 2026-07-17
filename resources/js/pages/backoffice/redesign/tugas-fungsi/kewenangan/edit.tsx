@@ -46,7 +46,7 @@ export default function EditKewenangan({
 
     const onHandleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        post(`/redesign/backoffice/tugas-fungsi/kewenangan/${kewenangan.id}/update`, {
+        post(`/backoffice/tugas-fungsi/kewenangan/${kewenangan.id}/update`, {
             forceFormData: true,
         });
     };
@@ -68,7 +68,7 @@ export default function EditKewenangan({
                     />
 
                     <Button asChild variant="blue">
-                        <Link href="/redesign/backoffice/tugas-fungsi/kewenangan">
+                        <Link href="/backoffice/tugas-fungsi/kewenangan">
                             <ArrowLeft className="size-4" />
                             Kembali
                         </Link>

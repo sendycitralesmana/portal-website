@@ -12,7 +12,7 @@ type PermohonanPengajuanPermohonan = {
 const slides: PermohonanPengajuanPermohonan[] = [
   {
     title:
-      "Permohonan Pengajuan Perlindungan: Panduan Lengkap untuk Saksi dan Korban Tindak Pidana",
+      "Permohonan Pengajuan Pelindungan: Panduan Lengkap untuk Saksi dan Korban Tindak Pidana",
     image: "/images/alur-pengajuan-permohonan.png",
     href: "https://simpusaka.lpsk.go.id/layanan_simpusaka/",
   },

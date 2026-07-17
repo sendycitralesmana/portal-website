@@ -46,7 +46,7 @@ export default function EditProgramPerlindungan({
 
     const onHandleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        post(`/redesign/backoffice/tugas-fungsi/program-perlindungan/${programPerlindungan.id}/update`, {
+        post(`/backoffice/tugas-fungsi/program-perlindungan/${programPerlindungan.id}/update`, {
             forceFormData: true,
         });
     };
@@ -68,7 +68,7 @@ export default function EditProgramPerlindungan({
                     />
 
                     <Button asChild variant="blue">
-                        <Link href="/redesign/backoffice/tugas-fungsi/program-perlindungan">
+                        <Link href="/backoffice/tugas-fungsi/program-perlindungan">
                             <ArrowLeft className="size-4" />
                             Kembali
                         </Link>

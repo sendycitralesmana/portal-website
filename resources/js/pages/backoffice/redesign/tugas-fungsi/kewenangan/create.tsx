@@ -40,7 +40,7 @@ export default function CreatePerwakilanDaerah() {
     const onHandleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
 
-        post('/redesign/backoffice/tugas-fungsi/kewenangan/store', {
+        post('/backoffice/tugas-fungsi/kewenangan/store', {
             forceFormData: true,
             onSuccess: () => {
                 reset();
@@ -66,7 +66,7 @@ export default function CreatePerwakilanDaerah() {
                     />
 
                     <Button asChild variant="blue">
-                        <Link href="/redesign/backoffice/tugas-fungsi/kewenangan">
+                        <Link href="/backoffice/tugas-fungsi/kewenangan">
                             <ArrowLeft className="size-4" />
                             Kembali
                         </Link>

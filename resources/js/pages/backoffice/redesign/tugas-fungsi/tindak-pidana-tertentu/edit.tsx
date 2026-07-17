@@ -46,7 +46,7 @@ export default function EditTindakPidanaTertentu({
 
     const onHandleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        post(`/redesign/backoffice/tugas-fungsi/tindak-pidana-tertentu/${tindakPidanaTertentu.id}/update`, {
+        post(`/backoffice/tugas-fungsi/tindak-pidana-tertentu/${tindakPidanaTertentu.id}/update`, {
             forceFormData: true,
         });
     };
@@ -68,7 +68,7 @@ export default function EditTindakPidanaTertentu({
                     />
 
                     <Button asChild variant="blue">
-                        <Link href="/redesign/backoffice/tugas-fungsi/tindak-pidana-tertentu">
+                        <Link href="/backoffice/tugas-fungsi/tindak-pidana-tertentu">
                             <ArrowLeft className="size-4" />
                             Kembali
                         </Link>

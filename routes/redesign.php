@@ -24,7 +24,7 @@ use App\Http\Controllers\FrontOffice\Redesign\TugasFungsiRedesignController;
 // grup redesign
 // Route::prefix('redesign')->group(function () {
 
-    Route::get('/redesign', [BerandaRedesignController::class, 'index'])->name('redesign.home');
+    // Route::get('/redesign', [BerandaRedesignController::class, 'index'])->name('redesign.home');
 
     // beranda
     Route::get('/', [BerandaRedesignController::class, 'index'])->name('redesign.home');
@@ -119,13 +119,14 @@ use App\Http\Controllers\FrontOffice\Redesign\TugasFungsiRedesignController;
         Route::get('/beranda', [BerandaRedesignBackController::class, 'beranda'])->name('dashboard');
 
         // grup draft
-        Route::prefix('draft')->group(function () {
-            Route::get('/', [DraftRedesignBackController::class, 'index'])->name('redesign.backoffice.draft.index');
-            Route::get('/update-sub-category-id', [DraftRedesignBackController::class, 'updateSubCategoryId'])->name('redesign.backoffice.draft.update-sub-category-id');
-            Route::get('/migrate-publikasi', [DraftRedesignBackController::class, 'migratePublikasi'])->name('redesign.backoffice.draft.migrate-publikasi');
-            Route::get('/update-gambar-publikasi', [DraftRedesignBackController::class, 'updateGambarPublikasi'])->name('redesign.backoffice.draft.update-gambar-publikasi');
-            Route::get('/update-kategori-publikasi', [DraftRedesignBackController::class, 'updateKategoriPublikasi'])->name('redesign.backoffice.draft.update-kategori-publikasi');
-        });
+        // Route::prefix('draft')->group(function () {
+        //     Route::get('/', [DraftRedesignBackController::class, 'index'])->name('redesign.backoffice.draft.index');
+        //     Route::get('/update-gambar', [DraftRedesignBackController::class, 'updateGambar'])->name('redesign.backoffice.draft.update-gambar');
+        //     Route::get('/update-sub-category-id', [DraftRedesignBackController::class, 'updateSubCategoryId'])->name('redesign.backoffice.draft.update-sub-category-id');
+        //     Route::get('/migrate-publikasi', [DraftRedesignBackController::class, 'migratePublikasi'])->name('redesign.backoffice.draft.migrate-publikasi');
+        //     Route::get('/update-gambar-publikasi', [DraftRedesignBackController::class, 'updateGambarPublikasi'])->name('redesign.backoffice.draft.update-gambar-publikasi');
+        //     Route::get('/update-kategori-publikasi', [DraftRedesignBackController::class, 'updateKategoriPublikasi'])->name('redesign.backoffice.draft.update-kategori-publikasi');
+        // });
 
         // grup publikasi
         Route::prefix('publikasi')->group(function () {

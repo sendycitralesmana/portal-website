@@ -78,7 +78,7 @@ class BerandaRedesignController extends Controller
         $beritas = PublikasiResource::collection(
             Publikasi::query()
                 ->where('kategori', 'Berita')
-                ->orderBy('created_at', 'asc')
+                ->orderBy('created_at', 'desc')
                 ->limit(4)
                 ->get()
         );
@@ -86,7 +86,7 @@ class BerandaRedesignController extends Controller
         $pengumumans = PublikasiResource::collection(
             Publikasi::query()
                 ->where('kategori', 'Informasi')
-                ->orderBy('created_at', 'asc')
+                ->orderBy('created_at', 'desc')
                 ->limit(4)
                 ->get()
         );

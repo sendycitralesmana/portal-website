@@ -49,7 +49,7 @@ const KewenanganPage = (props: any) => {
     };
 
     useFilter({
-        route: '/redesign/backoffice/tugas-fungsi/kewenangan',
+        route: '/backoffice/tugas-fungsi/kewenangan',
         values: params,
         only: ['kewenangans'],
         onLoading: (loading) => setIsLoading(loading),
@@ -71,7 +71,7 @@ const KewenanganPage = (props: any) => {
                     />
 
                     <Button variant="blue" size="lg" asChild>
-                        <Link href="/redesign/backoffice/tugas-fungsi/kewenangan/create">
+                        <Link href="/backoffice/tugas-fungsi/kewenangan/create">
                             <Plus className="size-4" />
                             Tambah
                         </Link>
@@ -154,7 +154,7 @@ const KewenanganPage = (props: any) => {
                                                 <TableCell className="align-top">
                                                     <div className="flex gap-2">
                                                         <Button className="bg-amber-400" variant="link" size="sm" asChild>
-                                                            <Link href={`/redesign/backoffice/tugas-fungsi/kewenangan/${item.id}/edit`}>
+                                                            <Link href={`/backoffice/tugas-fungsi/kewenangan/${item.id}/edit`}>
                                                                 <Pencil className="size-4" />
                                                             </Link>
                                                         </Button>
@@ -190,7 +190,7 @@ const KewenanganPage = (props: any) => {
 
                                             <div className="flex gap-2">
                                                 <Button className="bg-amber-400" variant="link" size="sm" asChild>
-                                                    <Link href={`/redesign/backoffice/tugas-fungsi/kewenangan/${item.id}/edit`}>
+                                                    <Link href={`/backoffice/tugas-fungsi/kewenangan/${item.id}/edit`}>
                                                         <Pencil className="size-4" />
                                                     </Link>
                                                 </Button>

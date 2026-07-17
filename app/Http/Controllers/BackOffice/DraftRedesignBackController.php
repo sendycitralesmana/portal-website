@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\BackOffice;
 
 use App\Http\Controllers\Controller;
+use App\Models\DraftMigrasi;
 use App\Models\Drafts;
+use App\Models\Publikasi;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
@@ -12,14 +14,77 @@ class DraftRedesignBackController extends Controller
 {
     public function index()
     {
-        $drafts = Drafts::get();
+        $drafts = DraftMigrasi::get();
+        $publikasi = Publikasi::where("judul", "Kekerasan Fisik Ancam Pelapor Tindak Pidana")->get();
+        dd($publikasi);
         return $drafts->count();
     }
+
+    public function updateGambar()
+{
+    $gambars = Publikasi::whereNotNull('gambar')
+        ->whereBetween('created_at', [
+            // '2026-03-06 07:00:01.371',
+            // '2026-07-17 23:27:18.472',
+            '2021-07-10 00:00:01.371',
+            '2026-07-15 23:27:18.472',
+        ])
+        ->get();
+
+    $hasil = [];
+    $totalDitemukan = $gambars->count();
+    $totalDiubah = 0;
+    $totalTidakDiubah = 0;
+
+    foreach ($gambars as $gambar) {
+        $before = $gambar->gambar;
+        $after = str_replace(':', '_', $before);
+
+        $status = 'Tidak Diubah';
+
+        if ($before !== $after) {
+            $gambar->update([
+                'gambar' => $after,
+            ]);
+
+            $status = 'Diubah';
+            $totalDiubah++;
+        } else {
+            $totalTidakDiubah++;
+        }
+
+        $hasil[] = [
+            'id' => $gambar->id,
+            'status' => $status,
+            'before' => $before,
+            'after' => $after,
+        ];
+    }
+
+    return response()->json([
+        'summary' => [
+            'total_ditemukan' => $totalDitemukan,
+            'total_diubah' => $totalDiubah,
+            'total_tidak_diubah' => $totalTidakDiubah,
+        ],
+        'data' => $hasil,
+    ]);
+}
+
+    // public function index()
+    // {
+    //     $drafts = Drafts::whereBetween('created_at', [
+    //         '2026-03-06 00:00:01.371',
+    //         '2026-07-17 23:27:18.472',
+    //     ])->get();
+
+    //     return $drafts->count();
+    // }
 
     public function updateSubCategoryId()
     {
         DB::statement("
-            UPDATE drafts
+            UPDATE draft_migrasi
             SET sub_category_id = CASE
                 WHEN sub_category_id = 'clraagrvb000465qnvw0ow74x' THEN 'Siaran Pers'
                 WHEN sub_category_id = 'clraagrvb000565qndqsna2jl' THEN 'Warta Hukum'
@@ -66,7 +131,7 @@ class DraftRedesignBackController extends Controller
     {
         $inserted = 0;
 
-        Drafts::orderBy('id')
+        DraftMigrasi::orderBy('id')
             ->chunk(500, function ($drafts) use (&$inserted) {
 
                 $dataInsert = [];
@@ -79,7 +144,7 @@ class DraftRedesignBackController extends Controller
                     $counter = 1;
 
                     while (
-                        DB::table('publikasis')->where('slug', $slug)->exists()
+                        DB::table('publikasi_migrasi')->where('slug', $slug)->exists()
                         || in_array($slug, $slugCache)
                     ) {
                         $slug = $baseSlug . '-' . $counter;
@@ -101,7 +166,7 @@ class DraftRedesignBackController extends Controller
                     ];
                 }
 
-                DB::table('publikasis')->insert($dataInsert);
+                DB::table('publikasi_migrasi')->insert($dataInsert);
 
                 $inserted += count($dataInsert);
             });
@@ -114,30 +179,67 @@ class DraftRedesignBackController extends Controller
 
     public function updateGambarPublikasi()
     {
-        $updated = DB::update("
-            UPDATE publikasis
-            SET gambar = CONCAT('publikasi/', gambar)
-            WHERE gambar IS NOT NULL
-            AND gambar NOT LIKE 'publikasi/%'
-        ");
+        $updated = DB::table('publikasi_migrasi')
+            ->whereNotNull('gambar')
+            ->where('gambar', 'not like', 'publikasi/%')
+            ->whereBetween('created_at', [
+                '2026-03-06 00:00:01',
+                '2026-07-17 23:22:20',
+            ])
+            ->update([
+                'gambar' => DB::raw("CONCAT('publikasi/', gambar)"),
+            ]);
 
         return response()->json([
             'message' => 'Path gambar berhasil diperbarui',
-            'total_updated' => $updated
+            'total_updated' => $updated,
         ]);
     }
 
     public function updateKategoriPublikasi()
     {
-        $updated = DB::table('publikasis')
+        $updated = DB::table('publikasi_migrasi')
             ->where('kategori', 'Informasi')
+            ->whereBetween('created_at', [
+                '2026-03-06 00:00:01',
+                '2026-07-17 23:22:20',
+            ])
             ->update([
-                'kategori' => 'Pengumuman'
+                'kategori' => 'Pengumuman',
             ]);
 
         return response()->json([
             'message' => 'Kategori publikasi berhasil diperbarui',
-            'total_updated' => $updated
+            'total_updated' => $updated,
         ]);
     }
+
+    // public function updateGambarPublikasi()
+    // {
+    //     $updated = DB::update("
+    //         UPDATE publikasis
+    //         SET gambar = CONCAT('publikasi/', gambar)
+    //         WHERE gambar IS NOT NULL
+    //         AND gambar NOT LIKE 'publikasi/%'
+    //     ");
+
+    //     return response()->json([
+    //         'message' => 'Path gambar berhasil diperbarui',
+    //         'total_updated' => $updated
+    //     ]);
+    // }
+
+    // public function updateKategoriPublikasi()
+    // {
+    //     $updated = DB::table('publikasis')
+    //         ->where('kategori', 'Informasi')
+    //         ->update([
+    //             'kategori' => 'Pengumuman'
+    //         ]);
+
+    //     return response()->json([
+    //         'message' => 'Kategori publikasi berhasil diperbarui',
+    //         'total_updated' => $updated
+    //     ]);
+    // }
 }

@@ -46,7 +46,7 @@ export default function DeleteDialog({
                     <AlertDialogAction
                         onClick={() =>
                             router.delete(
-                                `/redesign/backoffice/tugas-fungsi/subjek-terlindung/${id}/delete`
+                                `/backoffice/tugas-fungsi/subjek-terlindung/${id}/delete`
                             )
                         }
                     >

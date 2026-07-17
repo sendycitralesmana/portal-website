@@ -12,9 +12,9 @@ export default function SorotPratinjau() {
     {
       id: 1,
       slug: "kegiatan",
-      title: "LPSK Perkuat Sinergi Perlindungan Saksi",
+      title: "LPSK Perkuat Sinergi Pelindungan Saksi",
       content:
-        "LPSK terus meningkatkan koordinasi dengan berbagai lembaga dalam upaya memberikan perlindungan maksimal kepada saksi dan korban.",
+        "LPSK terus meningkatkan koordinasi dengan berbagai lembaga dalam upaya memberikan pelindungan maksimal kepada saksi dan korban.",
       image: "https://picsum.photos/1200/800?random=1",
     },
     {
@@ -30,7 +30,7 @@ export default function SorotPratinjau() {
       slug: "kerjasama",
       title: "Kerjasama Antar Lembaga Penegak Hukum",
       content:
-        "Kerjasama lintas sektor menjadi kunci dalam memperkuat sistem perlindungan saksi dan korban di Indonesia.",
+        "Kerjasama lintas sektor menjadi kunci dalam memperkuat sistem pelindungan saksi dan korban di Indonesia.",
       image: "https://picsum.photos/1200/800?random=3",
     },
   ];

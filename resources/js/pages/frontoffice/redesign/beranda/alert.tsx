@@ -21,7 +21,7 @@ export default function Alert() {
   const alerts = [
     "Waspada Hoaks: Akun resmi LPSK hanya melalui kanal resmi yang terverifikasi. Pastikan informasi berasal dari sumber terpercaya.",
     "Pengingat: LPSK tidak pernah meminta data pribadi atau biaya dalam bentuk apa pun melalui WhatsApp atau pesan pribadi.",
-    "Hati-hati Penipuan: Jangan percaya pihak yang mengatasnamakan LPSK dan menjanjikan perlindungan atau kompensasi dengan imbalan tertentu.",
+    "Hati-hati Penipuan: Jangan percaya pihak yang mengatasnamakan LPSK dan menjanjikan pelindungan atau kompensasi dengan imbalan tertentu.",
   ]
 
   return (

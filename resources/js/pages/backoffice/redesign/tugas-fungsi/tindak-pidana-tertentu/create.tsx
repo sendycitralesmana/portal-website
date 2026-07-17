@@ -40,7 +40,7 @@ export default function CreateTindakPidanaTertentu() {
     const onHandleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
 
-        post('/redesign/backoffice/tugas-fungsi/tindak-pidana-tertentu/store', {
+        post('/backoffice/tugas-fungsi/tindak-pidana-tertentu/store', {
             forceFormData: true,
             onSuccess: () => {
                 reset();
@@ -66,7 +66,7 @@ export default function CreateTindakPidanaTertentu() {
                     />
 
                     <Button asChild variant="blue">
-                        <Link href="/redesign/backoffice/tugas-fungsi/tindak-pidana-tertentu">
+                        <Link href="/backoffice/tugas-fungsi/tindak-pidana-tertentu">
                             <ArrowLeft className="size-4" />
                             Kembali
                         </Link>

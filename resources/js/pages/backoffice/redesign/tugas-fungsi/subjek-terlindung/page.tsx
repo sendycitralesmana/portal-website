@@ -49,7 +49,7 @@ const SubjekTerlindungPage = (props: any) => {
     };
 
     useFilter({
-        route: '/redesign/backoffice/tugas-fungsi/subjek-terlindung',
+        route: '/backoffice/tugas-fungsi/subjek-terlindung',
         values: params,
         only: ['subjekTerlindungs'],
         onLoading: (loading) => setIsLoading(loading),
@@ -71,7 +71,7 @@ const SubjekTerlindungPage = (props: any) => {
                     />
 
                     <Button variant="blue" size="lg" asChild>
-                        <Link href="/redesign/backoffice/tugas-fungsi/subjek-terlindung/create">
+                        <Link href="/backoffice/tugas-fungsi/subjek-terlindung/create">
                             <Plus className="size-4" />
                             Tambah
                         </Link>
@@ -161,7 +161,7 @@ const SubjekTerlindungPage = (props: any) => {
                                                 <TableCell className="align-top">
                                                     <div className="flex gap-2">
                                                         <Button className="bg-amber-400" variant="link" size="sm" asChild>
-                                                            <Link href={`/redesign/backoffice/tugas-fungsi/subjek-terlindung/${item.id}/edit`}>
+                                                            <Link href={`/backoffice/tugas-fungsi/subjek-terlindung/${item.id}/edit`}>
                                                                 <Pencil className="size-4" />
                                                             </Link>
                                                         </Button>
@@ -197,7 +197,7 @@ const SubjekTerlindungPage = (props: any) => {
 
                                             <div className="flex gap-2">
                                                 <Button className="bg-amber-400" variant="link" size="sm" asChild>
-                                                    <Link href={`/redesign/backoffice/tugas-fungsi/subjek-terlindung/${item.id}/edit`}>
+                                                    <Link href={`/backoffice/tugas-fungsi/subjek-terlindung/${item.id}/edit`}>
                                                         <Pencil className="size-4" />
                                                     </Link>
                                                 </Button>

@@ -46,7 +46,7 @@ export default function DeleteDialog({
                     <AlertDialogAction
                         onClick={() =>
                             router.delete(
-                                `/redesign/backoffice/tugas-fungsi/program-perlindungan/${id}/delete`
+                                `/backoffice/tugas-fungsi/program-perlindungan/${id}/delete`
                             )
                         }
                     >

@@ -42,7 +42,7 @@ export default function Footer() {
                 <div className="grid gap-10 md:grid-cols-2 xl:grid-cols-12">
                     {/* Address */}
                     <div className="xl:col-span-5">
-                        <h5 className="mb-4 text-xl font-semibold">Lembaga Perlindungan Saksi dan Korban</h5>
+                        <h5 className="mb-4 text-xl font-semibold">Lembaga Pelindungan Saksi dan Korban</h5>
                         {loading ? (
                             <div className="space-y-2">
                                 <div className="h-4 w-full max-w-[250px] animate-pulse rounded bg-gradient-to-r from-zinc-700 to-zinc-600"></div>
@@ -105,7 +105,7 @@ export default function Footer() {
             {/* Bottom Bar */}
             <div className="border-t-2 border-amber-400 bg-gradient-to-r from-red-900 to-red-600">
                 <div className="container mx-auto flex flex-col items-start justify-between gap-4 px-6 py-6 text-sm text-white md:flex-row md:items-center xl:px-0">
-                    <div>© Copyright Lembaga Perlindungan Saksi dan Korban {new Date().getFullYear()}</div>
+                    <div>© Copyright Lembaga Pelindungan Saksi dan Korban {new Date().getFullYear()}</div>
                     <div>{/* Optional right content */}</div>
                 </div>
             </div>

@@ -20,16 +20,16 @@ type Slide = {
 const slides: Slide[] = [
     {
         title: 'LPSK',
-        subtitle: 'Lembaga Perlindungan Saksi dan Korban',
-        deskripsi: 'Lembaga Perlindungan Saksi dan Korban adalah lembaga negara yang didirikan dan bertanggung jawab untuk menangani pemberian perlindungan dan bantuan pada saksi dan korban.',
+        subtitle: 'Lembaga Pelindungan Saksi dan Korban',
+        deskripsi: 'Lembaga Pelindungan Saksi dan Korban adalah lembaga negara yang didirikan dan bertanggung jawab untuk menangani pemberian pelindungan dan bantuan pada saksi dan korban.',
         image: '/images/banner-1.jpg',
         href: null,
     },
     {
         title: 'SIMPUSAKA',
-        subtitle: 'Sistem Informasi Perlindungan Saksi dan Korban',
-        deskripsi: 'Layanan Permohonan Perlindungan Digital Melalui Aplikasi SIMPUSAKA',
-        buttonText: 'Ajukan Permohonan Perlindungan',
+        subtitle: 'Sistem Informasi Pelindungan Saksi dan Korban',
+        deskripsi: 'Layanan Permohonan Pelindungan Digital Melalui Aplikasi SIMPUSAKA',
+        buttonText: 'Ajukan Permohonan Pelindungan',
         image: '/images/banner-2.jpg',
         href: 'https://simpusaka.lpsk.go.id/layanan_simpusaka',
         external: true,

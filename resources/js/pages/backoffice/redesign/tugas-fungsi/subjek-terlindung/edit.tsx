@@ -46,7 +46,7 @@ export default function EditSubjekTerlindung({
 
     const onHandleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        post(`/redesign/backoffice/tugas-fungsi/subjek-terlindung/${subjekTerlindung.id}/update`, {
+        post(`/backoffice/tugas-fungsi/subjek-terlindung/${subjekTerlindung.id}/update`, {
             forceFormData: true,
         });
     };
@@ -68,7 +68,7 @@ export default function EditSubjekTerlindung({
                     />
 
                     <Button asChild variant="blue">
-                        <Link href="/redesign/backoffice/tugas-fungsi/subjek-terlindung">
+                        <Link href="/backoffice/tugas-fungsi/subjek-terlindung">
                             <ArrowLeft className="size-4" />
                             Kembali
                         </Link>
