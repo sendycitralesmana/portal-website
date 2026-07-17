@@ -21,10 +21,11 @@ use App\Http\Controllers\FrontOffice\Redesign\BerandaRedesignController;
 use App\Http\Controllers\FrontOffice\Redesign\ProfilRedesignController;
 use App\Http\Controllers\FrontOffice\Redesign\TugasFungsiRedesignController;
 
-// redesign routes 
-
 // grup redesign
 // Route::prefix('redesign')->group(function () {
+
+    Route::get('/redesign', [BerandaRedesignController::class, 'index'])->name('redesign.home');
+
     // beranda
     Route::get('/', [BerandaRedesignController::class, 'index'])->name('redesign.home');
 
