@@ -68,7 +68,7 @@ export default function EditLayanan({
                     />
 
                     <Button asChild variant="blue">
-                        <Link href="/backoffice/tugas-fungsi/layanan">
+                        <Link href="/backoffice/layanan">
                             <ArrowLeft className="size-4" />
                             Kembali
                         </Link>

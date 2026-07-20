@@ -34,7 +34,7 @@ export default function ForgotPassword({ status }: { status?: string }) {
                     {/* Kiri - Gambar */}
                     <div className="w-7/10 hidden lg:block">
                         <img
-                            src="/images/login-hammer.jpg"
+                            src="/images/hero.webp"
                             alt="Login Illustration"
                             className="object-cover w-full h-full"
                         />
@@ -43,7 +43,7 @@ export default function ForgotPassword({ status }: { status?: string }) {
                     <div className="w-full lg:w-[30%] relative flex items-center justify-center p-8">
                         {/* Logo dan Tombol Mode Toggle di atas */}
                         <div className="absolute top-4 left-4">
-                            <img src="/images/logo-lpsk.png" alt="Logo" className="h-20" />
+                            <img src="/images/logo-baru.png" alt="Logo" className="h-20" />
                         </div>
                         <div className="absolute top-4 right-4">
                             <ModeToggle />
