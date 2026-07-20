@@ -86,7 +86,12 @@ export default function LayananSection({
                 </div>
 
                 {/* DESKTOP GRID */}
-                <div className="hidden grid-cols-3 gap-4 sm:grid lg:grid-cols-6">
+                {/* <div className="hidden grid-cols-3 gap-4 sm:grid lg:grid-cols-6">
+                    {layanans.map((item, index) => (
+                        <Card key={index} item={item} />
+                    ))}
+                </div> */}
+                <div className="hidden sm:grid grid-cols-[repeat(auto-fit,minmax(170px,1fr))] gap-4">
                     {layanans.map((item, index) => (
                         <Card key={index} item={item} />
                     ))}

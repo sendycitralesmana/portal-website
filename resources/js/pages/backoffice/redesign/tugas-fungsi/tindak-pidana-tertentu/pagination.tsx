@@ -32,7 +32,7 @@ export default function TindakPidanaTertentuPagination({
                 <span className="font-medium text-blue-500">
                     {meta.total ?? 0}
                 </span>{' '}
-                tindak pidana tertentu
+                tingkat keseriusan tindak pidana
             </p>
 
             {/* Pagination */}

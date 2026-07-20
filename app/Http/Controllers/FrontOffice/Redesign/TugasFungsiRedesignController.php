@@ -10,6 +10,20 @@ use Inertia\Inertia;
 
 class TugasFungsiRedesignController extends Controller
 {
+    public function tugas()
+    {
+        return Inertia::render('frontoffice/redesign/tugas-fungsi/tugas', [
+            
+        ]);
+    }
+
+    public function fungsi()
+    {
+        return Inertia::render('frontoffice/redesign/tugas-fungsi/fungsi', [
+            
+        ]);
+    }
+
     public function kewenangan()
     {
         $kewenangans = TugasFungsi::query()
@@ -39,6 +53,17 @@ class TugasFungsiRedesignController extends Controller
             ->orderBy('id', 'asc')
             ->get();
         return Inertia::render('frontoffice/redesign/tugas-fungsi/tindak-pidana-tertentu', [
+            'tindakPidanaTertentus' => TugasFungsiResource::collection($tindakPidanaTertentus)
+        ]);
+    }
+
+    public function tingkatKeseriusanTindakPidana()
+    {
+        $tindakPidanaTertentus = TugasFungsi::query()
+            ->where('kategori', 'tindak pidana tertentu')
+            ->orderBy('id', 'asc')
+            ->get();
+        return Inertia::render('frontoffice/redesign/tugas-fungsi/tingkat-keseriusan-tindak-pidana', [
             'tindakPidanaTertentus' => TugasFungsiResource::collection($tindakPidanaTertentus)
         ]);
     }

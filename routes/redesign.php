@@ -61,9 +61,12 @@ use App\Http\Controllers\FrontOffice\Redesign\TugasFungsiRedesignController;
 
     // tugas fungsi
     Route::prefix('/tugas-fungsi')->group(function () {
+        Route::get('/tugas', [TugasFungsiRedesignController::class, 'tugas'])->name('redesign.profil.tugas');
+        Route::get('/fungsi', [TugasFungsiRedesignController::class, 'fungsi'])->name('redesign.profil.fungsi');
         Route::get('/kewenangan', [TugasFungsiRedesignController::class, 'kewenangan'])->name('redesign.profil.kewenangan');
         Route::get('/subjek-pelindungan', [TugasFungsiRedesignController::class, 'subjekTerlindung'])->name('redesign.profil.subjek-terlindung');
         Route::get('/tindak-pidana-prioritas', [TugasFungsiRedesignController::class, 'tindakPidanaTertentu'])->name('redesign.profil.tindak-pidana-tertentu');
+        Route::get('/tingkat-keseriusan-tindak-pidana', [TugasFungsiRedesignController::class, 'tingkatKeseriusanTindakPidana'])->name('redesign.profil.tingkat-keseriusan-tindak-pidana');
         Route::get('/program-pelindungan', [TugasFungsiRedesignController::class, 'programPerlindungan'])->name('redesign.profil.program-perlindungan');
     });
 

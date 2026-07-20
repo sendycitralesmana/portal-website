@@ -53,8 +53,8 @@ export default function EditTindakPidanaTertentu({
 
     return (
         <AppLayoutRedesign>
-            <Head title="Tindak Pidana Tertentu">
-                <meta name="description" content="Halaman Tindak Pidana Tertentu" />
+            <Head title="Tingkat Keseriusan Tindak Pidana">
+                <meta name="description" content="Halaman Tingkat Keseriusan Tindak Pidana" />
                 <link rel="icon" href="/images/favicon.ico" type="image/x-icon" />
             </Head>
 
@@ -62,8 +62,8 @@ export default function EditTindakPidanaTertentu({
                 {/* Header */}
                 <div className="mb-8 flex justify-between">
                     <HeaderTitle
-                        title="Ubah Tindak Pidana Tertentu"
-                        subtitle="Kelola data tindak pidana tertentu yang ditampilkan pada halaman tugas dan fungsi."
+                        title="Ubah Tingkat Keseriusan Tindak Pidana"
+                        subtitle="Kelola data tingkat keseriusan tindak pidana yang ditampilkan pada halaman tugas dan fungsi."
                         icon={Gavel}
                     />
 

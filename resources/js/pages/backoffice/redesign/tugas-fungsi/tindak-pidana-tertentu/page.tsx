@@ -57,16 +57,16 @@ const TindakPidanaTertentuPage = (props: any) => {
 
     return (
         <AppLayoutRedesign>
-            <Head title="Tindak Pidana Tertentu" >
-                <meta name="description" content="Halaman Tindak Pidana Tertentu" />
+            <Head title="Tingkat Keseriusan Tindak Pidana" >
+                <meta name="description" content="Halaman Tingkat Keseriusan Tindak Pidana" />
                 <link rel="icon" href="/images/favicon.ico" type="image/x-icon" />
             </Head>
 
             <div className="flex w-full flex-col">
                 <div className="mb-8 flex flex-col items-start justify-between gap-y-4 lg:flex-row lg:items-center">
                     <HeaderTitle
-                        title="Tindak Pidana Tertentu"
-                        subtitle="Kelola data tindak pidana tertentu yang ditampilkan pada halaman tugas dan fungsi."
+                        title="Tingkat Keseriusan Tindak Pidana"
+                        subtitle="Kelola data tigkat keseriusan tindak pidana yang ditampilkan pada halaman tugas dan fungsi."
                         icon={Gavel}
                     />
 

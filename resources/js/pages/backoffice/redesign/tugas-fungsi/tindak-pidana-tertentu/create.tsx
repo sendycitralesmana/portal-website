@@ -51,8 +51,8 @@ export default function CreateTindakPidanaTertentu() {
 
     return (
         <AppLayoutRedesign>
-            <Head title="Tindak Pidana Tertentu">
-                <meta name="description" content="Halaman Tindak Pidana Tertentu" />
+            <Head title="Tingkat Keseriusan Tindak Pidana">
+                <meta name="description" content="Halaman Tingkat Keseriusan Tindak Pidana" />
                 <link rel="icon" href="/images/favicon.ico" type="image/x-icon" />
             </Head>
 
@@ -60,8 +60,8 @@ export default function CreateTindakPidanaTertentu() {
                 {/* Header */}
                 <div className="mb-8 flex justify-between">
                     <HeaderTitle
-                        title="Tambah Tindak Pidana Tertentu"
-                        subtitle="Kelola data tindak pidana tertentu yang ditampilkan pada halaman tugas dan fungsi."
+                        title="Tambah Tingkat Keseriusan Tindak Pidana"
+                        subtitle="Kelola data tingkat keseriusan tindak pidana yang ditampilkan pada halaman tugas dan fungsi."
                         icon={Gavel}
                     />
 

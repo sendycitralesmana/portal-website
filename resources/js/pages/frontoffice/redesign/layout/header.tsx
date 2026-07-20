@@ -66,9 +66,12 @@ const profilMenuItems: MenuItem[] = [
 ];
 
 const tugasFungsiMenuItems: MenuItem[] = [
+    { label: 'Tugas', href: '/tugas-fungsi/tugas' },
+    { label: 'Fungsi', href: '/tugas-fungsi/fungsi' },
     { label: 'Kewenangan', href: '/tugas-fungsi/kewenangan' },
     { label: 'Subjek Pelindungan', href: '/tugas-fungsi/subjek-pelindungan' },
-    { label: 'Tindak Pidana Prioritas', href: '/tugas-fungsi/tindak-pidana-prioritas' },
+    // { label: 'Tindak Pidana Prioritas', href: '/tugas-fungsi/tindak-pidana-prioritas' },
+    { label: 'Tingkat Keseriusan Tindak Pidana', href: '/tugas-fungsi/tingkat-keseriusan-tindak-pidana' },
     { label: 'Program Pelindungan', href: '/tugas-fungsi/program-pelindungan' },
 ];
 
