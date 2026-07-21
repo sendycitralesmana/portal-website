@@ -107,6 +107,9 @@ export default function CreatePejabatStruktural() {
                                         <SelectItem value="kepala biro lpsk">
                                             Kepala Biro LPSK
                                         </SelectItem>
+                                        <SelectItem value="kepala bagian lpsk">
+                                            Kepala Bagian LPSK Daerah
+                                        </SelectItem>
                                         <SelectItem value="kepala perwakilan lpsk daerah">
                                             Kepala Perwakilan LPSK Daerah
                                         </SelectItem>

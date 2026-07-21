@@ -97,6 +97,7 @@ export default function EditPejabatStruktural({ pejabatStruktural }: EditPejabat
                                     <SelectContent>
                                         <SelectItem value="sekretaris jenderal">Sekretaris Jenderal</SelectItem>
                                         <SelectItem value="kepala biro lpsk">Kepala Biro LPSK</SelectItem>
+                                        <SelectItem value="kepala bagian lpsk">Kepala Bagian LPSK</SelectItem>
                                         <SelectItem value="kepala perwakilan lpsk daerah">Kepala Perwakilan LPSK Daerah</SelectItem>
                                         <SelectItem value="tenaga ahli">Tenaga Ahli</SelectItem>
                                     </SelectContent>

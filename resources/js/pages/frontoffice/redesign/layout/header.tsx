@@ -51,13 +51,13 @@ const layananInformasiMenuItems: MenuItem[] = [
         external: true,
     },
     {
-        label: 'SSK',
-        href: 'https://ssk.lpsk.go.id/',
+        label: 'LENTERA',
+        href: 'https://e-learning.lpsk.go.id/',
         external: true,
     },
     {
-        label: 'LENTERA',
-        href: 'https://e-learning.lpsk.go.id/',
+        label: 'SSK',
+        href: 'https://ssk.lpsk.go.id/',
         external: true,
     },
 ];

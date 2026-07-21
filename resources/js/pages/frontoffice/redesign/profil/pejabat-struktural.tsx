@@ -343,8 +343,8 @@ const PejabatCard: React.FC<{
                         <p className="line-clamp-2 text-center text-sm font-semibold lg:text-sm">{nama}</p>
                     </div>
 
-                    <div className="mt-1 flex h-[52px] items-start justify-center">
-                        <p className="line-clamp-3 text-center text-xs text-amber-700/80 lg:text-sm dark:text-amber-300">{jabatan}</p>
+                    <div className="mt-1 flex h-[65px] items-start justify-center">
+                        <p className="line-clamp-4 text-center text-xs text-amber-700/80 lg:text-sm dark:text-amber-300">{jabatan}</p>
                     </div>
                 </div>
             </motion.div>
