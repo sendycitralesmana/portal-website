@@ -362,10 +362,10 @@ class PublikasiRedesignBackController extends Controller
                 'file' => $filePath,
             ]);
 
-            return redirect('/redesign/backoffice/publikasi/' . $request->publikasi_id . '/detail')
+            return redirect('/backoffice/publikasi/' . $request->publikasi_id . '/detail')
                 ->with('success', 'Data berhasil dibuat');
         } catch (Throwable $e) {
-            return redirect('/redesign/backoffice/publikasi/' . $request->publikasi_id . '/detail')
+            return redirect('/backoffice/publikasi/' . $request->publikasi_id . '/detail')
                 ->with('error', $e->getMessage());
         }
     }
@@ -390,10 +390,10 @@ class PublikasiRedesignBackController extends Controller
                 'file' => $filePath ?? $media->file,
             ]);
 
-            return redirect('/redesign/backoffice/publikasi/' . $media->publikasi_id . '/detail')
+            return redirect('/backoffice/publikasi/' . $media->publikasi_id . '/detail')
                 ->with('success', 'Data berhasil diubah');
         } catch (Throwable $e) {
-            return redirect('/redesign/backoffice/publikasi/' . $media->publikasi_id . '/detail')
+            return redirect('/backoffice/publikasi/' . $media->publikasi_id . '/detail')
                 ->with('error', $e->getMessage());
         }
     }
@@ -409,12 +409,12 @@ class PublikasiRedesignBackController extends Controller
 
             $media->delete();
 
-            return redirect('/redesign/backoffice/publikasi/' . $media->publikasi_id . '/detail')
+            return redirect('/backoffice/publikasi/' . $media->publikasi_id . '/detail')
                 ->with('success', 'Data berhasil dihapus');
 
         } catch (Throwable $e) {
             $media = PublikasiMedia::findOrFail($id);
-            return redirect('/redesign/backoffice/publikasi/' . $media->publikasi_id . '/detail')
+            return redirect('/backoffice/publikasi/' . $media->publikasi_id . '/detail')
                 ->with('error', $e->getMessage());
         }
     }
