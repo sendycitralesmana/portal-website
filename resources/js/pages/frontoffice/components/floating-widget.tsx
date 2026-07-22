@@ -144,7 +144,7 @@ export default function FloatingTabButtons() {
                     Pengaduan Masyarakat
                 </a>
             </div> */}
-            <div className="fixed top-1/2 left-8 z-50 -translate-y-1/2 md:left-12">
+            <div className="fixed top-1/2 left-8 z-30 -translate-y-1/2 md:left-12">
                 <a
                     href="https://www.lapor.go.id/"
                     target="_blank"
