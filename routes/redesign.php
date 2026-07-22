@@ -49,6 +49,10 @@ use App\Http\Controllers\FrontOffice\Redesign\TugasFungsiRedesignController;
     // api/tentang-kami
     Route::get('/api/tentang-kami', [BerandaRedesignController::class, 'apiTentangKami'])->name('redesign.api.tentang-kami');
 
+    // layanan-publik
+    Route::prefix('/layanan-publik')->group(function () {
+        Route::get('/ssk', [BerandaRedesignController::class, 'ssk'])->name('redesign.ssk');
+    });
 
     // profil
     Route::prefix('/profil')->group(function () {

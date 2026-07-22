@@ -83,6 +83,8 @@ class PerwakilanDaerahRedesignBackController extends Controller
                 'gambar' => $gambarPath,
                 'latitude' => $request->latitude,
                 'longitude' => $request->longitude,
+                'lokasi' => $request->lokasi,
+                'maps' => $request->maps,
             ]);
 
             return redirect()
@@ -138,6 +140,8 @@ class PerwakilanDaerahRedesignBackController extends Controller
                 'gambar' => $gambarPath,
                 'latitude' => $request->latitude,
                 'longitude' => $request->longitude,
+                'lokasi' => $request->lokasi,
+                'maps' => $request->maps,
             ]);
 
             return redirect()

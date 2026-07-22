@@ -57,21 +57,36 @@ class BerandaRedesignController extends Controller
         return response()->json($tentangKami);
     }
 
+    public function ssk()
+    {
+        return Inertia::render('frontoffice/redesign/beranda/ssk', [
+            
+        ]);
+    }
+
     public function beranda()
     {
         $siaranPers = PublikasiResource::collection(
             Publikasi::query()
                 ->where('kategori', 'Siaran Pers')
                 ->orderBy('created_at', 'desc')
-                ->limit(4)
+                ->limit(5)
                 ->get()
         );
 
-        $beritaFotos = PublikasiResource::collection(
-            Publikasi::query()->with('media')
-                ->where('kategori', 'Berita Foto')
+        // $beritaFotos = PublikasiResource::collection(
+        //     Publikasi::query()->with('media')
+        //         ->where('kategori', 'Berita Foto')
+        //         ->orderBy('created_at', 'desc')
+        //         ->limit(5)
+        //         ->get()
+        // );
+
+        $informasis = PublikasiResource::collection(
+            Publikasi::query()
+                ->where('kategori', 'Informasi')
                 ->orderBy('created_at', 'desc')
-                ->limit(4)
+                ->limit(5)
                 ->get()
         );
 
@@ -79,15 +94,15 @@ class BerandaRedesignController extends Controller
             Publikasi::query()
                 ->where('kategori', 'Berita')
                 ->orderBy('created_at', 'desc')
-                ->limit(4)
+                ->limit(5)
                 ->get()
         );
 
         $pengumumans = PublikasiResource::collection(
             Publikasi::query()
-                ->where('kategori', 'Informasi')
+                ->where('kategori', 'Pengumuman')
                 ->orderBy('created_at', 'desc')
-                ->limit(4)
+                ->limit(5)
                 ->get()
         );
 
@@ -114,7 +129,7 @@ class BerandaRedesignController extends Controller
             'layanans' => $layanans,
             'videoInfos' => $videoInfos,
             'siaranPers' => $siaranPers,
-            'beritaFotos' => $beritaFotos,
+            'informasis' => $informasis,
             'beritas' => $beritas,
             'pengumumans' => $pengumumans,
         ]);
@@ -144,10 +159,11 @@ class BerandaRedesignController extends Controller
     public function publikasiKategori($kategori)
     {
         $kategoriMap = [
+            'informasi' => 'Informasi',
             'siaran-pers' => 'Siaran Pers',
             'berita-foto' => 'Berita Foto',
             'berita' => 'Berita',
-            'pengumuman' => 'Informasi',
+            'pengumuman' => 'Pengumuman',
             'laporan' => 'Laporan',
             'kajian-jurnal' => 'Kajian dan Jurnal',
             'buku' => 'Buku',

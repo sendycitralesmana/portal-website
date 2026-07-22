@@ -4,7 +4,7 @@ import { ModeToggle } from '@/components/mode-toggle';
 import { cn } from '@/lib/utils';
 import { Link, usePage } from '@inertiajs/react';
 import axios from 'axios';
-import { ChevronDown, ExternalLink, LoaderCircle, Menu, Search, X } from 'lucide-react';
+import { ChevronDown, LoaderCircle, Menu, Search, X } from 'lucide-react';
 import { useEffect, useRef, useState } from 'react';
 
 type PublikasiResult = {
@@ -17,7 +17,6 @@ type PublikasiResult = {
 type MenuItem = {
     label: string;
     href: string;
-    description: string;
     external?: boolean;
 };
 
@@ -29,166 +28,69 @@ const layananInformasiMenuItems: MenuItem[] = [
     {
         label: 'SIMPUSAKA',
         href: 'https://simpusaka.lpsk.go.id/layanan_simpusaka/',
-        description: 'Sistem Informasi Pelindungan Saksi dan Korban.',
         external: true,
     },
     {
         label: 'PPID',
         href: 'https://eppid.lpsk.go.id/',
-        description:
-            'Pejabat Pembina Informasi dan Dokumentasi.',
         external: true,
     },
     {
         label: 'JDIH',
         href: 'https://jdih.lpsk.go.id/',
-        description: 'Jaringan Dokumentasi dan Informasi Hukum.',
         external: true,
     },
     {
         label: 'FONDASI',
         href: 'https://limo.lpsk.go.id/apps/forms/s/oj7jdZAwAZ3z89aHCrdZNsEt',
-        description: 'Tingkat Lanjut Keputusan Rekomendasi.',
         external: true,
     },
     {
         label: 'OPERA',
         href: 'https://hukum.lpsk.go.id/',
-        description: 'Opini Penyusunan Peraturan di Lingkungan.',
         external: true,
     },
     {
         label: 'LENTERA',
         href: 'https://e-learning.lpsk.go.id/',
-        description: 'Learning and Training LPSK.',
         external: true,
     },
     {
         label: 'SSK',
-        href: '/layanan-publik/ssk',
-        description: 'Sahabat Saksi Korban.',
+        href: 'https://ssk.lpsk.go.id/',
         external: true,
     },
 ];
 
 const profilMenuItems: MenuItem[] = [
-    {
-        label: 'Visi dan Misi',
-        href: '/profil/visi-misi',
-        description: 'Menjelaskan visi dan misi LPSK sebagai landasan dan arah strategis dalam menjalankan tugas dan mencapai tujuan organisasi.',
-    },
-    {
-        label: 'Profil Pimpinan',
-        href: '/profil/profil-pimpinan',
-        description: 'Informasi mengenai pimpinan LPSK, termasuk profil, latar belakang, dan peran dalam menjalankan kepemimpinan lembaga.',
-    },
-    {
-        label: 'Struktur Organisasi',
-        href: '/profil/struktur-organisasi',
-        description: 'Informasi mengenai struktur organisasi LPSK dan susunan unit kerja yang mendukung pelaksanaan tugas dan fungsi lembaga.',
-    },
-    {
-        label: 'Pejabat Struktural',
-        href: '/profil/pejabat-struktural',
-        description: 'Informasi mengenai pejabat struktural LPSK beserta posisi dan tanggung jawabnya dalam organisasi.',
-    },
-    {
-        label: 'Perwakilan Daerah',
-        href: '/profil/perwakilan-daerah',
-        description:
-            'Informasi mengenai perwakilan LPSK di berbagai daerah yang memberikan akses layanan perlindungan saksi dan korban secara lebih dekat.',
-    },
+    { label: 'Visi dan Misi', href: '/profil/visi-misi' },
+    { label: 'Profil Pimpinan', href: '/profil/profil-pimpinan' },
+    { label: 'Struktur Organisasi', href: '/profil/struktur-organisasi' },
+    { label: 'Pejabat Struktural', href: '/profil/pejabat-struktural' },
+    { label: 'Perwakilan Daerah', href: '/profil/perwakilan-daerah' },
 ];
 
 const tugasFungsiMenuItems: MenuItem[] = [
-    {
-        label: 'Tugas',
-        href: '/tugas-fungsi/tugas',
-        description:
-            'Informasi mengenai tugas utama LPSK dalam memberikan perlindungan dan bantuan kepada saksi dan korban sesuai dengan ketentuan peraturan perundang-undangan.',
-    },
-    {
-        label: 'Fungsi',
-        href: '/tugas-fungsi/fungsi',
-        description:
-            'Penjelasan mengenai fungsi LPSK dalam melaksanakan perlindungan dan pemenuhan hak saksi dan korban dalam proses peradilan pidana.',
-    },
-    {
-        label: 'Kewenangan',
-        href: '/tugas-fungsi/kewenangan',
-        description: 'Informasi mengenai kewenangan yang dimiliki LPSK dalam menjalankan tugas dan memberikan perlindungan kepada saksi dan korban.',
-    },
-    {
-        label: 'Subjek Pelindungan',
-        href: '/tugas-fungsi/subjek-pelindungan',
-        description: 'Informasi mengenai pihak-pihak yang dapat memperoleh perlindungan dari LPSK sesuai dengan ketentuan hukum yang berlaku.',
-    },
-    {
-        label: 'Tingkat Keseriusan Tindak Pidana',
-        href: '/tugas-fungsi/tingkat-keseriusan-tindak-pidana',
-        description:
-            'Informasi mengenai tingkat keseriusan tindak pidana yang menjadi salah satu pertimbangan dalam pemberian perlindungan kepada saksi dan korban.',
-    },
-    {
-        label: 'Program Pelindungan',
-        href: '/tugas-fungsi/program-pelindungan',
-        description:
-            'Informasi mengenai berbagai program dan bentuk perlindungan yang diberikan LPSK untuk menjamin keamanan dan pemenuhan hak saksi dan korban.',
-    },
+    { label: 'Tugas', href: '/tugas-fungsi/tugas' },
+    { label: 'Fungsi', href: '/tugas-fungsi/fungsi' },
+    { label: 'Kewenangan', href: '/tugas-fungsi/kewenangan' },
+    { label: 'Subjek Pelindungan', href: '/tugas-fungsi/subjek-pelindungan' },
+    // { label: 'Tindak Pidana Prioritas', href: '/tugas-fungsi/tindak-pidana-prioritas' },
+    { label: 'Tingkat Keseriusan Tindak Pidana', href: '/tugas-fungsi/tingkat-keseriusan-tindak-pidana' },
+    { label: 'Program Pelindungan', href: '/tugas-fungsi/program-pelindungan' },
 ];
 
 const publikasiMenuItems: MenuItem[] = [
-    {
-        label: 'Informasi',
-        href: '/publikasi/informasi',
-        description: 'Kumpulan informasi publik dan berbagai informasi kelembagaan LPSK yang dapat diakses oleh masyarakat.',
-    },
-    {
-        label: 'Siaran Pers',
-        href: '/publikasi/siaran-pers',
-        description: 'Kumpulan siaran pers resmi LPSK yang memuat informasi dan pernyataan terkait kegiatan serta isu-isu kelembagaan.',
-    },
-    {
-        label: 'Sosial Media',
-        href: '/sosial-media',
-        description: 'Akses ke berbagai kanal media sosial resmi LPSK untuk mendapatkan informasi dan kabar terbaru secara langsung.',
-    },
-    {
-        label: 'Berita Foto',
-        href: '/berita-foto',
-        description: 'Dokumentasi visual berbagai kegiatan, agenda, dan aktivitas LPSK yang disajikan dalam bentuk foto.',
-    },
-    {
-        label: 'Berita',
-        href: '/publikasi/berita',
-        description: 'Berita dan informasi terkini mengenai kegiatan, program, kebijakan, serta aktivitas LPSK.',
-    },
-    {
-        label: 'Pengumuman',
-        href: '/publikasi/pengumuman',
-        description: 'Kumpulan pengumuman resmi LPSK mengenai informasi penting yang perlu diketahui oleh masyarakat dan pemangku kepentingan.',
-    },
-    {
-        label: 'Laporan',
-        href: '/publikasi/laporan',
-        description: 'Kumpulan laporan resmi LPSK yang memuat informasi mengenai pelaksanaan program, kegiatan, dan kinerja lembaga.',
-    },
-    {
-        label: 'Kajian dan Jurnal',
-        href: '/publikasi/kajian-jurnal',
-        description: 'Kumpulan kajian, penelitian, dan jurnal yang membahas isu perlindungan saksi dan korban serta topik terkait.',
-    },
-    {
-        label: 'Buku',
-        href: '/publikasi/buku',
-        description: 'Kumpulan buku dan publikasi yang diterbitkan atau berkaitan dengan pengetahuan, kebijakan, dan perlindungan saksi dan korban.',
-    },
-    {
-        label: 'Statistik',
-        href: '/statistik',
-        description:
-            'Data dan statistik terkait layanan, perlindungan, serta berbagai informasi kinerja LPSK yang dapat digunakan sebagai bahan informasi publik.',
-    },
+    { label: 'Informasi', href: '/publikasi/informasi' },
+    { label: 'Siaran Pers', href: '/publikasi/siaran-pers' },
+    { label: 'Sosial Media', href: '/sosial-media' },
+    { label: 'Berita Foto', href: '/berita-foto' },
+    { label: 'Berita', href: '/publikasi/berita' },
+    { label: 'Pengumuman', href: '/publikasi/pengumuman' },
+    { label: 'Laporan', href: '/publikasi/laporan' },
+    { label: 'Kajian dan Jurnal', href: '/publikasi/kajian-jurnal' },
+    { label: 'Buku', href: '/publikasi/buku' },
+    { label: 'Statistik', href: '/statistik' },
 ];
 
 export default function Header() {
@@ -196,45 +98,13 @@ export default function Header() {
     const [mobileOpen, setMobileOpen] = useState(false);
     const [mobileActive, setMobileActive] = useState<string | null>(null);
 
-    const [hoveredMenuItem, setHoveredMenuItem] = useState<MenuItem | null>(null);
-
     const { url } = usePage();
 
     const toggleMenu = (menu: string) => {
-        if (activeMenu === menu) {
-            setActiveMenu(null);
-            setHoveredMenuItem(null);
-            return;
-        }
-
-        setActiveMenu(menu);
-
-        // Ambil item pertama dari menu yang dipilih
-        let items: MenuItem[] = [];
-
-        switch (menu) {
-            case 'Layanan Publik':
-                items = layananInformasiMenuItems;
-                break;
-            case 'Profil':
-                items = profilMenuItems;
-                break;
-            case 'Tugas dan Fungsi':
-                items = tugasFungsiMenuItems;
-                break;
-            case 'Publikasi':
-                items = publikasiMenuItems;
-                break;
-        }
-
-        // Tampilkan deskripsi item pertama secara default
-        setHoveredMenuItem(items[0] ?? null);
+        setActiveMenu(activeMenu === menu ? null : menu);
     };
 
-    const closeMenu = () => {
-        setActiveMenu(null);
-        setHoveredMenuItem(null);
-    };
+    const closeMenu = () => setActiveMenu(null);
 
     const isHome = url === '/' || url === '/beranda';
 
@@ -345,7 +215,7 @@ export default function Header() {
                                         href="/beranda"
                                         onClick={closeMenu}
                                         className={cn(
-                                            'tracking-widest flex h-full items-center border-transparent uppercase transition-colors duration-200 hover:border-amber-500 hover:text-amber-500',
+                                            'flex h-full items-center border-transparent uppercase transition-colors duration-200 hover:border-amber-500 hover:text-amber-500',
                                             isTransparent ? 'text-slate-200' : 'text-slate-800 dark:text-slate-200',
                                         )}
                                     >
@@ -356,7 +226,7 @@ export default function Header() {
                                         key={menu}
                                         onClick={() => toggleMenu(menu)}
                                         className={cn(
-                                            'tracking-widest flex h-full cursor-pointer items-center border-b-2 uppercase transition-colors duration-200',
+                                            'flex h-full cursor-pointer items-center border-b-2 uppercase transition-colors duration-200',
                                             isTransparent ? 'text-slate-200' : 'text-slate-800 dark:text-slate-200',
                                             activeMenu === menu ? 'border-amber-500 text-amber-500' : 'border-transparent hover:text-amber-500',
                                         )}
@@ -480,13 +350,7 @@ export default function Header() {
                                                 target="_blank"
                                                 rel="noopener noreferrer"
                                                 onClick={closeMenu}
-                                                onMouseEnter={() => setHoveredMenuItem(item)}
-                                                className={cn(
-                                                    'tracking-wider border-border block border-b px-6 py-4 text-sm md:text-base font-bold transition-all duration-200',
-                                                    hoveredMenuItem?.label === item.label
-                                                        ? 'bg-amber-50 text-red-900 dark:bg-amber-600 dark:text-white'
-                                                        : 'hover:bg-amber-50 dark:hover:bg-amber-600',
-                                                )}
+                                                className="border-border block border-b px-6 py-4 text-sm font-bold transition hover:bg-amber-50 dark:hover:bg-amber-600"
                                             >
                                                 {item.label}
                                             </a>
@@ -495,13 +359,7 @@ export default function Header() {
                                                 key={index}
                                                 href={item.href}
                                                 onClick={closeMenu}
-                                                onMouseEnter={() => setHoveredMenuItem(item)}
-                                                className={cn(
-                                                    'tracking-wider border-border block border-b px-6 py-4 text-sm md:text-base font-bold transition-all duration-200',
-                                                    hoveredMenuItem?.label === item.label
-                                                        ? 'bg-amber-50 text-red-900 dark:bg-amber-600 dark:text-white'
-                                                        : 'hover:bg-amber-50 dark:hover:bg-amber-600',
-                                                )}
+                                                className="border-border block border-b px-6 py-4 text-sm font-bold transition hover:bg-amber-50 dark:hover:bg-amber-600"
                                             >
                                                 {item.label}
                                             </Link>
@@ -509,40 +367,7 @@ export default function Header() {
                                     )}
                                 </div>
 
-                                <div className="bg-background col-span-2 p-8">
-                                    {hoveredMenuItem ? (
-                                        <div className="flex h-full flex-col justify-center">
-                                            {/* Label kecil */}
-                                            <div className="mb-4 flex items-center gap-3">
-                                                <div className="h-1 w-12 rounded-full bg-gradient-to-r from-red-900 to-red-700" />
-
-                                                <span className="text-xs font-bold tracking-widest text-red-700 uppercase md:text-base dark:text-red-400">
-                                                    {activeMenu}
-                                                </span>
-                                            </div>
-
-                                            {/* Judul */}
-                                            <p className="mb-4 text-3xl font-bold text-slate-800 dark:text-slate-100">{hoveredMenuItem.label}</p>
-
-                                            {/* Deskripsi */}
-                                            <p className="max-w-2xl text-base leading-relaxed text-slate-600 dark:text-slate-300">
-                                                {hoveredMenuItem.description}
-                                            </p>
-
-                                            {hoveredMenuItem.external && (
-                                                <div className="mt-6 flex items-center">
-                                                    <ExternalLink size={22} className="text-red-700 dark:text-red-400" />
-                                                </div>
-                                            )}
-                                        </div>
-                                    ) : (
-                                        <div className="flex h-full items-center justify-center">
-                                            <p className="text-sm text-slate-500 dark:text-slate-400">
-                                                Arahkan kursor ke menu untuk melihat informasi.
-                                            </p>
-                                        </div>
-                                    )}
-                                </div>
+                                <div className="bg-background col-span-2 p-6" />
                             </div>
                         </div>
                     </div>
@@ -615,7 +440,8 @@ export default function Header() {
                     <div className="border-border bg-muted/40 border-b px-4 py-4">
                         <div className="flex items-center gap-3">
                             {/* Search */}
-                            <div className="relative flex-1"></div>
+                            <div className="relative flex-1">
+                            </div>
 
                             {/* Mode Toggle */}
                             <div className="shrink-0">

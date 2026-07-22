@@ -10,6 +10,7 @@ import {
     ImageIcon,
     Link2,
     LogOut,
+    MessageCircleWarning,
     Minus,
     MousePointer2,
     Plus,
@@ -134,6 +135,17 @@ export default function FloatingTabButtons() {
 
     return (
         <>
+            <div className="fixed top-1/2 left-12 z-50 -translate-y-1/2">
+                <a
+                    href="https://www.lapor.go.id/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="border-2 border-amber-400 inline-flex origin-bottom-left rotate-[-90deg] cursor-pointer items-center rounded-br-md rounded-bl-md bg-gradient-to-b from-red-900 to-red-700 px-2 py-4 text-sm font-semibold tracking-widest text-white transition-all duration-300 hover:from-red-700 hover:to-red-800 md:text-base"
+                >
+                    {/* <MessageCircleWarning size={20} /> */}
+                    Pengaduan Masyarakat
+                </a>
+            </div>
 
             {/* Floating Buttons Container */}
             <div className="fixed top-[85%] right-2 z-50 flex -translate-y-1/2 flex-col items-end gap-3">
@@ -159,11 +171,7 @@ export default function FloatingTabButtons() {
                         rel="noopener noreferrer"
                         className="flex h-12 w-12 cursor-pointer items-center justify-center rounded-full border-2 border-amber-400 bg-green-600 text-white shadow-lg transition hover:bg-green-700"
                     >
-                      <img
-                        src="/images/wa_icon.png"
-                        alt="WhatsApp"
-                        className="w-6 h-6 object-contain"
-                      />
+                        <img src="/images/wa_icon.png" alt="WhatsApp" className="h-6 w-6 object-contain" />
                     </a>
 
                     <span className="absolute top-1/2 right-14 -translate-y-1/2 rounded-md bg-black px-3 py-1 text-xs whitespace-nowrap text-white opacity-0 transition group-hover:opacity-100">

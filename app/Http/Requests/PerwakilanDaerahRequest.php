@@ -34,6 +34,8 @@ class PerwakilanDaerahRequest extends FormRequest
             'gambar' => 'nullable|image|max:10240', // Maksimal 10MB
             'latitude' => 'nullable|string',    
             'longitude' => 'nullable|string',
+            'lokasi' => 'nullable|string',    
+            'maps' => 'nullable|string',
         ];
     }
 
@@ -55,6 +57,8 @@ class PerwakilanDaerahRequest extends FormRequest
             'gambar.max' => 'Ukuran gambar maksimal 10MB.',
             'latitude.string' => 'Latitude harus berupa teks.',
             'longitude.string' => 'Longitude harus berupa teks.',
+            'lokasi.string' => 'Lokasi harus berupa teks.',
+            'maps.string' => 'Maps harus berupa teks.',
         ];
     }
 }

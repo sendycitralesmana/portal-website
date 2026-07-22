@@ -24,6 +24,8 @@ interface Office {
     gambar: string | null;
     latitude: string;
     longitude: string;
+    lokasi: string;
+    maps: string;
     link: string | null;
 }
 
@@ -245,7 +247,7 @@ const PerwakilanDaerah: PageWithLayout<Props> = ({ perwakilanDaerahs }) => {
                                         </div>
 
                                         {/* MAP */}
-                                        <div className="lg:col-span-4">
+                                        {/* <div className="lg:col-span-4">
                                             <div className="relative h-[220px] w-full overflow-hidden rounded-2xl border border-slate-200 shadow-md md:h-[260px] lg:h-[320px] dark:border-slate-800">
                                                 <a
                                                     href={`https://www.google.com/maps?q=${lat},${lng}`}
@@ -256,6 +258,47 @@ const PerwakilanDaerah: PageWithLayout<Props> = ({ perwakilanDaerahs }) => {
                                                     <iframe
                                                         loading="lazy"
                                                         src={`https://www.openstreetmap.org/export/embed.html?bbox=${lng - 0.01}%2C${lat - 0.01}%2C${lng + 0.01}%2C${lat + 0.01}&layer=mapnik&marker=${lat}%2C${lng}`}
+                                                        className="pointer-events-none h-full w-full border-0"
+                                                    />
+                                                    <div className="absolute inset-0 bg-black/0 transition-all duration-300 hover:bg-black/10" />
+                                                </a>
+                                            </div>
+                                        </div> */}
+
+                                        {/* MAP */}
+                                        <div className="lg:col-span-4">
+                                            <div className="relative h-[220px] w-full overflow-hidden rounded-2xl border border-slate-200 shadow-md md:h-[260px] lg:h-[320px] dark:border-slate-800">
+                                                <a
+                                                    // medan
+                                                    // href="https://maps.app.goo.gl/Ap9CuZPZWWm2c3NEA"
+                                                    // yogya
+                                                    // href="https://maps.app.goo.gl/RZWkDHo4mH62F57EA"
+                                                    // jateng
+                                                    // href="https://maps.app.goo.gl/ES23qxDV4VYUayA99"
+                                                    // jatim
+                                                    // href="https://maps.app.goo.gl/FcmhXV8czi4mr1MH9"
+                                                    // ntt
+                                                    // href="https://maps.app.goo.gl/jgqFV89m6JBDwwg66"
+
+                                                    href={item.lokasi}
+
+                                                    target="_blank"
+                                                    rel="noopener noreferrer"
+                                                    className="block h-full w-full"
+                                                >
+                                                    <iframe
+                                                        loading="lazy"
+                                                        // medan
+                                                        // src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d5323.080816178832!2d98.66975589545282!3d3.579371079812623!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x30313032b935cb77%3A0x8bcba1811c57f9a3!2sGedung%20Keuangan%20Negara%2C%20Jl.%20Pangeran%20Diponegoro%20No.30a%2C%20Madras%20Hulu%2C%20Kec.%20Medan%20Polonia%2C%20Kota%20Medan%2C%20Sumatera%20Utara%2020152!5e0!3m2!1sid!2sid!4v1784688515648!5m2!1sid!2sid"
+                                                        // yogya
+                                                        // src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3952.887420024843!2d110.38082007500515!3d-7.801741992218479!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e7a57793d946cfd%3A0x949c12cfaa18b322!2sGedung%20Keuangan%20Negara%20Yogyakarta!5e0!3m2!1sid!2sid!4v1784688863867!5m2!1sid!2sid"
+                                                        // jateng
+                                                        // src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d990.0471139775672!2d110.37695185872192!3d-6.987069099999997!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e708b00112f5055%3A0xb2d6c3e17134c722!2sPerwakilan%20LPSK%20Jawa%20Tengah!5e0!3m2!1sid!2sid!4v1784689051053!5m2!1sid!2sid"
+                                                        // jatim
+                                                        // src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3957.9862634697365!2d112.73016297591043!3d-7.242401371137913!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2dd7f924374caf4f%3A0x4b671b9b04c89622!2sGedung%20Keuangan%20Negara%20I%20Surabaya!5e0!3m2!1sid!2sid!4v1784689405891!5m2!1sid!2sid"
+                                                        // ntt
+                                                        // src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3926.9460687950605!2d123.59918177595007!3d-10.185035310038405!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2c569b5b716ae9c5%3A0xb413c7467768d56c!2sKantor%20Gubernur%20Lama!5e0!3m2!1sid!2sid!4v1784689503465!5m2!1sid!2sid"
+                                                        src={item.maps}
                                                         className="pointer-events-none h-full w-full border-0"
                                                     />
                                                     <div className="absolute inset-0 bg-black/0 transition-all duration-300 hover:bg-black/10" />

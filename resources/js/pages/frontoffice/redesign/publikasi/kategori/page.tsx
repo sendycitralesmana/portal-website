@@ -109,7 +109,7 @@ const BeritaFotoPage: PageWithLayout<Props> = ({ publikasis, kategori, kategoriD
 
                             <button
                                 type="submit"
-                                className="flex items-center gap-2 rounded-full bg-white px-5 py-2 text-sm font-medium transition hover:bg-gray-200"
+                                className="flex items-center gap-2 rounded-full bg-white px-5 py-2 text-sm md:text-base font-medium transition hover:bg-gray-200 dark:text-slate-700"
                             >
                                 <Search size={16} />
                                 Cari
@@ -118,21 +118,15 @@ const BeritaFotoPage: PageWithLayout<Props> = ({ publikasis, kategori, kategoriD
                     </form>
 
                     {/* List */}
-                    <div className="overflow-hidden rounded-md border bg-[#eee]">
+                    <div className="dark:bg-muted overflow-hidden rounded-md border bg-[#eee]">
                         {publikasis.data.length > 0 ? (
                             publikasis.data.map((item, index) => (
                                 <div
                                     key={item.id}
                                     className={`flex flex-col gap-4 p-6 md:flex-row ${
-                                        index !== publikasis.data.length - 1 ? 'border-b border-gray-400' : ''
+                                        index !== publikasis.data.length - 1 ? 'border-b border-gray-400 dark:border-slate-600' : ''
                                     }`}
                                 >
-                                    {/* <img
-                                        src={item.gambar}
-                                        alt={item.judul}
-                                        className="h-28 w-full rounded-xl object-cover md:w-40"
-                                    /> */}
-
                                     <div className="relative h-28 w-full overflow-hidden rounded-xl md:w-40">
                                         {/* Background blur */}
                                         <img
@@ -141,37 +135,41 @@ const BeritaFotoPage: PageWithLayout<Props> = ({ publikasis, kategori, kategoriD
                                             className="absolute inset-0 h-full w-full scale-110 object-cover opacity-50 blur-md"
                                         />
 
-                                        {/* Main image (tidak terpotong) */}
+                                        {/* Main image */}
                                         <img src={item.gambar} alt={item.judul} className="relative h-full w-full object-contain" />
                                     </div>
 
                                     <div className="flex-1">
-                                        <p className="mb-1 text-sm text-gray-600">{formatDate(item.created_at)}</p>
+                                        {/* Tanggal */}
+                                        <p className="mb-1 text-sm text-gray-600 dark:text-slate-400">{formatDate(item.created_at)}</p>
 
+                                        {/* Judul */}
                                         <Link
                                             href={`/publikasi/${kategori}/${item.slug}`}
-                                            className="mb-2 block cursor-pointer text-base font-semibold text-gray-900 transition hover:text-red-900 md:text-lg lg:text-xl"
+                                            className="mb-2 block cursor-pointer text-base font-semibold text-gray-900 transition hover:text-red-900 md:text-lg lg:text-xl dark:text-slate-100 dark:hover:text-red-400"
                                         >
                                             {item.judul}
                                         </Link>
 
-                                        <p className="text-sm md:text-base text-gray-700 text-justify">{item.deskripsi}</p>
+                                        {/* Deskripsi */}
+                                        <p className="text-justify text-sm text-gray-700 md:text-base dark:text-slate-300">{item.deskripsi}</p>
                                     </div>
                                 </div>
                             ))
                         ) : (
-                            <div className="py-10 text-center text-gray-600">Tidak ada Artikel yang tersedia</div>
+                            <div className="py-10 text-center text-gray-600 dark:text-slate-400">Tidak ada Artikel yang tersedia</div>
                         )}
                     </div>
 
                     {/* Pagination */}
                     <div className="mt-6 flex w-full flex-col items-center justify-between gap-2 lg:flex-row">
-                        <p className="text-muted-foreground text-sm">
+                        {/* Info Pagination */}
+                        <p className="text-sm text-gray-600 dark:text-slate-400">
                             Menampilkan{' '}
-                            <span className="font-medium text-amber-600">
+                            <span className="font-medium text-amber-600 dark:text-amber-400">
                                 {publikasis.meta.from ?? 0} - {publikasis.meta.to ?? 0}
                             </span>{' '}
-                            dari total <span className="font-medium text-amber-600">{publikasis.meta.total ?? 0}</span> data
+                            dari total <span className="font-medium text-amber-600 dark:text-amber-400">{publikasis.meta.total ?? 0}</span> data
                         </p>
 
                         {publikasis.meta.last_page && publikasis.meta.last_page > 1 && (
@@ -185,8 +183,8 @@ const BeritaFotoPage: PageWithLayout<Props> = ({ publikasis, kategori, kategoriD
                                                     isActive={link.active}
                                                     className={`rounded-md px-3 py-1 transition-colors ${
                                                         link.active
-                                                            ? 'bg-amber-600 text-white hover:bg-amber-700'
-                                                            : 'hover:bg-amber-400 hover:text-white'
+                                                            ? 'bg-amber-600 text-white hover:bg-amber-700 dark:bg-amber-500 dark:text-slate-950 dark:hover:bg-amber-400'
+                                                            : 'text-gray-700 hover:bg-amber-400 hover:text-white dark:text-slate-300 dark:hover:bg-amber-600 dark:hover:text-white'
                                                     }`}
                                                 >
                                                     {link.label.replace(/&laquo;/g, '«').replace(/&raquo;/g, '»')}

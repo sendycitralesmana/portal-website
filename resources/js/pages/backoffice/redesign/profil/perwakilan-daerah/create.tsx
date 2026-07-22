@@ -23,6 +23,8 @@ interface PerwakilanDaerahForm extends Record<string, any> {
     instagram: string;
     latitude: string;
     longitude: string;
+    lokasi: string;
+    maps: string;
     gambar: File | null;
 }
 
@@ -43,6 +45,8 @@ export default function CreatePerwakilanDaerah() {
             instagram: '',
             latitude: '',
             longitude: '',
+            lokasi: '',
+            maps: '',
             gambar: null,
         });
 
@@ -276,43 +280,43 @@ export default function CreatePerwakilanDaerah() {
                                 )}
                             </div>
 
-                            {/* Latitude */}
+                            {/* Lokasi */}
                             <div className="grid gap-1.5">
                                 <Label>
-                                    Latitude <span className="text-red-500">*</span>
+                                    Lokasi <span className="text-red-500">*</span>
                                 </Label>
                                 <Input
-                                    value={data.latitude}
+                                    value={data.lokasi}
                                     onChange={(e) =>
-                                        setData('latitude', e.target.value)
+                                        setData('lokasi', e.target.value)
                                     }
-                                    placeholder="Masukkan latitude"
+                                    placeholder="Masukkan lokasi"
                                     className={
-                                        errors.latitude ? 'border-red-500' : ''
+                                        errors.lokasi ? 'border-red-500' : ''
                                     }
                                 />
-                                {errors.latitude && (
-                                    <InputError message={errors.latitude} />
+                                {errors.lokasi && (
+                                    <InputError message={errors.lokasi} />
                                 )}
                             </div>
 
-                            {/* longitude */}
+                            {/* Maps */}
                             <div className="grid gap-1.5">
                                 <Label>
-                                    longitude <span className="text-red-500">*</span>
+                                    Maps <span className="text-red-500">*</span>
                                 </Label>
-                                <Input
-                                    value={data.longitude}
+                                <Textarea
+                                    value={data.maps}
                                     onChange={(e) =>
-                                        setData('longitude', e.target.value)
+                                        setData('maps', e.target.value)
                                     }
-                                    placeholder="Masukkan longitude"
+                                    placeholder="Masukkan maps"
                                     className={
-                                        errors.longitude ? 'border-red-500' : ''
+                                        errors.maps ? 'border-red-500' : ''
                                     }
                                 />
-                                {errors.longitude && (
-                                    <InputError message={errors.longitude} />
+                                {errors.maps && (
+                                    <InputError message={errors.maps} />
                                 )}
                             </div>
 

@@ -146,14 +146,14 @@ const PerwakilanDaerahPage = (props: any) => {
                                             </Button>
                                         </TableHead>
                                         <TableHead>
-                                            <Button variant="ghost" onClick={() => onSortable('latitude')}>
-                                                Latitude
+                                            <Button variant="ghost" onClick={() => onSortable('lokasi')}>
+                                                Lokasi
                                                 <IconArrowsDownUp className="ml-2 size-4" />
                                             </Button>
                                         </TableHead>
                                         <TableHead>
-                                            <Button variant="ghost" onClick={() => onSortable('longitude')}>
-                                                Longitude
+                                            <Button variant="ghost" onClick={() => onSortable('maps')}>
+                                                Maps
                                                 <IconArrowsDownUp className="ml-2 size-4" />
                                             </Button>
                                         </TableHead>
@@ -211,8 +211,10 @@ const PerwakilanDaerahPage = (props: any) => {
                                                 <TableCell className="align-top break-words whitespace-normal">{item.tiktok ?? '-'}</TableCell>
                                                 <TableCell className="align-top break-words whitespace-normal">{item.youtube ?? '-'}</TableCell>
                                                 <TableCell className="align-top break-words whitespace-normal">{item.instagram ?? '-'}</TableCell>
-                                                <TableCell className="align-top break-words whitespace-normal">{item.latitude ?? '-'}</TableCell>
-                                                <TableCell className="align-top break-words whitespace-normal">{item.longitude ?? '-'}</TableCell>
+                                                <TableCell className="align-top break-words whitespace-normal">{item.lokasi ?? '-'}</TableCell>
+                                                <TableCell className="align-top break-words whitespace-normal">
+                                                    {item.maps ? `${item.maps.slice(0, 50)}${item.maps.length > 50 ? '...' : ''}` : '-'}
+                                                </TableCell>
                                                 <TableCell className="align-top break-words whitespace-normal">{item.created_at ?? '-'}</TableCell>
 
                                                 <TableCell className="align-top">
@@ -297,10 +299,10 @@ const PerwakilanDaerahPage = (props: any) => {
                                                 <strong>Instagram:</strong> {item.instagram ?? '-'}
                                             </p>
                                             <p>
-                                                <strong>Latitude:</strong> {item.latitude ?? '-'}
+                                                <strong>Lokasi:</strong> {item.lokasi ?? '-'}
                                             </p>
                                             <p>
-                                                <strong>Longitude:</strong> {item.longitude ?? '-'}
+                                                <strong>Maps:</strong> {item.maps ?? '-'}
                                             </p>
                                             <p>
                                                 <strong>Dibuat Pada:</strong> {item.created_at ?? '-'}

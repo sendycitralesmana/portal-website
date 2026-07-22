@@ -21,6 +21,8 @@ class PerwakilanDaerah extends Model
         'gambar',
         'latitude',
         'longitude',
+        'lokasi',
+        'maps',
         'link',
     ];
 }
