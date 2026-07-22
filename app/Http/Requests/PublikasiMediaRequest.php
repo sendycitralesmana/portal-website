@@ -43,6 +43,7 @@ class PublikasiMediaRequest extends FormRequest
             'file.required' => 'File wajib diunggah',
             'file.max' => 'File tidak boleh lebih dari 10MB',
             'file.mimes' => 'File harus berupa gambar atau dokumen',
+            'file.uploaded' => 'File gagal diunggah. Ukuran file mungkin melebihi batas upload server.',
         ];
     }
 }
