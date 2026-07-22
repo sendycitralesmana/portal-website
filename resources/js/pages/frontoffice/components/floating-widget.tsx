@@ -10,7 +10,6 @@ import {
     ImageIcon,
     Link2,
     LogOut,
-    MessageCircleWarning,
     Minus,
     MousePointer2,
     Plus,
@@ -135,14 +134,23 @@ export default function FloatingTabButtons() {
 
     return (
         <>
-            <div className="fixed top-1/2 left-12 z-50 -translate-y-1/2">
+            {/* <div className="fixed top-1/2 left-12 z-50 -translate-y-1/2">
                 <a
                     href="https://www.lapor.go.id/"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="border-2 border-amber-400 inline-flex origin-bottom-left rotate-[-90deg] cursor-pointer items-center rounded-br-md rounded-bl-md bg-gradient-to-b from-red-900 to-red-700 px-2 py-4 text-sm font-semibold tracking-widest text-white transition-all duration-300 hover:from-red-700 hover:to-red-800 md:text-base"
                 >
-                    {/* <MessageCircleWarning size={20} /> */}
+                    Pengaduan Masyarakat
+                </a>
+            </div> */}
+            <div className="fixed top-1/2 left-8 z-50 -translate-y-1/2 md:left-12">
+                <a
+                    href="https://www.lapor.go.id/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex origin-bottom-left rotate-[-90deg] cursor-pointer items-center rounded-br-md rounded-bl-md border-2 border-amber-400 bg-gradient-to-b from-red-900 to-red-700 px-1.5 py-2 text-xs font-semibold tracking-wide text-white transition-all duration-300 hover:from-red-700 hover:to-red-800 md:px-2 md:py-4 md:text-base md:tracking-widest"
+                >
                     Pengaduan Masyarakat
                 </a>
             </div>

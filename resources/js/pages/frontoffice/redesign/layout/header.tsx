@@ -610,7 +610,7 @@ export default function Header() {
 
             {/* MOBILE MENU */}
             {mobileOpen && (
-                <div className="bg-background border-border fixed top-20 right-0 left-0 z-40 border-t shadow-lg xl:hidden">
+                <div className="bg-background border-border fixed top-20 right-0 left-0 z-99 border-t shadow-lg xl:hidden">
                     {/* TOP SECTION (Search + ID + ModeToggle - Sejajar) */}
                     <div className="border-border bg-muted/40 border-b px-4 py-4">
                         <div className="flex items-center gap-3">
