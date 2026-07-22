@@ -215,8 +215,8 @@ export default function Tablist({ siaranPers, beritas, informasis, pengumumans }
                                 {[
                                     { value: 'siaranPers', label: 'Siaran Pers' },
                                     { value: 'berita', label: 'Berita' },
-                                    { value: 'informasi', label: 'Informasi' },
                                     { value: 'pengumuman', label: 'Pengumuman' },
+                                    { value: 'informasi', label: 'Informasi' },
                                 ].map((tab) => (
                                     <TabsTrigger
                                         key={tab.value}
@@ -238,12 +238,12 @@ export default function Tablist({ siaranPers, beritas, informasis, pengumumans }
                         <CardGrid posts={informasis} baseUrl="/publikasi/informasi" />
                     </TabsContent>
 
-                    <TabsContent value="berita">
-                        <CardGrid posts={beritas} baseUrl="/publikasi/berita-kegiatan" />
-                    </TabsContent>
-
                     <TabsContent value="pengumuman">
                         <CardGrid posts={pengumumans} baseUrl="/publikasi/pengumuman" />
+                    </TabsContent>
+
+                    <TabsContent value="berita">
+                        <CardGrid posts={beritas} baseUrl="/publikasi/berita-kegiatan" />
                     </TabsContent>
                 </Tabs>
             </div>

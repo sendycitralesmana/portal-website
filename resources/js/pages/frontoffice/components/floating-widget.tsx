@@ -146,7 +146,7 @@ export default function FloatingTabButtons() {
             </div> */}
             <div className="fixed top-1/2 left-8 z-30 -translate-y-1/2 md:left-12">
                 <a
-                    href="https://www.lapor.go.id/"
+                    href="https://span.lapor.go.id/"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="inline-flex origin-bottom-left rotate-[-90deg] cursor-pointer items-center rounded-br-md rounded-bl-md border-2 border-amber-400 bg-gradient-to-b from-red-900 to-red-700 px-1.5 py-2 text-xs font-semibold tracking-wide text-white transition-all duration-300 hover:from-red-700 hover:to-red-800 md:px-2 md:py-4 md:text-base md:tracking-widest"

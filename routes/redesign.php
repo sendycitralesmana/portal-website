@@ -4,6 +4,7 @@ use App\Http\Controllers\BackOffice\DraftRedesignBackController;
 use App\Http\Controllers\BackOffice\Redesign\BerandaRedesignBackController;
 use App\Http\Controllers\BackOffice\Redesign\KewenanganRedesignBackController;
 use App\Http\Controllers\BackOffice\Redesign\LayananRedesignController;
+use App\Http\Controllers\BackOffice\Redesign\MaklumatStandarRedesignController;
 use App\Http\Controllers\BackOffice\Redesign\PejabatStrukturalRedesignBackController;
 use App\Http\Controllers\BackOffice\Redesign\PerwakilanDaerahRedesignBackController;
 use App\Http\Controllers\BackOffice\Redesign\ProfilPimpinanRedesignBackController;
@@ -52,6 +53,7 @@ use App\Http\Controllers\FrontOffice\Redesign\TugasFungsiRedesignController;
     // layanan-publik
     Route::prefix('/layanan-publik')->group(function () {
         Route::get('/ssk', [BerandaRedesignController::class, 'ssk'])->name('redesign.ssk');
+        Route::get('/maklumat-standar', [BerandaRedesignController::class, 'maklumatStandar'])->name('redesign.maklumat-standar');
     });
 
     // profil
@@ -186,6 +188,21 @@ use App\Http\Controllers\FrontOffice\Redesign\TugasFungsiRedesignController;
                 Route::get('/edit', [LayananRedesignController::class, 'edit'])->name('redesign.backoffice.layanan.edit');
                 Route::put('/update', [LayananRedesignController::class, 'update'])->name('redesign.backoffice.layanan.update');
                 Route::delete('/delete', [LayananRedesignController::class, 'destroy'])->name('redesign.backoffice.layanan.destroy');
+            });
+        });
+
+        // grup maklumat-standar
+        Route::prefix('maklumat-standar')->group(function () {
+            Route::get('/', [MaklumatStandarRedesignController::class, 'index'])->name('redesign.backoffice.maklumat-standar.index');
+            Route::get('/create', [MaklumatStandarRedesignController::class, 'create'])->name('redesign.backoffice.maklumat-standar.create');
+            Route::post('/store', [MaklumatStandarRedesignController::class, 'store'])->name('redesign.backoffice.maklumat-standar.store');
+            // api
+            Route::get('/api', [MaklumatStandarRedesignController::class, 'apiTentangKami'])->name('redesign.backoffice.maklumat-standar.api');
+            // grup id
+            Route::prefix('{id}')->group(function () {
+                Route::get('/edit', [MaklumatStandarRedesignController::class, 'edit'])->name('redesign.backoffice.maklumat-standar.edit');
+                Route::put('/update', [MaklumatStandarRedesignController::class, 'update'])->name('redesign.backoffice.maklumat-standar.update');
+                Route::delete('/delete', [MaklumatStandarRedesignController::class, 'destroy'])->name('redesign.backoffice.maklumat-standar.destroy');
             });
         });
 

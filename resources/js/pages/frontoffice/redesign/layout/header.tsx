@@ -33,6 +33,23 @@ const layananInformasiMenuItems: MenuItem[] = [
         external: true,
     },
     {
+        label: 'Maklumat dan Standar Pelayanan Publik',
+        href: '/layanan-publik/maklumat-standar',
+        description: 'Maklumat dan Standar Pelayanan Publik.',
+    },
+    {
+        label: 'SPAN LAPOR',
+        href: 'https://span.lapor.go.id/',
+        description: 'Pengaduan Masyarakat.',
+        external: true,
+    },
+    {
+        label: 'SKM Online',
+        href: 'https://skm.go.id/',
+        description: 'Survei Kepuasan Masyarakat.',
+        external: true,
+    },
+    {
         label: 'PPID',
         href: 'https://eppid.lpsk.go.id/',
         description:
@@ -66,7 +83,7 @@ const layananInformasiMenuItems: MenuItem[] = [
     {
         label: 'SSK',
         href: '/layanan-publik/ssk',
-        description: 'Sahabat Saksi Korban.',
+        description: 'Relawan Sahabat Saksi dan Korban.',
         external: true,
     },
 ];
@@ -139,19 +156,9 @@ const tugasFungsiMenuItems: MenuItem[] = [
 
 const publikasiMenuItems: MenuItem[] = [
     {
-        label: 'Informasi',
-        href: '/publikasi/informasi',
-        description: 'Kumpulan informasi publik dan berbagai informasi kelembagaan LPSK yang dapat diakses oleh masyarakat.',
-    },
-    {
         label: 'Siaran Pers',
         href: '/publikasi/siaran-pers',
         description: 'Kumpulan siaran pers resmi LPSK yang memuat informasi dan pernyataan terkait kegiatan serta isu-isu kelembagaan.',
-    },
-    {
-        label: 'Sosial Media',
-        href: '/sosial-media',
-        description: 'Akses ke berbagai kanal media sosial resmi LPSK untuk mendapatkan informasi dan kabar terbaru secara langsung.',
     },
     {
         label: 'Berita Foto',
@@ -169,9 +176,19 @@ const publikasiMenuItems: MenuItem[] = [
         description: 'Kumpulan pengumuman resmi LPSK mengenai informasi penting yang perlu diketahui oleh masyarakat dan pemangku kepentingan.',
     },
     {
+        label: 'Informasi',
+        href: '/publikasi/informasi',
+        description: 'Kumpulan informasi publik dan berbagai informasi kelembagaan LPSK yang dapat diakses oleh masyarakat.',
+    },
+    {
         label: 'Laporan',
         href: '/publikasi/laporan',
         description: 'Kumpulan laporan resmi LPSK yang memuat informasi mengenai pelaksanaan program, kegiatan, dan kinerja lembaga.',
+    },
+    {
+        label: 'Sosial Media',
+        href: '/sosial-media',
+        description: 'Akses ke berbagai kanal media sosial resmi LPSK untuk mendapatkan informasi dan kabar terbaru secara langsung.',
     },
     {
         label: 'Kajian dan Jurnal',

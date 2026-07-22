@@ -4,8 +4,10 @@ namespace App\Http\Controllers\FrontOffice\Redesign;
 
 use App\Http\Controllers\Controller;
 use App\Http\Resources\LayananResource;
+use App\Http\Resources\MaklumatStandarResource;
 use App\Http\Resources\PublikasiResource;
 use App\Models\Layanan;
+use App\Models\MaklumatStandar;
 use App\Models\Publikasi;
 use App\Models\SosialMedia;
 use App\Models\TentangKami;
@@ -61,6 +63,16 @@ class BerandaRedesignController extends Controller
     {
         return Inertia::render('frontoffice/redesign/beranda/ssk', [
             
+        ]);
+    }
+
+    public function maklumatStandar()
+    {
+        $maklumatStandars = MaklumatStandar::query()
+            ->orderBy('id', 'asc')
+            ->get();
+        return Inertia::render('frontoffice/redesign/layanan-publik/maklumat-standar', [
+            'maklumatStandars' => MaklumatStandarResource::collection($maklumatStandars)
         ]);
     }
 

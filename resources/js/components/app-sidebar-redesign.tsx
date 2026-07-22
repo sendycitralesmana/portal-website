@@ -33,6 +33,7 @@ export function AppSidebarRedesign() {
     const isVideoInfo = url.startsWith('/backoffice/video-info');
     const isSosialMedia = url.startsWith('/backoffice/sosial-media');
     const isLayanan = url.startsWith('/backoffice/layanan');
+    const isMaklumatStandar = url.startsWith('/backoffice/maklumat-standar');
     const isPublikasi = url.startsWith('/backoffice/publikasi');
     const isPengguna = url.startsWith('/backoffice/pengguna');
 
@@ -121,6 +122,16 @@ export function AppSidebarRedesign() {
                     >
                         <Briefcase className="h-4 w-4" />
                         <span>Layanan</span>
+                    </Link>
+
+                    <Link
+                        href="/backoffice/maklumat-standar"
+                        className={`flex items-center gap-3 rounded px-3 py-2 text-sm font-medium transition-colors ${
+                            isMaklumatStandar ? activeClass : hoverClass
+                        }`}
+                    >
+                        <Briefcase className="h-4 w-4" />
+                        <span>Maklumat Standar</span>
                     </Link>
 
                     <Link
