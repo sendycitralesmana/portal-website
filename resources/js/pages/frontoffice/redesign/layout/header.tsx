@@ -27,7 +27,7 @@ const menus = ['Beranda', 'Layanan Publik', 'Profil', 'Tugas dan Fungsi', 'Publi
 
 const layananInformasiMenuItems: MenuItem[] = [
     {
-        label: 'SIMPUSAKA',
+        label: 'Permohonan Pelindungan (SIMPUSAKA)',
         href: 'https://simpusaka.lpsk.go.id/layanan_simpusaka/',
         description: 'Sistem Informasi Pelindungan Saksi dan Korban.',
         external: true,
@@ -38,50 +38,50 @@ const layananInformasiMenuItems: MenuItem[] = [
         description: 'Maklumat dan Standar Pelayanan Publik.',
     },
     {
-        label: 'SPAN LAPOR',
+        label: 'Pengaduan Masyarakat (SPAN LAPOR)',
         href: 'https://span.lapor.go.id/',
         description: 'Pengaduan Masyarakat.',
         external: true,
     },
     {
-        label: 'SKM Online',
+        label: 'Survei Kepuasan Masyarakat (SKM Online)',
         href: 'https://skm.go.id/',
         description: 'Survei Kepuasan Masyarakat.',
         external: true,
     },
     {
-        label: 'PPID',
+        label: 'Informasi Publik (PPID)',
         href: 'https://eppid.lpsk.go.id/',
         description:
             'Pejabat Pembina Informasi dan Dokumentasi.',
         external: true,
     },
     {
-        label: 'JDIH',
+        label: 'Informasi Hukum (JDIH)',
         href: 'https://jdih.lpsk.go.id/',
         description: 'Jaringan Dokumentasi dan Informasi Hukum.',
         external: true,
     },
     {
-        label: 'FONDASI',
+        label: 'Tindak Lanjut Keputusan (FONDASI)',
         href: 'https://limo.lpsk.go.id/apps/forms/s/oj7jdZAwAZ3z89aHCrdZNsEt',
         description: 'Tingkat Lanjut Keputusan Rekomendasi.',
         external: true,
     },
     {
-        label: 'OPERA',
+        label: 'Opini Peraturan (OPERA)',
         href: 'https://hukum.lpsk.go.id/',
         description: 'Opini Penyusunan Peraturan di Lingkungan.',
         external: true,
     },
     {
-        label: 'LENTERA',
+        label: 'Learning dan Training (LENTERA)',
         href: 'https://e-learning.lpsk.go.id/',
         description: 'Learning and Training LPSK.',
         external: true,
     },
     {
-        label: 'SSK',
+        label: 'Relawan Sahabat Saksi dan Korban (SSK)',
         href: '/layanan-publik/ssk',
         description: 'Relawan Sahabat Saksi dan Korban.',
         external: true,
