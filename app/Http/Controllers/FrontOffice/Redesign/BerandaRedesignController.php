@@ -86,13 +86,13 @@ class BerandaRedesignController extends Controller
                 ->get()
         );
 
-        // $beritaFotos = PublikasiResource::collection(
-        //     Publikasi::query()->with('media')
-        //         ->where('kategori', 'Berita Foto')
-        //         ->orderBy('created_at', 'desc')
-        //         ->limit(5)
-        //         ->get()
-        // );
+        $beritaFotos = PublikasiResource::collection(
+            Publikasi::query()->with('media')
+                ->where('kategori', 'Berita Foto')
+                ->orderBy('created_at', 'desc')
+                ->limit(5)
+                ->get()
+        );
 
         $informasis = PublikasiResource::collection(
             Publikasi::query()
@@ -144,6 +144,7 @@ class BerandaRedesignController extends Controller
             'informasis' => $informasis,
             'beritas' => $beritas,
             'pengumumans' => $pengumumans,
+            'beritaFotos' => $beritaFotos,
         ]);
     }
 

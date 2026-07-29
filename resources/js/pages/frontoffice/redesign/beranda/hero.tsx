@@ -22,7 +22,7 @@ const slides: Slide[] = [
         title: 'LPSK',
         subtitle: 'Lembaga Pelindungan Saksi dan Korban',
         deskripsi: 'Lembaga Pelindungan Saksi dan Korban adalah lembaga negara yang didirikan dan bertanggung jawab untuk menangani pemberian pelindungan dan bantuan pada saksi dan korban.',
-        image: '/images/banner-1.jpg',
+        image: '/images/banner-3.jpg',
         href: null,
     },
     {
@@ -32,6 +32,15 @@ const slides: Slide[] = [
         buttonText: 'Ajukan Permohonan Pelindungan',
         image: '/images/banner-2.jpg',
         href: 'https://simpusaka.lpsk.go.id/layanan_simpusaka',
+        external: true,
+    },
+    {
+        title: 'Dirgahayu',
+        subtitle: 'Lembaga Pelindungan Saksi dan Korban',
+        deskripsi: '8 Agustus\n2008-2026',
+        buttonText: 'Panduan Visual',
+        image: '/images/banner-6.jpeg',
+        href: 'https://limo.lpsk.go.id/s/LqnrPQW5RHTjMKe',
         external: true,
     },
 ];
@@ -55,12 +64,13 @@ export default function HeroCarousel() {
 
                         return (
                             <CarouselItem key={index}>
-                                <div className="relative h-[300px] w-full overflow-hidden sm:h-[450px] md:h-[650px] lg:h-[840px]">
+                                <div className="relative h-[300px] w-full overflow-hidden sm:h-[450px] md:h-[650px] lg:h-[920px]">
                                     {/* Background Image */}
                                     <img src={slide.image} alt={slide.title} className="absolute inset-0 h-full w-full object-cover object-center" />
 
                                     {/* Overlay */}
                                     <div className="absolute inset-0 bg-gradient-to-r from-[#001B4D]/95 via-[#002B7F]/60 to-transparent" />
+                                    {/* <div className="absolute inset-0 bg-gradient-to-r from-[#001B4D]/75 via-[#002B7F]/40 to-transparent" /> */}
 
                                     {/* Content */}
                                     <div className="relative z-10 flex h-full items-center">
@@ -79,10 +89,13 @@ export default function HeroCarousel() {
                                                 )}
 
                                                 {/* Description */}
-                                                {slide.deskripsi && (
-                                                    <p className="mb-3 max-w-xl text-[12px] leading-snug text-white/90 sm:text-sm md:mb-6 md:max-w-2xl md:text-base md:leading-relaxed lg:max-w-4xl lg:text-lg">
+                                                {/* {slide.deskripsi && (
+                                                    <p className="mb-3 max-w-xl text-[12px] leading-snug text-white/90 sm:text-sm md:mb-6 md:max-w-2xl md:text-lg md:leading-relaxed lg:max-w-4xl lg:text-xl">
                                                         {slide.deskripsi}
                                                     </p>
+                                                )} */}
+                                                {slide.deskripsi && ( <p className="mb-3 max-w-xl whitespace-pre-line text-[12px] leading-snug text-white/90 sm:text-sm md:mb-6 md:max-w-2xl md:text-lg md:leading-relaxed lg:max-w-4xl lg:text-xl">
+                                                    {slide.deskripsi} </p>
                                                 )}
 
                                                 {/* Button */}

@@ -46,9 +46,10 @@ interface Props {
     beritas: Post[];
     pengumumans: Post[];
     layanans: Layanan[];
+    beritaFotos: Post[];
 }
 
-const BerandaPage = ({ sosialMedias, videoInfos, siaranPers, informasis, beritas, pengumumans, layanans }: Props) => {
+const BerandaPage = ({ sosialMedias, videoInfos, siaranPers, informasis, beritas, pengumumans, layanans, beritaFotos }: Props) => {
   return (
     <div>
       <Head title="Beranda">
@@ -64,6 +65,7 @@ const BerandaPage = ({ sosialMedias, videoInfos, siaranPers, informasis, beritas
         informasis={informasis}
         beritas={beritas}
         pengumumans={pengumumans}
+        beritaFotos={beritaFotos}
       />
       <VideoSection videoInfos={videoInfos} />
       <LayananSection layanans={layanans}/>

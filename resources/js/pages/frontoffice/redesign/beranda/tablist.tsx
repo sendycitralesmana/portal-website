@@ -31,6 +31,7 @@ interface TablistProps {
     beritas: Post[];
     informasis: Post[];
     pengumumans: Post[];
+    beritaFotos: Post[];
 }
 
 /* ================= CARD GRID ================= */
@@ -55,11 +56,7 @@ function CardGrid({ posts, baseUrl }: { posts: Post[]; baseUrl: string }) {
                         />
 
                         {/* Main image */}
-                        <img
-                            src={post.gambar}
-                            alt={post.judul}
-                            className="relative h-full w-full object-contain"
-                        />
+                        <img src={post.gambar} alt={post.judul} className="relative h-full w-full object-contain" />
                     </div>
 
                     {/* CONTENT */}
@@ -194,17 +191,20 @@ function BeritaFotoCard({ post }: { post: Post }) {
 
 function BeritaFotoGrid({ posts }: { posts: Post[] }) {
     return (
-        <div className="mt-6 grid grid-cols-2 gap-4 md:grid-cols-4 md:gap-6">
-            {posts.map((post) => (
-                <BeritaFotoCard key={post.id} post={post} />
-            ))}
+        <div className="mt-6 grid grid-cols-2 gap-4 md:grid-cols-5 md:gap-6">
+            {posts.map((post, index) => (
+                <div key={post.id} className={index >= 4 ? 'hidden md:block' : ''}>
+                    {' '}
+                    <BeritaFotoCard post={post} />{' '}
+                </div>
+            ))}{' '}
         </div>
     );
 }
 
 /* ================= TABS ================= */
 
-export default function Tablist({ siaranPers, beritas, informasis, pengumumans }: TablistProps) {
+export default function Tablist({ siaranPers, beritas, informasis, pengumumans, beritaFotos }: TablistProps) {
     return (
         <section className="relative z-10 -mt-21 w-full py-12">
             <div className="container mx-auto px-4 md:px-6">
@@ -217,6 +217,7 @@ export default function Tablist({ siaranPers, beritas, informasis, pengumumans }
                                     { value: 'berita', label: 'Berita' },
                                     { value: 'pengumuman', label: 'Pengumuman' },
                                     { value: 'informasi', label: 'Informasi' },
+                                    { value: 'beritaFoto', label: 'Berita Foto' },
                                 ].map((tab) => (
                                     <TabsTrigger
                                         key={tab.value}
@@ -244,6 +245,10 @@ export default function Tablist({ siaranPers, beritas, informasis, pengumumans }
 
                     <TabsContent value="berita">
                         <CardGrid posts={beritas} baseUrl="/publikasi/berita-kegiatan" />
+                    </TabsContent>
+
+                    <TabsContent value="beritaFoto">
+                        <BeritaFotoGrid posts={beritaFotos} />
                     </TabsContent>
                 </Tabs>
             </div>
