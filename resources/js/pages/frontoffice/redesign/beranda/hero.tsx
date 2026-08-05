@@ -21,7 +21,8 @@ const slides: Slide[] = [
     {
         title: 'LPSK',
         subtitle: 'Lembaga Pelindungan Saksi dan Korban',
-        deskripsi: 'Lembaga Pelindungan Saksi dan Korban adalah lembaga negara yang didirikan dan bertanggung jawab untuk menangani pemberian pelindungan dan bantuan pada saksi dan korban.',
+        // deskripsi: 'Lembaga Pelindungan Saksi dan Korban adalah lembaga negara yang didirikan dan bertanggung jawab untuk menangani pemberian pelindungan dan bantuan pada saksi dan korban.',
+        deskripsi: 'Lembaga Pelindungan Saksi dan Korban (LPSK) adalah lembaga negara yang bertugas dan berwenang untuk memberikan Pelindungan dan hak-hak lain kepada Saksi, Korban, Saksi Pelaku, Pelapor, Informan, dan/atau Ahli sebagaimana diatur dalam UU Nomor 3 Tahun 2026 Tentang Pelindungan Saksi dan Korban.',
         image: '/images/banner-3.jpg',
         href: null,
     },
