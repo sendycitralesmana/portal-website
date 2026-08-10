@@ -22,7 +22,7 @@ class TugasFungsiRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'kategori' => 'required|in:kewenangan,subjek terlindung,tindak pidana tertentu,program perlindungan',
+            'kategori' => 'required|in:fungsi, kewenangan,subjek terlindung,tindak pidana tertentu,program perlindungan',
             'judul' => 'nullable|string',
             'deskripsi' => 'required|string',
             'gambar' => 'nullable|image|max:10240', // Maksimal 10MB

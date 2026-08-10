@@ -19,8 +19,16 @@ class TugasFungsiRedesignController extends Controller
 
     public function fungsi()
     {
-        return Inertia::render('frontoffice/redesign/tugas-fungsi/fungsi', [
+        // return Inertia::render('frontoffice/redesign/tugas-fungsi/fungsi', [
             
+        // ]);
+
+        $fungsis = TugasFungsi::query()
+            ->where('kategori', 'fungsi')
+            ->orderBy('id', 'asc')
+            ->get();
+        return Inertia::render('frontoffice/redesign/tugas-fungsi/fungsi', [
+            'fungsis' => TugasFungsiResource::collection($fungsis)
         ]);
     }
 

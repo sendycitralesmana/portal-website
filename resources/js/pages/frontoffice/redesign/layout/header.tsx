@@ -354,7 +354,8 @@ export default function Header() {
                         </div>
 
                         {/* DESKTOP MENU */}
-                        <nav className="absolute left-1/2 hidden h-full -translate-x-1/2 items-center gap-14 font-bold xl:flex">
+                        {/* <nav className="absolute left-1/2 hidden h-full -translate-x-1/2 items-center gap-14 font-bold xl:flex"> */}
+                        <nav className="absolute left-[45%] hidden h-full -translate-x-1/2 items-center gap-12 font-bold xl:flex">
                             {menus.map((menu) =>
                                 menu === 'Beranda' ? (
                                     <Link

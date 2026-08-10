@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\BackOffice\DraftRedesignBackController;
 use App\Http\Controllers\BackOffice\Redesign\BerandaRedesignBackController;
+use App\Http\Controllers\BackOffice\Redesign\FungsiRedesignBackController;
 use App\Http\Controllers\BackOffice\Redesign\KewenanganRedesignBackController;
 use App\Http\Controllers\BackOffice\Redesign\LayananRedesignController;
 use App\Http\Controllers\BackOffice\Redesign\MaklumatStandarRedesignController;
@@ -306,6 +307,19 @@ use App\Http\Controllers\FrontOffice\Redesign\TugasFungsiRedesignController;
 
         // grup tugas fungsi
         Route::prefix('/tugas-fungsi')->group(function () {
+
+            // grup fungsi
+            Route::prefix('fungsi')->group(function () {
+                Route::get('/', [FungsiRedesignBackController::class, 'index'])->name('redesign.backoffice.tugas-fungsi.fungsi.index');
+                Route::get('/create', [FungsiRedesignBackController::class, 'create'])->name('redesign.backoffice.tugas-fungsi.fungsi.create');
+                Route::post('/store', [FungsiRedesignBackController::class, 'store'])->name('redesign.backoffice.tugas-fungsi.fungsi.store');
+                // grup id
+                Route::prefix('{id}')->group(function () {
+                    Route::get('/edit', [FungsiRedesignBackController::class, 'edit'])->name('redesign.backoffice.tugas-fungsi.fungsi.edit');
+                    Route::put('/update', [FungsiRedesignBackController::class, 'update'])->name('redesign.backoffice.tugas-fungsi.fungsi.update');
+                    Route::delete('/delete', [FungsiRedesignBackController::class, 'destroy'])->name('redesign.backoffice.tugas-fungsi.fungsi.destroy');
+                });
+            });
 
             // grup kewenangan
             Route::prefix('kewenangan')->group(function () {

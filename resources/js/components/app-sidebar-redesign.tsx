@@ -47,6 +47,7 @@ export function AppSidebarRedesign() {
 
     // TUGAS & FUNGSI
     const isTugasFungsi = url.startsWith('/backoffice/tugas-fungsi');
+    const isFungsi = url.startsWith('/backoffice/tugas-fungsi/fungsi');
     const isKewenangan = url.startsWith('/backoffice/tugas-fungsi/kewenangan');
     const isSubjekTerlindung = url.startsWith('/backoffice/tugas-fungsi/subjek-terlindung');
     const isTindakPidana = url.startsWith('/backoffice/tugas-fungsi/tindak-pidana-tertentu');
@@ -243,6 +244,14 @@ export function AppSidebarRedesign() {
 
                         {dropdownTugasTerbuka && (
                             <div className="mt-1 ml-6 space-y-1">
+                                <Link
+                                    href="/backoffice/tugas-fungsi/fungsi"
+                                    className={`flex items-center gap-2 rounded px-3 py-2 text-sm ${isFungsi ? activeClass : hoverClass}`}
+                                >
+                                    <ShieldCheck className="h-4 w-4" />
+                                    <span>Fungsi</span>
+                                </Link>
+
                                 <Link
                                     href="/backoffice/tugas-fungsi/kewenangan"
                                     className={`flex items-center gap-2 rounded px-3 py-2 text-sm ${isKewenangan ? activeClass : hoverClass}`}

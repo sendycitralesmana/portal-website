@@ -51,11 +51,11 @@ const Kewenangan: PageWithLayout<Props> = ({ kewenangans }) => {
                                 viewport={{ once: true }}
                                 transition={{ duration: 0.5, delay: index * 0.05 }}
                                 whileHover={{ y: -6 }}
-                                className="relative w-full overflow-hidden rounded-2xl border border-amber-800/50 p-6 shadow-md transition-all duration-300 hover:shadow-amber-900/50 md:basis-[calc(50%-12px)] md:p-8 lg:max-w-[calc(33.333%-16px)] lg:basis-[calc(33.333%-16px)] dark:shadow-amber-900/30"
+                                className="relative flex w-full items-center justify-center overflow-hidden rounded-2xl border border-amber-800/50 p-6 text-center shadow-md transition-all duration-300 hover:shadow-amber-900/50 md:basis-[calc(50%-12px)] md:p-8 lg:max-w-[calc(33.333%-16px)] lg:basis-[calc(33.333%-16px)] dark:shadow-amber-900/30"
                             >
                                 <div className="absolute top-0 left-0 h-1 w-full bg-gradient-to-r from-amber-500 via-amber-400 to-amber-300"></div>
 
-                                <p className="text-center text-sm leading-relaxed md:text-base">{item.deskripsi}</p>
+                                <p className="text-justify text-sm leading-relaxed md:text-base">{item.deskripsi}</p>
                             </motion.div>
                         ))}
                     </div>
