@@ -6,6 +6,7 @@ import { type BreadcrumbItem } from '@/types';
 
 import AppLayout from '@/layouts/app-layout';
 import SettingsLayout from '@/layouts/settings/layout';
+import AppLayoutRedesign from '@/layouts/backoffice-redesign/app-layout-redesign';
 
 const breadcrumbs: BreadcrumbItem[] = [
     {
@@ -16,7 +17,7 @@ const breadcrumbs: BreadcrumbItem[] = [
 
 export default function Appearance() {
     return (
-        <AppLayout breadcrumbs={breadcrumbs}>
+        <AppLayoutRedesign breadcrumbs={breadcrumbs}>
             <Head title="Profile Settings">
                 <meta name="description" content="Halaman Profile Settings" />
                 <link rel="icon" href="/images/favicon.ico" type="image/x-icon" />
@@ -28,6 +29,6 @@ export default function Appearance() {
                     <AppearanceTabs />
                 </div>
             </SettingsLayout>
-        </AppLayout>
+        </AppLayoutRedesign>
     );
 }

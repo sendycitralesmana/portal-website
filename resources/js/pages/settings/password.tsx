@@ -10,6 +10,7 @@ import HeadingSmall from '@/components/heading-small';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
+import AppLayoutRedesign from '@/layouts/backoffice-redesign/app-layout-redesign';
 
 const breadcrumbs: BreadcrumbItem[] = [
     {
@@ -49,7 +50,7 @@ export default function Password() {
     };
 
     return (
-        <AppLayout breadcrumbs={breadcrumbs}>
+        <AppLayoutRedesign breadcrumbs={breadcrumbs}>
             <Head title="Profile Settings">
                 <meta name="description" content="Halaman Profile Settings" />
                 <link rel="icon" href="/images/favicon.ico" type="image/x-icon" />
@@ -126,6 +127,6 @@ export default function Password() {
                     </form>
                 </div>
             </SettingsLayout>
-        </AppLayout>
+        </AppLayoutRedesign>
     );
 }
