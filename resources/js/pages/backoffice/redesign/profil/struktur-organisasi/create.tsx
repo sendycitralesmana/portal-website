@@ -64,7 +64,7 @@ export default function CreateStrukturOrganisasi() {
                     />
 
                     <Button asChild variant="blue">
-                        <Link href="/backoffice/struktur-organisasi">
+                        <Link href="/backoffice/profil/struktur-organisasi">
                             <ArrowLeft className="size-4" />
                             Kembali
                         </Link>
