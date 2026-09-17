@@ -272,7 +272,9 @@ use App\Http\Controllers\FrontOffice\Redesign\TugasFungsiRedesignController;
                 // grup id
                 Route::prefix('{id}')->group(function () {
                     Route::get('/edit', [StrukturOrganisasiRedesignBackController::class, 'edit'])->name('redesign.backoffice.profil.struktur-organisasi.edit');
+                    Route::get('/edit-file', [StrukturOrganisasiRedesignBackController::class, 'editFile'])->name('redesign.backoffice.profil.struktur-organisasi.edit-file');
                     Route::put('/update', [StrukturOrganisasiRedesignBackController::class, 'update'])->name('redesign.backoffice.profil.struktur-organisasi.update');
+                    Route::put('/update-file', [StrukturOrganisasiRedesignBackController::class, 'updateFile'])->name('redesign.backoffice.profil.struktur-organisasi.update-file');
                     Route::delete('/delete', [StrukturOrganisasiRedesignBackController::class, 'destroy'])->name('redesign.backoffice.profil.struktur-organisasi.destroy');
                 });
             });

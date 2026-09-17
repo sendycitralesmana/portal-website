@@ -13,5 +13,6 @@ class TugasFungsi extends Model
         'judul',
         'deskripsi',
         'gambar',
+        'file',
     ];
 }

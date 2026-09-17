@@ -26,6 +26,7 @@ class TugasFungsiRequest extends FormRequest
             'judul' => 'nullable|string',
             'deskripsi' => 'required|string',
             'gambar' => 'nullable|image|max:10240', // Maksimal 10MB
+            'file' => 'nullable|file|mimes:pdf|max:10240', // Maksimal 10MB
         ];
     }
 
@@ -39,6 +40,9 @@ class TugasFungsiRequest extends FormRequest
             'deskripsi.string' => 'Deskripsi harus berupa teks.',
             'gambar.image' => 'Gambar harus berupa file gambar (jpeg, png, bmp, gif, svg).',
             'gambar.max' => 'Ukuran gambar maksimal 10MB.',
+            'file.file' => 'File harus berupa file yang valid.',
+            'file.max' => 'Ukuran file maksimal 10MB.',
+            'file.mimes' => 'File harus berupa file PDF.',
         ];
     }
 }

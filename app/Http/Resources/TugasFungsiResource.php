@@ -22,6 +22,7 @@ class TugasFungsiResource extends JsonResource
             'judul' => $this->judul,
             'deskripsi' => $this->deskripsi,
             'gambar' => $this->gambar ? Storage::disk('s3')->url($this->gambar) : null,
+            'file' => $this->file ? Storage::disk('s3')->url($this->file) : null,
             'created_at' => $this->created_at
                 ? $this->created_at->translatedFormat('l, d F Y')
                 : null,

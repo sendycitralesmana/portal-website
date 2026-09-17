@@ -3,6 +3,7 @@ import { useState } from 'react';
 
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardFooter, CardHeader } from '@/components/ui/card';
+import { Dialog, DialogContent, DialogTrigger } from '@/components/ui/dialog';
 import { Skeleton } from '@/components/ui/skeleton';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
 
@@ -12,7 +13,7 @@ import { useFilter } from '@/hooks/use-filter';
 import AppLayoutRedesign from '@/layouts/backoffice-redesign/app-layout-redesign';
 
 import { IconArrowsDownUp } from '@tabler/icons-react';
-import { FileText, Pencil, Plus, ShieldCheck, Search as SearchIcon } from 'lucide-react';
+import { FileText, Pencil, Plus, Search as SearchIcon, ShieldCheck } from 'lucide-react';
 
 import DeleteDialog from './delete-dialog';
 import Filter from './filter';
@@ -64,11 +65,7 @@ const FungsiPage = (props: any) => {
 
             <div className="flex w-full flex-col">
                 <div className="mb-8 flex flex-col items-start justify-between gap-y-4 lg:flex-row lg:items-center">
-                    <HeaderTitle
-                        title="Fungsi"
-                        subtitle="Kelola data fungsi yang ditampilkan pada halaman tugas dan fungsi."
-                        icon={ShieldCheck}
-                    />
+                    <HeaderTitle title="Fungsi" subtitle="Kelola data fungsi yang ditampilkan pada halaman tugas dan fungsi." icon={ShieldCheck} />
 
                     <Button variant="blue" size="lg" asChild>
                         <Link href="/backoffice/tugas-fungsi/fungsi/create">
@@ -91,6 +88,7 @@ const FungsiPage = (props: any) => {
                                     <TableRow>
                                         <TableHead>#</TableHead>
                                         <TableHead>Gambar</TableHead>
+                                        <TableHead>Dokumen</TableHead>
                                         <TableHead>
                                             <Button variant="ghost" onClick={() => onSortable('deskripsi')}>
                                                 Deskripsi
@@ -104,8 +102,8 @@ const FungsiPage = (props: any) => {
                                                 onClick={() => onSortable('created_at')}
                                             >
                                                 Dibuat Pada
-                                                <span className="ml-2 flex-none rounded text-muted-foreground">
-                                                    <IconArrowsDownUp className="size-4 text-muted-foreground" />
+                                                <span className="text-muted-foreground ml-2 flex-none rounded">
+                                                    <IconArrowsDownUp className="text-muted-foreground size-4" />
                                                 </span>
                                             </Button>
                                         </TableHead>
@@ -126,7 +124,7 @@ const FungsiPage = (props: any) => {
                                         ))
                                     ) : fungsis.length === 0 ? (
                                         <TableRow>
-                                            <TableCell colSpan={6} className="py-20 text-center">
+                                            <TableCell colSpan={7} className="py-20 text-center">
                                                 <div className="flex flex-col items-center gap-2 text-gray-500 dark:text-gray-400">
                                                     <SearchIcon className="h-10 w-10 text-blue-500" />
                                                     <span className="text-sm">Tidak ada data</span>
@@ -145,6 +143,40 @@ const FungsiPage = (props: any) => {
                                                         </div>
                                                     ) : (
                                                         <span className="text-sm text-gray-400 italic">Tidak ada gambar</span>
+                                                    )}
+                                                </TableCell>
+
+                                                <TableCell className="align-top">
+                                                    {item.file ? (
+                                                        <Dialog>
+                                                            <DialogTrigger asChild>
+                                                                <button
+                                                                    type="button"
+                                                                    className="flex items-center gap-2 rounded-lg border px-3 py-2 text-sm transition hover:bg-gray-50 dark:hover:bg-gray-800"
+                                                                >
+                                                                    <FileText className="size-5 text-red-500" />
+                                                                    <span className="max-w-[150px] truncate">{item.file.split('/').pop()}</span>
+                                                                </button>
+                                                            </DialogTrigger>
+
+                                                            <DialogContent className="!h-[95vh] !w-[95vw] !max-w-[95vw] overflow-hidden p-3 sm:!max-w-[95vw] sm:p-4">
+                                                                <div className="flex h-full min-h-0 flex-col">
+                                                                    <div className="mb-3 flex shrink-0 items-center gap-2">
+                                                                        <FileText className="size-5 text-red-600" />
+
+                                                                        <h3 className="font-semibold">Dokumen PDF</h3>
+                                                                    </div>
+
+                                                                    <iframe
+                                                                        src={item.file}
+                                                                        title={`Preview PDF ${item.id}`}
+                                                                        className="min-h-0 w-full flex-1 rounded-lg border"
+                                                                    />
+                                                                </div>
+                                                            </DialogContent>
+                                                        </Dialog>
+                                                    ) : (
+                                                        <span className="text-sm text-gray-400 italic">Tidak ada dokumen</span>
                                                     )}
                                                 </TableCell>
 
@@ -204,11 +236,44 @@ const FungsiPage = (props: any) => {
                                             </div>
                                         )}
 
+                                        {item.file && (
+                                            <div className="mt-3">
+                                                <Dialog>
+                                                    <DialogTrigger asChild>
+                                                        <button
+                                                            type="button"
+                                                            className="flex w-full items-center gap-3 rounded-lg border p-3 text-left transition hover:bg-gray-50 dark:hover:bg-gray-800"
+                                                        >
+                                                            <FileText className="size-7 shrink-0 text-red-500" />
+
+                                                            <div className="min-w-0">
+                                                                <p className="text-sm font-medium">Dokumen PDF</p>
+
+                                                                <p className="truncate text-xs text-gray-500">{item.file.split('/').pop()}</p>
+
+                                                                <p className="mt-1 text-xs text-blue-500">Klik untuk preview</p>
+                                                            </div>
+                                                        </button>
+                                                    </DialogTrigger>
+
+                                                    <DialogContent className="max-w-5xl">
+                                                        <iframe
+                                                            src={item.file}
+                                                            title={`Preview PDF ${item.id}`}
+                                                            className="h-[80vh] w-full rounded-lg border"
+                                                        />
+                                                    </DialogContent>
+                                                </Dialog>
+                                            </div>
+                                        )}
+
                                         <div className="mt-3 space-y-2 text-sm">
                                             <p className="whitespace-pre-line">
                                                 <strong>Deskripsi:</strong> {item.deskripsi}
                                             </p>
-                                            <p><strong>Dibuat:</strong> {item.created_at ?? '-'}</p>
+                                            <p>
+                                                <strong>Dibuat:</strong> {item.created_at ?? '-'}
+                                            </p>
                                         </div>
                                     </div>
                                 ))

@@ -48,14 +48,25 @@ class ProfilRedesignController extends Controller
     //     ]);
     // }
 
+    // public function strukturOrganisasi()
+    // {
+    //     $strukturOrganisasi = StrukturOrganisasi::query()->first();
+
+    //     return Inertia::render('frontoffice/redesign/profil/struktur-organisasi', [
+    //         'strukturOrganisasi' => $strukturOrganisasi
+    //             ? new StrukturOrganisasiResource($strukturOrganisasi)
+    //             : null
+    //     ]);
+    // }
+
     public function strukturOrganisasi()
     {
-        $strukturOrganisasi = StrukturOrganisasi::query()->first();
+        $strukturOrganisasi = StrukturOrganisasi::query()
+            ->orderBy('id', 'asc')
+            ->get();
 
         return Inertia::render('frontoffice/redesign/profil/struktur-organisasi', [
-            'strukturOrganisasi' => $strukturOrganisasi
-                ? new StrukturOrganisasiResource($strukturOrganisasi)
-                : null
+            'strukturOrganisasi' => StrukturOrganisasiResource::collection($strukturOrganisasi),
         ]);
     }
 

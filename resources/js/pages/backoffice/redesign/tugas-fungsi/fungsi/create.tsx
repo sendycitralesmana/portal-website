@@ -2,38 +2,41 @@ import HeaderTitle from '@/components/header-title';
 import InputError from '@/components/input-error';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
+import { Dialog, DialogContent, DialogTrigger } from '@/components/ui/dialog';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
-import { Dialog, DialogContent, DialogTrigger } from '@/components/ui/dialog';
-import { Head, Link, useForm } from '@inertiajs/react';
-import { ArrowLeft, RotateCcw, Save, FileText, Scale, ShieldCheck } from 'lucide-react';
-import React from 'react';
 import AppLayoutRedesign from '@/layouts/backoffice-redesign/app-layout-redesign';
+import { Head, Link, useForm } from '@inertiajs/react';
+import { ArrowLeft, FileText, RotateCcw, Save, ShieldCheck } from 'lucide-react';
+import React from 'react';
 
 interface FungsiForm extends Record<string, any> {
     kategori: string;
     judul: string;
     deskripsi: string;
     gambar: File | null;
+    file: File | null;
 }
 
 export default function CreatePerwakilanDaerah() {
     const [isResetting, setIsResetting] = React.useState(false);
     const [imagePreview, setImagePreview] = React.useState<string | null>(null);
+    const [filePreview, setPdfPreview] = React.useState<string | null>(null);
 
-    const { data, setData, post, reset, processing, errors } =
-        useForm<FungsiForm>({
-            kategori: 'fungsi',
-            judul: '',
-            deskripsi: '',
-            gambar: null,
-        });
+    const { data, setData, post, reset, processing, errors } = useForm<FungsiForm>({
+        kategori: 'fungsi',
+        judul: '',
+        deskripsi: '',
+        gambar: null,
+        file: null,
+    });
 
     const handleReset = () => {
         setIsResetting(true);
         reset();
         setImagePreview(null);
+        setPdfPreview(null);
         setTimeout(() => setIsResetting(false), 300);
     };
 
@@ -45,6 +48,7 @@ export default function CreatePerwakilanDaerah() {
             onSuccess: () => {
                 reset();
                 setImagePreview(null);
+                setPdfPreview(null);
             },
         });
     };
@@ -76,7 +80,6 @@ export default function CreatePerwakilanDaerah() {
                 <Card>
                     <CardContent className="p-6">
                         <form className="space-y-6" onSubmit={onHandleSubmit}>
-
                             {/* Deskripsi */}
                             <div className="grid gap-1.5">
                                 <Label>
@@ -85,73 +88,114 @@ export default function CreatePerwakilanDaerah() {
                                 <Textarea
                                     rows={6}
                                     value={data.deskripsi}
-                                    onChange={(e) =>
-                                        setData('deskripsi', e.target.value)
-                                    }
+                                    onChange={(e) => setData('deskripsi', e.target.value)}
                                     placeholder="Tulis deskripsi ..."
-                                    className={
-                                        errors.deskripsi
-                                            ? 'border-red-500 focus-visible:ring-red-500'
-                                            : ''
-                                    }
+                                    className={errors.deskripsi ? 'border-red-500 focus-visible:ring-red-500' : ''}
                                 />
-                                {errors.deskripsi && (
-                                    <InputError message={errors.deskripsi} />
-                                )}
+                                {errors.deskripsi && <InputError message={errors.deskripsi} />}
                             </div>
 
-                            {/* gambar */}
-                            <div className="grid gap-1.5">
-                                <Label>gambar</Label>
+                            {/* Upload Gambar & PDF */}
+                            <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
+                                {/* Upload Gambar */}
+                                <div className="grid gap-1.5">
+                                    <Label>Gambar</Label>
 
-                                <Input
-                                    type="file"
-                                    accept="image/*"
-                                    onChange={(e) => {
-                                        const file =
-                                            e.target.files?.[0] ?? null;
+                                    <Input
+                                        type="file"
+                                        accept="image/*"
+                                        onChange={(e) => {
+                                            const file = e.target.files?.[0] ?? null;
+                                            setData('gambar', file);
 
-                                        setData('gambar', file);
+                                            if (file) {
+                                                setImagePreview(URL.createObjectURL(file));
+                                            } else {
+                                                setImagePreview(null);
+                                            }
+                                        }}
+                                        className={errors.gambar ? 'border-red-500' : ''}
+                                    />
 
-                                        if (file) {
-                                            setImagePreview(
-                                                URL.createObjectURL(file),
-                                            );
-                                        } else {
-                                            setImagePreview(null);
-                                        }
-                                    }}
-                                    className={
-                                        errors.gambar ? 'border-red-500' : ''
-                                    }
-                                />
+                                    {imagePreview && (
+                                        <Dialog>
+                                            <DialogTrigger asChild>
+                                                <div className="mt-3 cursor-zoom-in">
+                                                    <img
+                                                        src={imagePreview}
+                                                        alt="Preview"
+                                                        className="h-56 w-full rounded-xl border object-contain shadow"
+                                                    />
+                                                </div>
+                                            </DialogTrigger>
 
-                                {/* Preview Only */}
-                                {imagePreview && (
-                                    <Dialog>
-                                        <DialogTrigger asChild>
-                                            <div className="mt-4 w-full max-w-sm cursor-zoom-in">
+                                            <DialogContent className="max-w-5xl">
                                                 <img
                                                     src={imagePreview}
-                                                    alt="Preview"
-                                                    className="h-64 w-full rounded-2xl border object-contain shadow-md transition hover:opacity-90"
+                                                    alt="Preview Large"
+                                                    className="mx-auto max-h-[85vh] rounded-xl object-contain"
                                                 />
-                                            </div>
-                                        </DialogTrigger>
+                                            </DialogContent>
+                                        </Dialog>
+                                    )}
 
-                                        <DialogContent className="max-w-5xl">
-                                            <img
-                                                src={imagePreview}
-                                                alt="Preview Large"
-                                                className="mx-auto max-h-[85vh] w-auto rounded-2xl object-contain"
-                                            />
-                                        </DialogContent>
-                                    </Dialog>
-                                )}
+                                    {errors.gambar && <InputError message={errors.gambar} />}
+                                </div>
 
-                                {errors.gambar && (
-                                    <InputError message={errors.gambar} />
-                                )}
+                                {/* Upload PDF */}
+                                <div className="grid gap-1.5">
+                                    <Label>PDF</Label>
+
+                                    <Input
+                                        type="file"
+                                        accept=".pdf,application/pdf"
+                                        onChange={(e) => {
+                                            const file = e.target.files?.[0] ?? null;
+                                            setData('file', file);
+
+                                            if (file) {
+                                                setPdfPreview(URL.createObjectURL(file));
+                                            } else {
+                                                setPdfPreview(null);
+                                            }
+                                        }}
+                                        className={errors.file ? 'border-red-500' : ''}
+                                    />
+
+                                    {filePreview && (
+                                        <Dialog>
+                                            <DialogTrigger asChild>
+                                                <div className="mt-3 cursor-pointer rounded-xl border p-4 transition hover:bg-gray-50 dark:hover:bg-gray-800">
+                                                    <div className="flex items-center gap-3">
+                                                        <FileText className="size-8 text-red-500" />
+                                                        <div>
+                                                            <p className="font-medium">{data.file?.name ?? 'Preview PDF'}</p>
+                                                            <p className="text-sm text-gray-500">Klik untuk melihat PDF</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </DialogTrigger>
+
+                                            <DialogContent className="!h-[95vh] !w-[95vw] !max-w-[95vw] overflow-hidden p-3 sm:!max-w-[95vw] sm:p-4">
+                                                                                                        <div className="flex h-full min-h-0 flex-col">
+                                                                                                            <div className="mb-3 flex shrink-0 items-center gap-2">
+                                                                                                                <FileText className="size-5 text-red-600" />
+                                            
+                                                                                                                <h3 className="font-semibold">Dokumen PDF</h3>
+                                                                                                            </div>
+                                            
+                                                                                                            <iframe
+                                                                                                                src={filePreview}
+                                                                                                                title={`Preview PDF`}
+                                                                                                                className="min-h-0 w-full flex-1 rounded-lg border"
+                                                                                                            />
+                                                                                                        </div>
+                                                                                                    </DialogContent>
+                                        </Dialog>
+                                    )}
+
+                                    {errors.file && <InputError message={errors.file} />}
+                                </div>
                             </div>
 
                             {/* Actions */}
@@ -162,20 +206,11 @@ export default function CreatePerwakilanDaerah() {
                                     disabled={isResetting}
                                     className="flex items-center gap-2 bg-amber-400 text-black hover:bg-amber-500"
                                 >
-                                    <RotateCcw
-                                        className={`size-4 ${
-                                            isResetting ? 'animate-spin' : ''
-                                        }`}
-                                    />
+                                    <RotateCcw className={`size-4 ${isResetting ? 'animate-spin' : ''}`} />
                                     Reset
                                 </Button>
 
-                                <Button
-                                    type="submit"
-                                    disabled={processing}
-                                    variant="blue"
-                                    className="flex items-center gap-2"
-                                >
+                                <Button type="submit" disabled={processing} variant="blue" className="flex items-center gap-2">
                                     {processing ? (
                                         <>
                                             <RotateCcw className="size-4 animate-spin" />

@@ -18,7 +18,9 @@ class StrukturOrganisasiResource extends JsonResource
         // return parent::toArray($request);
         return [
             'id' => $this->id,
+            'deskripsi' => $this->deskripsi,
             'gambar' => $this->gambar ? Storage::disk('s3')->url($this->gambar) : null,
+            'file' => $this->file ? Storage::disk('s3')->url($this->file) : null,
             'created_at' => $this->created_at
                 ? $this->created_at->translatedFormat('l, d F Y')
                 : null,

@@ -20,8 +20,8 @@ class FungsiRedesignBackController extends Controller
             ->when(request()->search, function ($query, $value) {
                 $query->where(function ($q) use ($value) {
                     $q->where('kategori', 'ILIKE', "%{$value}%")
-                    ->orWhere('judul', 'ILIKE', "%{$value}%")
-                    ->orWhere('deskripsi', 'ILIKE', "%{$value}%");
+                        ->orWhere('judul', 'ILIKE', "%{$value}%")
+                        ->orWhere('deskripsi', 'ILIKE', "%{$value}%");
                 });
             })
             ->when(request()->created_from, function ($query, $value) {
@@ -32,7 +32,7 @@ class FungsiRedesignBackController extends Controller
             })
             ->when(
                 request()->field && request()->direction,
-                fn ($query) => $query->orderBy(request()->field, request()->direction)
+                fn($query) => $query->orderBy(request()->field, request()->direction)
             )
             ->orderBy('id', 'asc')
             ->paginate(request()->load ?? 10)
@@ -50,29 +50,33 @@ class FungsiRedesignBackController extends Controller
 
     public function create()
     {
-        return Inertia::render('backoffice/redesign/tugas-fungsi/fungsi/create', [
-            
-        ]);
+        return Inertia::render('backoffice/redesign/tugas-fungsi/fungsi/create', []);
     }
 
     public function store(TugasFungsiRequest $request)
     {
         try {
+            $gambarPath = null;
+            $filePath = null;
+
+            // Upload gambar
             if ($request->hasFile('gambar')) {
-
-                $path = Storage::disk('s3')
-                    ->putFile('fungsi', $request->file('gambar'));
-
-                $gambarPath = $path;
+                $gambarPath = Storage::disk('s3')
+                    ->putFile('fungsi/gambar', $request->file('gambar'));
             }
 
-            $gambarPath = null;
+            // Upload PDF
+            if ($request->hasFile('file')) {
+                $filePath = Storage::disk('s3')
+                    ->putFile('fungsi/file', $request->file('file'));
+            }
 
             TugasFungsi::create([
                 'kategori' => 'fungsi',
                 'judul' => $request->judul,
                 'deskripsi' => $request->deskripsi,
                 'gambar' => $gambarPath,
+                'file' => $filePath,
             ]);
 
             return redirect()
@@ -97,38 +101,48 @@ class FungsiRedesignBackController extends Controller
     public function update(TugasFungsiRequest $request, $id)
     {
         try {
-            $fungsis = TugasFungsi::findOrFail($id);
+            $fungsi = TugasFungsi::findOrFail($id);
 
-            $gambarPath = $fungsis->gambar; // default gambar lama
+            // Default gunakan file lama
+            $gambarPath = $fungsi->gambar;
+            $filePath = $fungsi->file;
 
+            // Upload gambar baru
             if ($request->hasFile('gambar')) {
 
-                // hapus lama
-                if ($fungsis->gambar) {
-                    Storage::disk('s3')->delete($fungsis->gambar);
+                // Hapus gambar lama
+                if ($fungsi->gambar) {
+                    Storage::disk('s3')->delete($fungsi->gambar);
                 }
 
-                // upload baru
-                $path = Storage::disk('s3')
-                    ->putFile('fungsi', $request->file('gambar'));
-
-                $gambarPath = $path;
+                $gambarPath = Storage::disk('s3')
+                    ->putFile('fungsi/gambar', $request->file('gambar'));
             }
 
-            $gambarPath = null;
+            // Upload PDF baru
+            if ($request->hasFile('file')) {
 
-            $fungsis->update([
+                // Hapus PDF lama
+                if ($fungsi->file) {
+                    Storage::disk('s3')->delete($fungsi->file);
+                }
+
+                $filePath = Storage::disk('s3')
+                    ->putFile('fungsi/file', $request->file('file'));
+            }
+
+            $fungsi->update([
                 'kategori' => 'fungsi',
                 'judul' => $request->judul,
                 'deskripsi' => $request->deskripsi,
                 'gambar' => $gambarPath,
+                'file' => $filePath,
             ]);
 
             return redirect()
                 ->route('redesign.backoffice.tugas-fungsi.fungsi.index')
                 ->with('success', 'Data berhasil diubah');
         } catch (Throwable $e) {
-
             return redirect()
                 ->route('redesign.backoffice.tugas-fungsi.fungsi.index')
                 ->with('error', $e->getMessage());
