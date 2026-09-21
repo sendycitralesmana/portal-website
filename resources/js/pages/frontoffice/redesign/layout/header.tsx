@@ -51,7 +51,7 @@ const layananInformasiMenuItems: MenuItem[] = [
     },
     {
         label: 'Informasi Publik (PPID)',
-        href: 'https://eppid.lpsk.go.id/',
+        href: 'https://e-ppid.lpsk.go.id/',
         description:
             'Pejabat Pembina Informasi dan Dokumentasi.',
         external: true,
