@@ -62,13 +62,13 @@ const DetailPublikasi: PageWithLayout<Props> = ({ kategori, publikasi, publikasi
   const [activeIndex, setActiveIndex] = useState(0);
   const [zoom, setZoom] = useState(1);
 
-  const formatDate = (date: string) => {
-    return new Date(date).toLocaleDateString("id-ID", {
-      day: "numeric",
-      month: "long",
-      year: "numeric",
-    });
-  };
+  // const formatDate = (date: string) => {
+  //   return new Date(date).toLocaleDateString("id-ID", {
+  //     day: "numeric",
+  //     month: "long",
+  //     year: "numeric",
+  //   });
+  // };
 
   return (
     <>
@@ -94,7 +94,8 @@ const DetailPublikasi: PageWithLayout<Props> = ({ kategori, publikasi, publikasi
 
         <div className="max-w-5xl mx-auto px-4 py-8">
 
-          <p className="text-sm mb-6">{formatDate(publikasi.created_at)}</p>
+          {/* <p className="text-sm mb-6">{formatDate(publikasi.created_at)}</p> */}
+          <p className="text-sm mb-6">{publikasi.created_at}</p>
 
           {/* PREVIEW GALERI */}
           {images && images.length > 0 ? (
